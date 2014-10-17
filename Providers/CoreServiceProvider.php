@@ -3,7 +3,6 @@
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
-use Modules\User\Events\RegisterSidebarMenuItemEvent;
 
 class CoreServiceProvider extends ServiceProvider
 {
