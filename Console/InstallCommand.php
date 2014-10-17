@@ -3,7 +3,6 @@
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
-use Modules\User\Repositories\RoleRepository;
 use Modules\User\Repositories\UserRepository;
 
 class InstallCommand extends Command
