@@ -2,22 +2,22 @@
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\App;
-use Modules\Setting\Support\Settings;
+use Modules\Core\Contracts\Setting;
 
 class MasterViewComposer
 {
     /**
-     * @var Settings
+     * @var Setting
      */
-    private $settingReader;
+    private $setting;
 
-    public function __construct(Settings $settingReader)
+    public function __construct(Setting $setting)
     {
-        $this->settingReader = $settingReader;
+        $this->setting = $setting;
     }
 
     public function compose(View $view)
     {
-        $view->with('sitename', $this->settingReader->get('core::site-name', App::getLocale()));
+        $view->with('sitename', $this->setting->get('core::site-name', App::getLocale()));
     }
 }
