@@ -13,7 +13,7 @@ class AdminFilter
         // Check if the user is logged in
         if (!Sentinel::check()) {
             // Store the current uri in the session
-            Session::put('loginRedirect', Request::url());
+            Session::put('url.intended', Request::url());
 
             // Redirect to the login page
             return Redirect::route('login');
