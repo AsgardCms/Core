@@ -1,9 +1,9 @@
 <?php namespace Modules\Core\Http\Filters;
 
+use Illuminate\Session\Store;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Session;
 use Modules\Core\Contracts\Authentication;
 
 class AdminFilter
@@ -12,10 +12,15 @@ class AdminFilter
      * @var Authentication
      */
     private $auth;
+    /**
+     * @var SessionManager
+     */
+    private $session;
 
-    public function __construct(Authentication $auth)
+    public function __construct(Authentication $auth, Store $session)
     {
         $this->auth = $auth;
+        $this->session = $session;
     }
 
     public function filter()
@@ -23,7 +28,7 @@ class AdminFilter
         // Check if the user is logged in
         if (!$this->auth->check()) {
             // Store the current uri in the session
-            Session::put('url.intended', Request::url());
+            $this->session->put('url.intended', Request::url());
 
             // Redirect to the login page
             return Redirect::route('login');
