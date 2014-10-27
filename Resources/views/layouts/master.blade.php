@@ -61,7 +61,7 @@
 <script src="{!! Module::asset('core', 'js/vendor/datatables/jquery.dataTables.js') !!}" type="text/javascript"></script>
 <script src="{!! Module::asset('core', 'js/vendor/datatables/dataTables.bootstrap.js') !!}" type="text/javascript"></script>
 <script src="{!! Module::asset('core', 'js/app.js') !!}" type="text/javascript"></script>
-<script src="{!! Module::asset('core', 'js/app.js') !!}" type="text/javascript"></script>
+<script src="{!! Module::asset('core', 'js/vendor/jquery.slug.js') !!}" type="text/javascript"></script>
 @section('scripts')
 @show
 </body>
