@@ -48,6 +48,13 @@ abstract class EloquentBaseRepository implements BaseRepository
         return $this->model->create($data);
     }
 
+    public function update($id, $data)
+    {
+        $model = $this->find($id);
+
+        return $model->update($data);
+    }
+
     /**
      * @param int|int[] $ids
      * @return mixed
