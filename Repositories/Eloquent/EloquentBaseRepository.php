@@ -1,6 +1,5 @@
 <?php  namespace Modules\Core\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Model;
 use Modules\Core\Repositories\BaseRepository;
 
 /**
@@ -17,7 +16,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     /**
      * @param Model $model
      */
-    public function __construct(Model $model)
+    public function __construct($model)
     {
         $this->model = $model;
     }

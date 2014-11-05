@@ -8,13 +8,13 @@ interface BaseRepository
 {
     /**
      * @param int $id
-     * @return \Illuminate\Database\Eloquent\Model $model
+     * @return $model
      */
     public function find($id);
 
     /**
      * Return a collection of all elements of the resource
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @return mixed
      */
     public function all();
 
@@ -35,7 +35,7 @@ interface BaseRepository
 
     /**
      * Destroy a resource
-     * @param \Illuminate\Database\Eloquent\Model $model
+     * @param $model
      * @return mixed
      */
     public function destroy($model);
