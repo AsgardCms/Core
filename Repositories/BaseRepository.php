@@ -1,7 +1,5 @@
 <?php namespace Modules\Core\Repositories;
 
-use Illuminate\Database\Eloquent\Model;
-
 /**
  * Interface CoreRepository
  * @package Modules\Core\Repositories
@@ -10,7 +8,7 @@ interface BaseRepository
 {
     /**
      * @param int $id
-     * @return Model $model
+     * @return \Illuminate\Database\Eloquent\Model $model
      */
     public function find($id);
 
@@ -29,16 +27,16 @@ interface BaseRepository
 
     /**
      * Update a resource
-     * @param Model $model
+     * @param $model
      * @param array $data
      * @return mixed
      */
-    public function update(Model $model, $data);
+    public function update($model, $data);
 
     /**
      * Destroy a resource
-     * @param Model $model
+     * @param \Illuminate\Database\Eloquent\Model $model
      * @return mixed
      */
-    public function destroy(Model $model);
+    public function destroy($model);
 }
