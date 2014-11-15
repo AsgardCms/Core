@@ -264,7 +264,7 @@ class InstallCommand extends Command
         $file = $this->finder->put($path, $string);
 
         if ($file) {
-            $this->info('User driver define in config file.');
+            $this->info('User driver define in config file !');
         }
     }
 
