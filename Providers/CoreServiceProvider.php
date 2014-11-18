@@ -42,9 +42,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->loadModuleProviders();
         $this->registerMenuRoutes();
-        $this->app->booted(function ($app) {
-            $this->registerFilters($app['router']);
-        });
+        $this->registerFilters($this->app['router']);
         $this->registerCommands();
     }
 
