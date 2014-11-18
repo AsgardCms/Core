@@ -1,8 +1,11 @@
 <?php namespace Modules\Core\Providers;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
+use Modules\Menu\Entities\Menuitem;
+use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -38,6 +41,7 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->loadModuleProviders();
+        $this->registerMenuRoutes();
         $this->app->booted(function ($app) {
             $this->registerFilters($app['router']);
         });
@@ -112,5 +116,18 @@ class CoreServiceProvider extends ServiceProvider
         $this->commands(
             'command.asgard.install'
         );
+    }
+
+    private function registerMenuRoutes()
+    {
+        $this->app->bind(
+            'Modules\Menu\Repositories\MenuItemRepository',
+            function() {
+                return new EloquentMenuItemRepository(new Menuitem);
+            }
+        );
+        $this->app->singleton('Asgard.routes', function (Application $app) {
+            return $app->make('Modules\Menu\Repositories\MenuItemRepository')->getForRoutes();
+        });
     }
 }
