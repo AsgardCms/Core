@@ -3,6 +3,7 @@
 use Dotenv;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\Facades\Hash;
 use Modules\User\Repositories\UserRepository;
 
@@ -54,34 +55,62 @@ class InstallCommand extends Command
     public function fire()
     {
         $this->info('Starting the installation process...');
-
         $this->configureDatabase();
-
-		if ($this->confirm('Do you wish to init sentinel and create its first user? [yes|no]')) {
-			$this->runUserCommands();
-		}
+        $userDriverlist = [0 => 'None', 'sentry', 'sentinel (paying)'];
+        $driver = $this->choice("Which user driver do you wish use ?", $userDriverlist);
+        if (isset($driver) && !empty($driver) && $driver !== 'None') {
+            $this->{'runUser' . $driver . 'Commands'}();
+            $isUserCreated = true;
+        } else {
+            $isUserCreated = false;
+        }
 
         $this->runMigrations();
 
         $this->publishAssets();
-
-        $this->blockMessage(
-            'Success!',
-            'Platform ready! You can now login with your username and password at /backend'
-        );
+        if ($isUserCreated) {
+            $this->blockMessage(
+                'Success!',
+                'Platform ready! You can now login with your username and password at /backend'
+            );
+        } else {
+            $this->blockMessage(
+                'Success!',
+                'Platform ready! But you need to install a user driver and create an account'
+            );
+        }
     }
 
-	/**
-	 *
-	 */
-	private function runUserCommands()
-	{
-		$this->runSentinelMigrations();
-		$this->runUserSeeds();
-		$this->createFirstUser();
+    /**
+     *
+     */
+    private function runUserSentinelCommands()
+    {
+        $this->runSentinelMigrations();
+        $this->runSentinelConfigFile();
+        $this->runUserSeeds();
+        $this->createFirstUser();
 
-		$this->info('User commands done.');
-	}
+        $this->info('User commands done.');
+    }
+
+    /**
+     *
+     */
+    private function runUserSentryCommands()
+    {
+        $this->runSentryMigrations();
+        $this->runSentryConfigFile();
+//        $app = $this->finder->get('config/app.php');
+//        var_dump($app); exit;
+//        $app = $app['aliases']['Auth'] = 'Cartalyst\Sentry\Facades\Laravel\Sentry';
+//        $this->finder->put('config/app.php', '<?php return ['.$app.']');
+        AliasLoader::getInstance()->alias('Test', 'Cartalyst\Sentry\Facades\Laravel\Sentry');
+        $this->runUserSeeds();
+        $this->createFirstUser();
+
+        $this->info('User commands done.');
+    }
 
     /**
      * Create the first user that'll have admin access
@@ -99,20 +128,20 @@ class InstallCommand extends Command
             'first_name' => $firstname,
             'last_name' => $lastname,
             'email' => $email,
-            'password' => Hash::make($password),
+            'password' => $password,
         ];
-        $this->user->createWithRoles($userInfo, ['admin']);
+        $this->user->createWithRoles($userInfo, ['Admin']);
 
         $this->info('Admin account created!');
     }
 
-	/**
-	 * Run migrations specific to Sentinel
+    /**
+     * Run migrations specific to Sentinel
      */
-	private function runSentinelMigrations()
-	{
-		$this->call('migrate', ['--package' => 'cartalyst/sentinel']);
-	}
+    private function runSentinelMigrations()
+    {
+        $this->call('migrate', ['--package' => 'cartalyst/sentinel']);
+    }
 
     /**
      * Run the migrations
@@ -124,10 +153,10 @@ class InstallCommand extends Command
         $this->info('Application migrated!');
     }
 
-	private function runUserSeeds()
-	{
-		$this->call('module:seed', ['module' => 'User']);
-	}
+    private function runUserSeeds()
+    {
+        $this->call('module:seed', ['module' => 'User']);
+    }
 
     /**
      * Symfony style block messages
@@ -210,6 +239,33 @@ class InstallCommand extends Command
         $this->laravel['config']['database.connections.mysql.database'] = $databaseName;
         $this->laravel['config']['database.connections.mysql.username'] = $databaseUsername;
         $this->laravel['config']['database.connections.mysql.password'] = $databasePassword;
+    }
+
+    private function runSentryMigrations()
+    {
+        $this->call('migrate', ['--package' => 'cartalyst/sentry']);
+    }
+
+    private function runSentryConfigFile()
+    {
+        $path = 'Modules/User/Config/userdriver.php';
+        $string = "<?php return ['driver'=>'Sentry','seeder'=>['SentryGroupSeedTableSeeder','SentryUserSeedTableSeeder']];";
+        $file = $this->finder->put($path, $string);
+
+        if ($file) {
+            $this->info('User driver define in config file.');
+        }
+    }
+
+    private function runSentinelConfigFile()
+    {
+        $path = 'Modules/User/Config/userdriver.php';
+        $string = "<?php return ['driver'=>'Sentinel','seeder'=>['SentryGroupSeedTableSeeder','SentryUserSeedTableSeeder']];";
+        $file = $this->finder->put($path, $string);
+
+        if ($file) {
+            $this->info('User driver define in config file !');
+        }
     }
 
 }

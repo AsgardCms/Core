@@ -33,6 +33,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="glyphicon glyphicon-user"></i>
                     <span>
+
                         <?php if ($user->present()->fullname() != ' '): ?>
                             <?= $user->present()->fullName(); ?>
                         <?php else: ?>
