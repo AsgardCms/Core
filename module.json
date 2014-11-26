@@ -15,5 +15,8 @@
     "active": 1,
     "providers": [
         "Modules\\Core\\Providers\\RoutingServiceProvider"
+    ],
+    "files": [
+        "start.php"
     ]
 }
