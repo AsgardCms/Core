@@ -186,6 +186,19 @@ class InstallCommand extends Command
         $this->call('publish:config', ['package' => 'dimsav/laravel-translatable']);
         $this->call('publish:config', ['package' => 'mcamara/laravel-localization']);
         $this->call('publish:config', ['package' => 'pingpong/modules']);
+        $this->call('publish:config', ['package' => 'mpedrera/themify']);
+        $this->adaptThemifyConfiguration();
+    }
+
+    /**
+     * Configure the mpedrera/themify configuration
+     * @throws \Illuminate\Filesystem\FileNotFoundException
+     */
+    private function adaptThemifyConfiguration()
+    {
+        $themifyConfig = $this->finder->get('config/packages/mpedrera/themify/config.php');
+        $themifyConfig = str_replace('app_path()', 'base_path()', $themifyConfig);
+        $this->finder->put('config/packages/mpedrera/themify/config.php', $themifyConfig);
     }
 
     /**
