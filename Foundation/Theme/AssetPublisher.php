@@ -78,6 +78,6 @@ class AssetPublisher
      */
     public function getDestinationPath()
     {
-        return $this->repository->getAssetPath($this->theme->getName());
+        return $this->repository->getAssetPath($this->theme->getLowerName());
     }
 }
