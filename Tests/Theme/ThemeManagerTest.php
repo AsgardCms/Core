@@ -36,8 +36,27 @@ class ThemeManagerTest extends BaseTestCase
         $this->assertEquals('demo', $theme->getLowerName());
     }
 
+    /** @test */
+    public function it_should_return_null_if_not_theme_found()
+    {
+        $theme = $this->repository->find('fakeTheme');
+
+        $this->assertNull($theme);
+    }
+
+    /** @test */
+    public function it_should_return_empty_array_if_no_themes()
+    {
+        new ThemeManager($this->app, $this->getEmptyThemesPath());
+    }
+
     private function getPath()
     {
         return __DIR__ . '/Fixture/Themes';
+    }
+
+    private function getEmptyThemesPath()
+    {
+        return __DIR__ . '/Fixture/EmptyThemes';
     }
 }
