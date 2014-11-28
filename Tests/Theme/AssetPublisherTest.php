@@ -1,8 +1,9 @@
-<?php  namespace Modules\Core\Tests;
+<?php  namespace Modules\Core\Tests\Theme;
 
 use Modules\Core\Foundation\Theme\AssetPublisher;
 use Modules\Core\Foundation\Theme\Theme;
 use Modules\Core\Foundation\Theme\ThemeManager;
+use Modules\Core\Tests\BaseTestCase;
 
 class AssetPublisherTest extends BaseTestCase
 {
