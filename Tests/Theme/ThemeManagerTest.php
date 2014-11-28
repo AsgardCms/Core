@@ -47,7 +47,9 @@ class ThemeManagerTest extends BaseTestCase
     /** @test */
     public function it_should_return_empty_array_if_no_themes()
     {
-        new ThemeManager($this->app, $this->getEmptyThemesPath());
+        $repository = new ThemeManager($this->app, $this->getEmptyThemesPath());
+
+        $this->assertEquals([], $repository->all());
     }
 
     private function getPath()
