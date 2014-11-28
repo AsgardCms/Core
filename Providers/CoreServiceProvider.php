@@ -5,6 +5,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
+use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Services\Composer;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
@@ -104,8 +105,8 @@ class CoreServiceProvider extends ServiceProvider
 
     private function registerThemeCommand()
     {
-        $this->app->bindShared('command.asgard.publish.theme', function() {
-            return new PublishThemeAssetsCommand;
+        $this->app->bindShared('command.asgard.publish.theme', function($app) {
+            return new PublishThemeAssetsCommand(new ThemeManager($app));
         });
     }
 
