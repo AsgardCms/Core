@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
+use Modules\Core\Foundation\Theme\AssetPublisher;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -28,7 +29,10 @@ class PublishThemeAssetsCommand extends Command
             $this->comment('Publishing assets for all themes');
         }
 
-        $this->themeManager->publishAssetsFor($theme);
+        with(new AssetPublisher($this->themeManager->find($theme)))
+            ->setFinder($this->laravel['files'])
+            ->setRepository($this->themeManager)
+            ->publish();
 
         $this->info("Assets published for [$theme] theme");
     }

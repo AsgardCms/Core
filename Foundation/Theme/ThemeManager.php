@@ -25,20 +25,6 @@ class ThemeManager implements \Countable
     }
 
     /**
-     * Publish assets for the given theme
-     * @param string $theme
-     */
-    public function publishAssetsFor($theme)
-    {
-        $theme = $this->find($theme);
-
-        with(new AssetPublisher($theme))
-            ->setFinder($this->getFinder())
-            ->setRepository($this)
-            ->publish();
-    }
-
-    /**
      * @param string $name
      * @return Theme|null
      */
