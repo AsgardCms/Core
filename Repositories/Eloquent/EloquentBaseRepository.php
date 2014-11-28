@@ -60,4 +60,17 @@ abstract class EloquentBaseRepository implements BaseRepository
     {
         return $model->delete();
     }
+
+    /**
+     * Return all categories in the given language
+     * @param $lang
+     * @return mixed
+     */
+    public function allTranslatedIn($lang)
+    {
+        return $this->model->whereHas('translations', function($q) use($lang)
+        {
+            $q->where('locale', "$lang");
+        })->orderBy('created_at', 'DESC')->get();
+    }
 }

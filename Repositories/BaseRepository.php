@@ -39,4 +39,11 @@ interface BaseRepository
      * @return mixed
      */
     public function destroy($model);
+
+    /**
+     * Return resources translated in the given language
+     * @param $lang
+     * @return object
+     */
+    public function allTranslatedIn($lang);
 }
