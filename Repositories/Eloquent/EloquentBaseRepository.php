@@ -73,4 +73,17 @@ abstract class EloquentBaseRepository implements BaseRepository
             $q->where('locale', "$lang");
         })->orderBy('created_at', 'DESC')->get();
     }
+
+    /**
+     * Find a resource by the given slug
+     * @param int $slug
+     * @return object
+     */
+    public function findBySlug($slug)
+    {
+        return $this->model->whereHas('translations', function($q) use($slug)
+        {
+            $q->where('slug', "$slug");
+        })->first();
+    }
 }

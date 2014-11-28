@@ -46,4 +46,11 @@ interface BaseRepository
      * @return object
      */
     public function allTranslatedIn($lang);
+
+    /**
+     * Find a resource by the given slug
+     * @param int $slug
+     * @return object
+     */
+    public function findBySlug($slug);
 }
