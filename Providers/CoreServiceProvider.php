@@ -46,6 +46,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerMenuRoutes();
         $this->registerFilters($this->app['router']);
         $this->registerCommands();
+        $this->registerServices();
     }
 
     /**
@@ -120,6 +121,14 @@ class CoreServiceProvider extends ServiceProvider
         );
         $this->app->singleton('Asgard.routes', function (Application $app) {
             return $app->make('Modules\Menu\Repositories\MenuItemRepository')->getForRoutes();
+        });
+    }
+
+    private function registerServices()
+    {
+        $this->app->bindShared('asgard.themes', function ($app) {
+            $path = $app['config']->get('themify::themes_path');
+            return new ThemeManager($app, $path);
         });
     }
 }
