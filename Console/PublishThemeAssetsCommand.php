@@ -23,14 +23,14 @@ class PublishThemeAssetsCommand extends Command
     {
         $theme = $this->argument('theme') ?: '';
         if ($theme) {
-            $this->line('Publishing assets for ' . $theme);
+            $this->comment("Publishing assets for [$theme] theme");
         } else {
-            $this->line('Publishing assets for all themes');
+            $this->comment('Publishing assets for all themes');
         }
 
         $this->themeManager->publishAssetsFor($theme);
 
-        $this->info("Assets published for $theme theme");
+        $this->info("Assets published for [$theme] theme");
     }
 
     protected function getArguments()
