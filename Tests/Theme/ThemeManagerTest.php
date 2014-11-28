@@ -52,6 +52,14 @@ class ThemeManagerTest extends BaseTestCase
         $this->assertEquals([], $repository->all());
     }
 
+    /** @test */
+    public function it_should_return_empty_array_if_no_folder()
+    {
+        $repository = new ThemeManager($this->app, $this->getFakePath());
+
+        $this->assertEquals([], $repository->all());
+    }
+
     private function getPath()
     {
         return __DIR__ . '/Fixture/Themes';
@@ -60,5 +68,10 @@ class ThemeManagerTest extends BaseTestCase
     private function getEmptyThemesPath()
     {
         return __DIR__ . '/Fixture/EmptyThemes';
+    }
+
+    private function getFakePath()
+    {
+        return __DIR__ . '/Fixture/fakeFolder';
     }
 }
