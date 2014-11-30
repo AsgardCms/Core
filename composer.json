@@ -21,7 +21,8 @@
   },
   "require": {
     "php": ">=5.4",
-    "composer/installers": "~1.0"
+    "composer/installers": "~1.0",
+    "laravel/framework": "dev-master#ba916851321b9233cb56a0fb1deb41043b7df5fb"
   },
   "minimum-stability": "dev"
 }
