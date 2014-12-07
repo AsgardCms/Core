@@ -7,7 +7,13 @@
     "active": 1,
     "priority": 1,
     "providers": [
-        "Modules\\Core\\Providers\\RoutingServiceProvider"
+        "Modules\\Core\\Providers\\RoutingServiceProvider",
+        "Illuminate\\Html\\HtmlServiceProvider",
+        "Laracasts\\Commander\\CommanderServiceProvider",
+        "Laracasts\\Flash\\FlashServiceProvider",
+        "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
+        "Dimsav\\Translatable\\TranslatableServiceProvider",
+        "Mpedrera\\Themify\\ThemifyServiceProvider"
     ],
     "files": [
         "start.php"
