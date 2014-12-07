@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Providers;
 
 use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
@@ -44,6 +45,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerAliases();
         $this->registerMenuRoutes();
         $this->registerFilters($this->app['router']);
         $this->registerCommands();
@@ -139,6 +141,24 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->bindShared('asgard.themes', function ($app) {
             $path = $app['config']->get('themify::themes_path');
             return new ThemeManager($app, $path);
+        });
+    }
+
+    /**
+     * Register the modules aliases
+     */
+    private function registerAliases()
+    {
+        $this->app->booted(function($app) {
+            $modules = $app['modules']->enabled();
+            $loader = AliasLoader::getInstance();
+            foreach ($modules as $moduleName => $module) {
+                if ($aliases = $module->get('aliases')) {
+                    foreach ($aliases as $aliasName => $aliasClass) {
+                        $loader->alias($aliasName, $aliasClass);
+                    }
+                }
+            }
         });
     }
 }
