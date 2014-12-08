@@ -186,6 +186,7 @@ class InstallCommand extends Command
         $this->call('module:migrate', ['module' => 'Setting', '--no-interaction' => '']);
         $this->call('module:migrate', ['module' => 'Menu', '--no-interaction' => '']);
         $this->call('module:migrate', ['module' => 'Media', '--no-interaction' => '']);
+        $this->call('module:migrate', ['module' => 'Page', '--no-interaction' => '']);
 
         $this->info('Application migrated!');
     }
