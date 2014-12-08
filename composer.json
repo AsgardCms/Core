@@ -30,12 +30,16 @@
     "guzzlehttp/guzzle": "~5.0",
     "dimsav/laravel-translatable": "~5.0@dev",
     "mcamara/laravel-localization": "dev-Laravel5Support",
-    "mpedrera/themify": "*"
+    "mpedrera/themify": "dev-laravel5"
   },
   "repositories": [
     {
       "type": "vcs",
       "url": "https://github.com/nWidart/laravel-localization"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/nWidart/themify"
     }
   ],
   "require-dev": {
