@@ -72,6 +72,7 @@ class InstallCommand extends Command
         $this->$userDriver();
 
         $this->runMigrations();
+        $this->runSeeds();
 
         $this->publishAssets();
 
@@ -375,6 +376,14 @@ class InstallCommand extends Command
     private function checkIfInstalled()
     {
         return $this->finder->isFile('.env');
+    }
+
+    /**
+     * Run module seeds
+     */
+    private function runSeeds()
+    {
+        $this->call('db:seed', ['--class' => 'Modules\Page\Database\Seeders\BasePageDatabaseSeeder', '--no-interaction' => '']);
     }
 
 }
