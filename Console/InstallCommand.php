@@ -139,17 +139,17 @@ class InstallCommand extends Command
         } while(!$firstname);
 
         do {
-            $lastname = $this->ask('Enter your last name');
+            $lastname = $this->ask('Enter your last name: ');
             if ($lastname == '') $this->error('Last name is required');
         } while(!$lastname);
 
         do {
-            $email = $this->ask('Enter your email address');
+            $email = $this->ask('Enter your email address: ');
             if ($email == '') $this->error('Email is required');
         } while(!$email);
 
         do {
-            $password = $this->secret('Enter a password');
+            $password = $this->secret('Enter a password: ');
             if ($password == '') $this->error('Password is required');
         } while(!$password);
 
@@ -222,15 +222,15 @@ class InstallCommand extends Command
     private function configureDatabase()
     {
         do {
-            $databaseName = $this->ask('Enter your database name');
+            $databaseName = $this->ask('Enter your database name: ');
             if ($databaseName == '') $this->error('Database name is required');
         } while(!$databaseName);
         do {
-            $databaseUsername = $this->ask('Enter your database username');
+            $databaseUsername = $this->ask('Enter your database username: ');
             if ($databaseUsername == '') $this->error('Database username is required');
         } while(!$databaseUsername);
         do {
-            $databasePassword = $this->secret('Enter your database password');
+            $databasePassword = $this->secret('Enter your database password: ');
             if ($databasePassword == '') $this->error('Database password is required');
         } while(!$databasePassword);
 
