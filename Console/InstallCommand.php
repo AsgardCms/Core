@@ -384,6 +384,9 @@ class InstallCommand extends Command
     private function runSeeds()
     {
         $this->call('db:seed', ['--class' => 'Modules\Page\Database\Seeders\BasePageDatabaseSeeder', '--no-interaction' => '']);
+        $this->call('db:seed', ['--class' => 'Modules\Setting\Database\Seeders\SettingDatabaseSeeder', '--no-interaction' => '']);
+
+        $this->info('Application seeded.');
     }
 
 }
