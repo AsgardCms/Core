@@ -69,7 +69,7 @@ class InstallCommand extends Command
 
         $userDriver = $this->choice('Which user driver do you wish to use?', ['Sentinel (Paid)', 'Sentry (Free)'], 1);
         $chosenDriver = strstr($userDriver, ' ', true);
-        $driverInstallMethod = "run{$userDriver}UserCommands";
+        $driverInstallMethod = "run{$chosenDriver}UserCommands";
         $this->$driverInstallMethod();
 
         $this->runMigrations();
