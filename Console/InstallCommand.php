@@ -6,6 +6,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Services\Composer;
+use Symfony\Component\Console\Input\InputOption;
 
 class InstallCommand extends Command
 {
@@ -53,9 +54,9 @@ class InstallCommand extends Command
 
     protected function getOptions()
     {
-        return array(
-            array('force', 'f', InputOption::VALUE_NONE, 'Force the installation')
-        );
+        return [
+            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation']
+        ];
     }
 
 
@@ -68,7 +69,7 @@ class InstallCommand extends Command
     {
         $this->info('Starting the installation process...');
 
-        if ($this->checkIfInstalled()) {
+        if ($this->checkIfInstalled($this->option('force'))) {
             $this->error('Asgard has already been installed. You can already log into your administration.');
             return;
         }
@@ -381,9 +382,9 @@ class InstallCommand extends Command
     /**
      * Check if Asgard CMS already has been installed
      */
-    private function checkIfInstalled()
+    private function checkIfInstalled($forceInstall = false)
     {
-        return $this->finder->isFile('.env');
+        return !$forceInstall && $this->finder->isFile('.env');
     }
 
     /**
