@@ -6,6 +6,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Services\Composer;
+use Symfony\Component\Console\Input\InputOption;
 
 class InstallCommand extends Command
 {
@@ -51,6 +52,14 @@ class InstallCommand extends Command
         $this->composer = $composer;
     }
 
+    protected function getOptions()
+    {
+        return [
+            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation']
+        ];
+    }
+
+
     /**
      * Execute the actions
      *
@@ -60,7 +69,7 @@ class InstallCommand extends Command
     {
         $this->info('Starting the installation process...');
 
-        if ($this->checkIfInstalled()) {
+        if ($this->checkIfInstalled($this->option('force'))) {
             $this->error('Asgard has already been installed. You can already log into your administration.');
             return;
         }
@@ -83,16 +92,16 @@ class InstallCommand extends Command
         );
     }
 
-	/**
-	 * Run the required commands to use Sentinel
-	 */
-	private function runSentinelUserCommands()
-	{
+    /**
+     * Run the required commands to use Sentinel
+     */
+    private function runSentinelUserCommands()
+    {
         $this->info('Requiring Sentinel package, this may take some time...');
         $this->handleComposerForSentinel();
 
         $this->info('Running Sentinel migrations...');
-		$this->runSentinelMigrations();
+        $this->runSentinelMigrations();
 
         $this->info('Running Sentinel seed...');
         $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder', '--no-interaction' => '']);
@@ -105,8 +114,8 @@ class InstallCommand extends Command
 
         $this->createFirstUser('sentinel');
 
-		$this->info('User commands done.');
-	}
+        $this->info('User commands done.');
+    }
 
     /**
      * Run the required commands to use Sentry
@@ -172,13 +181,13 @@ class InstallCommand extends Command
         $this->info('Admin account created!');
     }
 
-	/**
-	 * Run migrations specific to Sentinel
+    /**
+     * Run migrations specific to Sentinel
      */
-	private function runSentinelMigrations()
-	{
-		$this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction' => '']);
-	}
+    private function runSentinelMigrations()
+    {
+        $this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction' => '']);
+    }
 
     /**
      * Run the migrations
@@ -374,9 +383,9 @@ class InstallCommand extends Command
     /**
      * Check if Asgard CMS already has been installed
      */
-    private function checkIfInstalled()
+    private function checkIfInstalled($forceInstall = false)
     {
-        return $this->finder->isFile('.env');
+        return !$forceInstall && $this->finder->isFile('.env');
     }
 
     /**
