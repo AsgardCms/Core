@@ -16,11 +16,16 @@ abstract class BaseCacheDecorator implements BaseRepository
      * @var string The entity name
      */
     protected $entityName;
+    /**
+     * @var string The application locale
+     */
+    protected $locale;
 
     public function __construct()
     {
         $this->cache = app('Illuminate\Cache\Repository');
-        $this->cacheTime = app('Illuminate\Config\Repository')->get('cache.time') ?: 60;
+        $this->cacheTime = app('Illuminate\Config\Repository')->get('cache.time', 60);
+        $this->locale = app()->getLocale();
     }
 
     /**
@@ -44,6 +49,23 @@ abstract class BaseCacheDecorator implements BaseRepository
             function () {
                 return $this->repository->all();
             });
+    }
+
+    /**
+     * Return all categories in the given language
+     *
+     * @param $lang
+     * @return mixed
+     */
+    public function allTranslatedIn($lang)
+    {
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.allTranslatedIn.{$lang}",
+                function () use ($lang) {
+                    return $this->repository->allTranslatedIn($lang);
+                }
+            );
     }
 
     /**
