@@ -1,9 +1,10 @@
-<?php  namespace Modules\Core\Repositories\Eloquent;
+<?php namespace Modules\Core\Repositories\Eloquent;
 
 use Modules\Core\Repositories\BaseRepository;
 
 /**
  * Class EloquentCoreRepository
+ *
  * @package Modules\Core\Repositories\Eloquent
  */
 abstract class EloquentBaseRepository implements BaseRepository
@@ -23,7 +24,7 @@ abstract class EloquentBaseRepository implements BaseRepository
 
     /**
      * @param int $id
-     * @return mixed
+     * @return object
      */
     public function find($id)
     {
@@ -31,7 +32,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function all()
     {
@@ -40,21 +41,28 @@ abstract class EloquentBaseRepository implements BaseRepository
 
     /**
      * @param mixed $data
-     * @return mixed
+     * @return object
      */
     public function create($data)
     {
         return $this->model->create($data);
     }
 
+    /**
+     * @param $model
+     * @param array $data
+     * @return object
+     */
     public function update($model, $data)
     {
-        return $model->update($data);
+        $model->update($data);
+
+        return $model;
     }
 
     /**
      * @param Model $model
-     * @return mixed
+     * @return bool
      */
     public function destroy($model)
     {
@@ -63,26 +71,26 @@ abstract class EloquentBaseRepository implements BaseRepository
 
     /**
      * Return all categories in the given language
-     * @param $lang
-     * @return mixed
+     *
+     * @param string $lang
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function allTranslatedIn($lang)
     {
-        return $this->model->whereHas('translations', function($q) use($lang)
-        {
+        return $this->model->whereHas('translations', function ($q) use ($lang) {
             $q->where('locale', "$lang");
         })->orderBy('created_at', 'DESC')->get();
     }
 
     /**
      * Find a resource by the given slug
-     * @param int $slug
+     *
+     * @param string $slug
      * @return object
      */
     public function findBySlug($slug)
     {
-        return $this->model->whereHas('translations', function($q) use($slug)
-        {
+        return $this->model->whereHas('translations', function ($q) use ($slug) {
             $q->where('slug', "$slug");
         })->first();
     }
