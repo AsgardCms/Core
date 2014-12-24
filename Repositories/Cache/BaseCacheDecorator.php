@@ -54,8 +54,8 @@ abstract class BaseCacheDecorator implements BaseRepository
     /**
      * Return all categories in the given language
      *
-     * @param $lang
-     * @return mixed
+     * @param string $lang
+     * @return object
      */
     public function allTranslatedIn($lang)
     {
