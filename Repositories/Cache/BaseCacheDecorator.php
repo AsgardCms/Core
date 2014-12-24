@@ -75,6 +75,22 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
+     * Find a resource by the given slug
+     * @param string $slug
+     * @return object
+     */
+    public function findBySlug($slug)
+    {
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.findBySlug.{$slug}",
+                function () use ($slug) {
+                    return $this->repository->findBySlug($slug);
+                }
+            );
+    }
+
+    /**
      * Create a resource
      *
      * @param $data
