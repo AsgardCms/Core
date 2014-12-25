@@ -3,6 +3,7 @@
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
@@ -10,6 +11,7 @@ use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Services\Composer;
 use Modules\Menu\Entities\Menuitem;
+use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
 
 class CoreServiceProvider extends ServiceProvider
@@ -128,7 +130,13 @@ class CoreServiceProvider extends ServiceProvider
         $this->app->bind(
             'Modules\Menu\Repositories\MenuItemRepository',
             function() {
-                return new EloquentMenuItemRepository(new Menuitem);
+                $repository = new EloquentMenuItemRepository(new Menuitem);
+
+                if (! Config::get('app.cache')) {
+                    return $repository;
+                }
+
+                return new CacheMenuItemDecorator($repository);
             }
         );
         $this->app->singleton('Asgard.routes', function (Application $app) {
