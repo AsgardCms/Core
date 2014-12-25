@@ -28,7 +28,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function find($id)
     {
-        return $this->model->find($id);
+        return $this->model->with('translations')->find($id);
     }
 
     /**
@@ -36,7 +36,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function all()
     {
-        return $this->model->orderBy('created_at', 'DESC')->get();
+        return $this->model->with('translations')->orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -79,7 +79,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     {
         return $this->model->whereHas('translations', function ($q) use ($lang) {
             $q->where('locale', "$lang");
-        })->orderBy('created_at', 'DESC')->get();
+        })->with('translations')->orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -92,6 +92,6 @@ abstract class EloquentBaseRepository implements BaseRepository
     {
         return $this->model->whereHas('translations', function ($q) use ($slug) {
             $q->where('slug', "$slug");
-        })->first();
+        })->with('translations')->first();
     }
 }
