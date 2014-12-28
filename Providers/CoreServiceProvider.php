@@ -32,6 +32,7 @@ class CoreServiceProvider extends ServiceProvider
         'Core' => [
             'permissions' => 'PermissionFilter',
             'auth.admin' => 'AdminFilter',
+            'public.checkLocale' => 'PublicFilter',
         ]
     ];
 
