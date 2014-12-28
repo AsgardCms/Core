@@ -1,4 +1,4 @@
-<?php  namespace Modules\Core\Tests\Theme;
+<?php namespace Modules\Core\Tests\Theme;
 
 use Modules\Core\Foundation\Theme\Theme;
 use Modules\Core\Tests\BaseTestCase;
@@ -37,6 +37,6 @@ class ThemeTest extends BaseTestCase
 
     private function getPath()
     {
-        return __DIR__ . '/Fixture/Themes/demo';
+        return __DIR__.'/Fixture/Themes/demo';
     }
 }

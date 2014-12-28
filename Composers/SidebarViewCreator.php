@@ -8,6 +8,6 @@ class SidebarViewCreator
     public function create($view)
     {
         $view->prefix = Config::get('core::core.admin-prefix');
-        $view->items = new Collection;
+        $view->items = new Collection();
     }
 }

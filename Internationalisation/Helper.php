@@ -23,7 +23,7 @@ class Helper
      */
     public static function createTranslatedFields($model, $data)
     {
-        $model = new $model;
+        $model = new $model();
 
         self::saveTranslatedProperties($model, $data);
     }
@@ -45,6 +45,7 @@ class Helper
                 $cleanedData[$key] = $value;
             }
         }
+
         return $cleanedData;
     }
 
@@ -64,5 +65,4 @@ class Helper
         }
         $model->save();
     }
-
 }

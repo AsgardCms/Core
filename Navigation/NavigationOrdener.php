@@ -17,6 +17,7 @@ class NavigationOrdener
                 if ($item1['weight'] < $item2['weight']) {
                     return -1;
                 }
+
                 return 0;
             }
         );

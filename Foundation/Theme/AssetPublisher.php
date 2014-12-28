@@ -69,7 +69,7 @@ class AssetPublisher
      */
     public function getSourcePath()
     {
-        return $this->theme->getPath() . '/assets';
+        return $this->theme->getPath().'/assets';
     }
 
     /**

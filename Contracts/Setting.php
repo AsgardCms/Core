@@ -5,7 +5,7 @@ interface Setting
     /**
      * Determine if the given configuration value exists.
      *
-     * @param string  $key
+     * @param  string $key
      * @return bool
      */
     public function has($key);
@@ -13,9 +13,9 @@ interface Setting
     /**
      * Get the specified configuration value in the given language
      *
-     * @param string $key
-     * @param string $locale
-     * @param mixed $default
+     * @param  string $key
+     * @param  string $locale
+     * @param  mixed  $default
      * @return string
      */
     public function get($key, $locale = null, $default = null);
@@ -23,8 +23,8 @@ interface Setting
     /**
      * Set a given configuration value.
      *
-     * @param string  $key
-     * @param mixed   $value
+     * @param  string $key
+     * @param  mixed  $value
      * @return void
      */
     public function set($key, $value);

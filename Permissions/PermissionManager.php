@@ -24,11 +24,12 @@ class PermissionManager
     {
         $permissions = [];
         foreach ($this->module->enabled() as $enabledModule) {
-            $configuration = Config::get(strtolower($enabledModule->getName()) . '::permissions');
+            $configuration = Config::get(strtolower($enabledModule->getName()).'::permissions');
             if ($configuration) {
                 $permissions[$enabledModule->getName()] = $configuration;
             }
         }
+
         return $permissions;
     }
 
@@ -44,8 +45,9 @@ class PermissionManager
         }
         $cleanedPermissions = [];
         foreach ($permissions as $permissionName => $checkedPermission) {
-            $cleanedPermissions[$permissionName] = (bool)$checkedPermission;
+            $cleanedPermissions[$permissionName] = (bool) $checkedPermission;
         }
+
         return $cleanedPermissions;
     }
 }

@@ -4,15 +4,15 @@ return [
     'site-name' => [
         'description' => trans('core::settings.site-name'),
         'view' => 'text',
-        'translatable' => true
+        'translatable' => true,
     ],
     'site-description' => [
         'description' => trans('core::settings.site-description'),
         'view' => 'textarea',
-        'translatable' => true
+        'translatable' => true,
     ],
     'template' => [
         'description' => trans('core::settings.template'),
-        'view' => 'core::fields.select-theme'
+        'view' => 'core::fields.select-theme',
     ],
 ];

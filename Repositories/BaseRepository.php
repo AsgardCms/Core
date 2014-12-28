@@ -7,7 +7,7 @@
 interface BaseRepository
 {
     /**
-     * @param int $id
+     * @param  int    $id
      * @return $model
      */
     public function find($id);
@@ -28,7 +28,7 @@ interface BaseRepository
     /**
      * Update a resource
      * @param $model
-     * @param array $data
+     * @param  array $data
      * @return mixed
      */
     public function update($model, $data);
@@ -49,7 +49,7 @@ interface BaseRepository
 
     /**
      * Find a resource by the given slug
-     * @param int $slug
+     * @param  int    $slug
      * @return object
      */
     public function findBySlug($slug);

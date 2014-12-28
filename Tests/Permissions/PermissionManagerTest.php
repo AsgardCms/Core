@@ -19,7 +19,7 @@ class PermissionManagerTest extends BaseTestCase
             'Session',
             'User',
             'Dashboard',
-            'Core'
+            'Core',
         ];
 
         $moduleMock = Mockery::mock('Pingpong\Modules\Module');

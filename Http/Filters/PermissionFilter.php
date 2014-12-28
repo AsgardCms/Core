@@ -26,13 +26,13 @@ class PermissionFilter
 
         $segmentPosition = $this->getSegmentPosition($request);
 
-        if ($this->auth->hasAccess("{$request->segment($segmentPosition)}.$actionMethod"))
-        {
+        if ($this->auth->hasAccess("{$request->segment($segmentPosition)}.$actionMethod")) {
             return;
         }
 
         Flash::error('Permission denied.');
-        return Redirect::to('/' . Config::get('core::core.admin-prefix'));
+
+        return Redirect::to('/'.Config::get('core::core.admin-prefix'));
     }
 
     /**

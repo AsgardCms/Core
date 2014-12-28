@@ -23,7 +23,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param int $id
+     * @param  int    $id
      * @return object
      */
     public function find($id)
@@ -40,7 +40,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param mixed $data
+     * @param  mixed  $data
      * @return object
      */
     public function create($data)
@@ -50,7 +50,7 @@ abstract class EloquentBaseRepository implements BaseRepository
 
     /**
      * @param $model
-     * @param array $data
+     * @param  array  $data
      * @return object
      */
     public function update($model, $data)
@@ -61,7 +61,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param Model $model
+     * @param  Model $model
      * @return bool
      */
     public function destroy($model)
@@ -72,7 +72,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     /**
      * Return all categories in the given language
      *
-     * @param string $lang
+     * @param  string                                   $lang
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function allTranslatedIn($lang)
@@ -85,7 +85,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     /**
      * Find a resource by the given slug
      *
-     * @param string $slug
+     * @param  string $slug
      * @return object
      */
     public function findBySlug($slug)

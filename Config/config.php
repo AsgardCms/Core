@@ -10,6 +10,6 @@ return [
         'Core',
         'Dashboard',
         'User',
-        'Workshop'
+        'Workshop',
     ],
 ];

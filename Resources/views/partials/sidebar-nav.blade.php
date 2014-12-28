@@ -4,7 +4,7 @@
     <section class="sidebar">
         <ul class="sidebar-menu">
             <?php $items = \Modules\Core\Navigation\NavigationOrdener::order($items); ?>
-            <?php foreach($items as $i => $item): ?>
+            <?php foreach ($items as $i => $item): ?>
                 <?php if (is_object($item)): ?>
                     <?php if ($item[0]['permission']): ?>
                         <li class="treeview {{ $item[0]['request'] ? 'active' : ''}}">
@@ -14,7 +14,7 @@
                             </a>
                             <?php $item->shift(); ?>
                             <ul class="treeview-menu">
-                                <?php foreach($item as $subItem): ?>
+                                <?php foreach ($item as $subItem): ?>
                                     <?php if ($subItem['permission']): ?>
                                         <li class="{{ Request::is($subItem['request']) ? 'active' : ''}}">
                                             <a href="{{ URL::route($subItem['route']) }}"><i class="{{$subItem['icon-class']}}"></i> {{ $subItem['title'] }}</a>

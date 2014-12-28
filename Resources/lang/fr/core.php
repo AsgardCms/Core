@@ -3,7 +3,7 @@
 return [
     'modal' => [
         'title' => 'Confirmation',
-        'confirmation-message' => 'Etes vous sur de vouloir supprimer cette resource?'
+        'confirmation-message' => 'Etes vous sur de vouloir supprimer cette resource?',
     ],
     'table' => [
         'created at' => 'Crée à',
@@ -17,7 +17,7 @@ return [
         'delete' => 'Suprimer',
     ],
     'breadcrumb' => [
-        'home' => 'Accueil'
+        'home' => 'Accueil',
     ],
     'tab' => [
         'english' => 'Anglais',

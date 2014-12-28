@@ -4,31 +4,31 @@ interface Authentication
 {
     /**
      * Authenticate a user
-     * @param array $credentials
-     * @param bool $remember Remember the user
+     * @param  array $credentials
+     * @param  bool  $remember    Remember the user
      * @return mixed
      */
     public function login(array $credentials, $remember = false);
 
     /**
      * Register a new user.
-     * @param array $user
+     * @param  array $user
      * @return bool
      */
     public function register(array $user);
 
     /**
      * Activate the given used id
-     * @param int $userId
-     * @param string $code
+     * @param  int    $userId
+     * @param  string $code
      * @return mixed
      */
     public function activate($userId, $code);
 
     /**
      * Assign a role to the given user.
-     * @param \Modules\User\Repositories\UserRepository $user
-     * @param \Modules\User\Repositories\RoleRepository $role
+     * @param  \Modules\User\Repositories\UserRepository $user
+     * @param  \Modules\User\Repositories\RoleRepository $role
      * @return mixed
      */
     public function assignRole($user, $role);
@@ -56,8 +56,8 @@ interface Authentication
     /**
      * Completes the reset password process
      * @param $user
-     * @param string $code
-     * @param string $password
+     * @param  string $code
+     * @param  string $password
      * @return bool
      */
     public function completeResetPassword($user, $code, $password);

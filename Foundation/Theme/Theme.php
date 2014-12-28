@@ -42,5 +42,4 @@ class Theme
     {
         return strtolower($this->name);
     }
-
 }

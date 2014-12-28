@@ -33,7 +33,7 @@ class PublicFilter
 
     /**
      * Checks if the given menu item is offline
-     * @param object $item
+     * @param  object $item
      * @return bool
      */
     private function isOffline($item)

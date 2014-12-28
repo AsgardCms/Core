@@ -25,7 +25,7 @@ class ThemeManager implements \Countable
     }
 
     /**
-     * @param string $name
+     * @param  string     $name
      * @return Theme|null
      */
     public function find($name)
@@ -35,7 +35,8 @@ class ThemeManager implements \Countable
                 return $theme;
             }
         }
-        return null;
+
+        return;
     }
 
     /**
@@ -62,12 +63,12 @@ class ThemeManager implements \Countable
 
     /**
      * Return the theme assets path
-     * @param string $theme
+     * @param  string $theme
      * @return string
      */
     public function getAssetPath($theme)
     {
-        return public_path($this->getConfig()->get('themify::themes_assets_path') . '/' . $theme);
+        return public_path($this->getConfig()->get('themify::themes_assets_path').'/'.$theme);
     }
 
     /**

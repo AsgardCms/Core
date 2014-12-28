@@ -33,12 +33,12 @@ class CoreServiceProvider extends ServiceProvider
             'permissions' => 'PermissionFilter',
             'auth.admin' => 'AdminFilter',
             'public.checkLocale' => 'PublicFilter',
-        ]
+        ],
     ];
 
     public function boot()
     {
-        include __DIR__ . '/../start.php';
+        include __DIR__.'/../start.php';
     }
 
     /**
@@ -103,7 +103,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerInstallCommand()
     {
-        $this->app->bindShared('command.asgard.install', function($app) {
+        $this->app->bindShared('command.asgard.install', function ($app) {
             return new InstallCommand(
                 $app['files'],
                 $app,
@@ -114,15 +114,15 @@ class CoreServiceProvider extends ServiceProvider
 
     private function registerThemeCommand()
     {
-        $this->app->bindShared('command.asgard.publish.theme', function($app) {
+        $this->app->bindShared('command.asgard.publish.theme', function ($app) {
             return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify::themes_path')));
         });
     }
 
     private function registerPublishModuleAssetsCommand()
     {
-        $this->app->bindShared('command.asgard.publish.module.assets', function() {
-            return new PublishModuleAssetsCommand;
+        $this->app->bindShared('command.asgard.publish.module.assets', function () {
+            return new PublishModuleAssetsCommand();
         });
     }
 
@@ -130,8 +130,8 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             'Modules\Menu\Repositories\MenuItemRepository',
-            function() {
-                $repository = new EloquentMenuItemRepository(new Menuitem);
+            function () {
+                $repository = new EloquentMenuItemRepository(new Menuitem());
 
                 if (! Config::get('app.cache')) {
                     return $repository;
@@ -149,6 +149,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('asgard.themes', function ($app) {
             $path = $app['config']->get('themify::themes_path');
+
             return new ThemeManager($app, $path);
         });
     }
@@ -158,7 +159,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerAliases()
     {
-        $this->app->booted(function($app) {
+        $this->app->booted(function ($app) {
             $modules = $app['modules']->enabled();
             $loader = AliasLoader::getInstance();
             foreach ($modules as $moduleName => $module) {

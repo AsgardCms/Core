@@ -3,7 +3,7 @@
 return [
     'modal' => [
         'title' => 'Confirmation',
-        'confirmation-message' => 'Are you sure you want to delete this record?'
+        'confirmation-message' => 'Are you sure you want to delete this record?',
     ],
     'table' => [
         'created at' => 'Created at',
@@ -21,7 +21,7 @@ return [
         'delete' => 'Delete',
     ],
     'breadcrumb' => [
-        'home' => 'Home'
+        'home' => 'Home',
     ],
     'title' => [
         'translatable fields' => 'Translatable fields',

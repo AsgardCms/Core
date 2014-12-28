@@ -29,7 +29,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * @param int $id
+     * @param  int   $id
      * @return mixed
      */
     public function find($id)
@@ -60,7 +60,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     /**
      * Return all categories in the given language
      *
-     * @param string $lang
+     * @param  string $lang
      * @return object
      */
     public function allTranslatedIn($lang)
@@ -76,7 +76,7 @@ abstract class BaseCacheDecorator implements BaseRepository
 
     /**
      * Find a resource by the given slug
-     * @param string $slug
+     * @param  string $slug
      * @return object
      */
     public function findBySlug($slug)
@@ -106,8 +106,8 @@ abstract class BaseCacheDecorator implements BaseRepository
     /**
      * Update a resource
      *
-     * @param       $model
-     * @param array $data
+     * @param        $model
+     * @param  array $data
      * @return mixed
      */
     public function update($model, $data)

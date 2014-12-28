@@ -39,9 +39,9 @@ class InstallCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param Filesystem $finder
+     * @param Filesystem  $finder
      * @param Application $app
-     * @param Composer $composer
+     * @param Composer    $composer
      */
     public function __construct(Filesystem $finder, Application $app, Composer $composer)
     {
@@ -62,6 +62,7 @@ class InstallCommand extends Command
 
         if ($this->checkIfInstalled()) {
             $this->error('Asgard has already been installed. You can already log into your administration.');
+
             return;
         }
 
@@ -83,16 +84,16 @@ class InstallCommand extends Command
         );
     }
 
-	/**
-	 * Run the required commands to use Sentinel
-	 */
-	private function runSentinelUserCommands()
-	{
+    /**
+     * Run the required commands to use Sentinel
+     */
+    private function runSentinelUserCommands()
+    {
         $this->info('Requiring Sentinel package, this may take some time...');
         $this->handleComposerForSentinel();
 
         $this->info('Running Sentinel migrations...');
-		$this->runSentinelMigrations();
+        $this->runSentinelMigrations();
 
         $this->info('Running Sentinel seed...');
         $this->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder', '--no-interaction' => '']);
@@ -105,8 +106,8 @@ class InstallCommand extends Command
 
         $this->createFirstUser('sentinel');
 
-		$this->info('User commands done.');
-	}
+        $this->info('User commands done.');
+    }
 
     /**
      * Run the required commands to use Sentry
@@ -136,23 +137,31 @@ class InstallCommand extends Command
 
         do {
             $firstname = $this->ask('Enter your first name');
-            if ($firstname == '') $this->error('First name is required');
-        } while(!$firstname);
+            if ($firstname == '') {
+                $this->error('First name is required');
+            }
+        } while (!$firstname);
 
         do {
             $lastname = $this->ask('Enter your last name: ');
-            if ($lastname == '') $this->error('Last name is required');
-        } while(!$lastname);
+            if ($lastname == '') {
+                $this->error('Last name is required');
+            }
+        } while (!$lastname);
 
         do {
             $email = $this->ask('Enter your email address: ');
-            if ($email == '') $this->error('Email is required');
-        } while(!$email);
+            if ($email == '') {
+                $this->error('Email is required');
+            }
+        } while (!$email);
 
         do {
             $password = $this->secret('Enter a password: ');
-            if ($password == '') $this->error('Password is required');
-        } while(!$password);
+            if ($password == '') {
+                $this->error('Password is required');
+            }
+        } while (!$password);
 
         $userInfo = [
             'first_name' => $firstname,
@@ -172,13 +181,13 @@ class InstallCommand extends Command
         $this->info('Admin account created!');
     }
 
-	/**
-	 * Run migrations specific to Sentinel
+    /**
+     * Run migrations specific to Sentinel
      */
-	private function runSentinelMigrations()
-	{
-		$this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction' => '']);
-	}
+    private function runSentinelMigrations()
+    {
+        $this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction' => '']);
+    }
 
     /**
      * Run the migrations
@@ -224,16 +233,22 @@ class InstallCommand extends Command
     {
         do {
             $databaseName = $this->ask('Enter your database name: ');
-            if ($databaseName == '') $this->error('Database name is required');
-        } while(!$databaseName);
+            if ($databaseName == '') {
+                $this->error('Database name is required');
+            }
+        } while (!$databaseName);
         do {
             $databaseUsername = $this->ask('Enter your database username: ');
-            if ($databaseUsername == '') $this->error('Database username is required');
-        } while(!$databaseUsername);
+            if ($databaseUsername == '') {
+                $this->error('Database username is required');
+            }
+        } while (!$databaseUsername);
         do {
             $databasePassword = $this->secret('Enter your database password: ');
-            if ($databasePassword == '') $this->error('Database password is required');
-        } while(!$databasePassword);
+            if ($databasePassword == '') {
+                $this->error('Database password is required');
+            }
+        } while (!$databasePassword);
 
         $this->setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword);
         $this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
@@ -253,12 +268,12 @@ class InstallCommand extends Command
 
         $search = [
             "DB_USERNAME=homestead",
-            "DB_PASSWORD=homestead"
+            "DB_PASSWORD=homestead",
         ];
 
         $replace = [
             "DB_USERNAME=$databaseUsername",
-            "DB_PASSWORD=$databasePassword" . PHP_EOL
+            "DB_PASSWORD=$databasePassword".PHP_EOL,
         ];
         $newEnvironmentFile = str_replace($search, $replace, $environmentFile);
         $newEnvironmentFile .= "DB_NAME=$databaseName";
@@ -288,7 +303,7 @@ class InstallCommand extends Command
 
     /**
      * Find and replace the correct repository bindings with the given driver
-     * @param string $driver
+     * @param  string                                       $driver
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function replaceUserRepositoryBindings($driver)
@@ -321,8 +336,8 @@ class InstallCommand extends Command
 
     /**
      * Replaced the model in the cartalyst configuration file
-     * @param string $search
-     * @param string $Driver
+     * @param  string                                       $search
+     * @param  string                                       $Driver
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function replaceCartalystUserModelConfiguration($search, $Driver)
@@ -354,7 +369,7 @@ class InstallCommand extends Command
                 "#'Activation' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation',",
                 "#'Reminder' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder',",
                 "#'Sentinel' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel',",
-                "'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',"
+                "'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',",
             ],
             [
                 "'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',",
@@ -389,5 +404,4 @@ class InstallCommand extends Command
 
         $this->info('Application seeded.');
     }
-
 }
