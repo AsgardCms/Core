@@ -70,7 +70,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Return all categories in the given language
+     * Return all resources in the given language
      *
      * @param  string                                   $lang
      * @return \Illuminate\Database\Eloquent\Collection
