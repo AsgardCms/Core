@@ -1,5 +1,6 @@
 <?php namespace Modules\Core\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Builder;
 use Modules\Core\Repositories\BaseRepository;
 
 /**
@@ -77,7 +78,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function allTranslatedIn($lang)
     {
-        return $this->model->whereHas('translations', function ($q) use ($lang) {
+        return $this->model->whereHas('translations', function (Builder $q) use ($lang) {
             $q->where('locale', "$lang");
         })->with('translations')->orderBy('created_at', 'DESC')->get();
     }
