@@ -9,3 +9,4 @@ First tagged version
 ### Added
 - CHANGELOG.md file
 - CONTRIBUTING.md file
+- LICENSE.md file
