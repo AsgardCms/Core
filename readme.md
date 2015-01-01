@@ -10,6 +10,7 @@
 - [View the changelog](CHANGELOG.md)
 - [Contribute to AsgardCMS](CONTRIBUTING.md)
 - [License](LICENSE.md)
+- [Documentation](http://asgardcms.com/docs/core-module/configuration)
 
 
 ## Info
