@@ -36,12 +36,12 @@ This means:
 	- Create a branch `feature/your-new-feature-name`
 	- Add you changes
 	- [Squash commits](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/) if necessary to create a nice history
-	- Send a pull request to the `Develop` branch of the module/theme your modifying
+	- Send a pull request to the `develop` branch of the module/theme your modifying
 - For a hotfix:
 	- Create a branch `hotfix/your-hotfix-name`
 	- Add you changes
 	- [Squash commits](https://ariejan.net/2011/07/05/git-squash-your-latests-commits-into-one/) if necessary to create 	a nice history
-	- Send a pull request to the `Develop` branch of the module/theme your modifying
+	- Send a pull request to the `develop` branch of the module/theme your modifying
 
 
 # Additional Resources
