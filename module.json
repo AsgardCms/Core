@@ -5,8 +5,9 @@
     "keywords": [],
     "require": {},
     "active": 1,
-    "priority": 1,
+    "priority": 999,
     "providers": [
+        "Modules\\Core\\Providers\\CoreServiceProvider",
         "Modules\\Core\\Providers\\RoutingServiceProvider",
         "Illuminate\\Html\\HtmlServiceProvider",
         "Laracasts\\Commander\\CommanderServiceProvider",
