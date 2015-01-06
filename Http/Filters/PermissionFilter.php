@@ -25,8 +25,10 @@ class PermissionFilter
         $actionMethod = substr($action, strpos($action, "@") + 1);
 
         $segmentPosition = $this->getSegmentPosition($request);
+        $moduleName = $request->segment($segmentPosition - 1);
+        $entityName = $request->segment($segmentPosition);
 
-        if ($this->auth->hasAccess("{$request->segment($segmentPosition)}.$actionMethod")) {
+        if ($this->auth->hasAccess("$moduleName.$entityName.$actionMethod")) {
             return;
         }
 
@@ -37,15 +39,16 @@ class PermissionFilter
 
     /**
      * Get the correct segment position based on the locale or not
+     *
      * @param $request
      * @return mixed
      */
     private function getSegmentPosition(Request $request)
     {
-        $segmentPosition = 2;
+        $segmentPosition = 4;
 
         if ($request->segment($segmentPosition) == Config::get('core::core.admin-prefix')) {
-            return ++$segmentPosition;
+            return ++ $segmentPosition;
         }
 
         return $segmentPosition;

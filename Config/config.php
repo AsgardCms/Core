@@ -7,9 +7,11 @@ return [
     |--------------------------------------------------------------------------
     */
     'CoreModules' => [
-        'Core',
-        'Dashboard',
-        'User',
-        'Workshop',
+        'core',
+        'dashboard',
+        'user',
+        'workshop',
+        'menu',
+        'setting',
     ],
 ];
