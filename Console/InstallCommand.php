@@ -135,33 +135,13 @@ class InstallCommand extends Command
     {
         $this->line('Creating an Admin user account...');
 
-        do {
-            $firstname = $this->ask('Enter your first name');
-            if ($firstname == '') {
-                $this->error('First name is required');
-            }
-        } while (!$firstname);
+        $firstname = $this->askForFirstName();
 
-        do {
-            $lastname = $this->ask('Enter your last name: ');
-            if ($lastname == '') {
-                $this->error('Last name is required');
-            }
-        } while (!$lastname);
+        $lastname = $this->askForLastName();
 
-        do {
-            $email = $this->ask('Enter your email address: ');
-            if ($email == '') {
-                $this->error('Email is required');
-            }
-        } while (!$email);
+        $email = $this->askForEmail();
 
-        do {
-            $password = $this->secret('Enter a password: ');
-            if ($password == '') {
-                $this->error('Password is required');
-            }
-        } while (!$password);
+        $password = $this->askForPassword();
 
         $userInfo = [
             'first_name' => $firstname,
@@ -403,5 +383,65 @@ class InstallCommand extends Command
         $this->call('db:seed', ['--class' => 'Modules\Setting\Database\Seeders\SettingDatabaseSeeder', '--no-interaction' => '']);
 
         $this->info('Application seeded.');
+    }
+
+    /**
+     * @return string
+     */
+    private function askForFirstName()
+    {
+        do {
+            $firstname = $this->ask('Enter your first name');
+            if ($firstname == '') {
+                $this->error('First name is required');
+                return $firstname;
+            }
+            return $firstname;
+        } while ( ! $firstname);
+    }
+
+    /**
+     * @return string
+     */
+    private function askForLastName()
+    {
+        do {
+            $lastname = $this->ask('Enter your last name: ');
+            if ($lastname == '') {
+                $this->error('Last name is required');
+                return $lastname;
+            }
+            return $lastname;
+        } while ( ! $lastname);
+    }
+
+    /**
+     * @return string
+     */
+    private function askForEmail()
+    {
+        do {
+            $email = $this->ask('Enter your email address: ');
+            if ($email == '') {
+                $this->error('Email is required');
+                return $email;
+            }
+            return $email;
+        } while ( ! $email);
+    }
+
+    /**
+     * @return string
+     */
+    private function askForPassword()
+    {
+        do {
+            $password = $this->secret('Enter a password: ');
+            if ($password == '') {
+                $this->error('Password is required');
+                return $password;
+            }
+            return $password;
+        } while ( ! $password);
     }
 }
