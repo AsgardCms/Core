@@ -449,7 +449,10 @@ class InstallCommand extends Command
         do {
             $password = $this->askForFirstPassword();
             $passwordConfirmation = $this->askForPasswordConfirmation();
-        } while ( ! $password != $passwordConfirmation);
+            if ($password != $passwordConfirmation) {
+                $this->error('Password confirmation doesn\'t match. Please try again.');
+            }
+        } while ($password != $passwordConfirmation);
 
         return $password;
     }
