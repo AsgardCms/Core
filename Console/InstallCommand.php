@@ -39,9 +39,9 @@ class InstallCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param Filesystem $finder
+     * @param Filesystem  $finder
      * @param Application $app
-     * @param Composer $composer
+     * @param Composer    $composer
      */
     public function __construct(Filesystem $finder, Application $app, Composer $composer)
     {
@@ -219,19 +219,19 @@ class InstallCommand extends Command
             if ($databaseName == '') {
                 $this->error('Database name is required');
             }
-        } while ( ! $databaseName);
+        } while (! $databaseName);
         do {
             $databaseUsername = $this->ask('Enter your database username: ');
             if ($databaseUsername == '') {
                 $this->error('Database username is required');
             }
-        } while ( ! $databaseUsername);
+        } while (! $databaseUsername);
         do {
             $databasePassword = $this->secret('Enter your database password: ');
             if ($databasePassword == '') {
                 $this->error('Database password is required');
             }
-        } while ( ! $databasePassword);
+        } while (! $databasePassword);
 
         $this->setLaravelConfiguration($databaseName, $databaseUsername, $databasePassword);
         $this->configureEnvironmentFile($databaseName, $databaseUsername, $databasePassword);
@@ -257,7 +257,7 @@ class InstallCommand extends Command
 
         $replace = [
             "DB_USERNAME=$databaseUsername",
-            "DB_PASSWORD=$databasePassword" . PHP_EOL,
+            "DB_PASSWORD=$databasePassword".PHP_EOL,
         ];
         $newEnvironmentFile = str_replace($search, $replace, $environmentFile);
         $newEnvironmentFile .= "DB_NAME=$databaseName";
@@ -289,7 +289,7 @@ class InstallCommand extends Command
     /**
      * Find and replace the correct repository bindings with the given driver
      *
-     * @param  string $driver
+     * @param  string                                       $driver
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function replaceUserRepositoryBindings($driver)
@@ -324,8 +324,8 @@ class InstallCommand extends Command
     /**
      * Replaced the model in the cartalyst configuration file
      *
-     * @param  string $search
-     * @param  string $Driver
+     * @param  string                                       $search
+     * @param  string                                       $Driver
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
     private function replaceCartalystUserModelConfiguration($search, $Driver)
@@ -406,7 +406,7 @@ class InstallCommand extends Command
             if ($firstname == '') {
                 $this->error('First name is required');
             }
-        } while ( ! $firstname);
+        } while (! $firstname);
 
         return $firstname;
     }
@@ -421,7 +421,7 @@ class InstallCommand extends Command
             if ($lastname == '') {
                 $this->error('Last name is required');
             }
-        } while ( ! $lastname);
+        } while (! $lastname);
 
         return $lastname;
     }
@@ -436,7 +436,7 @@ class InstallCommand extends Command
             if ($email == '') {
                 $this->error('Email is required');
             }
-        } while ( ! $email);
+        } while (! $email);
 
         return $email;
     }
@@ -467,7 +467,7 @@ class InstallCommand extends Command
             if ($password == '') {
                 $this->error('Password is required');
             }
-        } while ( ! $password);
+        } while (! $password);
 
         return $password;
     }
@@ -482,7 +482,7 @@ class InstallCommand extends Command
             if ($passwordConfirmation == '') {
                 $this->error('Password confirmation is required');
             }
-        } while ( ! $passwordConfirmation);
+        } while (! $passwordConfirmation);
 
         return $passwordConfirmation;
     }
