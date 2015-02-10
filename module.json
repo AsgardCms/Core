@@ -9,18 +9,16 @@
     "providers": [
         "Modules\\Core\\Providers\\CoreServiceProvider",
         "Modules\\Core\\Providers\\RoutingServiceProvider",
-        "Illuminate\\Html\\HtmlServiceProvider",
-        "Laracasts\\Commander\\CommanderServiceProvider",
+        "Collective\\Html\\HtmlServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
-        "Dimsav\\Translatable\\TranslatableServiceProvider",
-        "Mpedrera\\Themify\\ThemifyServiceProvider"
+        "Nwidart\\Themify\\ThemifyServiceProvider"
     ],
     "aliases": {
-        "Form": "Illuminate\\Html\\FormFacade",
+        "Form": "Collective\\Html\\FormFacade",
         "Flash": "Laracasts\\Flash\\Flash",
         "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization",
-        "Themify": "Mpedrera\\Themify\\Facades\\Themify"
+        "Themify": "Nwidart\\Themify\\Facades\\Themify"
     },
     "files": [
         "start.php"
