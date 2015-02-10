@@ -11,6 +11,7 @@
         "Modules\\Core\\Providers\\RoutingServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
+        "Dimsav\\Translatable\\TranslatableServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
         "Nwidart\\Themify\\ThemifyServiceProvider"
     ],
