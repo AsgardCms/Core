@@ -36,9 +36,10 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Core' => [
-            'permissions'        => 'PermissionMiddleware',
-            'auth.admin'         => 'AdminMiddleware',
-            'public.checkLocale' => 'PublicMiddleware',
+            'permissions'           => 'PermissionMiddleware',
+            'auth.admin'            => 'AdminMiddleware',
+            'public.checkLocale'    => 'PublicMiddleware',
+            'localizationRedirect'  => 'LocalizationMiddleware'
         ],
     ];
 
