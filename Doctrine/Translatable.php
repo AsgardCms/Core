@@ -23,7 +23,7 @@ trait Translatable
             }
         }
 
-        if ( ! $found) {
+        if (! $found) {
             $foreignKey = $this->getForeignKey();
 
             $translationObjectClass = $this->getTranslationClass();
@@ -63,6 +63,7 @@ trait Translatable
         } else {
             $result = $this->getRawField($fieldName);
         }
+
         return $result;
     }
 
@@ -82,7 +83,7 @@ trait Translatable
     {
         $cacheArray = [];
         $translatedEntityName = $this->getTranslationClass();
-        if ( ! isset($cacheArray[$translatedEntityName])) {
+        if (! isset($cacheArray[$translatedEntityName])) {
             $cacheArray[$translatedEntityName] = array_values(array_diff(EntityManagerFacade::getClassMetadata($translatedEntityName)->getColumnNames(),
                 ['id', 'locale']));
         }
@@ -98,6 +99,7 @@ trait Translatable
     {
         $reflectionClass = new ReflectionClass(get_class($this));
         $foreignKey = strtolower($reflectionClass->getShortName());
+
         return $foreignKey;
     }
 

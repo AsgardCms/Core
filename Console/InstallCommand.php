@@ -260,7 +260,7 @@ class InstallCommand extends Command
         $replace = [
             "DB_DATABASE=$databaseName",
             "DB_USERNAME=$databaseUsername",
-            "DB_PASSWORD=$databasePassword".PHP_EOL,
+            "DB_PASSWORD=$databasePassword" . PHP_EOL,
         ];
 
         $newEnvironmentFile = str_replace($search, $replace, $environmentFile);

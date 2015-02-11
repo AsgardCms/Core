@@ -1,8 +1,8 @@
 <?php namespace Modules\Core\Tests\Permissions;
 
-use Modules\Core\Tests\BaseTestCase;
 use Mockery;
 use Modules\Core\Permissions\PermissionManager;
+use Modules\Core\Tests\BaseTestCase;
 
 class PermissionManagerTest extends BaseTestCase
 {

@@ -1,9 +1,9 @@
 <?php namespace Modules\Core\Http\Middleware;
 
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\Store;
-use Illuminate\Foundation\Application;
 use Modules\Core\Contracts\Authentication;
 
 class AdminMiddleware

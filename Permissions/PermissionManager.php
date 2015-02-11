@@ -24,7 +24,7 @@ class PermissionManager
     {
         $permissions = [];
         foreach ($this->module->enabled() as $enabledModule) {
-            $configuration = Config::get(strtolower($enabledModule->getName()).'::permissions');
+            $configuration = Config::get(strtolower($enabledModule->getName()) . '::permissions');
             if ($configuration) {
                 $permissions[$enabledModule->getName()] = $configuration;
             }

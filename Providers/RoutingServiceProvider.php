@@ -19,7 +19,8 @@ abstract class RoutingServiceProvider extends ServiceProvider
      * @param  \Illuminate\Routing\Router $router
      * @return void
      */
-    public function boot(Router $router) {
+    public function boot(Router $router)
+    {
         parent::boot($router);
     }
 
@@ -41,17 +42,16 @@ abstract class RoutingServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace, 'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localizationRedirect'] ], function (Router $router)
-        {
+        $router->group(['namespace' => $this->namespace, 'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localizationRedirect'] ], function (Router $router) {
             $frontend = $this->getFrontendRoute();
 
-            if ($frontend && file_exists($frontend) ) {
+            if ($frontend && file_exists($frontend)) {
                 require $frontend;
             }
 
             $backend = $this->getBackendRoute();
 
-            if ( $backend && file_exists($backend) ) {
+            if ($backend && file_exists($backend)) {
                 $router->group(['namespace' => 'Admin', 'prefix' => config('asgard.core.core.admin-prefix'), 'middleware' => 'auth.admin'], function (Router $router) use ($backend) {
                     require $backend;
                 });

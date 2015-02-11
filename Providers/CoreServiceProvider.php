@@ -1,7 +1,6 @@
 <?php namespace Modules\Core\Providers;
 
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Foundation\AliasLoader;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
@@ -46,7 +45,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->registerModuleResourceNamespaces();
 
-        include __DIR__.'/../start.php';
+        include __DIR__ . '/../start.php';
     }
 
     /**
@@ -207,7 +206,7 @@ class CoreServiceProvider extends ServiceProvider
 
         $package = $module->getName();
 
-        foreach($files as $file) {
+        foreach ($files as $file) {
             $filename = $this->getConfigFilename($file, $package);
 
             $this->mergeConfigFrom(
