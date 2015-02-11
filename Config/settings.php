@@ -13,6 +13,6 @@ return [
     ],
     'template'         => [
         'description' => 'asgard.core.settings.template',
-        'view'        => 'asgard.core.fields.select-theme',
+        'view'        => 'core::fields.select-theme',
     ],
 ];
