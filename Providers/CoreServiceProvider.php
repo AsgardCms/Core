@@ -29,7 +29,7 @@ class CoreServiceProvider extends ServiceProvider
      *
      * @var array
      */
-    protected $filters = [
+    protected $middleware = [
         'Core' => [
             'permissions' => 'PermissionFilter',
             'auth.admin' => 'AdminFilter',
@@ -51,7 +51,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->registerAliases();
         $this->registerMenuRoutes();
-        $this->registerFilters($this->app['router']);
+        $this->registerMiddleware($this->app['router']);
         $this->registerCommands();
         $this->registerServices();
     }
@@ -69,16 +69,16 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Register the filters.
      *
-     * @param  Router $router
+     * @param Router $router
      * @return void
      */
-    public function registerFilters(Router $router)
+    public function registerMiddleware(Router $router)
     {
-        foreach ($this->filters as $module => $filters) {
-            foreach ($filters as $name => $filter) {
-                $class = "Modules\\{$module}\\Http\\Filters\\{$filter}";
+        foreach ($this->middleware as $module => $middlewares) {
+            foreach ($middlewares as $name => $middleware) {
+                $class = "Modules\\{$module}\\Http\\Middleware\\{$middleware}";
 
-                $router->filter($name, $class);
+                $router->middleware($name, $class);
             }
         }
     }
