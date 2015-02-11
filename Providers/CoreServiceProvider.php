@@ -44,6 +44,8 @@ class CoreServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $this->registerModuleResourceNamespaces();
+
         include __DIR__.'/../start.php';
     }
 
@@ -54,7 +56,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerModuleResourceNamespaces();
         $this->registerMenuRoutes();
         $this->registerFilters($this->app['router']);
         $this->registerCommands();
@@ -165,13 +166,11 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerModuleResourceNamespaces()
     {
-        $this->app->booted(function ($app) {
-            foreach ($app['modules']->enabled() as $module) {
-                $this->registerViewNamespace($module);
-                $this->registerLanguageNamespace($module);
-                $this->registerConfigNamespace($module);
-            }
-        });
+        foreach ($this->app['modules']->enabled() as $module) {
+            $this->registerViewNamespace($module);
+            $this->registerLanguageNamespace($module);
+            $this->registerConfigNamespace($module);
+        }
     }
 
     /**
@@ -208,8 +207,7 @@ class CoreServiceProvider extends ServiceProvider
 
         $package = $module->getName();
 
-        foreach($files as $file)
-        {
+        foreach($files as $file) {
             $filename = $this->getConfigFilename($file, $package);
 
             $this->mergeConfigFrom(
