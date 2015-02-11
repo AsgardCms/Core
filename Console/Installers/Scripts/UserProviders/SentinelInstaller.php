@@ -39,7 +39,7 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript {
         );
         $this->finder->put($file, $appConfig);
 
-        //$this->composer->remove('cartalyst/sentry');
+        $this->composer->remove('cartalyst/sentry');
     }
 
     /**
