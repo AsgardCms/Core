@@ -36,8 +36,8 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $filters = [
         'Core' => [
-            'permissions' => 'PermissionFilter',
-            'auth.admin' => 'AdminFilter',
+            'permissions'        => 'PermissionFilter',
+            'auth.admin'         => 'AdminFilter',
             'public.checkLocale' => 'PublicFilter',
         ],
     ];
