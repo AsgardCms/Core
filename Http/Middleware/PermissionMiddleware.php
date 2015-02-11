@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Redirect;
 use Laracasts\Flash\Flash;
 use Modules\Core\Contracts\Authentication;
