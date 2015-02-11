@@ -71,7 +71,15 @@ class InstallCommand extends Command
         $userDriver = $this->choice('Which user driver do you wish to use? [1]', ['Sentinel (Paid)', 'Sentry (Free)'], 1);
         $chosenDriver = strstr($userDriver, ' ', true);
         $driverInstallMethod = "run{$chosenDriver}UserCommands";
-        $this->$driverInstallMethod();
+
+        try {
+            $this->$driverInstallMethod();
+        }
+        catch(\Exception $e)
+        {
+            $this->error($e->getMessage());
+            die;
+        }
 
         $this->runMigrations();
         $this->runSeeds();
@@ -92,6 +100,9 @@ class InstallCommand extends Command
         $this->info('Requiring Sentinel package, this may take some time...');
         $this->handleComposerForSentinel();
 
+        $this->changeDefaultUserProvider('Sentinel');
+        $this->bindUserRepositoryOnTheFly('Sentinel');
+
         $this->info('Running Sentinel migrations...');
         $this->runSentinelMigrations();
 
@@ -99,10 +110,6 @@ class InstallCommand extends Command
         $this->call('db:seed',
             ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder', '--no-interaction' => '']);
 
-        $this->replaceUserRepositoryBindings('Sentinel');
-        $this->bindUserRepositoryOnTheFly('Sentinel');
-
-        $this->call('publish:config', ['package' => 'cartalyst/sentinel', '--no-interaction' => '']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentinel\Users\EloquentUser', 'Sentinel');
 
         $this->createFirstUser('sentinel');
@@ -267,8 +274,9 @@ class InstallCommand extends Command
 
         // Write the new environment file
         $this->finder->put('.env', $newEnvironmentFile);
-        // Delete the old environment file
-        //$this->finder->delete('env.example');
+
+        // Set environment to local
+        $this->app['env'] = 'local';
 
         $this->info('Environment file written');
 
@@ -290,17 +298,17 @@ class InstallCommand extends Command
     }
 
     /**
-     * Find and replace the correct repository bindings with the given driver
+     * Set the default user provider based on the given driver
      *
      * @param  string                                       $driver
      * @throws \Illuminate\Filesystem\FileNotFoundException
      */
-    private function replaceUserRepositoryBindings($driver)
+    private function changeDefaultUserProvider($driver)
     {
-        $path = 'Modules/User/Providers/UserServiceProvider.php';
-        $userServiceProvider = $this->finder->get($path);
-        $userServiceProvider = str_replace('Sentry', $driver, $userServiceProvider);
-        $this->finder->put($path, $userServiceProvider);
+        $path = base_path('Modules/User/Config/users.php');
+        $config = $this->finder->get($path);
+        $config = str_replace('Sentry', $driver, $config);
+        $this->finder->put($path, $config);
     }
 
     /**
@@ -350,7 +358,7 @@ class InstallCommand extends Command
     private function handleComposerForSentinel()
     {
         $this->composer->enableOutput($this);
-        $this->composer->install('cartalyst/sentinel:feature/laravel-5');
+        $this->composer->install('cartalyst/sentinel:dev-feature/laravel-5');
 
         // Search and replace SP and Alias in config/app.php
         $appConfig = $this->finder->get('config/app.php');
