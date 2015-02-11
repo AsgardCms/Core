@@ -110,13 +110,10 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerInstallCommand()
     {
-        $this->app->bindShared('command.asgard.install', function ($app) {
-            return new InstallCommand(
-                $app['files'],
-                $app,
-                new Composer($app['files'])
-            );
-        });
+        $this->app->bind(
+            'command.asgard.install',
+            'Modules\Core\Console\InstallCommand'
+        );
     }
 
     private function registerThemeCommand()
