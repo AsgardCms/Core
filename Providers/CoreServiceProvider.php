@@ -116,7 +116,7 @@ class CoreServiceProvider extends ServiceProvider
     private function registerThemeCommand()
     {
         $this->app->bindShared('command.asgard.publish.theme', function ($app) {
-            return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify::themes_path')));
+            return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify.themes_path')));
         });
     }
 
@@ -149,7 +149,7 @@ class CoreServiceProvider extends ServiceProvider
     private function registerServices()
     {
         $this->app->bindShared('asgard.themes', function ($app) {
-            $path = $app['config']->get('themify::themes_path');
+            $path = $app['config']->get('themify.themes_path');
 
             return new ThemeManager($app, $path);
         });

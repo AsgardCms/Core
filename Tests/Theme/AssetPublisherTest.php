@@ -65,7 +65,7 @@ class AssetPublisherTest extends BaseTestCase
 
     private function getAssetsThemePath()
     {
-        return public_path($this->app['config']->get('themify::themes_assets_path').'/'.'testassets');
+        return public_path($this->app['config']->get('themify.themes_assets_path').'/'.'testassets');
     }
 
     private function getPath()
