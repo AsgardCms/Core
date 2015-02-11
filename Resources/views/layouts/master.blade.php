@@ -31,7 +31,6 @@
     <![endif]-->
 </head>
 <body class="skin-blue">
-@include('flash::message')
 <header class="header">
     <a href="{{ URL::route('dashboard.index') }}" class="logo">
         <?php if (isset($sitename)): ?>
@@ -51,6 +50,7 @@
 
         <!-- Main content -->
         <section class="content">
+            @include('flash::message')
             @yield('content')
         </section><!-- /.content -->
     </aside><!-- /.right-side -->
