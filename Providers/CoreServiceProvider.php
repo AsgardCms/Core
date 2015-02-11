@@ -25,6 +25,11 @@ class CoreServiceProvider extends ServiceProvider
     protected $defer = false;
 
     /**
+     * @var string
+     */
+    protected $prefix = 'asgard';
+
+    /**
      * The filters base class name.
      *
      * @var array
@@ -49,7 +54,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerAliases();
+        $this->registerModuleResourceNamespaces();
         $this->registerMenuRoutes();
         $this->registerFilters($this->app['router']);
         $this->registerCommands();
@@ -158,20 +163,13 @@ class CoreServiceProvider extends ServiceProvider
     /**
      * Register the modules aliases
      */
-    private function registerAliases()
+    private function registerModuleResourceNamespaces()
     {
         $this->app->booted(function ($app) {
-            $modules = $app['modules']->enabled();
-            $loader = AliasLoader::getInstance();
-            foreach ($modules as $moduleName => $module) {
-
+            foreach ($app['modules']->enabled() as $module) {
                 $this->registerViewNamespace($module);
-
-                if ($aliases = $module->get('aliases')) {
-                    foreach ($aliases as $aliasName => $aliasClass) {
-                        $loader->alias($aliasName, $aliasClass);
-                    }
-                }
+                $this->registerLanguageNamespace($module);
+                $this->registerConfigNamespace($module);
             }
         });
     }
@@ -186,5 +184,56 @@ class CoreServiceProvider extends ServiceProvider
             $module->getName(),
             $module->getPath() . '/Resources/views'
         );
+    }
+
+    /**
+     * Register the language namespaces for the modules
+     * @param Module $module
+     */
+    protected function registerLanguageNamespace(Module $module)
+    {
+        $this->app['translator']->addNamespace(
+            $module->getName(),
+            $module->getPath() . '/Resources/lang'
+        );
+    }
+
+    /**
+     * Register the config namespace
+     * @param Module $module
+     */
+    private function registerConfigNamespace(Module $module)
+    {
+        $files = $this->app['files']->files($module->getPath() . '/Config');
+
+        $package = $module->getName();
+
+        foreach($files as $file)
+        {
+            $filename = $this->getConfigFilename($file, $package);
+
+            $this->mergeConfigFrom(
+                $file,
+                $filename
+            );
+
+            $this->publishes([
+                $file => config_path($filename . '.php'),
+            ], 'config');
+        }
+    }
+
+    /**
+     * @param $file
+     * @param $package
+     * @return string
+     */
+    private function getConfigFilename($file, $package)
+    {
+        $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
+
+        $filename = $this->prefix . '.' . $package . '.' . $name;
+
+        return $filename;
     }
 }
