@@ -21,7 +21,14 @@ class PublicMiddleware
         $this->menuItem = $menuItem;
     }
 
-    public function filter()
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, \Closure $next)
     {
         $locale = $this->request->segment(1) ?: App::getLocale();
         $item = $this->menuItem->findByUriInLanguage($this->request->segment(2), $locale);
@@ -29,6 +36,8 @@ class PublicMiddleware
         if ($this->isOffline($item)) {
             App::abort(404);
         }
+
+        return $next($request);
     }
 
     /**

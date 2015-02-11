@@ -38,7 +38,14 @@ class AdminMiddleware
         $this->application = $application;
     }
 
-    public function filter()
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, \Closure $next)
     {
         // Check if the user is logged in
         if (!$this->auth->check()) {
@@ -54,5 +61,7 @@ class AdminMiddleware
             // Show the insufficient permissions page
             return $this->application->abort(403);
         }
+
+        return $next($request);
     }
 }
