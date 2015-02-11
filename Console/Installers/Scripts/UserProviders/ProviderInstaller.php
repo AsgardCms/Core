@@ -68,7 +68,7 @@ abstract class ProviderInstaller implements SetupScript {
         $this->configure();
         $this->seed();
 
-        $this->createFirstUser($this->driver);
+        $this->createFirstUser();
 
         $command->info($this->driver . ' succesfully configured');
     }
@@ -122,9 +122,9 @@ abstract class ProviderInstaller implements SetupScript {
     }
 
     /**
-     * @param $driver
+     * Create a first admin user
      */
-    protected function createFirstUser($driver)
+    protected function createFirstUser()
     {
         $info = [
             'first_name' => $this->askForFirstName(),
@@ -134,10 +134,6 @@ abstract class ProviderInstaller implements SetupScript {
                 $this->askForPassword()
             )
         ];
-
-        //if ( $driver == 'Sentinel' ) {
-        //    $info = array_merge($info, ['password' => Hash::make($password)]);
-        //}
 
         $this->repository->createWithRoles(
             $info,
