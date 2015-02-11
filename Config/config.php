@@ -13,5 +13,5 @@ return [
         'workshop',
         'menu',
         'setting',
-    ],
+    ]
 ];

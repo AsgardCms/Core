@@ -31,7 +31,7 @@ class PermissionMiddleware
         if (!$this->auth->hasAccess("$moduleName.$entityName.$actionMethod")) {
             Flash::error('Permission denied.');
 
-            return Redirect::to('/'.Config::get('core::core.admin-prefix'));
+            return Redirect::to('/'.config('asgard.core.core.admin-prefix'));
         }
 
         return $next($request);
@@ -47,7 +47,7 @@ class PermissionMiddleware
     {
         $segmentPosition = 4;
 
-        if ($request->segment($segmentPosition) == Config::get('core::core.admin-prefix')) {
+        if ($request->segment($segmentPosition) == config('asgard.core.core.admin-prefix')) {
             return ++ $segmentPosition;
         }
 
