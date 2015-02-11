@@ -115,14 +115,14 @@ class InstallCommand extends Command
      */
     private function runSentryUserCommands()
     {
-        $this->info('Running Sentry migrations...');
-        $this->call('migrate', ['--package' => 'cartalyst/sentry', '--no-interaction' => '']);
+        $this->info('Publish Sentry migrations and config...');
+        $this->call('vendor:publish', ['--provider' => 'Cartalyst\Sentry\SentryServiceProvider']);
+        $this->call('migrate');
 
         $this->info('Running Sentry seed...');
         $this->call('db:seed',
             ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder', '--no-interaction' => '']);
 
-        $this->call('publish:config', ['package' => 'cartalyst/sentry', '--no-interaction' => '']);
         $this->replaceCartalystUserModelConfiguration('Cartalyst\Sentry\Users\Eloquent\User', 'Sentry');
 
         $this->createFirstUser('sentry');
@@ -168,7 +168,8 @@ class InstallCommand extends Command
      */
     private function runSentinelMigrations()
     {
-        $this->call('migrate', ['--package' => 'cartalyst/sentinel', '--no-interaction' => '']);
+        $this->call('vendor:publish', ['--provider' => 'Cartalyst\Sentinel\Laravel\SentinelServiceProvider']);
+        $this->call('migrate');
     }
 
     /**
@@ -251,21 +252,23 @@ class InstallCommand extends Command
         $environmentFile = $this->finder->get('.env.example');
 
         $search = [
+            "DB_DATABASE=homestead",
             "DB_USERNAME=homestead",
-            "DB_PASSWORD=homestead",
+            "DB_PASSWORD=secret",
         ];
 
         $replace = [
+            "DB_DATABASE=$databaseName",
             "DB_USERNAME=$databaseUsername",
             "DB_PASSWORD=$databasePassword".PHP_EOL,
         ];
+
         $newEnvironmentFile = str_replace($search, $replace, $environmentFile);
-        $newEnvironmentFile .= "DB_NAME=$databaseName";
 
         // Write the new environment file
         $this->finder->put('.env', $newEnvironmentFile);
         // Delete the old environment file
-        $this->finder->delete('env.example');
+        //$this->finder->delete('env.example');
 
         $this->info('Environment file written');
 
@@ -331,7 +334,7 @@ class InstallCommand extends Command
     private function replaceCartalystUserModelConfiguration($search, $Driver)
     {
         $driver = strtolower($Driver);
-        $path = "config/packages/cartalyst/{$driver}/config.php";
+        $path = "config/cartalyst.{$driver}.php";
 
         $config = $this->finder->get($path);
         $config = str_replace($search, "Modules\\User\\Entities\\{$Driver}\\User", $config);
@@ -347,7 +350,7 @@ class InstallCommand extends Command
     private function handleComposerForSentinel()
     {
         $this->composer->enableOutput($this);
-        $this->composer->install('cartalyst/sentinel:~1.0');
+        $this->composer->install('cartalyst/sentinel:feature/laravel-5');
 
         // Search and replace SP and Alias in config/app.php
         $appConfig = $this->finder->get('config/app.php');
