@@ -13,6 +13,7 @@ use Modules\Core\Services\Composer;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
+use Pingpong\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -163,6 +164,9 @@ class CoreServiceProvider extends ServiceProvider
             $modules = $app['modules']->enabled();
             $loader = AliasLoader::getInstance();
             foreach ($modules as $moduleName => $module) {
+
+                $this->registerViewNamespace($module);
+
                 if ($aliases = $module->get('aliases')) {
                     foreach ($aliases as $aliasName => $aliasClass) {
                         $loader->alias($aliasName, $aliasClass);
@@ -170,5 +174,17 @@ class CoreServiceProvider extends ServiceProvider
                 }
             }
         });
+    }
+
+    /**
+     * Register the view namespaces for the modules
+     * @param Module $module
+     */
+    protected function registerViewNamespace(Module $module)
+    {
+        $this->app['view']->addNamespace(
+            $module->getName(),
+            $module->getPath() . '/Resources/views'
+        );
     }
 }

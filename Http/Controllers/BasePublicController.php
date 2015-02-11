@@ -1,8 +1,9 @@
 <?php namespace Modules\Core\Http\Controllers;
 
+use Illuminate\Routing\Controller;
 use Modules\Core\Contracts\Setting;
 
-abstract class BasePublicController
+abstract class BasePublicController extends Controller
 {
     /**
      * @var string The active theme name

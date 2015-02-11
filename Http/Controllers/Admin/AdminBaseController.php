@@ -1,7 +1,9 @@
 <?php namespace Modules\Core\Http\Controllers\Admin;
 
-class AdminBaseController
-{
+use Illuminate\Routing\Controller;
+
+class AdminBaseController extends Controller {
+
     public function __construct()
     {
     }
