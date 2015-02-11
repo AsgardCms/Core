@@ -12,15 +12,20 @@ class PermissionMiddleware
      * @var Authentication
      */
     private $auth;
+    /**
+     * @var Route
+     */
+    private $route;
 
-    public function __construct(Authentication $auth)
+    public function __construct(Authentication $auth, Route $route)
     {
         $this->auth = $auth;
+        $this->route = $route;
     }
 
-    public function handle(Route $route, Request $request, \Closure $next)
+    public function handle(Request $request, \Closure $next)
     {
-        $action = $route->getActionName();
+        $action = $this->route->getActionName();
         $actionMethod = substr($action, strpos($action, "@") + 1);
 
         $segmentPosition = $this->getSegmentPosition($request);
