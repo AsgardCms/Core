@@ -34,7 +34,7 @@ class PermissionFilter
 
         Flash::error('Permission denied.');
 
-        return Redirect::to('/'.Config::get('core::core.admin-prefix'));
+        return Redirect::to('/'.config('asgard.core.core.admin-prefix'));
     }
 
     /**
@@ -47,7 +47,7 @@ class PermissionFilter
     {
         $segmentPosition = 4;
 
-        if ($request->segment($segmentPosition) == Config::get('core::core.admin-prefix')) {
+        if ($request->segment($segmentPosition) == config('asgard.core.core.admin-prefix')) {
             return ++ $segmentPosition;
         }
 
