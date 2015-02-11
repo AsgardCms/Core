@@ -1,4 +1,4 @@
-<?php namespace Modules\Core\Http\Filters;
+<?php namespace Modules\Core\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
@@ -6,7 +6,7 @@ use Illuminate\Session\Store;
 use Illuminate\Foundation\Application;
 use Modules\Core\Contracts\Authentication;
 
-class AdminFilter
+class AdminMiddleware
 {
     /**
      * @var Authentication

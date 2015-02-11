@@ -1,10 +1,10 @@
-<?php namespace Modules\Core\Http\Filters;
+<?php namespace Modules\Core\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Modules\Menu\Repositories\MenuItemRepository;
 
-class PublicFilter
+class PublicMiddleware
 {
     /**
      * @var Request

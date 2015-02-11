@@ -1,4 +1,4 @@
-<?php namespace Modules\Core\Http\Filters;
+<?php namespace Modules\Core\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Redirect;
 use Laracasts\Flash\Flash;
 use Modules\Core\Contracts\Authentication;
 
-class PermissionFilter
+class PermissionMiddleware
 {
     /**
      * @var Authentication
@@ -19,7 +19,7 @@ class PermissionFilter
         $this->auth = $auth;
     }
 
-    public function filter(Route $route, Request $request)
+    public function handle(Route $route, Request $request, \Closure $next)
     {
         $action = $route->getActionName();
         $actionMethod = substr($action, strpos($action, "@") + 1);
@@ -28,13 +28,13 @@ class PermissionFilter
         $moduleName = $request->segment($segmentPosition - 1);
         $entityName = $request->segment($segmentPosition);
 
-        if ($this->auth->hasAccess("$moduleName.$entityName.$actionMethod")) {
-            return;
+        if (!$this->auth->hasAccess("$moduleName.$entityName.$actionMethod")) {
+            Flash::error('Permission denied.');
+
+            return Redirect::to('/'.Config::get('core::core.admin-prefix'));
         }
 
-        Flash::error('Permission denied.');
-
-        return Redirect::to('/'.Config::get('core::core.admin-prefix'));
+        return $next($request);
     }
 
     /**
