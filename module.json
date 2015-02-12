@@ -12,13 +12,12 @@
         "Laracasts\\Flash\\FlashServiceProvider",
         "Dimsav\\Translatable\\TranslatableServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
-        "Nwidart\\Themify\\ThemifyServiceProvider"
+        "FloatingPoint\\Stylist\\StylistServiceProvider"
     ],
     "aliases": {
         "Form": "Collective\\Html\\FormFacade",
         "Flash": "Laracasts\\Flash\\Flash",
-        "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization",
-        "Themify": "Nwidart\\Themify\\Facades\\Themify"
+        "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization"
     },
     "files": [
         "start.php"
