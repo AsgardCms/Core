@@ -15,6 +15,8 @@ $ php-cs-fixer fix . --config-file=".php_cs" --verbose
 
 **Please run php-cs-fixer before sending a pull request**
 
+You can also make a git hook to have php-cs-fixer run before every push.
+
 ## Getting setup
 ### Modules 
 
