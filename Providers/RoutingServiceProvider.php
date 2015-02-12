@@ -35,6 +35,11 @@ abstract class RoutingServiceProvider extends ServiceProvider
     abstract protected function getBackendRoute();
 
     /**
+     * @return string
+     */
+    abstract protected function getApiRoute();
+
+    /**
      * Define the routes for the application.
      *
      * @param  \Illuminate\Routing\Router $router
@@ -54,6 +59,14 @@ abstract class RoutingServiceProvider extends ServiceProvider
             if ($backend && file_exists($backend)) {
                 $router->group(['namespace' => 'Admin', 'prefix' => config('asgard.core.core.admin-prefix'), 'middleware' => 'auth.admin'], function (Router $router) use ($backend) {
                     require $backend;
+                });
+            }
+
+            $api = $this->getApiRoute();
+
+            if ($api && file_exists($api)) {
+                $router->group(['namespace' => 'Api'], function (Router $router) use ($api) {
+                    require $api;
                 });
             }
         });
