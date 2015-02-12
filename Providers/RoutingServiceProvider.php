@@ -47,7 +47,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace, 'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localizationRedirect'] ], function (Router $router) {
+        $router->group(['namespace' => $this->namespace, 'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['installed', 'localizationRedirect'] ], function (Router $router) {
             $frontend = $this->getFrontendRoute();
 
             if ($frontend && file_exists($frontend)) {
