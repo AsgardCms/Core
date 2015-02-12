@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
-use Modules\Core\Http\Middleware\AsgardInstalledMiddleware;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
