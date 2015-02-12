@@ -45,7 +45,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->registerModuleResourceNamespaces();
 
-        include __DIR__.'/../start.php';
+        include __DIR__ . '/../start.php';
     }
 
     /**
@@ -177,7 +177,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app['view']->addNamespace(
             $module->getName(),
-            $module->getPath().'/Resources/views'
+            $module->getPath() . '/Resources/views'
         );
     }
 
@@ -189,7 +189,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->app['translator']->addNamespace(
             $module->getName(),
-            $module->getPath().'/Resources/lang'
+            $module->getPath() . '/Resources/lang'
         );
     }
 
@@ -199,7 +199,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerConfigNamespace(Module $module)
     {
-        $files = $this->app['files']->files($module->getPath().'/Config');
+        $files = $this->app['files']->files($module->getPath() . '/Config');
 
         $package = $module->getName();
 
@@ -212,7 +212,7 @@ class CoreServiceProvider extends ServiceProvider
             );
 
             $this->publishes([
-                $file => config_path($filename.'.php'),
+                $file => config_path($filename . '.php'),
             ], 'config');
         }
     }
@@ -226,7 +226,7 @@ class CoreServiceProvider extends ServiceProvider
     {
         $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
 
-        $filename = $this->prefix.'.'.$package.'.'.$name;
+        $filename = $this->prefix . '.' . $package . '.' . $name;
 
         return $filename;
     }

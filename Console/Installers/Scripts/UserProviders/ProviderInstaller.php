@@ -71,7 +71,7 @@ abstract class ProviderInstaller implements SetupScript
 
         $this->createFirstUser();
 
-        $command->info($this->driver.' succesfully configured');
+        $command->info($this->driver . ' succesfully configured');
     }
 
     /**

@@ -7,5 +7,5 @@ return [
    |--------------------------------------------------------------------------
    */
     'admin-prefix' => 'backend',
-    'themes_path' => base_path().'/Themes',
+    'themes_path' => base_path() . '/Themes',
 ];

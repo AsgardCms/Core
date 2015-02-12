@@ -17,9 +17,9 @@ class Composer extends \Illuminate\Foundation\Composer
     {
         $this->output = function ($type, $buffer) use ($command) {
             if (Process::ERR === $type) {
-                $command->info(trim('[ERR] > '.$buffer));
+                $command->info(trim('[ERR] > ' . $buffer));
             } else {
-                $command->info(trim('> '.$buffer));
+                $command->info(trim('> ' . $buffer));
             }
         };
     }
@@ -43,10 +43,10 @@ class Composer extends \Illuminate\Foundation\Composer
     public function update($package = null)
     {
         if (!is_null($package)) {
-            $package = '"'.$package.'"';
+            $package = '"' . $package . '"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer().' update '.$package));
+        $process->setCommandLine(trim($this->findComposer() . ' update ' . $package));
         $process->run($this->output);
     }
 
@@ -59,20 +59,20 @@ class Composer extends \Illuminate\Foundation\Composer
     public function install($package)
     {
         if (!is_null($package)) {
-            $package = '"'.$package.'"';
+            $package = '"' . $package . '"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer().' require '.$package));
+        $process->setCommandLine(trim($this->findComposer() . ' require ' . $package));
         $process->run($this->output);
     }
 
     public function remove($package)
     {
         if (!is_null($package)) {
-            $package = '"'.$package.'"';
+            $package = '"' . $package . '"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer().' remove '.$package));
+        $process->setCommandLine(trim($this->findComposer() . ' remove ' . $package));
         $process->run($this->output);
     }
 }

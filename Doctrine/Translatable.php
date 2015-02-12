@@ -109,6 +109,6 @@ trait Translatable
      */
     private function getTranslationClass()
     {
-        return get_class($this).'Translation';
+        return get_class($this) . 'Translation';
     }
 }
