@@ -6,8 +6,14 @@ Please note AsgardCMS follows **[PSR-1](http://www.php-fig.org/psr/psr-1/)** and
 
 You can use a great tool : **[PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)** to make sure everything is following the correct coding style.
 
-Install it globally and run it against the `Modules/` directory using `php-cs-fixer fix Modules/ --verbose`. Or run it individually for one module only, whichever you prefer.
+Every module has a `.php_cs` config file to run **php-cs-fixer** with:
 
+```
+$ cd Modules/{ModuleName}
+$ php-cs-fixer fix . --config-file=".php_cs" --verbose
+```
+
+**Please run php-cs-fixer before sending a pull request**
 
 ## Getting setup
 ### Modules 
