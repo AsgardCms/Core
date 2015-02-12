@@ -16,7 +16,7 @@ class PublishModuleAssetsCommand extends Command
     protected function getArguments()
     {
         return [
-            ['module', InputArgument::REQUIRED, 'The module name']
+            ['module', InputArgument::REQUIRED, 'The module name'],
         ];
     }
 }

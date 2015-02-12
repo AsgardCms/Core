@@ -68,7 +68,7 @@ class ThemeManager implements \Countable
      */
     public function getAssetPath($theme)
     {
-        return public_path($this->getConfig()->get('themify.themes_assets_path') . '/' . $theme);
+        return public_path($this->getConfig()->get('themify.themes_assets_path').'/'.$theme);
     }
 
     /**

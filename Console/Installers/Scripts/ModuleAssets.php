@@ -12,12 +12,12 @@ class ModuleAssets implements SetupScript
     protected $modules = [
         'Core',
         'Media',
-        'Menu'
+        'Menu',
     ];
 
     /**
      * Fire the install script
-     * @param Command $command
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)

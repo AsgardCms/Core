@@ -53,7 +53,7 @@ class EnvFileWriter
         $replace = [
             "DB_DATABASE=$name",
             "DB_USERNAME=$username",
-            "DB_PASSWORD=$password"
+            "DB_PASSWORD=$password",
         ];
 
         $newEnvironmentFile = str_replace($this->search, $replace, $environmentFile);

@@ -56,7 +56,7 @@ abstract class ProviderInstaller implements SetupScript
 
     /**
      * Fire the install script
-     * @param Command $command
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)
@@ -71,7 +71,7 @@ abstract class ProviderInstaller implements SetupScript
 
         $this->createFirstUser();
 
-        $command->info($this->driver . ' succesfully configured');
+        $command->info($this->driver.' succesfully configured');
     }
 
     /**
@@ -133,7 +133,7 @@ abstract class ProviderInstaller implements SetupScript
             'email'      => $this->askForEmail(),
             'password'   => $this->getHashedPassword(
                 $this->askForPassword()
-            )
+            ),
         ];
 
         $this->repository->createWithRoles(

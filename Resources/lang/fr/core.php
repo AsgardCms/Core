@@ -26,5 +26,5 @@ return [
     'title' => [
         'translatable fields' => 'Champs traduisible',
         'non translatable fields' => 'Champs non traduisible',
-    ]
+    ],
 ];

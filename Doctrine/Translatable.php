@@ -37,8 +37,8 @@ trait Translatable
 
     /**
      * Get the translation of the given field name
-     * @param string $fieldName
-     * @param string|null $locale
+     * @param  string      $fieldName
+     * @param  string|null $locale
      * @return string
      */
     public function translation($fieldName, $locale = null)
@@ -53,7 +53,7 @@ trait Translatable
     }
 
     /**
-     * @param string $fieldName
+     * @param  string $fieldName
      * @return mixed
      */
     public function translatableGetter($fieldName)
@@ -109,6 +109,6 @@ trait Translatable
      */
     private function getTranslationClass()
     {
-        return get_class($this) . 'Translation';
+        return get_class($this).'Translation';
     }
 }

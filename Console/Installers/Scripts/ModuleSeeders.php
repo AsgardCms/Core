@@ -11,12 +11,12 @@ class ModuleSeeders implements SetupScript
      */
     protected $seeders = [
         'Modules\Page\Database\Seeders\BasePageDatabaseSeeder',
-        'Modules\Setting\Database\Seeders\SettingDatabaseSeeder'
+        'Modules\Setting\Database\Seeders\SettingDatabaseSeeder',
     ];
 
     /**
      * Fire the install script
-     * @param Command $command
+     * @param  Command $command
      * @return mixed
      */
     public function fire(Command $command)

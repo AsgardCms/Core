@@ -35,7 +35,7 @@ class AssetPublisherTest extends BaseTestCase
     /** @test */
     public function it_gets_the_source_path()
     {
-        $this->assertEquals($this->getThemePath() . '/assets', $this->publisher->getSourcePath());
+        $this->assertEquals($this->getThemePath().'/assets', $this->publisher->getSourcePath());
     }
 
     /** @test */
@@ -52,25 +52,25 @@ class AssetPublisherTest extends BaseTestCase
         $this->publisher->publish();
 
         $this->assertTrue($this->finder->isDirectory($this->getAssetsThemePath()));
-        $this->assertTrue($this->finder->isDirectory($this->getAssetsThemePath() . '/css'));
-        $this->assertTrue($this->finder->isDirectory($this->getAssetsThemePath() . '/js'));
-        $this->assertTrue($this->finder->isFile($this->getAssetsThemePath() . '/css/main.css'));
-        $this->assertTrue($this->finder->isFile($this->getAssetsThemePath() . '/js/main.js'));
+        $this->assertTrue($this->finder->isDirectory($this->getAssetsThemePath().'/css'));
+        $this->assertTrue($this->finder->isDirectory($this->getAssetsThemePath().'/js'));
+        $this->assertTrue($this->finder->isFile($this->getAssetsThemePath().'/css/main.css'));
+        $this->assertTrue($this->finder->isFile($this->getAssetsThemePath().'/js/main.js'));
     }
 
     private function getThemePath()
     {
-        return __DIR__ . '/Fixture/Themes/testAssets';
+        return __DIR__.'/Fixture/Themes/testAssets';
     }
 
     private function getAssetsThemePath()
     {
-        return public_path($this->app['config']->get('themify.themes_assets_path') . '/' . 'testassets');
+        return public_path($this->app['config']->get('themify.themes_assets_path').'/'.'testassets');
     }
 
     private function getPath()
     {
-        return __DIR__ . '/Fixture/Themes';
+        return __DIR__.'/Fixture/Themes';
     }
 
     public function tearDown()
