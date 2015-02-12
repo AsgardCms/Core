@@ -1,8 +1,8 @@
 <?php namespace Modules\Core\Http\Controllers;
 
+use FloatingPoint\Stylist\Facades\StylistFacade as Stylist;
 use Illuminate\Routing\Controller;
 use Modules\Core\Contracts\Setting;
-use Nwidart\Themify\Facades\Themify;
 
 abstract class BasePublicController extends Controller
 {
@@ -18,6 +18,6 @@ abstract class BasePublicController extends Controller
     public function __construct()
     {
         $this->setting = app('setting.settings');
-        Themify::set($this->setting->get('core::template'));
+        Stylist::registerPath(base_path('Themes/' . $this->setting->get('core::template')), true);
     }
 }
