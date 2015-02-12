@@ -151,8 +151,8 @@ class CoreServiceProvider extends ServiceProvider
 
     private function registerServices()
     {
-        $this->app->bindShared('asgard.themes', function ($app) {
-            $path = $app['config']->get('themify.themes_path');
+        $this->app->bindShared('Modules\Core\Foundation\Theme\ThemeManager', function ($app) {
+            $path = $app['config']->get('asgard.core.core.themes_path');
 
             return new ThemeManager($app, $path);
         });

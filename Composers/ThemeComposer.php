@@ -10,9 +10,9 @@ class ThemeComposer
      */
     private $themeManager;
 
-    public function __construct()
+    public function __construct(ThemeManager $themeManager)
     {
-        $this->themeManager = app('asgard.themes');
+        $this->themeManager = $themeManager;
     }
 
     public function compose(View $view)
