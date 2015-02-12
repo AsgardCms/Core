@@ -4,7 +4,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
