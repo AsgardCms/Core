@@ -15,7 +15,14 @@ $ php-cs-fixer fix . --config-file=".php_cs" --verbose
 
 **Please run php-cs-fixer before sending a pull request**
 
-You can also make a git hook to have php-cs-fixer run before every push.
+You can also make a git hook to have php-cs-fixer run before every push. In your `.git/hooks` folder add a `pre-push` file with the following:
+
+```
+#!/bin/sh
+
+exec php-cs-fixer fix . --config-file=".php_cs"
+exec git commit -am 'PSR-2'
+```
 
 ## Getting setup
 ### Modules 
