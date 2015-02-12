@@ -3,7 +3,8 @@
 use Dotenv;
 use Illuminate\Filesystem\Filesystem;
 
-class EnvFileWriter {
+class EnvFileWriter
+{
 
     /**
      * @var Filesystem

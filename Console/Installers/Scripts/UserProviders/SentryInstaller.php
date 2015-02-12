@@ -1,9 +1,9 @@
 <?php namespace Modules\Core\Console\Installers\Scripts\UserProviders;
 
-use Illuminate\Support\Facades\Hash;
 use Modules\Core\Console\Installers\SetupScript;
 
-class SentryInstaller extends ProviderInstaller implements SetupScript {
+class SentryInstaller extends ProviderInstaller implements SetupScript
+{
 
     /**
      * @var string

@@ -3,7 +3,8 @@
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;
 
-class ModuleAssets implements SetupScript {
+class ModuleAssets implements SetupScript
+{
 
     /**
      * @var array
@@ -21,7 +22,7 @@ class ModuleAssets implements SetupScript {
      */
     public function fire(Command $command)
     {
-        foreach($this->modules as $module) {
+        foreach ($this->modules as $module) {
             $command->call('module:publish', ['module' => $module]);
         }
     }

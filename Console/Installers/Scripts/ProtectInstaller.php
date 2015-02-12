@@ -5,7 +5,8 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Modules\Core\Console\Installers\SetupScript;
 
-class ProtectInstaller implements SetupScript {
+class ProtectInstaller implements SetupScript
+{
 
     /**
      * @var Filesystem
@@ -28,7 +29,7 @@ class ProtectInstaller implements SetupScript {
      */
     public function fire(Command $command)
     {
-        if($this->finder->isFile('.env')) {
+        if ($this->finder->isFile('.env')) {
             throw new Exception('Asgard has already been installed. You can already log into your administration.');
         }
     }

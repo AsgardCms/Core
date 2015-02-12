@@ -4,7 +4,8 @@ use Illuminate\Console\Command;
 use Illuminate\Foundation\Application;
 use Modules\Core\Console\Installers\SetupScript;
 
-class ConfigureUserProvider implements SetupScript {
+class ConfigureUserProvider implements SetupScript
+{
 
     /**
      * @var array

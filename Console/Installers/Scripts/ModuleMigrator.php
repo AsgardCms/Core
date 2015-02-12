@@ -3,7 +3,8 @@
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;
 
-class ModuleMigrator implements SetupScript {
+class ModuleMigrator implements SetupScript
+{
 
     /**
      * @var array

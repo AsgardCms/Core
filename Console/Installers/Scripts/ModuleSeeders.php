@@ -3,7 +3,8 @@
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;
 
-class ModuleSeeders implements SetupScript {
+class ModuleSeeders implements SetupScript
+{
 
     /**
      * @var array
@@ -20,7 +21,7 @@ class ModuleSeeders implements SetupScript {
      */
     public function fire(Command $command)
     {
-        foreach($this->seeders as $seeder) {
+        foreach ($this->seeders as $seeder) {
             $command->call('db:seed', ['--class' => $seeder]);
         }
     }

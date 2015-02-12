@@ -2,7 +2,8 @@
 
 use Illuminate\Console\Command;
 
-interface SetupScript {
+interface SetupScript
+{
 
     /**
      * Fire the install script
@@ -10,5 +11,4 @@ interface SetupScript {
      * @return mixed
      */
     public function fire(Command $command);
-
 }

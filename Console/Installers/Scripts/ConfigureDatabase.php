@@ -5,7 +5,8 @@ use Illuminate\Contracts\Config\Repository as Config;
 use Modules\Core\Console\Installers\SetupScript;
 use Modules\Core\Console\Installers\Writers\EnvFileWriter;
 
-class ConfigureDatabase implements SetupScript {
+class ConfigureDatabase implements SetupScript
+{
 
     /**
      * @var
@@ -61,7 +62,7 @@ class ConfigureDatabase implements SetupScript {
     {
         do {
             $name = $this->command->ask('Enter your database name: ');
-            if ( $name == '' ) {
+            if ($name == '') {
                 $this->command->error('Database name is required');
             }
         } while (!$name);
@@ -77,7 +78,7 @@ class ConfigureDatabase implements SetupScript {
     {
         do {
             $user = $this->command->ask('Enter your database username: ');
-            if ( $user == '' ) {
+            if ($user == '') {
                 $this->command->error('Database username is required');
             }
         } while (!$user);

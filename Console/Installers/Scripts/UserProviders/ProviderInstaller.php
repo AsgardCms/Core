@@ -3,11 +3,12 @@
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
+use Modules\Core\Console\Installers\SetupScript;
 use Modules\Core\Services\Composer;
 use Modules\User\Repositories\UserRepository;
-use Modules\Core\Console\Installers\SetupScript;
 
-abstract class ProviderInstaller implements SetupScript {
+abstract class ProviderInstaller implements SetupScript
+{
 
     /**
      * @var string

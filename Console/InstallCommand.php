@@ -57,7 +57,7 @@ class InstallCommand extends Command
             'Modules\Core\Console\Installers\Scripts\ModuleAssets',
         ])->install($this);
 
-        if($success) {
+        if ($success) {
             $this->info('Platform ready! You can now login with your username and password at /backend');
         }
     }

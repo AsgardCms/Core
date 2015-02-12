@@ -8,7 +8,6 @@ use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
-use Modules\Core\Services\Composer;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;

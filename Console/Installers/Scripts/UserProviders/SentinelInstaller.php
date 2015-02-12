@@ -4,7 +4,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Console\Installers\SetupScript;
 
-class SentinelInstaller extends ProviderInstaller implements SetupScript {
+class SentinelInstaller extends ProviderInstaller implements SetupScript
+{
 
     /**
      * @return mixed
