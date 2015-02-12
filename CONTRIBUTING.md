@@ -24,6 +24,8 @@ exec php-cs-fixer fix . --config-file=".php_cs"
 exec git commit -am 'PSR-2'
 ```
 
+The next time you'll push something, `php-cs-fixer` file automatically run.
+
 ## Getting setup
 ### Modules 
 
