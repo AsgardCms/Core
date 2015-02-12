@@ -8,6 +8,7 @@ use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
+use Modules\Core\Http\Middleware\AsgardInstalledMiddleware;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
@@ -34,6 +35,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Core' => [
+            'installed'             => 'AsgardInstalledMiddleware',
             'permissions'           => 'PermissionMiddleware',
             'auth.admin'            => 'AdminMiddleware',
             'public.checkLocale'    => 'PublicMiddleware',
