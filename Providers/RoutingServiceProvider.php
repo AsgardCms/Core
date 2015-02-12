@@ -65,7 +65,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
             $api = $this->getApiRoute();
 
             if ($api && file_exists($api)) {
-                $router->group(['namespace' => 'Api'], function (Router $router) use ($api) {
+                $router->group(['namespace' => 'Api', 'prefix' => 'api'], function (Router $router) use ($api) {
                     require $api;
                 });
             }
