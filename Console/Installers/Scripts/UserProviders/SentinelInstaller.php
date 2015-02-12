@@ -14,33 +14,10 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
     {
         $this->composer->enableOutput($this->command);
         $this->composer->install('cartalyst/sentinel:dev-feature/laravel-5');
-
-        $file = base_path('config/app.php');
-
-        // Search and replace SP and Alias in config/app.php
-        $appConfig = $this->finder->get($file);
-        $appConfig = str_replace(
-            [
-                "#'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',",
-                "'Cartalyst\\Sentry\\SentryServiceProvider',",
-                "#'Activation' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation',",
-                "#'Reminder' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder',",
-                "#'Sentinel' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel',",
-                "'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',",
-            ],
-            [
-                "'Cartalyst\\Sentinel\\Laravel\\SentinelServiceProvider',",
-                "#'Cartalyst\\Sentry\\SentryServiceProvider',",
-                "'Activation' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Activation',",
-                "'Reminder' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Reminder',",
-                "'Sentinel' => 'Cartalyst\\Sentinel\\Laravel\\Facades\\Sentinel',",
-                "#'Sentry' => 'Cartalyst\\Sentry\\Facades\\Laravel\\Sentry',"
-            ],
-            $appConfig
-        );
-        $this->finder->put($file, $appConfig);
-
         $this->composer->remove('cartalyst/sentry');
+
+        // Dynamically register the service provider, so we can use it during publishing
+        $this->application->register('Cartalyst\Sentinel\Laravel\SentinelServiceProvider');
     }
 
     /**
