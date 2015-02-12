@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Controller;
 use Modules\Core\Contracts\Setting;
+use Nwidart\Themify\Facades\Themify;
 
 abstract class BasePublicController extends Controller
 {
@@ -17,6 +18,6 @@ abstract class BasePublicController extends Controller
     public function __construct()
     {
         $this->setting = app('setting.settings');
-        $this->theme = $this->setting->get('core::template');
+        Themify::set($this->setting->get('core::template'));
     }
 }
