@@ -148,6 +148,6 @@ class ThemeManager implements \Countable
      */
     private function isFrontendTheme($themeJson)
     {
-        return $themeJson->type === 'frontend';
+        return isset($themeJson->type) && $themeJson->type !== 'frontend' ? false : true;
     }
 }
