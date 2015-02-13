@@ -1,7 +1,5 @@
 <?php namespace Modules\Core\Permissions;
 
-use Illuminate\Support\Facades\Config;
-
 class PermissionManager
 {
     /**
@@ -24,7 +22,7 @@ class PermissionManager
     {
         $permissions = [];
         foreach ($this->module->enabled() as $enabledModule) {
-            $configuration = Config::get(strtolower($enabledModule->getName()) . '::permissions');
+            $configuration = config(strtolower('asgard.' . $enabledModule->getName()) . '.permissions');
             if ($configuration) {
                 $permissions[$enabledModule->getName()] = $configuration;
             }
