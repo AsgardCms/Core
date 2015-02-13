@@ -9,6 +9,9 @@ abstract class BaseSidebarViewComposer
      */
     protected $auth;
 
+    /**
+     * @param Authentication $auth
+     */
     public function __construct(Authentication $auth)
     {
         $this->auth = $auth;
