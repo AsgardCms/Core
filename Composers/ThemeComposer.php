@@ -17,6 +17,6 @@ class ThemeComposer
 
     public function compose(View $view)
     {
-        $view->with('themes', $this->themeManager->all());
+        $view->with('themes', $this->themeManager->allPublicThemes());
     }
 }
