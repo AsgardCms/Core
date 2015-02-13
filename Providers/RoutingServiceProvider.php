@@ -62,6 +62,8 @@ abstract class RoutingServiceProvider extends ServiceProvider
                 });
             }
 
+        });
+        $router->group(['namespace' => $this->namespace, 'middleware' => ['installed']], function (Router $router) {
             $api = $this->getApiRoute();
 
             if ($api && file_exists($api)) {
