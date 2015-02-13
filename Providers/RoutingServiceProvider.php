@@ -47,13 +47,13 @@ abstract class RoutingServiceProvider extends ServiceProvider
      */
     public function map(Router $router)
     {
-        $router->group(['namespace' => $this->namespace, 'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['installed', 'localizationRedirect'] ], function (Router $router) {
-            $this->loadFrontendRoutes($router);
-
-            $this->loadBackendRoutes($router);
-        });
         $router->group(['namespace' => $this->namespace, 'middleware' => ['installed']], function (Router $router) {
             $this->loadApiRoutes($router);
+        });
+
+        $router->group(['namespace' => $this->namespace, 'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['installed'] ], function (Router $router) {
+            $this->loadBackendRoutes($router);
+            $this->loadFrontendRoutes($router);
         });
     }
 
