@@ -53,7 +53,11 @@ class ThemeManager implements \Countable
         $directories = $this->getFinder()->directories($this->path);
 
         foreach ($directories as $theme) {
-            if (!Str::startsWith($name = basename($theme), '.')) {
+            if (Str::startsWith($name = basename($theme), '.')) {
+                continue;
+            }
+            $themeJson = $this->getThemeJsonFile($theme);
+            if ($this->isFrontendTheme($themeJson)) {
                 $themes[$name] = new Theme($name, $theme);
             }
         }
@@ -93,5 +97,25 @@ class ThemeManager implements \Countable
     public function count()
     {
         return count($this->all());
+    }
+
+    /**
+     * Returns the theme json file
+     * @param $theme
+     * @return string
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    private function getThemeJsonFile($theme)
+    {
+        return json_decode($this->getFinder()->get("$theme/theme.json"));
+    }
+
+    /**
+     * @param $themeJson
+     * @return bool
+     */
+    private function isFrontendTheme($themeJson)
+    {
+        return $themeJson->type === 'frontend';
     }
 }
