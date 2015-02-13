@@ -50,7 +50,30 @@ class ThemeManager implements \Countable
             return $themes;
         }
 
-        $directories = $this->getFinder()->directories($this->path);
+        $directories = $this->getDirectories();
+
+        foreach ($directories as $theme) {
+            if (Str::startsWith($name = basename($theme), '.')) {
+                continue;
+            }
+            $themes[$name] = new Theme($name, $theme);
+        }
+
+        return $themes;
+    }
+
+    /**
+     * Get only the public themes
+     * @return array
+     */
+    public function allPublicThemes()
+    {
+        $themes = [];
+        if (!$this->getFinder()->isDirectory($this->path)) {
+            return $themes;
+        }
+
+        $directories = $this->getDirectories();
 
         foreach ($directories as $theme) {
             if (Str::startsWith($name = basename($theme), '.')) {
@@ -63,6 +86,15 @@ class ThemeManager implements \Countable
         }
 
         return $themes;
+    }
+
+    /**
+     * Get the theme directories
+     * @return array
+     */
+    private function getDirectories()
+    {
+        return $this->getFinder()->directories($this->path);
     }
 
     /**
