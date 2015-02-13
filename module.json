@@ -12,7 +12,8 @@
         "Laracasts\\Flash\\FlashServiceProvider",
         "Dimsav\\Translatable\\TranslatableServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
-        "FloatingPoint\\Stylist\\StylistServiceProvider"
+        "FloatingPoint\\Stylist\\StylistServiceProvider",
+        "Maatwebsite\\Sidebar\\SidebarServiceProvider"
     ],
     "aliases": {
         "Form": "Collective\\Html\\FormFacade",
