@@ -48,29 +48,52 @@ abstract class RoutingServiceProvider extends ServiceProvider
     public function map(Router $router)
     {
         $router->group(['namespace' => $this->namespace, 'prefix' => LaravelLocalization::setLocale(), 'middleware' => ['installed', 'localizationRedirect'] ], function (Router $router) {
-            $frontend = $this->getFrontendRoute();
+            $this->loadFrontendRoutes($router);
 
-            if ($frontend && file_exists($frontend)) {
-                require $frontend;
-            }
-
-            $backend = $this->getBackendRoute();
-
-            if ($backend && file_exists($backend)) {
-                $router->group(['namespace' => 'Admin', 'prefix' => config('asgard.core.core.admin-prefix'), 'middleware' => 'auth.admin'], function (Router $router) use ($backend) {
-                    require $backend;
-                });
-            }
-
+            $this->loadBackendRoutes($router);
         });
         $router->group(['namespace' => $this->namespace, 'middleware' => ['installed']], function (Router $router) {
-            $api = $this->getApiRoute();
-
-            if ($api && file_exists($api)) {
-                $router->group(['namespace' => 'Api', 'prefix' => 'api'], function (Router $router) use ($api) {
-                    require $api;
-                });
-            }
+            $this->loadApiRoutes($router);
         });
+    }
+
+    /**
+     * @param Router $router
+     */
+    private function loadFrontendRoutes(Router $router)
+    {
+        $frontend = $this->getFrontendRoute();
+
+        if ($frontend && file_exists($frontend)) {
+            require $frontend;
+        }
+    }
+
+    /**
+     * @param Router $router
+     */
+    private function loadBackendRoutes(Router $router)
+    {
+        $backend = $this->getBackendRoute();
+
+        if ($backend && file_exists($backend)) {
+            $router->group(['namespace' => 'Admin', 'prefix' => config('asgard.core.core.admin-prefix'), 'middleware' => 'auth.admin'], function (Router $router) use ($backend) {
+                require $backend;
+            });
+        }
+    }
+
+    /**
+     * @param Router $router
+     */
+    private function loadApiRoutes(Router $router)
+    {
+        $api = $this->getApiRoute();
+
+        if ($api && file_exists($api)) {
+            $router->group(['namespace' => 'Api', 'prefix' => 'api'], function (Router $router) use ($api) {
+                require $api;
+            });
+        }
     }
 }
