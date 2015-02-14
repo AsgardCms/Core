@@ -1,6 +1,5 @@
 <?php namespace Modules\Core\Composers;
 
-
 use Maatwebsite\Sidebar\SidebarManager;
 
 class SidebarViewCreator
