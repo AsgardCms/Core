@@ -1,8 +1,6 @@
 ;(function ( $, window, document, undefined ) {
     var pluginName = "keypressAction",
-        defaults = {
-            propertyName: "value"
-        };
+        defaults = {};
 
     // The actual plugin constructor
     function keypresAction ( element, options ) {
