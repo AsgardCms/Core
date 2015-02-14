@@ -145,8 +145,8 @@ $(function() {
             {
                 title: 'All Day Event',
                 start: new Date(y, m, 1),
-                backgroundColor: "#3c8dbc", //light-blue 
-                borderColor: "#3c8dbc" //light-blue
+                backgroundColor: "#3c8dbc", //primary
+                borderColor: "#3c8dbc" //primary
             },
             {
                 title: 'Long Event',
