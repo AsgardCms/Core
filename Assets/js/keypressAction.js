@@ -1,9 +1,9 @@
 ;(function ( $, window, document, undefined ) {
-    var pluginName = "keypresAction",
+    var pluginName = "keypressAction",
         defaults = {};
 
     // The actual plugin constructor
-    function keypresAction ( element, options ) {
+    function keypressAction ( element, options ) {
         this.element = element;
         this.settings = $.extend( {}, defaults, options );
         this._defaults = defaults;
@@ -11,7 +11,7 @@
         this.init();
     }
 
-    $.extend(keypresAction.prototype, {
+    $.extend(keypressAction.prototype, {
         bindKeyToRoute: function (key, route) {
             $(document).keypress(function(e) {
                 if (e.which == key) {
@@ -30,7 +30,7 @@
     $.fn[ pluginName ] = function ( options ) {
         this.each(function() {
             if ( !$.data( this, "plugin_" + pluginName ) ) {
-                $.data( this, "plugin_" + pluginName, new keypresAction( this, options ) );
+                $.data( this, "plugin_" + pluginName, new keypressAction( this, options ) );
             }
         });
 
