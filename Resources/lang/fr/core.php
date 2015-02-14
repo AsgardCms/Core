@@ -27,4 +27,7 @@ return [
         'translatable fields' => 'Champs traduisible',
         'non translatable fields' => 'Champs non traduisible',
     ],
+    'general' => [
+        'available keyboard shortcuts' => 'Raccourcis claviers disponible sur cette page'
+    ]
 ];

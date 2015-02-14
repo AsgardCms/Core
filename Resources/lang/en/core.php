@@ -27,4 +27,7 @@ return [
         'translatable fields' => 'Translatable fields',
         'non translatable fields' => 'Non translatable fields',
     ],
+    'general' => [
+        'available keyboard shortcuts' => 'Available keyboard shortcuts on this page'
+    ],
 ];
