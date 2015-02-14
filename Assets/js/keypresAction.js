@@ -1,5 +1,5 @@
 ;(function ( $, window, document, undefined ) {
-    var pluginName = "keypressAction",
+    var pluginName = "keypresAction",
         defaults = {};
 
     // The actual plugin constructor
