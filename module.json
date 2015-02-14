@@ -13,6 +13,7 @@
         "Dimsav\\Translatable\\TranslatableServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
         "FloatingPoint\\Stylist\\StylistServiceProvider",
+        "Modules\\Core\\Providers\\AsgardServiceProvider",
         "Maatwebsite\\Sidebar\\SidebarServiceProvider"
     ],
     "aliases": {
