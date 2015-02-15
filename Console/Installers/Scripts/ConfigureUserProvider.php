@@ -6,7 +6,6 @@ use Modules\Core\Console\Installers\SetupScript;
 
 class ConfigureUserProvider implements SetupScript
 {
-
     /**
      * @var array
      */
@@ -37,10 +36,7 @@ class ConfigureUserProvider implements SetupScript
     {
         $driver = $command->choice('Which user driver do you wish to use?', $this->drivers, 1);
 
-        $this->configure(
-            $driver,
-            $command
-        );
+        $this->configure($driver, $command);
     }
 
     /**
