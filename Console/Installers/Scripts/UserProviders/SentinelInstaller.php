@@ -6,6 +6,14 @@ use Modules\Core\Console\Installers\SetupScript;
 
 class SentinelInstaller extends ProviderInstaller implements SetupScript
 {
+    /**
+     * Check if the user driver is correctly registered.
+     * @return bool
+     */
+    public function checkIsInstalled()
+    {
+        return class_exists('Cartalyst\Sentinel\Laravel\SentinelServiceProvider');
+    }
 
     /**
      * Not called

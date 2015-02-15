@@ -59,6 +59,10 @@ abstract class ProviderInstaller implements SetupScript
         // Publish asgard configs
         $this->command->call('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
 
+        if (! $this->checkIsInstalled()) {
+            return $this->command->error('No user driver was installed. Please check the presence of a Service Provider');
+        }
+
         $this->publish();
         $this->migrate();
         $this->configure();
@@ -73,6 +77,12 @@ abstract class ProviderInstaller implements SetupScript
      * @return mixed
      */
     abstract public function composer();
+
+    /**
+     * Check if the user driver is correctly registered.
+     * @return bool
+     */
+    abstract public function checkIsInstalled();
 
     /**
      * @return mixed
