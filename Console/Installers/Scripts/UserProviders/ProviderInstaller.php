@@ -59,7 +59,6 @@ abstract class ProviderInstaller implements SetupScript
         // Publish asgard configs
         $this->command->call('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
 
-        $this->composer();
         $this->publish();
         $this->migrate();
         $this->configure();

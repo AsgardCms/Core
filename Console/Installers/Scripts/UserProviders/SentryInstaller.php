@@ -4,21 +4,17 @@ use Modules\Core\Console\Installers\SetupScript;
 
 class SentryInstaller extends ProviderInstaller implements SetupScript
 {
-
     /**
      * @var string
      */
     protected $driver = 'Sentry';
 
     /**
+     * Not called
      * @return mixed
      */
     public function composer()
     {
-        $this->composer->enableOutput($this->command);
-        $this->composer->install('cartalyst/sentry:dev-feature/laravel-5');
-        $this->composer->dumpAutoload();
-
         $this->application->register('Cartalyst\Sentry\SentryServiceProvider');
     }
 

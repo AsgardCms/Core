@@ -8,12 +8,14 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
 {
 
     /**
+     * Not called
      * @return mixed
      */
     public function composer()
     {
         $this->composer->enableOutput($this->command);
         $this->composer->install('cartalyst/sentinel:dev-feature/laravel-5');
+        $this->composer->remove('cartalyst/sentry');
         $this->composer->dumpAutoload();
 
         // Dynamically register the service provider, so we can use it during publishing
