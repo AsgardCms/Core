@@ -1,11 +1,10 @@
 <?php namespace Modules\Core\Console\Installers\Scripts\UserProviders;
 
 use Illuminate\Console\Command;
-use Illuminate\Contracts\Foundation\Application;
+use Modules\Core\Services\Composer;
 use Illuminate\Filesystem\Filesystem;
 use Modules\Core\Console\Installers\SetupScript;
-use Modules\Core\Services\Composer;
-use Modules\User\Repositories\UserRepository;
+use Illuminate\Contracts\Foundation\Application;
 
 abstract class ProviderInstaller implements SetupScript
 {
@@ -26,11 +25,6 @@ abstract class ProviderInstaller implements SetupScript
     protected $finder;
 
     /**
-     * @var UserRepository
-     */
-    protected $repository;
-
-    /**
      * @var Composer
      */
     protected $composer;
@@ -42,16 +36,15 @@ abstract class ProviderInstaller implements SetupScript
 
     /**
      * @param Filesystem     $finder
-     * @param UserRepository $repository
      * @param Composer       $composer
      * @param Application    $application
      */
-    public function __construct(Filesystem $finder, UserRepository $repository, Composer $composer, Application $application)
+    public function __construct(Filesystem $finder, Composer $composer, Application $application)
     {
         $this->finder = $finder;
-        $this->repository = $repository;
         $this->composer = $composer;
         $this->application = $application;
+        $this->application['env'] = 'local';
     }
 
     /**
@@ -62,6 +55,9 @@ abstract class ProviderInstaller implements SetupScript
     public function fire(Command $command)
     {
         $this->command = $command;
+
+        // Publish asgard configs
+        $this->command->call('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
 
         $this->composer();
         $this->publish();
@@ -123,6 +119,27 @@ abstract class ProviderInstaller implements SetupScript
     }
 
     /**
+     * Set the correct repository binding on the fly for the current request
+     *
+     * @param $driver
+     */
+    protected function bindUserRepositoryOnTheFly($driver)
+    {
+        $this->application->bind(
+            'Modules\User\Repositories\UserRepository',
+            "Modules\\User\\Repositories\\$driver\\{$driver}UserRepository"
+        );
+        $this->application->bind(
+            'Modules\User\Repositories\RoleRepository',
+            "Modules\\User\\Repositories\\$driver\\{$driver}RoleRepository"
+        );
+        $this->application->bind(
+            'Modules\Core\Contracts\Authentication',
+            "Modules\\User\\Repositories\\$driver\\{$driver}Authentication"
+        );
+    }
+
+    /**
      * Create a first admin user
      */
     protected function createFirstUser()
@@ -136,7 +153,7 @@ abstract class ProviderInstaller implements SetupScript
             ),
         ];
 
-        $this->repository->createWithRoles(
+        $this->application->make('Modules\User\Repositories\UserRepository')->createWithRoles(
             $info,
             [1],
             true

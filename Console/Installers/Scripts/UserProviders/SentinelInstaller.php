@@ -14,7 +14,7 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
     {
         $this->composer->enableOutput($this->command);
         $this->composer->install('cartalyst/sentinel:dev-feature/laravel-5');
-        $this->composer->remove('cartalyst/sentry');
+        $this->composer->dumpAutoload();
 
         // Dynamically register the service provider, so we can use it during publishing
         $this->application->register('Cartalyst\Sentinel\Laravel\SentinelServiceProvider');
@@ -74,30 +74,9 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
      */
     private function changeDefaultUserProvider($driver)
     {
-        $path = base_path('Modules/User/Config/users.php');
+        $path = base_path('config/asgard.user.users.php');
         $config = $this->finder->get($path);
         $config = str_replace('Sentry', $driver, $config);
         $this->finder->put($path, $config);
-    }
-
-    /**
-     * Set the correct repository binding on the fly for the current request
-     *
-     * @param $driver
-     */
-    private function bindUserRepositoryOnTheFly($driver)
-    {
-        $this->application->bind(
-            'Modules\User\Repositories\UserRepository',
-            "Modules\\User\\Repositories\\$driver\\{$driver}UserRepository"
-        );
-        $this->application->bind(
-            'Modules\User\Repositories\RoleRepository',
-            "Modules\\User\\Repositories\\$driver\\{$driver}RoleRepository"
-        );
-        $this->application->bind(
-            'Modules\Core\Contracts\Authentication',
-            "Modules\\User\\Repositories\\$driver\\{$driver}Authentication"
-        );
     }
 }
