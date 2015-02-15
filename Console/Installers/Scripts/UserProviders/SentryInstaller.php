@@ -15,9 +15,9 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
      */
     public function composer()
     {
-        $this->composer->enableOutput($this);
+        $this->composer->enableOutput($this->command);
         $this->composer->install('cartalyst/sentry:dev-feature/laravel-5');
-        $this->composer->remove('cartalyst/sentinel');
+        $this->composer->dumpAutoload();
 
         $this->application->register('Cartalyst\Sentry\SentryServiceProvider');
     }
@@ -47,6 +47,8 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
             'Cartalyst\Sentry\Users\Eloquent\User',
             $this->driver
         );
+
+        $this->bindUserRepositoryOnTheFly('Sentry');
     }
 
     /**

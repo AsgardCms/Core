@@ -46,7 +46,7 @@ class Composer extends \Illuminate\Foundation\Composer
             $package = '"' . $package . '"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer() . ' update ' . $package));
+        $process->setCommandLine(trim($this->findComposer() . ' update ' . $package . ' --no-scripts'));
         $process->run($this->output);
     }
 
@@ -63,6 +63,16 @@ class Composer extends \Illuminate\Foundation\Composer
         }
         $process = $this->getProcess();
         $process->setCommandLine(trim($this->findComposer() . ' require ' . $package));
+        $process->run($this->output);
+    }
+
+    /**
+     * @return void
+     */
+    public function dumpAutoload()
+    {
+        $process = $this->getProcess();
+        $process->setCommandLine(trim($this->findComposer() . ' dump-autoload -o'));
         $process->run($this->output);
     }
 
