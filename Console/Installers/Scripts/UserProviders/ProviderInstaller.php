@@ -1,10 +1,10 @@
 <?php namespace Modules\Core\Console\Installers\Scripts\UserProviders;
 
 use Illuminate\Console\Command;
-use Modules\Core\Services\Composer;
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Modules\Core\Console\Installers\SetupScript;
-use Illuminate\Contracts\Foundation\Application;
+use Modules\Core\Services\Composer;
 
 abstract class ProviderInstaller implements SetupScript
 {
