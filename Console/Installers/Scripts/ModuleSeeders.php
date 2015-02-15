@@ -5,13 +5,12 @@ use Modules\Core\Console\Installers\SetupScript;
 
 class ModuleSeeders implements SetupScript
 {
-
     /**
      * @var array
      */
-    protected $seeders = [
-        'Modules\Page\Database\Seeders\BasePageDatabaseSeeder',
-        'Modules\Setting\Database\Seeders\SettingDatabaseSeeder',
+    protected $modules = [
+        'Setting',
+        'Page',
     ];
 
     /**
@@ -21,8 +20,8 @@ class ModuleSeeders implements SetupScript
      */
     public function fire(Command $command)
     {
-        foreach ($this->seeders as $seeder) {
-            $command->call('db:seed', ['--class' => $seeder]);
+        foreach ($this->modules as $module) {
+            $command->call('module:seed', ['module' => $module]);
         }
     }
 }
