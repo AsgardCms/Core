@@ -55,6 +55,7 @@ class InstallCommand extends Command
             'Modules\Core\Console\Installers\Scripts\ModuleMigrator',
             'Modules\Core\Console\Installers\Scripts\ModuleSeeders',
             'Modules\Core\Console\Installers\Scripts\ModuleAssets',
+            'Modules\Core\Console\Installers\Scripts\ThemeAssets',
         ])->install($this);
 
         if ($success) {
