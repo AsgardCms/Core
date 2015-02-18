@@ -46,7 +46,7 @@ class Composer extends \Illuminate\Foundation\Composer
             $package = '"' . $package . '"';
         }
         $process = $this->getProcess();
-        $process->setCommandLine(trim($this->findComposer() . ' update ' . $package . ' --no-scripts'));
+        $process->setCommandLine(trim($this->findComposer() . ' update ' . $package));
         $process->run($this->output);
     }
 
