@@ -15,4 +15,9 @@ return [
         'description' => 'core::settings.template',
         'view' => 'core::fields.select-theme',
     ],
+    'google-analytics' => [
+        'description' => 'core::settings.google-analytics',
+        'view' => 'text',
+        'translatable' => false,
+    ],
 ];
