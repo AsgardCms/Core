@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
+use Modules\Core\Foundation\Asset\Manager\AsgardAssetManager;
+use Modules\Core\Foundation\Asset\Pipeline\AsgardAssetPipeline;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
@@ -59,6 +61,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerMiddleware($this->app['router']);
         $this->registerCommands();
         $this->registerServices();
+        $this->bindAssetClasses();
     }
 
     /**
@@ -229,5 +232,19 @@ class CoreServiceProvider extends ServiceProvider
         $filename = $this->prefix . '.' . $package . '.' . $name;
 
         return $filename;
+    }
+
+    /**
+     * Bind classes related to assets
+     */
+    private function bindAssetClasses()
+    {
+        $this->app->bind('Modules\Core\Foundation\Asset\Manager\AssetManager', function () {
+            return new AsgardAssetManager();
+        });
+
+        $this->app->bind('Modules\Core\Foundation\Asset\Pipeline\AssetPipeline', function () {
+            return new AsgardAssetPipeline();
+        });
     }
 }
