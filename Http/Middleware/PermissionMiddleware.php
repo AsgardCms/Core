@@ -42,7 +42,7 @@ class PermissionMiddleware
         $entityName = $this->getEntityName($request, $segmentPosition);
         $permission = $this->getPermission($moduleName, $entityName, $actionMethod);
 
-        if (!$this->auth->hasAccess("$permission")) {
+        if (!$this->auth->hasAccess($permission)) {
             Flash::error('Permission denied.');
 
             return Redirect::to('/' . config('asgard.core.core.admin-prefix'));
