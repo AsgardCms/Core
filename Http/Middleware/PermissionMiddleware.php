@@ -17,22 +17,32 @@ class PermissionMiddleware
      */
     private $route;
 
+    /**
+     * @param Authentication $auth
+     * @param Route          $route
+     */
     public function __construct(Authentication $auth, Route $route)
     {
         $this->auth = $auth;
         $this->route = $route;
     }
 
+    /**
+     * @param Request  $request
+     * @param callable $next
+     * @return mixed
+     */
     public function handle(Request $request, \Closure $next)
     {
         $action = $this->route->getActionName();
         $actionMethod = substr($action, strpos($action, "@") + 1);
 
         $segmentPosition = $this->getSegmentPosition($request);
-        $moduleName = $request->segment($segmentPosition - 1);
-        $entityName = $request->segment($segmentPosition);
+        $moduleName = $this->getModuleName($request, $segmentPosition);
+        $entityName = $this->getEntityName($request, $segmentPosition);
+        $permission = $this->getPermission($moduleName, $entityName, $actionMethod);
 
-        if (!$this->auth->hasAccess("$moduleName.$entityName.$actionMethod")) {
+        if (!$this->auth->hasAccess("$permission")) {
             Flash::error('Permission denied.');
 
             return Redirect::to('/' . config('asgard.core.core.admin-prefix'));
@@ -49,12 +59,46 @@ class PermissionMiddleware
      */
     private function getSegmentPosition(Request $request)
     {
-        $segmentPosition = 4;
+        $segmentPosition = config('laravellocalization.hideDefaultLocaleInURL', false) ? 3 : 4;
 
         if ($request->segment($segmentPosition) == config('asgard.core.core.admin-prefix')) {
             return ++ $segmentPosition;
         }
 
         return $segmentPosition;
+    }
+
+    /**
+     * @param $moduleName
+     * @param $entityName
+     * @param $actionMethod
+     * @return string
+     */
+    private function getPermission($moduleName, $entityName, $actionMethod)
+    {
+        return ltrim($moduleName. '.' .$entityName. '.' .$actionMethod, '.');
+    }
+
+    /**
+     * @param Request $request
+     * @param         $segmentPosition
+     * @return string
+     */
+    protected function getModuleName(Request $request, $segmentPosition)
+    {
+        return $request->segment($segmentPosition - 1);
+
+        return $moduleName;
+    }
+
+    /**
+     * @param Request $request
+     * @param         $segmentPosition
+     * @return string
+     */
+    protected function getEntityName(Request $request, $segmentPosition)
+    {
+        $entityName = $request->segment($segmentPosition);
+        return $entityName ?: 'dashboard';
     }
 }
