@@ -139,7 +139,7 @@ class CoreServiceProvider extends ServiceProvider
             function () {
                 $repository = new EloquentMenuItemRepository(new Menuitem());
 
-                if (! Config::get('app.cache')) {
+                if (! config('app.cache')) {
                     return $repository;
                 }
 
