@@ -24,8 +24,8 @@ class AsgardAssetManagerTest extends BaseTestCase
         $jsResult = $this->assetManager->allJs();
 
         $this->assertInstanceOf('Illuminate\Support\Collection', $cssResult);
-        $this->assertCount(0, $cssResult->count());
+        $this->assertEquals(0, $cssResult->count());
         $this->assertInstanceOf('Illuminate\Support\Collection', $jsResult);
-        $this->assertCount(0, $jsResult->count());
+        $this->assertEquals(0, $jsResult->count());
     }
 }
