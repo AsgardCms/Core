@@ -1,12 +1,9 @@
 <?php namespace Modules\Core\Tests;
 
-use Illuminate\Foundation\Testing\ApplicationTrait;
-use TestCase;
+use Orchestra\Testbench\TestCase;
 
 abstract class BaseTestCase extends TestCase
 {
-    use ApplicationTrait;
-
     protected $app;
 
     public function setUp()
@@ -15,12 +12,25 @@ abstract class BaseTestCase extends TestCase
         $this->refreshApplication();
     }
 
-    protected function checkResponseIsOkAndContains($request, $filter)
+    protected function getPackageProviders($app)
     {
-        $crawler = $this->client->request($request[0], $request[1]);
+        return ['Modules\Core\Providers\CoreServiceProvider'];
+    }
 
-        $this->assertTrue($this->client->getResponse()->isOk());
+    protected function getEnvironmentSetUp($app)
+    {
+        $app['path.base'] = __DIR__ . '/..';
+        $app['config']->set('database.default', 'sqlite');
+        $app['config']->set('database.connections.sqlite', array(
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ));
+        $app['config']->set('translatable.locales', ['en', 'fr']);
+    }
 
-        $this->assertCount(1, $crawler->filter($filter));
+    protected function getPackageAliases($app)
+    {
+        return ['Eloquent' => 'Illuminate\Database\Eloquent\Model'];
     }
 }
