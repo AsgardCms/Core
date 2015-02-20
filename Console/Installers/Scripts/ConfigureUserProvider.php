@@ -34,6 +34,8 @@ class ConfigureUserProvider implements SetupScript
      */
     public function fire(Command $command)
     {
+        $command->blockMessage('User Module', 'Starting the User Module setup...', 'comment');
+
         $driver = $command->choice('Which user driver do you wish to use? Please make sure you installed your preferred driver beforehand. [1]', $this->drivers, 1);
 
         $this->configure($driver, $command);
