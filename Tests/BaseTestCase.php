@@ -14,7 +14,10 @@ abstract class BaseTestCase extends TestCase
 
     protected function getPackageProviders($app)
     {
-        return ['Modules\Core\Providers\CoreServiceProvider'];
+        return [
+            'Modules\Core\Providers\CoreServiceProvider',
+            'Pingpong\Modules\ModulesServiceProvider',
+        ];
     }
 
     protected function getEnvironmentSetUp($app)
