@@ -2,9 +2,13 @@
 
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\Installer;
+use Modules\Core\Console\Installers\Traits\BlockMessage;
+use Modules\Core\Console\Installers\Traits\SectionMessage;
 
 class InstallCommand extends Command
 {
+    use BlockMessage, SectionMessage;
+
     /**
      * The console command name.
      *
