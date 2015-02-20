@@ -76,7 +76,7 @@ class PermissionMiddleware
      */
     private function getPermission($moduleName, $entityName, $actionMethod)
     {
-        return ltrim($moduleName. '.' .$entityName. '.' .$actionMethod, '.');
+        return ltrim($moduleName . '.' . $entityName . '.' . $actionMethod, '.');
     }
 
     /**
@@ -99,6 +99,7 @@ class PermissionMiddleware
     protected function getEntityName(Request $request, $segmentPosition)
     {
         $entityName = $request->segment($segmentPosition);
+
         return $entityName ?: 'dashboard';
     }
 }
