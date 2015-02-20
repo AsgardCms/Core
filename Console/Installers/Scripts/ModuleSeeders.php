@@ -20,6 +20,8 @@ class ModuleSeeders implements SetupScript
      */
     public function fire(Command $command)
     {
+        $command->blockMessage('Seeds', 'Running the module seeds ...', 'comment');
+
         foreach ($this->modules as $module) {
             $command->call('module:seed', ['module' => $module]);
         }

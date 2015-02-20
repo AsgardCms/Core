@@ -23,6 +23,8 @@ class ModuleMigrator implements SetupScript
      */
     public function fire(Command $command)
     {
+        $command->blockMessage('Migrations', 'Starting the module migrations ...', 'comment');
+
         foreach ($this->modules as $module) {
             $command->call('module:migrate', ['module' => $module]);
         }

@@ -12,6 +12,8 @@ class ThemeAssets implements  SetupScript
      */
     public function fire(Command $command)
     {
+        $command->blockMessage('Themes', 'Publishing theme assets ...', 'comment');
+
         $command->call('stylist:publish');
     }
 }

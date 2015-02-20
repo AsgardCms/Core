@@ -22,6 +22,8 @@ class ModuleAssets implements SetupScript
      */
     public function fire(Command $command)
     {
+        $command->blockMessage('Module assets', 'Publishing module assets ...', 'comment');
+
         foreach ($this->modules as $module) {
             $command->call('module:publish', ['module' => $module]);
         }
