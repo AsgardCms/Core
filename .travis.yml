@@ -6,8 +6,11 @@ php:
   - 5.4
   - hhvm
 
-install:
-  - travis_retry composer install --no-interaction --prefer-source
+env:
+  - LARAVEL_VERSION="5.0.*@dev" TESTBENCH_VERSION="~3.0@dev"
 
-script:
-  - phpunit --verbose
+before_script:
+  - composer self-update
+  - composer install
+
+script: phpunit
