@@ -2,7 +2,7 @@
 
 trait SectionMessage
 {
-    protected function sectionMessage($title, $message)
+    public function sectionMessage($title, $message)
     {
         $formatter = $this->getHelperSet()->get('formatter');
         $formattedLine = $formatter->formatSection(

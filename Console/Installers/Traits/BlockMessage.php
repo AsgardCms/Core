@@ -2,7 +2,7 @@
 
 trait BlockMessage
 {
-    protected function blockMessage($title, $message, $style = 'info')
+    public function blockMessage($title, $message, $style = 'info')
     {
         $formatter = $this->getHelperSet()->get('formatter');
         $errorMessages = [$title, $message];
