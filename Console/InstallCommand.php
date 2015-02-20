@@ -50,7 +50,7 @@ class InstallCommand extends Command
      */
     public function fire()
     {
-        $this->blockMessage('Welcome!', 'Starting the installation process...');
+        $this->blockMessage('Welcome!', 'Starting the installation process...', 'comment');
 
         $success = $this->installer->stack([
             'Modules\Core\Console\Installers\Scripts\ProtectInstaller',
