@@ -1,6 +1,5 @@
 <?php namespace Modules\Core\Console\Installers\Scripts\UserProviders;
 
-use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Console\Installers\SetupScript;
 
