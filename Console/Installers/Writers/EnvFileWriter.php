@@ -15,6 +15,7 @@ class EnvFileWriter
      * @var array
      */
     protected $search = [
+        "DB_HOST=localhost",
         "DB_DATABASE=homestead",
         "DB_USERNAME=homestead",
         "DB_PASSWORD=secret",
@@ -44,13 +45,14 @@ class EnvFileWriter
      * @param $password
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
-    public function write($name, $username, $password)
+    public function write($name, $username, $password, $host)
     {
         Dotenv::makeMutable();
 
         $environmentFile = $this->finder->get($this->template);
 
         $replace = [
+            "DB_HOST=$host",
             "DB_DATABASE=$name",
             "DB_USERNAME=$username",
             "DB_PASSWORD=$password",

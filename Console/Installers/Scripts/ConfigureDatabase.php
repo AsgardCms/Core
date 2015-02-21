@@ -42,17 +42,29 @@ class ConfigureDatabase implements SetupScript
     {
         $this->command = $command;
 
+        $host = $this->askDatabaseHost();
+
         $name = $this->askDatabaseName();
 
         $user = $this->askDatabaseUsername();
 
         $password = $this->askDatabasePassword();
 
-        $this->setLaravelConfiguration($name, $user, $password);
+        $this->setLaravelConfiguration($name, $user, $password, $host);
 
-        $this->env->write($name, $user, $password);
+        $this->env->write($name, $user, $password, $host);
 
         $command->info('Database succesfully configured');
+    }
+
+    /**
+     * @return string
+     */
+    protected function askDatabaseHost()
+    {
+        $host = $this->command->ask('Enter your database host [localhost]: ', 'localhost');
+
+        return $host;
     }
 
     /**
@@ -100,8 +112,9 @@ class ConfigureDatabase implements SetupScript
      * @param $user
      * @param $password
      */
-    protected function setLaravelConfiguration($name, $user, $password)
+    protected function setLaravelConfiguration($name, $user, $password, $host)
     {
+        $this->config['database.connections.mysql.host'] = $host;
         $this->config['database.connections.mysql.database'] = $name;
         $this->config['database.connections.mysql.username'] = $user;
         $this->config['database.connections.mysql.password'] = $password;
