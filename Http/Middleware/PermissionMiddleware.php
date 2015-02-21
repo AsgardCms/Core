@@ -87,8 +87,6 @@ class PermissionMiddleware
     protected function getModuleName(Request $request, $segmentPosition)
     {
         return $request->segment($segmentPosition - 1);
-
-        return $moduleName;
     }
 
     /**
