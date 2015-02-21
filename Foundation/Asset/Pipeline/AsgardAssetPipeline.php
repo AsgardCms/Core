@@ -9,7 +9,6 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function requireJs($dependency)
     {
-        // TODO: Implement requireJs() method.
     }
 
     /**
@@ -19,7 +18,6 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function requireCss($dependency)
     {
-        // TODO: Implement requireCss() method.
     }
 
     /**
@@ -29,6 +27,5 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function after($dependency)
     {
-        // TODO: Implement after() method.
     }
 }

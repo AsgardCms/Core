@@ -21,7 +21,6 @@ class AsgardAssetManager implements AssetManager
      */
     public function addAsset($dependency, $path)
     {
-        // TODO: Implement addAsset() method.
     }
 
     /**
