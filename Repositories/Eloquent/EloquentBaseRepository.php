@@ -91,7 +91,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function findBySlug($slug)
     {
-        return $this->model->whereHas('translations', function ($q) use ($slug) {
+        return $this->model->whereHas('translations', function (Builder $q) use ($slug) {
             $q->where('slug', "$slug");
         })->with('translations')->first();
     }
