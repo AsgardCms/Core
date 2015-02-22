@@ -38,4 +38,14 @@ class AsgardAssetManagerTest extends BaseTestCase
 
         $this->assertEquals(1, $jsResult->count());
     }
+
+    /** @test */
+    public function it_should_add_one_css_asset()
+    {
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+
+        $cssResult = $this->assetManager->allCss();
+
+        $this->assertEquals(1, $cssResult->count());
+    }
 }
