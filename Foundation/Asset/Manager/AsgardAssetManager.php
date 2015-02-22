@@ -27,11 +27,11 @@ class AsgardAssetManager implements AssetManager
      */
     public function addAsset($dependency, $path)
     {
-        $extension = pathinfo($path, PATHINFO_EXTENSION);
-        if ($extension == 'js') {
-            $this->js->put($dependency, $path);
-        } else {
-            $this->css->put($dependency, $path);
+        if ($this->isJs($path)) {
+            return $this->js->put($dependency, $path);
+        }
+        if ($this->isCss($path)) {
+            return $this->css->put($dependency, $path);
         }
     }
 
@@ -51,5 +51,25 @@ class AsgardAssetManager implements AssetManager
     public function allJs()
     {
         return $this->js;
+    }
+
+    /**
+     * Check if the given path is a javascript file
+     * @param string $path
+     * @return bool
+     */
+    private function isJs($path)
+    {
+        return pathinfo($path, PATHINFO_EXTENSION) == 'js';
+    }
+
+    /**
+     * Check if the given path is a css file
+     * @param string $path
+     * @return bool
+     */
+    private function isCss($path)
+    {
+        return pathinfo($path, PATHINFO_EXTENSION) == 'css';
     }
 }
