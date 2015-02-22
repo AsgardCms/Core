@@ -10,6 +10,9 @@ abstract class AsgardAssetPipelineTest extends BaseTestCase
      */
     private $assetPipeline;
 
+    /**
+     *
+     */
     public function setUp()
     {
         parent::__construct();
