@@ -28,4 +28,13 @@ class AsgardAssetManagerTest extends BaseTestCase
         $this->assertInstanceOf('Illuminate\Support\Collection', $jsResult);
         $this->assertEquals(0, $jsResult->count());
     }
+
+    public function it_should_add_one_javascript_asset()
+    {
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+
+        $jsResult = $this->assetManager->allJs();
+
+        $this->assertEquals(1, $jsResult->count());
+    }
 }
