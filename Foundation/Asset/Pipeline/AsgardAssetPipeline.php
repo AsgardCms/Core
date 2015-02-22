@@ -52,6 +52,7 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function allCss()
     {
+        return $this->css;
     }
 
     /**
@@ -60,5 +61,6 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function allJs()
     {
+        return $this->js;
     }
 }
