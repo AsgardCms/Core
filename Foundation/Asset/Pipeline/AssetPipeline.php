@@ -22,4 +22,16 @@ interface AssetPipeline
      * @return void
      */
     public function after($dependency);
+
+    /**
+     * Return all css files to include
+     * @return \Illuminate\Support\Collection
+     */
+    public function allCss();
+
+    /**
+     * Return all js files to include
+     * @return \Illuminate\Support\Collection
+     */
+    public function allJs();
 }

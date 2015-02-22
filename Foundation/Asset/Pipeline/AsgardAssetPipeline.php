@@ -1,7 +1,24 @@
 <?php namespace Modules\Core\Foundation\Asset\Pipeline;
 
+use Illuminate\Support\Collection;
+
 class AsgardAssetPipeline implements AssetPipeline
 {
+    /**
+     * @var array
+     */
+    protected $css;
+    /**
+     * @var array
+     */
+    protected $js;
+
+    public function __construct()
+    {
+        $this->css = new Collection();
+        $this->js = new Collection();
+    }
+
     /**
      * Add a javascript dependency on the view
      * @param string $dependency
@@ -26,6 +43,22 @@ class AsgardAssetPipeline implements AssetPipeline
      * @return void
      */
     public function after($dependency)
+    {
+    }
+
+    /**
+     * Return all css files to include
+     * @return \Illuminate\Support\Collection
+     */
+    public function allCss()
+    {
+    }
+
+    /**
+     * Return all js files to include
+     * @return \Illuminate\Support\Collection
+     */
+    public function allJs()
     {
     }
 }
