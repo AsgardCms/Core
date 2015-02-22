@@ -23,7 +23,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
         parent::__construct();
         $this->refreshApplication();
         $this->assetPipeline = new AsgardAssetPipeline($this->app['Modules\Core\Foundation\Asset\Manager\AssetManager']);
-        $this->assetManager = new AsgardAssetManager();
+        $this->assetManager = $this->app['Modules\Core\Foundation\Asset\Manager\AssetManager'];
     }
 
     /** @test */
