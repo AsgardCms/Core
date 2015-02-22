@@ -30,6 +30,8 @@ class AsgardAssetManager implements AssetManager
         $extension = pathinfo($path, PATHINFO_EXTENSION);
         if ($extension == 'js') {
             $this->js->put($dependency, $path);
+        } else {
+            $this->css->put($dependency, $path);
         }
     }
 
