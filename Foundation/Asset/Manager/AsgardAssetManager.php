@@ -72,4 +72,13 @@ final class AsgardAssetManager implements AssetManager
     {
         return pathinfo($path, PATHINFO_EXTENSION) == 'css';
     }
+
+    /**
+     * @param string $dependency
+     * @return string
+     */
+    public function getJs($dependency)
+    {
+        return $this->js->get($dependency);
+    }
 }
