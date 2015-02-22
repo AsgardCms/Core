@@ -27,10 +27,10 @@ class AsgardAssetManager implements AssetManager
      */
     public function addAsset($dependency, $path)
     {
-//        $extension = pathinfo($path, PATHINFO_EXTENSION);
-//        if ($extension == 'js') {
-//            //$this->js =
-//        }
+        $extension = pathinfo($path, PATHINFO_EXTENSION);
+        if ($extension == 'js') {
+            $this->js->put($dependency, $path);
+        }
     }
 
     /**
