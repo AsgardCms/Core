@@ -28,6 +28,7 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function requireJs($dependency)
     {
+        $this->js->put($dependency, $this->assetManager->getJs($dependency));
     }
 
     /**
