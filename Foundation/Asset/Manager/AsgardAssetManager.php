@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Collection;
 
-class AsgardAssetManager implements AssetManager
+final class AsgardAssetManager implements AssetManager
 {
     /**
      * @var array
