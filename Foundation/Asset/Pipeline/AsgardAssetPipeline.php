@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Foundation\Asset\Pipeline;
 
 use Illuminate\Support\Collection;
+use Modules\Core\Foundation\Asset\Manager\AssetManager;
 
 class AsgardAssetPipeline implements AssetPipeline
 {
@@ -13,10 +14,11 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     protected $js;
 
-    public function __construct()
+    public function __construct(AssetManager $assetManager)
     {
         $this->css = new Collection();
         $this->js = new Collection();
+        $this->assetManager = $assetManager;
     }
 
     /**
