@@ -16,7 +16,6 @@ abstract class AsgardAssetPipelineTest extends BaseTestCase
     public function setUp()
     {
         parent::__construct();
-        $this->refreshApplication();
         $this->assetPipeline = new AsgardAssetPipeline();
     }
 }

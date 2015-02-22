@@ -13,7 +13,6 @@ class AsgardAssetManagerTest extends BaseTestCase
     public function setUp()
     {
         parent::__construct();
-        $this->refreshApplication();
         $this->assetManager = new AsgardAssetManager();
     }
 
