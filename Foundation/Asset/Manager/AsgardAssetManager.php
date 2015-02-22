@@ -13,6 +13,12 @@ class AsgardAssetManager implements AssetManager
      */
     protected $js = [];
 
+    public function __construct()
+    {
+        $this->css = new Collection();
+        $this->js = new Collection();
+    }
+
     /**
      * Add a possible asset
      * @param string $dependency
@@ -21,6 +27,10 @@ class AsgardAssetManager implements AssetManager
      */
     public function addAsset($dependency, $path)
     {
+//        $extension = pathinfo($path, PATHINFO_EXTENSION);
+//        if ($extension == 'js') {
+//            //$this->js =
+//        }
     }
 
     /**
@@ -29,7 +39,7 @@ class AsgardAssetManager implements AssetManager
      */
     public function allCss()
     {
-        return new Collection($this->css);
+        return $this->css;
     }
 
     /**
@@ -38,6 +48,6 @@ class AsgardAssetManager implements AssetManager
      */
     public function allJs()
     {
-        return new Collection($this->js);
+        return $this->js;
     }
 }
