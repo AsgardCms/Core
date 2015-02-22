@@ -4,7 +4,7 @@ use Modules\Core\Foundation\Asset\Manager\AsgardAssetManager;
 use Modules\Core\Foundation\Asset\Pipeline\AsgardAssetPipeline;
 use Modules\Core\Tests\BaseTestCase;
 
-abstract class AsgardAssetPipelineTest extends BaseTestCase
+class AsgardAssetPipelineTest extends BaseTestCase
 {
     /**
      * @var \Modules\Core\Foundation\Asset\Pipeline\AsgardAssetPipeline
@@ -23,5 +23,17 @@ abstract class AsgardAssetPipelineTest extends BaseTestCase
         parent::__construct();
         $this->assetPipeline = new AsgardAssetPipeline();
         $this->assetManager = new AsgardAssetManager();
+    }
+
+    /** @test */
+    public function it_should_require_add_js_asset()
+    {
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+
+        $this->assetPipeline->requireJs('jquery');
+
+        $jsAssets = $this->assetPipeline->allJs();
+
+        $this->assertEquals('/path/to/jquery.js', $jsAssets->first());
     }
 }
