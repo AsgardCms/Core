@@ -27,6 +27,18 @@ class AsgardAssetPipelineTest extends BaseTestCase
     }
 
     /** @test */
+    public function it_should_return_empty_collection_if_no_assets()
+    {
+        $cssResult = $this->assetPipeline->allCss();
+        $jsResult = $this->assetPipeline->allJs();
+
+        $this->assertInstanceOf('Illuminate\Support\Collection', $cssResult);
+        $this->assertEquals(0, $cssResult->count());
+        $this->assertInstanceOf('Illuminate\Support\Collection', $jsResult);
+        $this->assertEquals(0, $jsResult->count());
+    }
+
+    /** @test */
     public function it_should_require_add_js_asset()
     {
         $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
