@@ -29,6 +29,8 @@ class AsgardAssetPipeline implements AssetPipeline
     public function requireJs($dependency)
     {
         $this->js->put($dependency, $this->assetManager->getJs($dependency));
+
+        return $this;
     }
 
     /**
@@ -39,6 +41,8 @@ class AsgardAssetPipeline implements AssetPipeline
     public function requireCss($dependency)
     {
         $this->css->put($dependency, $this->assetManager->getCss($dependency));
+
+        return $this;
     }
 
     /**
