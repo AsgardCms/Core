@@ -61,4 +61,24 @@ class AsgardAssetPipelineTest extends BaseTestCase
 
         $this->assertEquals('/path/to/main.css', $cssAssets->first());
     }
+
+    /** @test */
+    public function it_should_return_js_assets_in_right_order()
+    {
+        $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+        $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+
+        $this->assetPipeline->requireJs('jquery');
+        $this->assetPipeline->requireJs('mega_slider');
+        $this->assetPipeline->requireJs('jquery_plugin')->after('jquery');
+
+        $jsAssets = $this->assetPipeline->allJs();
+
+        $jquery = $jsAssets->pull('jquery');
+        $jqueryPlugin = $jsAssets->first();
+
+        $this->assertEquals($jquery, '/path/to/jquery.js');
+        $this->assertEquals($jqueryPlugin, '/path/to/jquery_plugin.js');
+    }
 }
