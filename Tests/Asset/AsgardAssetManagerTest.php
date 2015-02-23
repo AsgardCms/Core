@@ -62,4 +62,17 @@ class AsgardAssetManagerTest extends BaseTestCase
         $this->assertEquals(2, $cssResults->count());
         $this->assertEquals(2, $jsResults->count());
     }
+
+    /** @test */
+    public function it_should_return_the_dependency_asked_for()
+    {
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+        $this->assetManager->addAsset('footer', '/path/to/footer.css');
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+        $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+
+        $jquery = $this->assetManager->getJs('jquery');
+
+        $this->assertEquals('/path/to/jquery.js', $jquery);
+    }
 }
