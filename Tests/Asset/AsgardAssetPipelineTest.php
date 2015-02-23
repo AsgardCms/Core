@@ -49,4 +49,16 @@ class AsgardAssetPipelineTest extends BaseTestCase
 
         $this->assertEquals('/path/to/jquery.js', $jsAssets->first());
     }
+
+    /** @test */
+    public function it_should_require_a_css_asset()
+    {
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+
+        $this->assetPipeline->requireCss('main');
+
+        $cssAssets = $this->assetPipeline->allCss();
+
+        $this->assertEquals('/path/to/main.css', $cssAssets->first());
+    }
 }

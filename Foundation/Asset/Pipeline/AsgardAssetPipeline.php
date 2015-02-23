@@ -38,6 +38,7 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function requireCss($dependency)
     {
+        $this->css->put($dependency, $this->assetManager->getCss($dependency));
     }
 
     /**
