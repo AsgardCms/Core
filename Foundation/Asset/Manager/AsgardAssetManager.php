@@ -81,4 +81,13 @@ final class AsgardAssetManager implements AssetManager
     {
         return $this->js->get($dependency);
     }
+
+    /**
+     * @param string $dependency
+     * @return string
+     */
+    public function getCss($dependency)
+    {
+        return $this->css->get($dependency);
+    }
 }

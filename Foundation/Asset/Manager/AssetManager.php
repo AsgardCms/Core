@@ -27,4 +27,10 @@ interface AssetManager
      * @return string
      */
     public function getJs($dependency);
+
+    /**
+     * @param string $dependency
+     * @return string
+     */
+    public function getCss($dependency);
 }
