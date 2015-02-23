@@ -72,7 +72,9 @@ class AsgardAssetManagerTest extends BaseTestCase
         $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
 
         $jquery = $this->assetManager->getJs('jquery');
+        $footer = $this->assetManager->getCss('footer');
 
         $this->assertEquals('/path/to/jquery.js', $jquery);
+        $this->assertEquals('/path/to/footer.css', $footer);
     }
 }
