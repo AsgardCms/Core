@@ -81,8 +81,8 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $jquery = $jsAssets->pull('jquery');
         $jqueryPlugin = $jsAssets->first();
 
-        $this->assertEquals($jquery, '/path/to/jquery.js');
-        $this->assertEquals($jqueryPlugin, '/path/to/jquery_plugin.js');
+        $this->assertEquals('/path/to/jquery.js', $jquery);
+        $this->assertEquals('/path/to/jquery_plugin.js', $jqueryPlugin);
     }
 
     /** @test */
@@ -104,7 +104,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $bootstrap = $cssAssets->pull('bootstrap');
         $main = $cssAssets->first();
 
-        $this->assertEquals($bootstrap, '/path/to/bootstrap.css');
-        $this->assertEquals($main, '/path/to/main.css');
+        $this->assertEquals('/path/to/bootstrap.css', $bootstrap);
+        $this->assertEquals('/path/to/main.css', $main);
     }
 }
