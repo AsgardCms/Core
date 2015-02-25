@@ -107,4 +107,50 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assertEquals('/path/to/bootstrap.css', $bootstrap);
         $this->assertEquals('/path/to/main.css', $main);
     }
+
+    /** @test */
+    public function it_should_place_js_asset_before_dependency()
+    {
+        $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+        $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+        $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
+        $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
+
+        $this->assetPipeline->requireJs('jquery');
+        $this->assetPipeline->requireJs('mega_slider');
+        $this->assetPipeline->requireJs('jquery_plugin')->before('mega_slider');
+
+        $jsAssets = $this->assetPipeline->allJs();
+
+        $jquery = $jsAssets->pull('jquery');
+        $jqueryPlugin = $jsAssets->first();
+
+        $this->assertEquals('/path/to/jquery.js', $jquery);
+        $this->assertEquals('/path/to/jquery_plugin.js', $jqueryPlugin);
+    }
+
+    /** @test */
+    public function it_should_place_css_asset_before_dependency()
+    {
+        $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+        $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+        $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
+        $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
+
+        $this->assetPipeline->requireCss('bootstrap');
+        $this->assetPipeline->requireCss('iCheck');
+        $this->assetPipeline->requireCss('main')->before('iCheck');
+
+        $cssAssets = $this->assetPipeline->allCss();
+
+        $bootstrap = $cssAssets->pull('bootstrap');
+        $main = $cssAssets->first();
+
+        $this->assertEquals('/path/to/bootstrap.css', $bootstrap);
+        $this->assertEquals('/path/to/main.css', $main);
+    }
 }
