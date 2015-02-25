@@ -52,18 +52,7 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function after($dependency)
     {
-        list($dependencyArray, $collectionName) = $this->findDependenciesForKey($dependency);
-        list($key, $value) = $this->getLastKeyAndValueOf($dependencyArray);
-
-        $pos = $this->getPositionInArray($dependency, $dependencyArray);
-
-        $dependencyArray = array_merge(
-            array_slice($dependencyArray, 0, $pos + 1, true),
-            [$key => $value],
-            array_slice($dependencyArray, $pos, count($dependencyArray) - 1, true)
-        );
-
-        $this->$collectionName = new Collection($dependencyArray);
+        $this->insert($dependency, 'after');
     }
 
     /**
@@ -73,13 +62,25 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function before($dependency)
     {
+        $this->insert($dependency, 'before');
+    }
+
+    /**
+     * Insert a dependency before or after in the right dependency array
+     * @param string $dependency
+     * @param string $offset
+     */
+    private function insert($dependency, $offset = 'before')
+    {
+        $offset = $offset == 'before' ? 0 : 1;
+
         list($dependencyArray, $collectionName) = $this->findDependenciesForKey($dependency);
         list($key, $value) = $this->getLastKeyAndValueOf($dependencyArray);
 
         $pos = $this->getPositionInArray($dependency, $dependencyArray);
 
         $dependencyArray = array_merge(
-            array_slice($dependencyArray, 0, $pos, true),
+            array_slice($dependencyArray, 0, $pos + $offset, true),
             [$key => $value],
             array_slice($dependencyArray, $pos, count($dependencyArray) - 1, true)
         );
