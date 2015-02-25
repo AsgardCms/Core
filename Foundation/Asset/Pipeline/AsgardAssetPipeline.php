@@ -6,11 +6,11 @@ use Modules\Core\Foundation\Asset\Manager\AssetManager;
 class AsgardAssetPipeline implements AssetPipeline
 {
     /**
-     * @var array
+     * @var Collection
      */
     protected $css;
     /**
-     * @var array
+     * @var Collection
      */
     protected $js;
 
@@ -52,6 +52,21 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function after($dependency)
     {
+        list($dependencyArray, $collectionName) = $this->findDependenciesForKey($dependency);
+
+        $value = end($dependencyArray);
+        $key = key($dependencyArray);
+        reset($dependencyArray);
+
+        $pos = array_search($dependency, array_keys($dependencyArray));
+
+        $dependencyArray = array_merge(
+            array_slice($dependencyArray, 0, $pos + 1, true),
+            [$key => $value],
+            array_slice($dependencyArray, $pos, count($dependencyArray) - 1, true)
+        );
+
+        $this->$collectionName = new Collection($dependencyArray);
     }
 
     /**
@@ -70,5 +85,19 @@ class AsgardAssetPipeline implements AssetPipeline
     public function allJs()
     {
         return $this->js;
+    }
+
+    /**
+     * Find in which collection the given dependency exists
+     * @param string $dependency
+     * @return array
+     */
+    private function findDependenciesForKey($dependency)
+    {
+        if ($this->css->get($dependency)) {
+            return [$this->css->toArray(), 'css'];
+        }
+
+        return [$this->js->toArray(), 'js'];
     }
 }
