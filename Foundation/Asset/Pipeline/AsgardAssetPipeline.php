@@ -53,12 +53,9 @@ class AsgardAssetPipeline implements AssetPipeline
     public function after($dependency)
     {
         list($dependencyArray, $collectionName) = $this->findDependenciesForKey($dependency);
+        list($key, $value) = $this->getLastKeyAndValueOf($dependencyArray);
 
-        $value = end($dependencyArray);
-        $key = key($dependencyArray);
-        reset($dependencyArray);
-
-        $pos = array_search($dependency, array_keys($dependencyArray));
+        $pos = $this->getPositionInArray($dependency, $dependencyArray);
 
         $dependencyArray = array_merge(
             array_slice($dependencyArray, 0, $pos + 1, true),
@@ -99,5 +96,33 @@ class AsgardAssetPipeline implements AssetPipeline
         }
 
         return [$this->js->toArray(), 'js'];
+    }
+
+    /**
+     * Get the last key and value the given array
+     * @param array $dependencyArray
+     * @return array
+     */
+    private function getLastKeyAndValueOf(array $dependencyArray)
+    {
+        $value = end($dependencyArray);
+        $key = key($dependencyArray);
+        reset($dependencyArray);
+
+        return [$key, $value];
+    }
+
+    /**
+     * Return the position in the array of the given key
+     *
+     * @param $dependency
+     * @param array $dependencyArray
+     * @return int
+     */
+    private function getPositionInArray($dependency, array $dependencyArray)
+    {
+        $pos = array_search($dependency, array_keys($dependencyArray));
+
+        return $pos;
     }
 }
