@@ -76,15 +76,17 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetPipeline->requireJs('jquery');
         $this->assetPipeline->requireJs('mega_slider');
         $this->assetPipeline->requireJs('jquery_plugin')->after('jquery');
-        $this->assetPipeline->requireJs('iCheck');
+        $this->assetPipeline->requireJs('jquery.iCheck');
 
         $jsAssets = $this->assetPipeline->allJs();
 
-        $jquery = $jsAssets->pull('jquery');
-        $jqueryPlugin = $jsAssets->first();
-
-        $this->assertEquals('/path/to/jquery.js', $jquery);
-        $this->assertEquals('/path/to/jquery_plugin.js', $jqueryPlugin);
+        $expected = [
+            'jquery' => '/path/to/jquery.js',
+            'jquery_plugin' => '/path/to/jquery_plugin.js',
+            'mega_slider' => '/path/to/mega_slider.js',
+            'jquery.iCheck' => '/path/to/jquery_iCheck.js',
+        ];
+        $this->assertEquals($expected, $jsAssets->toArray());
     }
 
     /** @test */
@@ -105,11 +107,13 @@ class AsgardAssetPipelineTest extends BaseTestCase
 
         $cssAssets = $this->assetPipeline->allCss();
 
-        $bootstrap = $cssAssets->pull('bootstrap');
-        $main = $cssAssets->first();
-
-        $this->assertEquals('/path/to/bootstrap.css', $bootstrap);
-        $this->assertEquals('/path/to/main.css', $main);
+        $expected = [
+            'bootstrap' => '/path/to/bootstrap.css',
+            'main' => '/path/to/main.css',
+            'iCheck' => '/path/to/iCheck.css',
+            'datatables-css' => '/path/to/datatables.css',
+        ];
+        $this->assertEquals($expected, $cssAssets->toArray());
     }
 
     /** @test */
@@ -126,15 +130,17 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetPipeline->requireJs('jquery');
         $this->assetPipeline->requireJs('mega_slider');
         $this->assetPipeline->requireJs('jquery_plugin')->before('mega_slider');
-        $this->assetPipeline->requireJs('iCheck');
+        $this->assetPipeline->requireJs('jquery.iCheck');
 
         $jsAssets = $this->assetPipeline->allJs();
 
-        $jquery = $jsAssets->pull('jquery');
-        $jqueryPlugin = $jsAssets->first();
-
-        $this->assertEquals('/path/to/jquery.js', $jquery);
-        $this->assertEquals('/path/to/jquery_plugin.js', $jqueryPlugin);
+        $expected = [
+            'jquery' => '/path/to/jquery.js',
+            'mega_slider' => '/path/to/mega_slider.js',
+            'jquery_plugin' => '/path/to/jquery_plugin.js',
+            'jquery.iCheck' => '/path/to/jquery_iCheck.js',
+        ];
+        $this->assertEquals($expected, $jsAssets->toArray());
     }
 
     /** @test */
@@ -155,10 +161,12 @@ class AsgardAssetPipelineTest extends BaseTestCase
 
         $cssAssets = $this->assetPipeline->allCss();
 
-        $bootstrap = $cssAssets->pull('bootstrap');
-        $main = $cssAssets->first();
-
-        $this->assertEquals('/path/to/bootstrap.css', $bootstrap);
-        $this->assertEquals('/path/to/main.css', $main);
+        $expected = [
+            'bootstrap' => '/path/to/bootstrap.css',
+            'main' => '/path/to/main.css',
+            'iCheck' => '/path/to/iCheck.css',
+            'datatables-css' => '/path/to/datatables.css',
+        ];
+        $this->assertEquals($expected, $cssAssets->toArray());
     }
 }
