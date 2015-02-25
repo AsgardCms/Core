@@ -7,6 +7,18 @@ use ReflectionClass;
 trait Translatable
 {
     /**
+     * @param array $input
+     */
+    public function fillTranslations(array $input)
+    {
+        foreach ($input as $locale => $attributes) {
+            foreach ($attributes as $key => $value) {
+                $this->createOrUpdateTranslation($key, $locale, $value);
+            }
+        }
+    }
+    
+    /**
      * Create or update the given field name
      * @param string $fieldName
      * @param string $locale
