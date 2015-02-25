@@ -1,6 +1,5 @@
 <?php namespace Modules\Core\Tests\Asset;
 
-use Modules\Core\Foundation\Asset\Manager\AsgardAssetManager;
 use Modules\Core\Foundation\Asset\Pipeline\AsgardAssetPipeline;
 use Modules\Core\Tests\BaseTestCase;
 
