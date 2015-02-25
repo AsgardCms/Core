@@ -68,6 +68,9 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
         $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
         $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+        $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
+        $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
 
         $this->assetPipeline->requireJs('jquery');
         $this->assetPipeline->requireJs('mega_slider');
