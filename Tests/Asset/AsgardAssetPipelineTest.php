@@ -63,6 +63,16 @@ class AsgardAssetPipelineTest extends BaseTestCase
     }
 
     /** @test */
+    public function it_should_throw_an_exception_if_js_asset_not_found()
+    {
+        $this->setExpectedException('Modules\Core\Foundation\Asset\AssetNotFoundException');
+
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+
+        $this->assetPipeline->requireJs('app');
+    }
+
+    /** @test */
     public function it_should_place_js_asset_after_dependency()
     {
         $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
