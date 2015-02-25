@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Foundation\Asset\Pipeline;
 
 use Illuminate\Support\Collection;
+use Modules\Core\Foundation\Asset\AssetNotFoundException;
 use Modules\Core\Foundation\Asset\Manager\AssetManager;
 
 class AsgardAssetPipeline implements AssetPipeline
@@ -25,10 +26,15 @@ class AsgardAssetPipeline implements AssetPipeline
      * Add a javascript dependency on the view
      * @param string $dependency
      * @return $this
+     * @throws AssetNotFoundException
      */
     public function requireJs($dependency)
     {
-        $this->js->put($dependency, $this->assetManager->getJs($dependency));
+        $assetPath = $this->assetManager->getJs($dependency);
+
+        if (is_null($assetPath)) throw new AssetNotFoundException;
+
+        $this->js->put($dependency, $assetPath);
 
         return $this;
     }
