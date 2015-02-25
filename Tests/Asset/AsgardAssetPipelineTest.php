@@ -84,4 +84,27 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assertEquals($jquery, '/path/to/jquery.js');
         $this->assertEquals($jqueryPlugin, '/path/to/jquery_plugin.js');
     }
+
+    /** @test */
+    public function it_should_return_css_assets_in_right_order()
+    {
+        $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+        $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+        $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
+        $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
+
+        $this->assetPipeline->requireCss('bootstrap');
+        $this->assetPipeline->requireCss('iCheck');
+        $this->assetPipeline->requireCss('main')->after('bootstrap');
+
+        $cssAssets = $this->assetPipeline->allCss();
+
+        $bootstrap = $cssAssets->pull('bootstrap');
+        $main = $cssAssets->first();
+
+        $this->assertEquals($bootstrap, '/path/to/bootstrap.css');
+        $this->assertEquals($main, '/path/to/main.css');
+    }
 }
