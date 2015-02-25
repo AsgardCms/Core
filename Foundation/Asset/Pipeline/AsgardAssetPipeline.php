@@ -73,6 +73,18 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function before($dependency)
     {
+        list($dependencyArray, $collectionName) = $this->findDependenciesForKey($dependency);
+        list($key, $value) = $this->getLastKeyAndValueOf($dependencyArray);
+
+        $pos = $this->getPositionInArray($dependency, $dependencyArray);
+
+        $dependencyArray = array_merge(
+            array_slice($dependencyArray, 0, $pos, true),
+            [$key => $value],
+            array_slice($dependencyArray, $pos, count($dependencyArray) - 1, true)
+        );
+
+        $this->$collectionName = new Collection($dependencyArray);
     }
 
     /**
