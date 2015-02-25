@@ -68,6 +68,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
         $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
         $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+        $this->assetManager->addAsset('jquery.iCheck', '/path/to/jquery_iCheck.js');
         $this->assetManager->addAsset('main', '/path/to/main.css');
         $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
         $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
@@ -75,6 +76,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetPipeline->requireJs('jquery');
         $this->assetPipeline->requireJs('mega_slider');
         $this->assetPipeline->requireJs('jquery_plugin')->after('jquery');
+        $this->assetPipeline->requireJs('iCheck');
 
         $jsAssets = $this->assetPipeline->allJs();
 
@@ -94,10 +96,12 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetManager->addAsset('main', '/path/to/main.css');
         $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
         $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
+        $this->assetManager->addAsset('datatables-css', '/path/to/datatables.css');
 
         $this->assetPipeline->requireCss('bootstrap');
         $this->assetPipeline->requireCss('iCheck');
         $this->assetPipeline->requireCss('main')->after('bootstrap');
+        $this->assetPipeline->requireCss('datatables-css');
 
         $cssAssets = $this->assetPipeline->allCss();
 
@@ -114,6 +118,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
         $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
         $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+        $this->assetManager->addAsset('jquery.iCheck', '/path/to/jquery_iCheck.js');
         $this->assetManager->addAsset('main', '/path/to/main.css');
         $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
         $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
@@ -121,6 +126,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetPipeline->requireJs('jquery');
         $this->assetPipeline->requireJs('mega_slider');
         $this->assetPipeline->requireJs('jquery_plugin')->before('mega_slider');
+        $this->assetPipeline->requireJs('iCheck');
 
         $jsAssets = $this->assetPipeline->allJs();
 
@@ -140,10 +146,12 @@ class AsgardAssetPipelineTest extends BaseTestCase
         $this->assetManager->addAsset('main', '/path/to/main.css');
         $this->assetManager->addAsset('iCheck', '/path/to/iCheck.css');
         $this->assetManager->addAsset('bootstrap', '/path/to/bootstrap.css');
+        $this->assetManager->addAsset('datatables-css', '/path/to/datatables.css');
 
         $this->assetPipeline->requireCss('bootstrap');
         $this->assetPipeline->requireCss('iCheck');
         $this->assetPipeline->requireCss('main')->before('iCheck');
+        $this->assetPipeline->requireCss('datatables-css');
 
         $cssAssets = $this->assetPipeline->allCss();
 
