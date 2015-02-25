@@ -63,7 +63,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_return_js_assets_in_right_order()
+    public function it_should_place_js_asset_after_dependency()
     {
         $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
         $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
@@ -86,7 +86,7 @@ class AsgardAssetPipelineTest extends BaseTestCase
     }
 
     /** @test */
-    public function it_should_return_css_assets_in_right_order()
+    public function it_should_place_css_asset_after_dependency()
     {
         $this->assetManager->addAsset('mega_slider', '/path/to/mega_slider.js');
         $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
