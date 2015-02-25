@@ -24,6 +24,13 @@ interface AssetPipeline
     public function after($dependency);
 
     /**
+     * Add the dependency before another one
+     * @param string $dependency
+     * @return void
+     */
+    public function before($dependency);
+
+    /**
      * Return all css files to include
      * @return \Illuminate\Support\Collection
      */
