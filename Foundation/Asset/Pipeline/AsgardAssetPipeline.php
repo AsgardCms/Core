@@ -32,7 +32,7 @@ class AsgardAssetPipeline implements AssetPipeline
     {
         $assetPath = $this->assetManager->getJs($dependency);
 
-        if (is_null($assetPath)) throw new AssetNotFoundException;
+        $this->guardForAssetNotFound($assetPath);
 
         $this->js->put($dependency, $assetPath);
 
@@ -49,7 +49,7 @@ class AsgardAssetPipeline implements AssetPipeline
     {
         $assetPath = $this->assetManager->getCss($dependency);
 
-        if (is_null($assetPath)) throw new AssetNotFoundException;
+        $this->guardForAssetNotFound($assetPath);
 
         $this->css->put($dependency, $assetPath);
 
@@ -157,5 +157,15 @@ class AsgardAssetPipeline implements AssetPipeline
         $pos = array_search($dependency, array_keys($dependencyArray));
 
         return $pos;
+    }
+
+    /**
+     * If asset was not found, throw an exception
+     * @param string $assetPath
+     * @throws AssetNotFoundException
+     */
+    private function guardForAssetNotFound($assetPath)
+    {
+        if (is_null($assetPath)) throw new AssetNotFoundException;
     }
 }
