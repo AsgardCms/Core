@@ -43,10 +43,15 @@ class AsgardAssetPipeline implements AssetPipeline
      * Add a CSS dependency on the view
      * @param string $dependency
      * @return $this
+     * @throws AssetNotFoundException
      */
     public function requireCss($dependency)
     {
-        $this->css->put($dependency, $this->assetManager->getCss($dependency));
+        $assetPath = $this->assetManager->getCss($dependency);
+
+        if (is_null($assetPath)) throw new AssetNotFoundException;
+
+        $this->css->put($dependency, $assetPath);
 
         return $this;
     }
