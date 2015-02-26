@@ -16,6 +16,7 @@ abstract class BaseTestCase extends TestCase
     {
         return [
             'Modules\Core\Providers\CoreServiceProvider',
+            'Modules\Core\Providers\AssetServiceProvider',
             'Pingpong\Modules\ModulesServiceProvider',
         ];
     }
