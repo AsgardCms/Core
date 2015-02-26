@@ -188,4 +188,39 @@ class AsgardAssetPipelineTest extends BaseTestCase
         ];
         $this->assertEquals($expected, $cssAssets->toArray());
     }
+
+    /** @test */
+    public function it_should_require_an_array_of_assets()
+    {
+        $this->assetManager->addAssets([
+            'jquery' => '/path/to/jquery.js',
+            'plugin' => '/path/to/plugin.js',
+            'main' => '/path/to/main.css',
+            'icheck' => '/path/to/icheck.css',
+        ]);
+
+        $this->assetPipeline->requireCss([
+            'main',
+            'icheck',
+        ]);
+        $this->assetPipeline->requireJs([
+            'jquery',
+            'plugin',
+        ]);
+
+        $cssAssets = $this->assetPipeline->allCss();
+        $jsAssets = $this->assetPipeline->allJs();
+
+        $expectedCss = [
+            'main' => '/path/to/main.css',
+            'icheck' => '/path/to/icheck.css',
+        ];
+        $expectedJs = [
+            'jquery' => '/path/to/jquery.js',
+            'plugin' => '/path/to/plugin.js',
+        ];
+
+        $this->assertEquals($expectedCss, $cssAssets->toArray());
+        $this->assertEquals($expectedJs, $jsAssets->toArray());
+    }
 }
