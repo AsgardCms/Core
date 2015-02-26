@@ -77,6 +77,7 @@ return [
            'jquery.dataTables.js',
            'dataTables.bootstrap.js',
            'jquery.slug.js',
+           'keypressAction.js',
            'app.js',
        ],
    ],
