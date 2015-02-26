@@ -37,7 +37,7 @@ class AdminBaseController extends Controller
      */
     private function requireDefaultAssets()
     {
-        $this->assetPipeline->requireCss(config('asgard.core.core.admin-assets.css'));
-        $this->assetPipeline->requireJs(config('asgard.core.core.admin-assets.js'));
+        $this->assetPipeline->requireCss(config('asgard.core.core.admin-required-assets.css'));
+        $this->assetPipeline->requireJs(config('asgard.core.core.admin-required-assets.js'));
     }
 }
