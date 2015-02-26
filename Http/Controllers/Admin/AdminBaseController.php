@@ -14,18 +14,14 @@ class AdminBaseController extends Controller
      * @var AssetPipeline
      */
     private $assetPipeline;
-    /**
-     * @var \FloatingPoint\Stylist\Html\ThemeHtmlBuilder
-     */
-    private $theme;
 
     public function __construct()
     {
         $this->assetManager = app('Modules\Core\Foundation\Asset\Manager\AssetManager');
         $this->assetPipeline = app('Modules\Core\Foundation\Asset\Pipeline\AssetPipeline');
-        $this->theme = app('FloatingPoint\Stylist\Html\ThemeHtmlBuilder');
 
         $this->addAssets();
+        $this->requireDefaultAssets();
     }
 
     /**
@@ -34,5 +30,14 @@ class AdminBaseController extends Controller
     private function addAssets()
     {
         $this->assetManager->addAssets(config('asgard.core.core.admin-assets'));
+    }
+
+    /**
+     * Require the default assets from config file on the asset pipeline
+     */
+    private function requireDefaultAssets()
+    {
+        $this->assetPipeline->requireCss(config('asgard.core.core.admin-assets.css'));
+        $this->assetPipeline->requireJs(config('asgard.core.core.admin-assets.js'));
     }
 }
