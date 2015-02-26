@@ -24,7 +24,7 @@ return [
 
    /*
    |--------------------------------------------------------------------------
-   | Define which assets will be available through the asset pipeline
+   | Define which assets will be available through the asset manager
    |--------------------------------------------------------------------------
    | These assets are registered on the asset manager
    */
@@ -48,7 +48,32 @@ return [
         'dataTables.bootstrap.js' => Theme::url('js/vendor/datatables/dataTables.bootstrap.js'),
         'jquery.slug.js' => Theme::url('js/vendor/jquery.slug.js'),
         'app.js' => Theme::url('js/app.js'),
-        'skeypressAction.js' => Module::asset('core:js/keypressAction.js'),
+        'keypressAction.js' => Module::asset('core:js/keypressAction.js'),
         'ckeditor.js' => Theme::script('js/vendor/ckeditor/ckeditor.js'),
-    ]
+    ],
+
+   /*
+   |--------------------------------------------------------------------------
+   | Define which default assets will always be included in your pages
+   | through the asset pipeline
+   |--------------------------------------------------------------------------
+   */
+   'admin-required-assets' => [
+       'bootstrap.css',
+       'font-awesome.css',
+       'ionicons.css',
+       'alertify.core.css',
+       'alertify.default.css',
+       'dataTables.bootstrap.css',
+       'AdminLTE.css',
+       'jquery.js',
+       'bootstrap.js',
+       'mousetrap.js',
+       'alertify.js',
+       'icheck.js',
+       'jquery.dataTables.js',
+       'dataTables.bootstrap.js',
+       'jquery.slug.js',
+       'app.js',
+   ],
 ];
