@@ -30,6 +30,12 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function requireJs($dependency)
     {
+        if (is_array($dependency)) {
+            foreach ($dependency as $dependency) {
+                $this->requireJs($dependency);
+            }
+        }
+
         $assetPath = $this->assetManager->getJs($dependency);
 
         $this->guardForAssetNotFound($assetPath);
@@ -47,6 +53,12 @@ class AsgardAssetPipeline implements AssetPipeline
      */
     public function requireCss($dependency)
     {
+        if (is_array($dependency)) {
+            foreach ($dependency as $dependency) {
+                $this->requireCss($dependency);
+            }
+        }
+
         $assetPath = $this->assetManager->getCss($dependency);
 
         $this->guardForAssetNotFound($assetPath);
