@@ -239,12 +239,12 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function bindAssetClasses()
     {
-        $this->app->bind('Modules\Core\Foundation\Asset\Manager\AssetManager', function () {
+        $this->app->singleton('Modules\Core\Foundation\Asset\Manager\AssetManager', function () {
             return new AsgardAssetManager();
         });
 
-        $this->app->bind('Modules\Core\Foundation\Asset\Pipeline\AssetPipeline', function () {
-            return new AsgardAssetPipeline();
+        $this->app->bind('Modules\Core\Foundation\Asset\Pipeline\AssetPipeline', function ($app) {
+            return new AsgardAssetPipeline($app['Modules\Core\Foundation\Asset\Manager\AssetManager']);
         });
     }
 }

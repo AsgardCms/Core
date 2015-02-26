@@ -21,4 +21,16 @@ interface AssetManager
      * @return \Illuminate\Support\Collection
      */
     public function allJs();
+
+    /**
+     * @param string $dependency
+     * @return string
+     */
+    public function getJs($dependency);
+
+    /**
+     * @param string $dependency
+     * @return string
+     */
+    public function getCss($dependency);
 }
