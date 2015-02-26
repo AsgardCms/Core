@@ -9,11 +9,11 @@ class AdminBaseController extends Controller
     /**
      * @var AssetManager
      */
-    private $assetManager;
+    protected $assetManager;
     /**
      * @var AssetPipeline
      */
-    private $assetPipeline;
+    protected $assetPipeline;
 
     public function __construct()
     {
