@@ -49,7 +49,7 @@ return [
         'jquery.slug.js' => Theme::url('js/vendor/jquery.slug.js'),
         'app.js' => Theme::url('js/app.js'),
         'keypressAction.js' => Module::asset('core:js/keypressAction.js'),
-        'ckeditor.js' => Theme::script('js/vendor/ckeditor/ckeditor.js'),
+        'ckeditor.js' => Theme::url('js/vendor/ckeditor/ckeditor.js'),
     ],
 
    /*
