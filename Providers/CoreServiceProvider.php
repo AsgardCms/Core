@@ -61,7 +61,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerMiddleware($this->app['router']);
         $this->registerCommands();
         $this->registerServices();
-        $this->bindAssetClasses();
     }
 
     /**
@@ -232,19 +231,5 @@ class CoreServiceProvider extends ServiceProvider
         $filename = $this->prefix . '.' . $package . '.' . $name;
 
         return $filename;
-    }
-
-    /**
-     * Bind classes related to assets
-     */
-    private function bindAssetClasses()
-    {
-        $this->app->bind('Modules\Core\Foundation\Asset\Manager\AssetManager', function () {
-            return new AsgardAssetManager();
-        });
-
-        $this->app->bind('Modules\Core\Foundation\Asset\Pipeline\AssetPipeline', function () {
-            return new AsgardAssetPipeline();
-        });
     }
 }

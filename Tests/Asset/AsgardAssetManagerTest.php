@@ -13,7 +13,6 @@ class AsgardAssetManagerTest extends BaseTestCase
     public function setUp()
     {
         parent::__construct();
-        $this->refreshApplication();
         $this->assetManager = new AsgardAssetManager();
     }
 
@@ -27,5 +26,55 @@ class AsgardAssetManagerTest extends BaseTestCase
         $this->assertEquals(0, $cssResult->count());
         $this->assertInstanceOf('Illuminate\Support\Collection', $jsResult);
         $this->assertEquals(0, $jsResult->count());
+    }
+
+    /** @test */
+    public function it_should_add_one_javascript_asset()
+    {
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+
+        $jsResult = $this->assetManager->allJs();
+
+        $this->assertEquals(1, $jsResult->count());
+    }
+
+    /** @test */
+    public function it_should_add_one_css_asset()
+    {
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+
+        $cssResult = $this->assetManager->allCss();
+
+        $this->assertEquals(1, $cssResult->count());
+    }
+
+    /** @test */
+    public function it_should_add_multiple_assets()
+    {
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+        $this->assetManager->addAsset('footer', '/path/to/footer.css');
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+        $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+
+        $cssResults = $this->assetManager->allCss();
+        $jsResults = $this->assetManager->allJs();
+
+        $this->assertEquals(2, $cssResults->count());
+        $this->assertEquals(2, $jsResults->count());
+    }
+
+    /** @test */
+    public function it_should_return_the_dependency_asked_for()
+    {
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+        $this->assetManager->addAsset('footer', '/path/to/footer.css');
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+        $this->assetManager->addAsset('jquery_plugin', '/path/to/jquery_plugin.js');
+
+        $jquery = $this->assetManager->getJs('jquery');
+        $footer = $this->assetManager->getCss('footer');
+
+        $this->assertEquals('/path/to/jquery.js', $jquery);
+        $this->assertEquals('/path/to/footer.css', $footer);
     }
 }
