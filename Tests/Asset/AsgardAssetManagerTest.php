@@ -77,4 +77,24 @@ class AsgardAssetManagerTest extends BaseTestCase
         $this->assertEquals('/path/to/jquery.js', $jquery);
         $this->assertEquals('/path/to/footer.css', $footer);
     }
+
+    /** @test */
+    public function it_should_throw_an_exception_if_js_asset_not_found()
+    {
+        $this->setExpectedException('Modules\Core\Foundation\Asset\AssetNotFoundException');
+
+        $this->assetManager->addAsset('jquery', '/path/to/jquery.js');
+
+        $this->assetManager->getJs('app');
+    }
+
+    /** @test */
+    public function it_should_throw_an_exception_if_css_asset_not_found()
+    {
+        $this->setExpectedException('Modules\Core\Foundation\Asset\AssetNotFoundException');
+
+        $this->assetManager->addAsset('main', '/path/to/main.css');
+
+        $this->assetManager->getCss('iCheck');
+    }
 }

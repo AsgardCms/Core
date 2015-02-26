@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Foundation\Asset\Manager;
 
 use Illuminate\Support\Collection;
+use Modules\Core\Foundation\Asset\AssetNotFoundException;
 
 final class AsgardAssetManager implements AssetManager
 {
@@ -79,7 +80,11 @@ final class AsgardAssetManager implements AssetManager
      */
     public function getJs($dependency)
     {
-        return $this->js->get($dependency);
+        $assetPath = $this->js->get($dependency);
+
+        $this->guardForAssetNotFound($assetPath);
+
+        return $assetPath;
     }
 
     /**
@@ -88,6 +93,20 @@ final class AsgardAssetManager implements AssetManager
      */
     public function getCss($dependency)
     {
-        return $this->css->get($dependency);
+        $assetPath = $this->css->get($dependency);
+
+        $this->guardForAssetNotFound($assetPath);
+
+        return $assetPath;
+    }
+
+    /**
+     * If asset was not found, throw an exception
+     * @param string $assetPath
+     * @throws AssetNotFoundException
+     */
+    private function guardForAssetNotFound($assetPath)
+    {
+        if (is_null($assetPath)) throw new AssetNotFoundException;
     }
 }
