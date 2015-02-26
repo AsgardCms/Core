@@ -97,4 +97,30 @@ class AsgardAssetManagerTest extends BaseTestCase
 
         $this->assetManager->getCss('iCheck');
     }
+
+    /** @test */
+    public function it_should_add_an_array_of_assets()
+    {
+        $this->assetManager->addAssets([
+            'jquery' => '/path/to/jquery.js',
+            'plugin' => '/path/to/plugin.js',
+            'main' => '/path/to/main.css',
+            'icheck' => '/path/to/icheck.css',
+        ]);
+
+        $jsAssets = $this->assetManager->allJs();
+        $cssAssets = $this->assetManager->allCss();
+
+        $expectedJs = [
+            'jquery' => '/path/to/jquery.js',
+            'plugin' => '/path/to/plugin.js',
+        ];
+        $expectedCss = [
+            'main' => '/path/to/main.css',
+            'icheck' => '/path/to/icheck.css',
+        ];
+
+        $this->assertEquals($expectedJs, $jsAssets->toArray());
+        $this->assertEquals($expectedCss, $cssAssets->toArray());
+    }
 }

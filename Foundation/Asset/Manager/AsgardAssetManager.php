@@ -21,6 +21,18 @@ final class AsgardAssetManager implements AssetManager
     }
 
     /**
+     * Add an array of possible assets
+     * @param array $assets
+     * @return void
+     */
+    public function addAssets(array $assets)
+    {
+        foreach ($assets as $dependency => $path) {
+            $this->addAsset($dependency, $path);
+        }
+    }
+
+    /**
      * Add a possible asset
      * @param string $dependency
      * @param string $path

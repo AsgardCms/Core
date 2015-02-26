@@ -11,6 +11,13 @@ interface AssetManager
     public function addAsset($dependency, $path);
 
     /**
+     * Add an array of possible assets
+     * @param array $assets
+     * @return void
+     */
+    public function addAssets(array $assets);
+
+    /**
      * Return all css files to include
      * @return \Illuminate\Support\Collection
      */
@@ -33,4 +40,5 @@ interface AssetManager
      * @return string
      */
     public function getCss($dependency);
+
 }
