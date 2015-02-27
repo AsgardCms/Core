@@ -12,6 +12,7 @@ class ConfigureUserProvider implements SetupScript
     protected $drivers = [
         'Sentinel (Paid)',
         'Sentry (Free)',
+        'Usher (Doctrine)'
     ];
 
     /**
