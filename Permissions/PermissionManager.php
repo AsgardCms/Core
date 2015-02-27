@@ -2,6 +2,7 @@
 
 class PermissionManager
 {
+
     /**
      * @var Module
      */
@@ -43,9 +44,26 @@ class PermissionManager
         }
         $cleanedPermissions = [];
         foreach ($permissions as $permissionName => $checkedPermission) {
-            $cleanedPermissions[$permissionName] = (bool) $checkedPermission;
+            $cleanedPermissions[$permissionName] = $this->getState($checkedPermission);
         }
 
         return $cleanedPermissions;
+    }
+
+    /**
+     * @param $checkedPermission
+     * @return bool
+     */
+    protected function getState($checkedPermission)
+    {
+        if ($checkedPermission == 'true') {
+            return true;
+        }
+
+        if ($checkedPermission == 'false') {
+            return false;
+        }
+
+        return (bool) $checkedPermission;
     }
 }
