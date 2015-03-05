@@ -17,7 +17,7 @@ trait Translatable
             }
         }
     }
-    
+
     /**
      * Create or update the given field name
      * @param string $fieldName

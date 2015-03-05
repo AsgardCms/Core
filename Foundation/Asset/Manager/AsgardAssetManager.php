@@ -119,6 +119,8 @@ final class AsgardAssetManager implements AssetManager
      */
     private function guardForAssetNotFound($assetPath)
     {
-        if (is_null($assetPath)) throw new AssetNotFoundException;
+        if (is_null($assetPath)) {
+            throw new AssetNotFoundException;
+        }
     }
 }

@@ -40,5 +40,4 @@ interface AssetManager
      * @return string
      */
     public function getCss($dependency);
-
 }

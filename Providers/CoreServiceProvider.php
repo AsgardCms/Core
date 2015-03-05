@@ -6,8 +6,6 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
-use Modules\Core\Foundation\Asset\Manager\AsgardAssetManager;
-use Modules\Core\Foundation\Asset\Pipeline\AsgardAssetPipeline;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
