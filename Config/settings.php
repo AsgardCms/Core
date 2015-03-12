@@ -17,7 +17,7 @@ return [
     ],
     'google-analytics' => [
         'description' => 'core::settings.google-analytics',
-        'view' => 'text',
+        'view' => 'textarea',
         'translatable' => false,
     ],
 ];
