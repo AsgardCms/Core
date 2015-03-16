@@ -13,6 +13,7 @@ return [
     'tab' => [
         'english' => 'English',
         'french' => 'French',
+        'dutch' =>  'Dutch',
     ],
     'button' => [
         'cancel' => 'Cancel',

@@ -22,6 +22,7 @@ return [
     'tab' => [
         'english' => 'Anglais',
         'french' => 'Français',
+        'dutch' =>  'Nederlands',
     ],
     'title' => [
         'translatable fields' => 'Champs traduisible',
