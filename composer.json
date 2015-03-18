@@ -30,7 +30,7 @@
     "dimsav/laravel-translatable": "~5.0",
     "mcamara/laravel-localization": "~1.0",
     "floatingpoint/stylist": "dev-master",
-    "maatwebsite/laravel-sidebar": "dev-master"
+    "maatwebsite/laravel-sidebar": "~1.0"
   },
   "require-dev": {
     "phpunit/phpunit": "~4.0",
