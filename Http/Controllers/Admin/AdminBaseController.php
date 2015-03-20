@@ -2,7 +2,9 @@
 
 use Illuminate\Routing\Controller;
 use Modules\Core\Foundation\Asset\Manager\AssetManager;
+use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
+use Pingpong\Modules\Facades\Module;
 
 class AdminBaseController extends Controller
 {
@@ -29,7 +31,13 @@ class AdminBaseController extends Controller
      */
     private function addAssets()
     {
-        $this->assetManager->addAssets(config('asgard.core.core.admin-assets'));
+        foreach (config('asgard.core.core.admin-assets') as $assetName => $path) {
+            if (key($path) == 'theme') {
+                $this->assetManager->addAsset($assetName, Theme::url($path['theme']));
+            } else {
+                $this->assetManager->addAsset($assetName, Module::asset($path['module']));
+            }
+        }
     }
 
     /**
