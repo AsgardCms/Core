@@ -15,3 +15,6 @@ before_script:
   - composer install
 
 script: phpunit
+
+notifications:
+  slack: asgardcms:KxCIbNZLKtq8gqQ18aw7RO23
