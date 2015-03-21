@@ -31,4 +31,5 @@ return [
     'general' => [
         'available keyboard shortcuts' => 'Available keyboard shortcuts on this page'
     ],
+    'back' => 'Back',
 ];

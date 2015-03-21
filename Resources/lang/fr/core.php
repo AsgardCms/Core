@@ -30,5 +30,6 @@ return [
     ],
     'general' => [
         'available keyboard shortcuts' => 'Raccourcis claviers disponible sur cette page'
-    ]
+    ],
+    'retour' => 'Retour',
 ];
