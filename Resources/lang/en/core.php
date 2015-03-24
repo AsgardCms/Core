@@ -32,4 +32,5 @@ return [
         'available keyboard shortcuts' => 'Available keyboard shortcuts on this page'
     ],
     'back' => 'Back',
+    'back to index' => 'Back to index',
 ];
