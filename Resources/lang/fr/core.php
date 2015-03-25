@@ -33,5 +33,5 @@ return [
     ],
     'retour' => 'Retour',
     'back to index' => 'Retour à l\'index',
-    'permission denied' => 'Accès refusé. (permission nécessaire: :permission)',
+    'permission denied' => 'Accès refusé. (permission nécessaire: ":permission")',
 ];
