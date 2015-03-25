@@ -45,7 +45,7 @@ class PermissionMiddleware
         if (!$this->auth->hasAccess($permission)) {
             Flash::error('Permission denied.');
 
-            return Redirect::to('/' . config('asgard.core.core.admin-prefix'));
+            return Redirect::back();
         }
 
         return $next($request);
