@@ -24,6 +24,7 @@
         "LaravelLocalization": "Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization"
     },
     "files": [
-        "start.php"
+        "start.php",
+        "helpers.php"
     ]
 }
