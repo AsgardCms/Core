@@ -33,4 +33,5 @@ return [
     ],
     'back' => 'Back',
     'back to index' => 'Back to index',
+    'permission denied' => 'Permission denied. (required permission: :permission)',
 ];

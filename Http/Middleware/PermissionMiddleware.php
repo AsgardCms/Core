@@ -43,7 +43,7 @@ class PermissionMiddleware
         $permission = $this->getPermission($moduleName, $entityName, $actionMethod);
 
         if (!$this->auth->hasAccess($permission)) {
-            Flash::error('Permission denied.');
+            Flash::error(trans('core::core.permission denied', ['permission' => $permission]));
 
             return Redirect::back();
         }
