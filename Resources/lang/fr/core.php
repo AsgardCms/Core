@@ -34,6 +34,6 @@ return [
         'available keyboard shortcuts' => 'Raccourcis claviers disponible sur cette page'
     ],
     'retour' => 'Retour',
-    'back to index' => 'Retour à l\'index',
+    'back to index' => 'Retour à l\'index des :name',
     'permission denied' => 'Accès refusé. (permission nécessaire: ":permission")',
 ];
