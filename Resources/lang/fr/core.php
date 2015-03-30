@@ -33,6 +33,12 @@ return [
     'general' => [
         'available keyboard shortcuts' => 'Raccourcis claviers disponible sur cette page'
     ],
+    'messages' => [
+        'resource created' => ':name créer.',
+        'resource not found' => ':name non trouvé.',
+        'resource updated' => ':name mit à jour.',
+        'resource deleted' => ':name suprimer',
+    ],
     'retour' => 'Retour',
     'back to index' => 'Retour à l\'index des :name',
     'permission denied' => 'Accès refusé. (permission nécessaire: ":permission")',

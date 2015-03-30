@@ -33,6 +33,12 @@ return [
     'general' => [
         'available keyboard shortcuts' => 'Available keyboard shortcuts on this page'
     ],
+    'messages' => [
+        'resource created' => ':name successfully created.',
+        'resource not found' => ':name not found.',
+        'resource updated' => ':name successfully updated.',
+        'resource deleted' => ':name successfully deleted.',
+    ],
     'back' => 'Back',
     'back to index' => 'Back to :name index',
     'permission denied' => 'Permission denied. (required permission: ":permission")',
