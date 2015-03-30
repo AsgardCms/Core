@@ -27,6 +27,8 @@ return [
     'title' => [
         'translatable fields' => 'Champs traduisible',
         'non translatable fields' => 'Champs non traduisible',
+        'create resource' => 'Création de :name',
+        'edit resource' => 'Edition de :name',
     ],
     'general' => [
         'available keyboard shortcuts' => 'Raccourcis claviers disponible sur cette page'

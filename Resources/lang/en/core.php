@@ -27,6 +27,8 @@ return [
     'title' => [
         'translatable fields' => 'Translatable fields',
         'non translatable fields' => 'Non translatable fields',
+        'create resource' => 'Create :name',
+        'edit resource' => 'Edit :name',
     ],
     'general' => [
         'available keyboard shortcuts' => 'Available keyboard shortcuts on this page'
