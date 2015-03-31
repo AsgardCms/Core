@@ -18,11 +18,14 @@ abstract class BaseFormRequest extends FormRequest
 
         $rules = $this->container->call([$this, 'rules']);
         $attributes = $this->attributes();
+
+        $baseValidationKey = $this->getValidationKey();
+
         foreach ($this->requiredLocales() as $key => $locale) {
             foreach ($this->container->call([$this, 'translationRules']) as $attribute => $rule) {
                 $key = "{$key}[{$attribute}]";
                 $rules[$key] = $rule;
-                $attributes[$key] = trans('validation.attributes.' . $attribute);
+                $attributes[$key] = trans($baseValidationKey . $attribute);
             }
         }
 
@@ -54,5 +57,19 @@ abstract class BaseFormRequest extends FormRequest
     public function requiredLocales()
     {
         return LaravelLocalization::getSupportedLocales();
+    }
+
+    /**
+     * Get the validation key from the implementing class
+     * or use a sensible default
+     * @return string
+     */
+    private function getValidationKey()
+    {
+        if (! $this->translationsKey) {
+            return 'validation.attributes.';
+        }
+
+        return ends_with($this->translationsKey, '.') ? $this->translationsKey : $this->translationsKey . '.';
     }
 }
