@@ -6,6 +6,12 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 abstract class BaseFormRequest extends FormRequest
 {
     /**
+     * Set the translation key prefix.
+     * @var string
+     */
+    protected $translationsKey = 'validation.attributes.';
+
+    /**
      * Get the validator instance for the request.
      * @return \Illuminate\Validation\Validator
      */
@@ -66,10 +72,6 @@ abstract class BaseFormRequest extends FormRequest
      */
     private function getValidationKey()
     {
-        if (! $this->translationsKey) {
-            return 'validation.attributes.';
-        }
-
-        return ends_with($this->translationsKey, '.') ? $this->translationsKey : $this->translationsKey . '.';
+        return rtrim($this->translationsKey, '.') . '.';
     }
 }
