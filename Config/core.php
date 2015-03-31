@@ -38,8 +38,10 @@ return [
         'icheck.blue.css' => ['theme' => 'vendor/iCheck/skins/flat/blue.css'],
         'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
         'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
-        'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
         'asgard.css' => ['theme' => 'css/asgard.css'],
+        //'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
+        'gridstack.css' => ['module' => 'dashboard:gridstack/gridstack.min.css'],
+        'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css'],
         // Javascript
         'jquery.js' => ['theme' => 'vendor/jquery/dist/jquery.min.js'],
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
@@ -58,7 +60,9 @@ return [
         'jquery-ui-mouse.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/mouse.min.js'],
         'jquery-ui-draggable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/draggable.min.js'],
         'jquery-ui-resizable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/resizable.min.js'],
-        'gridstack.js' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.js'],
+        //'gridstack.js' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.js'],
+        'gridstack.js' => ['module' => 'dashboard:gridstack/gridstack.min.js'],
+        'daterangepicker.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker.js'],
     ],
 
    /*
