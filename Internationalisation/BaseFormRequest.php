@@ -9,7 +9,7 @@ abstract class BaseFormRequest extends FormRequest
      * Set the translation key prefix.
      * @var string
      */
-    protected $translationsKey = 'validation.attributes.';
+    protected $translationsAttributesKey = 'validation.attributes.';
 
     /**
      * Get the validator instance for the request.
@@ -25,13 +25,13 @@ abstract class BaseFormRequest extends FormRequest
         $rules = $this->container->call([$this, 'rules']);
         $attributes = $this->attributes();
 
-        $baseValidationKey = $this->getValidationKey();
+        $translationsAttributesKey = $this->getTranslationsAttributesKey();
 
         foreach ($this->requiredLocales() as $key => $locale) {
             foreach ($this->container->call([$this, 'translationRules']) as $attribute => $rule) {
                 $key = "{$key}[{$attribute}]";
                 $rules[$key] = $rule;
-                $attributes[$key] = trans($baseValidationKey . $attribute);
+                $attributes[$key] = trans($translationsAttributesKey . $attribute);
             }
         }
 
@@ -70,8 +70,8 @@ abstract class BaseFormRequest extends FormRequest
      * or use a sensible default
      * @return string
      */
-    private function getValidationKey()
+    private function getTranslationsAttributesKey()
     {
-        return rtrim($this->translationsKey, '.') . '.';
+        return rtrim($this->translationsAttributesKey, '.') . '.';
     }
 }
