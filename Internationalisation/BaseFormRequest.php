@@ -10,11 +10,24 @@ abstract class BaseFormRequest extends FormRequest
      * @var string
      */
     protected $translationsAttributesKey = 'validation.attributes.';
+
     /**
-     * Set the translation key prefix for messages.
-     * @var string
+     * Return an array of rules for translatable fields
+     * @return array
      */
-    protected $translationsMessagesKey = 'validation.messages.';
+    public function translationRules()
+    {
+        return [];
+    }
+
+    /**
+     * Return an array of messages for translatable fields
+     * @return array
+     */
+    public function translationMessages()
+    {
+        return [];
+    }
 
     /**
      * Get the validator instance for the request.
@@ -29,16 +42,19 @@ abstract class BaseFormRequest extends FormRequest
 
         $rules = $this->container->call([$this, 'rules']);
         $attributes = $this->attributes();
+        $messages = [];
 
         $translationsAttributesKey = $this->getTranslationsAttributesKey();
-        $translationsMessagesKey = $this->getTranslationsMessagesKey();
 
         foreach ($this->requiredLocales() as $localeKey => $locale) {
             foreach ($this->container->call([$this, 'translationRules']) as $attribute => $rule) {
                 $key = $localeKey . '.' . $attribute;
                 $rules[$key] = $rule;
                 $attributes[$key] = trans($translationsAttributesKey . $attribute);
-                $messages[$key . '.' . $rule] = trans($translationsMessagesKey . $attribute);
+            }
+
+            foreach ($this->container->call([$this, 'translationMessages']) as $attributeAndRule => $message) {
+                $messages[$localeKey . '.' . $attributeAndRule] = $message;
             }
         }
 
@@ -80,15 +96,5 @@ abstract class BaseFormRequest extends FormRequest
     private function getTranslationsAttributesKey()
     {
         return rtrim($this->translationsAttributesKey, '.') . '.';
-    }
-
-    /**
-     * Get the validation key for messages from the implementing class
-     * or use a sensible default
-     * @return string
-     */
-    private function getTranslationsMessagesKey()
-    {
-        return rtrim($this->translationsMessagesKey, '.') . '.';
     }
 }
