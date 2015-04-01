@@ -1,8 +1,8 @@
 <?php namespace Modules\Core\Http\Controllers\Admin;
 
+use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 use Illuminate\Routing\Controller;
 use Modules\Core\Foundation\Asset\Manager\AssetManager;
-use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
 use Pingpong\Modules\Facades\Module;
 

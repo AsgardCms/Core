@@ -1,7 +1,7 @@
 <?php namespace Modules\Core\Console;
 
-use Symfony\Component\Console\Input\InputArgument;
 use Illuminate\Console\Command;
+use Symfony\Component\Console\Input\InputArgument;
 
 class PublishThemeAssetsCommand extends Command
 {
@@ -11,7 +11,7 @@ class PublishThemeAssetsCommand extends Command
     public function fire()
     {
         $theme = $this->argument('theme', null);
-        
+
         if (!empty($theme)) {
             $this->call('stylist:publish', ['theme' => $this->argument('theme')]);
         } else {
