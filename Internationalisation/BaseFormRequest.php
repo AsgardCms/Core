@@ -27,9 +27,9 @@ abstract class BaseFormRequest extends FormRequest
 
         $translationsAttributesKey = $this->getTranslationsAttributesKey();
 
-        foreach ($this->requiredLocales() as $key => $locale) {
+        foreach ($this->requiredLocales() as $localeKey => $locale) {
             foreach ($this->container->call([$this, 'translationRules']) as $attribute => $rule) {
-                $key = "{$key}[{$attribute}]";
+                $key = $localeKey . '.' . $attribute;
                 $rules[$key] = $rule;
                 $attributes[$key] = trans($translationsAttributesKey . $attribute);
             }
