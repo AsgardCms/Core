@@ -6,10 +6,15 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 abstract class BaseFormRequest extends FormRequest
 {
     /**
-     * Set the translation key prefix.
+     * Set the translation key prefix for attributes.
      * @var string
      */
     protected $translationsAttributesKey = 'validation.attributes.';
+    /**
+     * Set the translation key prefix for messages.
+     * @var string
+     */
+    protected $translationsMessagesKey = 'validation.messages.';
 
     /**
      * Get the validator instance for the request.
@@ -26,17 +31,19 @@ abstract class BaseFormRequest extends FormRequest
         $attributes = $this->attributes();
 
         $translationsAttributesKey = $this->getTranslationsAttributesKey();
+        $translationsMessagesKey = $this->getTranslationsMessagesKey();
 
         foreach ($this->requiredLocales() as $localeKey => $locale) {
             foreach ($this->container->call([$this, 'translationRules']) as $attribute => $rule) {
                 $key = $localeKey . '.' . $attribute;
                 $rules[$key] = $rule;
                 $attributes[$key] = trans($translationsAttributesKey . $attribute);
+                $messages[$key . '.' . $rule] = trans($translationsMessagesKey . $attribute);
             }
         }
 
         return $factory->make(
-            $this->all(), $rules, $this->messages(), $attributes
+            $this->all(), $rules, array_merge($this->messages(), $messages), $attributes
         );
     }
 
@@ -66,12 +73,22 @@ abstract class BaseFormRequest extends FormRequest
     }
 
     /**
-     * Get the validation key from the implementing class
+     * Get the validation for attributes key from the implementing class
      * or use a sensible default
      * @return string
      */
     private function getTranslationsAttributesKey()
     {
         return rtrim($this->translationsAttributesKey, '.') . '.';
+    }
+
+    /**
+     * Get the validation key for messages from the implementing class
+     * or use a sensible default
+     * @return string
+     */
+    private function getTranslationsMessagesKey()
+    {
+        return rtrim($this->translationsMessagesKey, '.') . '.';
     }
 }
