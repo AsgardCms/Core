@@ -18,6 +18,7 @@ abstract class BaseTestCase extends TestCase
             'Modules\Core\Providers\CoreServiceProvider',
             'Modules\Core\Providers\AssetServiceProvider',
             'Pingpong\Modules\ModulesServiceProvider',
+            'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
         ];
     }
 
@@ -35,6 +36,9 @@ abstract class BaseTestCase extends TestCase
 
     protected function getPackageAliases($app)
     {
-        return ['Eloquent' => 'Illuminate\Database\Eloquent\Model'];
+        return [
+            'Eloquent' => 'Illuminate\Database\Eloquent\Model',
+            'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization'
+        ];
     }
 }
