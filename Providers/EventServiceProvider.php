@@ -5,11 +5,5 @@ use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvi
 class EventServiceProvider extends ServiceProvider
 {
     protected $listen = [
-        'Modules\Setting\Events\SettingWasUpdated' => [
-            'Modules\Core\Events\Handlers\UpdateGlobalLocales',
-        ],
-        'Modules\Setting\Events\SettingWasCreated' => [
-            'Modules\Core\Events\Handlers\UpdateGlobalLocales',
-        ],
     ];
 }

@@ -10,7 +10,6 @@
     "providers": [
         "Modules\\Core\\Providers\\CoreServiceProvider",
         "Modules\\Core\\Providers\\AssetServiceProvider",
-        "Modules\\Core\\Providers\\EventServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
         "Dimsav\\Translatable\\TranslatableServiceProvider",
