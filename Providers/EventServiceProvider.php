@@ -8,5 +8,8 @@ class EventServiceProvider extends ServiceProvider
         'Modules\Setting\Events\SettingWasUpdated' => [
             'Modules\Core\Events\Handlers\UpdateGlobalLocales',
         ],
+        'Modules\Setting\Events\SettingWasCreated' => [
+            'Modules\Core\Events\Handlers\UpdateGlobalLocales',
+        ],
     ];
 }
