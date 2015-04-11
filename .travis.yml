@@ -11,8 +11,7 @@ env:
   - LARAVEL_VERSION="5.0.*@dev" TESTBENCH_VERSION="~3.0@dev"
 
 before_script:
-  - composer self-update
-  - composer install
+  - travis_retry composer install --no-interaction --prefer-source --dev
 
 script: phpunit
 
