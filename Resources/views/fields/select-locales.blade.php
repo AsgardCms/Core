@@ -12,7 +12,7 @@
     $( document ).ready(function() {
         $('.locales').selectize({
             delimiter: ',',
-            plugins: ['remove_button', 'restore_on_backspace', 'drag_drop']
+            plugins: ['remove_button']
         });
     });
 </script>
