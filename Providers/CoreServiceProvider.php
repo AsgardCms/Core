@@ -53,11 +53,16 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->app->singleton('asgard.isInstalled', function($app) {
+            return $app['files']->isFile(base_path('.env'));
+        });
+
         $this->registerMenuRoutes();
         $this->registerMiddleware($this->app['router']);
         $this->registerCommands();
         $this->registerServices();
         $this->registerModuleResourceNamespaces();
+        $this->setLocalesConfigurations();
     }
 
     /**
@@ -228,5 +233,36 @@ class CoreServiceProvider extends ServiceProvider
         $filename = $this->prefix . '.' . $package . '.' . $name;
 
         return $filename;
+    }
+
+    /**
+     * Set the locale configuration for
+     * - laravel localization
+     * - laravel translatable
+     */
+    private function setLocalesConfigurations()
+    {
+        if (! $this->app['asgard.isInstalled']) {
+            return;
+        }
+
+        $localeConfig = $this->app['cache']
+            ->tags('setting.settings', 'global')
+            ->remember("asgard.locales", 120,
+                function () {
+                    return DB::table('setting__settings')->whereName('core::locales')->first();
+                }
+            );
+
+        if ($localeConfig) {
+            $locales = json_decode($localeConfig->plainValue);
+            $availableLocales = [];
+            foreach ($locales as $locale) {
+                $availableLocales = array_merge($availableLocales, [$locale => config("asgard.core.available-locales.$locale")]);
+            }
+
+            $this->app->config->set('laravellocalization.supportedLocales', $availableLocales);
+            $this->app->config->set('translatable.locales', $locales);
+        }
     }
 }
