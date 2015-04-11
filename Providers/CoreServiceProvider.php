@@ -3,6 +3,7 @@
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
@@ -43,9 +44,6 @@ class CoreServiceProvider extends ServiceProvider
 
     public function boot()
     {
-        $this->registerModuleResourceNamespaces();
-
-        include __DIR__ . '/../start.php';
     }
 
     /**
@@ -59,6 +57,7 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerMiddleware($this->app['router']);
         $this->registerCommands();
         $this->registerServices();
+        $this->registerModuleResourceNamespaces();
     }
 
     /**
