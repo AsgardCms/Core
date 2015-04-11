@@ -20,4 +20,9 @@ return [
         'view' => 'textarea',
         'translatable' => false,
     ],
+    'locales' => [
+        'description' => 'core::settings.locales',
+        'view' => 'core::fields.select-locales',
+        'translatable' => false,
+    ],
 ];
