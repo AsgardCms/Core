@@ -15,9 +15,9 @@ abstract class BaseTestCase extends TestCase
     protected function getPackageProviders($app)
     {
         return [
+            'Pingpong\Modules\ModulesServiceProvider',
             'Modules\Core\Providers\CoreServiceProvider',
             'Modules\Core\Providers\AssetServiceProvider',
-            'Pingpong\Modules\ModulesServiceProvider',
             'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
         ];
     }
