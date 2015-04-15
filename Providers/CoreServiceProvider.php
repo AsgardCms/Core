@@ -53,7 +53,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('asgard.isInstalled', function($app) {
+        $this->app->singleton('asgard.isInstalled', function ($app) {
             return $app['files']->isFile(base_path('.env'));
         });
 
