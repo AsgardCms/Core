@@ -1,6 +1,8 @@
 <?php
 
 $finder = Symfony\CS\Finder\DefaultFinder::create()
+    ->exclude('Modules')
+    ->exclude('vendor')
     ->in(__DIR__)
 ;
 
