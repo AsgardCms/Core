@@ -3,3 +3,4 @@ rules:
     enabled: false
 global_exclude_dirs:
     - vendor
+    - Tests
