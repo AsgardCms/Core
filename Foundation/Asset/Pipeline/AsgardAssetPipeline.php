@@ -182,22 +182,4 @@ class AsgardAssetPipeline implements AssetPipeline
             throw new AssetNotFoundException;
         }
     }
-
-    /**
-     * If the given first argument is an array loop
-     * over the dependencies and add them
-     * @param $dependency
-     * @param $type
-     */
-    private function guardForArrayArgument($dependency, $type)
-    {
-        $method = 'require' . ucfirst($type);
-
-        if (is_array($dependency)) {
-            var_dump($dependency);
-            foreach ($dependency as $dependency) {
-                $this->$method($dependency);
-            }
-        }
-    }
 }
