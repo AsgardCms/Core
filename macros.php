@@ -31,3 +31,13 @@ Form::macro('i18nTextarea', function ($name, $title, $errors, $lang) {
 | Standard fields
 |--------------------------------------------------------------------------
 */
+Form::macro('normalInput', function ($name, $title, $errors) {
+    $string = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string .= Form::label($name, $title);
+    $string .= Form::text($name, Input::old("title"),
+        ['class' => "form-control", 'placeholder' => $title]);
+    $string .= $errors->first($name, '<span class="help-block">:message</span>');
+    $string .= "</div>";
+
+    return $string;
+});
