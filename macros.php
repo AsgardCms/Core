@@ -19,7 +19,7 @@ Form::macro('i18nInput', function ($name, $title, $errors, $lang) {
 Form::macro('i18nTextarea', function ($name, $title, $errors, $lang) {
     $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
     $string .= Form::label("{$lang}[{$name}]", $title);
-    $oldInput = Input::old("{$lang}[{$name}]");
+    $oldInput = Input::old("{$lang}.{$name}");
     $string .= "<textarea class='ckeditor' name='{$lang}[$name]' rows='10' cols='80'>{$oldInput}</textarea>";
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
