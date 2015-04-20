@@ -27,6 +27,21 @@ Form::macro('i18nTextarea', function ($name, $title, $errors, $lang) {
     return $string;
 });
 
+Form::macro('i18nCheckbox', function($name, $title, $errors, $lang)
+{
+    $string = "<div class='checkbox" . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+    $string .= "<label for='{$lang}[{$name}]'>";
+    $string .= "<input id='{$lang}[{$name}]' name='{$lang}[{$name}]' type='checkbox' class='flat-blue'";
+    $oldInput = Input::old("{$lang}.$name") ? 'checked' : '';
+    $string .= "value='1' {$oldInput}>";
+    $string .= $title;
+    $string .= $errors->first($name, '<span class="help-block">:message</span>');
+    $string .= "</label>";
+    $string .= "</div>";
+
+    return $string;
+});
+
 /*
 |--------------------------------------------------------------------------
 | Standard fields
