@@ -116,3 +116,33 @@ Form::macro('normalInput', function ($name, $title, $errors, $object = null) {
 
     return $string;
 });
+
+/**
+ * Add a checkbox input field
+ * @param string $name The field name
+ * @param string $title The field title
+ * @param object $errors The laravel errors object
+ * @param null|object $object The entity of the field
+ */
+Form::macro('normalCheckbox', function($name, $title, $errors, $object = null)
+{
+    $string = "<div class='checkbox" . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string .= "<input type='hidden' value='0' name='{$name}'/>";
+    $string .= "<label for='$name'>";
+    $string .= "<input id='$name' name='$name' type='checkbox' class='flat-blue'";
+
+    if (is_object($object)) {
+        $currentData = isset($object->$name) && (bool) $object->$name ? 'checked' : '';
+    } else {
+        $currentData = false;
+    }
+
+    $oldInput = Input::old($name, $currentData) ? 'checked' : '';
+    $string .= "value='1' {$oldInput}>";
+    $string .= $title;
+    $string .= $errors->first($name, '<span class="help-block">:message</span>');
+    $string .= "</label>";
+    $string .= "</div>";
+
+    return $string;
+});
