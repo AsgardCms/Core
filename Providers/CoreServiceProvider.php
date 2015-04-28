@@ -63,7 +63,7 @@ class CoreServiceProvider extends ServiceProvider
             return $app['files']->isFile(base_path('.env'));
         });
 
-        $this->registerMenuRoutes();
+        //$this->registerMenuRoutes();
         $this->registerMiddleware($this->app['router']);
         $this->registerCommands();
         $this->registerServices();
