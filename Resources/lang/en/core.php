@@ -20,6 +20,7 @@ return [
         'create' => 'Create',
         'update' => 'Update',
         'delete' => 'Delete',
+        'reset' => 'Reset',
     ],
     'breadcrumb' => [
         'home' => 'Home',

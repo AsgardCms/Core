@@ -15,6 +15,7 @@ return [
         'create' => 'Créer',
         'update' => 'Mise à jour',
         'delete' => 'Suprimer',
+        'reset' => 'Mise à zéro',
     ],
     'breadcrumb' => [
         'home' => 'Accueil',
