@@ -1,5 +1,6 @@
 <?php namespace Modules\Core\Providers;
 
+use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Config;
@@ -42,8 +43,13 @@ class CoreServiceProvider extends ServiceProvider
         ],
     ];
 
-    public function boot()
+    public function boot(Dispatcher $dispatcher)
     {
+        $dispatcher->mapUsing(function ($command) {
+            $command = str_replace('Commands\\', 'Commands\\Handlers\\', get_class($command));
+
+            return trim($command, '\\') . 'Handler@handle';
+        });
     }
 
     /**
