@@ -3,7 +3,7 @@
 return [
     'modal' => [
         'title' => 'Confirmation',
-        'confirmation-message' => 'Etes vous sur de vouloir supprimer cette resource?',
+        'confirmation-message' => 'Etes vous sûr de vouloir supprimer cette ressource?',
     ],
     'table' => [
         'created at' => 'Crée à',
@@ -14,7 +14,7 @@ return [
         'cancel' => 'Annuler',
         'create' => 'Créer',
         'update' => 'Mise à jour',
-        'delete' => 'Suprimer',
+        'delete' => 'Supprimer',
         'reset' => 'Mise à zéro',
     ],
     'breadcrumb' => [
@@ -32,13 +32,13 @@ return [
         'edit resource' => 'Edition de :name',
     ],
     'general' => [
-        'available keyboard shortcuts' => 'Raccourcis claviers disponible sur cette page'
+        'available keyboard shortcuts' => 'Raccourcis clavier disponibles sur cette page'
     ],
     'messages' => [
-        'resource created' => ':name créer.',
+        'resource created' => ':name créé.',
         'resource not found' => ':name non trouvé.',
-        'resource updated' => ':name mit à jour.',
-        'resource deleted' => ':name suprimer',
+        'resource updated' => ':name mis à jour.',
+        'resource deleted' => ':name supprimé',
     ],
     'retour' => 'Retour',
     'back to index' => 'Retour à l\'index des :name',
