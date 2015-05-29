@@ -10,6 +10,11 @@ abstract class BaseFormRequest extends FormRequest
      * @var string
      */
     protected $translationsAttributesKey = 'validation.attributes.';
+    /**
+     * Current processed locale
+     * @var string
+     */
+    protected $localeKey;
 
     /**
      * Return an array of rules for translatable fields
@@ -47,6 +52,7 @@ abstract class BaseFormRequest extends FormRequest
         $translationsAttributesKey = $this->getTranslationsAttributesKey();
 
         foreach ($this->requiredLocales() as $localeKey => $locale) {
+            $this->localeKey = $localeKey;
             foreach ($this->container->call([$this, 'translationRules']) as $attribute => $rule) {
                 $key = $localeKey . '.' . $attribute;
                 $rules[$key] = $rule;
