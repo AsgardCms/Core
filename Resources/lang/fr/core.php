@@ -24,6 +24,7 @@ return [
         'english' => 'Anglais',
         'french' => 'Français',
         'dutch' =>  'Nederlands',
+        'italian' => 'Italien',
     ],
     'title' => [
         'translatable fields' => 'Champs traduisible',
