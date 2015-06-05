@@ -14,6 +14,7 @@ return [
         'english' => 'English',
         'french' => 'French',
         'dutch' =>  'Dutch',
+        'italian' => 'Italian',
     ],
     'button' => [
         'cancel' => 'Cancel',
