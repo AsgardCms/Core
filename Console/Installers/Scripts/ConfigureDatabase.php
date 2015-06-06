@@ -7,7 +7,6 @@ use Modules\Core\Console\Installers\Writers\EnvFileWriter;
 
 class ConfigureDatabase implements SetupScript
 {
-
     /**
      * @var
      */
@@ -54,7 +53,7 @@ class ConfigureDatabase implements SetupScript
 
         $this->env->write($name, $user, $password, $host);
 
-        $command->info('Database succesfully configured');
+        $command->info('Database successfully configured');
     }
 
     /**
@@ -73,7 +72,7 @@ class ConfigureDatabase implements SetupScript
     protected function askDatabaseName()
     {
         do {
-            $name = $this->command->ask('Enter your database name: ');
+            $name = $this->command->ask('Enter your database name []: ');
             if ($name == '') {
                 $this->command->error('Database name is required');
             }
@@ -89,7 +88,7 @@ class ConfigureDatabase implements SetupScript
     protected function askDatabaseUsername()
     {
         do {
-            $user = $this->command->ask('Enter your database username: ');
+            $user = $this->command->ask('Enter your database username [root]: ', 'root');
             if ($user == '') {
                 $this->command->error('Database username is required');
             }
@@ -104,7 +103,7 @@ class ConfigureDatabase implements SetupScript
      */
     protected function askDatabasePassword()
     {
-        return $this->command->secret('Enter your database password: ');
+        return $this->command->secret('Enter your database password []: ');
     }
 
     /**
