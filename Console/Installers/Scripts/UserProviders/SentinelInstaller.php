@@ -34,7 +34,10 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
      */
     public function publish()
     {
-        $this->command->call('vendor:publish', ['--provider' => 'Cartalyst\Sentinel\Laravel\SentinelServiceProvider']);
+        if ($this->command->option('verbose')) {
+            return $this->command->call('vendor:publish', ['--provider' => 'Cartalyst\Sentinel\Laravel\SentinelServiceProvider']);
+        }
+        return $this->command->callSilent('vendor:publish', ['--provider' => 'Cartalyst\Sentinel\Laravel\SentinelServiceProvider']);
     }
 
     /**
@@ -42,7 +45,11 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
      */
     public function migrate()
     {
-        $this->command->call('migrate');
+        if ($this->command->option('verbose')) {
+            return $this->command->call('migrate');
+        }
+
+        return $this->command->callSilent('migrate');
     }
 
     /**
@@ -65,7 +72,11 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
      */
     public function seed()
     {
-        $this->command->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
+        if ($this->command->option('verbose')) {
+            return $this->command->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
+        }
+
+        return $this->command->callSilent('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentinelGroupSeedTableSeeder']);
     }
 
     /**

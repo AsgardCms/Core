@@ -20,10 +20,16 @@ class ModuleSeeders implements SetupScript
      */
     public function fire(Command $command)
     {
-        $command->blockMessage('Seeds', 'Running the module seeds ...', 'comment');
+        if ($command->option('verbose')) {
+            $command->blockMessage('Seeds', 'Running the module seeds ...', 'comment');
+        }
 
         foreach ($this->modules as $module) {
-            $command->call('module:seed', ['module' => $module]);
+            if ($command->option('verbose')) {
+                $command->call('module:seed', ['module' => $module]);
+                continue;
+            }
+            $command->callSilent('module:seed', ['module' => $module]);
         }
     }
 }

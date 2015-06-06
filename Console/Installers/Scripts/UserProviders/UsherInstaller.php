@@ -33,8 +33,15 @@ class UsherInstaller extends ProviderInstaller implements SetupScript
      */
     public function publish()
     {
-        $this->command->call('vendor:publish', ['--provider' => 'Maatwebsite\Usher\UsherServiceProvider']);
-        $this->command->call('vendor:publish', ['--provider' => 'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider']);
+        if ($this->command->option('verbose')) {
+            $this->command->call('vendor:publish', ['--provider' => 'Maatwebsite\Usher\UsherServiceProvider']);
+
+            return $this->command->call('vendor:publish', ['--provider' => 'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider']);
+        }
+
+        $this->command->callSilent('vendor:publish', ['--provider' => 'Maatwebsite\Usher\UsherServiceProvider']);
+
+        return $this->command->callSilent('vendor:publish', ['--provider' => 'Mitch\LaravelDoctrine\LaravelDoctrineServiceProvider']);
     }
 
     /**
@@ -42,7 +49,11 @@ class UsherInstaller extends ProviderInstaller implements SetupScript
      */
     public function migrate()
     {
-        $this->command->call('doctrine:schema:update');
+        if ($this->command->option('verbose')) {
+            return $this->command->call('doctrine:schema:update');
+        }
+
+        return $this->command->callSilent('doctrine:schema:update');
     }
 
     /**
@@ -79,7 +90,11 @@ class UsherInstaller extends ProviderInstaller implements SetupScript
      */
     public function seed()
     {
-        $this->command->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\UsherTableSeeder']);
+        if ($this->command->option('verbose')) {
+            return $this->command->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\UsherTableSeeder']);
+        }
+
+        return $this->command->callSilent('db:seed', ['--class' => 'Modules\User\Database\Seeders\UsherTableSeeder']);
     }
 
     /**

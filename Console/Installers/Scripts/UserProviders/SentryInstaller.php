@@ -32,7 +32,10 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
      */
     public function publish()
     {
-        $this->command->call('vendor:publish', ['--provider' => 'Cartalyst\Sentry\SentryServiceProvider']);
+        if ($this->command->option('verbose')) {
+            return $this->command->call('vendor:publish', ['--provider' => 'Cartalyst\Sentry\SentryServiceProvider']);
+        }
+        return $this->command->callSilent('vendor:publish', ['--provider' => 'Cartalyst\Sentry\SentryServiceProvider']);
     }
 
     /**
@@ -40,7 +43,11 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
      */
     public function migrate()
     {
-        $this->command->call('migrate');
+        if ($this->command->option('verbose')) {
+            return $this->command->call('migrate');
+        }
+
+        return $this->command->callSilent('migrate');
     }
 
     /**
@@ -61,7 +68,11 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
      */
     public function seed()
     {
-        $this->command->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder']);
+        if ($this->command->option('verbose')) {
+            return $this->command->call('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder']);
+        }
+
+        return $this->command->callSilent('db:seed', ['--class' => 'Modules\User\Database\Seeders\SentryGroupSeedTableSeeder']);
     }
 
     /**

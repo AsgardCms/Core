@@ -12,8 +12,14 @@ class ThemeAssets implements  SetupScript
      */
     public function fire(Command $command)
     {
-        $command->blockMessage('Themes', 'Publishing theme assets ...', 'comment');
+        if ($command->option('verbose')) {
+            $command->blockMessage('Themes', 'Publishing theme assets ...', 'comment');
+        }
 
-        $command->call('stylist:publish');
+        if ($command->option('verbose')) {
+            $command->call('stylist:publish');
+            return;
+        }
+        $command->callSilent('stylist:publish');
     }
 }

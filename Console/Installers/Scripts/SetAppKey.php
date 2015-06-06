@@ -13,6 +13,10 @@ class SetAppKey implements SetupScript
      */
     public function fire(Command $command)
     {
-        $command->call('key:generate');
+        if ($command->option('verbose')) {
+            $command->call('key:generate');
+            return;
+        }
+        $command->callSilent('key:generate');
     }
 }

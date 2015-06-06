@@ -57,7 +57,11 @@ abstract class ProviderInstaller implements SetupScript
         $this->command = $command;
 
         // Publish asgard configs
-        $this->command->call('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
+        if ($this->command->option('verbose')) {
+            $this->command->call('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
+        } else {
+            $this->command->callSilent('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
+        }
 
         if (! $this->checkIsInstalled()) {
             return $this->command->error('No user driver was installed. Please check the presence of a Service Provider');
@@ -70,7 +74,9 @@ abstract class ProviderInstaller implements SetupScript
 
         $this->createFirstUser();
 
-        $command->info($this->driver . ' succesfully configured');
+        if ($this->command->option('verbose')) {
+            $command->info($this->driver . ' succesfully configured');
+        }
     }
 
     /**
