@@ -35,7 +35,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected $middleware = [
         'Core' => [
-            'installed'             => 'AsgardInstalledMiddleware',
             'permissions'           => 'PermissionMiddleware',
             'auth.admin'            => 'AdminMiddleware',
             'public.checkLocale'    => 'PublicMiddleware',
