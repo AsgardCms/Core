@@ -59,7 +59,13 @@ class CoreServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton('asgard.isInstalled', function ($app) {
-            return $app['files']->isFile(base_path('.env'));
+            try {
+                $hasTable = Schema::hasTable('setting__settings');
+            } catch (\Exception $e) {
+                $hasTable = false;
+            }
+
+            return $app['files']->isFile(base_path('.env')) && $hasTable;
         });
 
         //$this->registerMenuRoutes();
