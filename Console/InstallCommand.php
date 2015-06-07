@@ -4,6 +4,7 @@ use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\Installer;
 use Modules\Core\Console\Installers\Traits\BlockMessage;
 use Modules\Core\Console\Installers\Traits\SectionMessage;
+use Symfony\Component\Console\Input\InputOption;
 
 class InstallCommand extends Command
 {
@@ -66,5 +67,12 @@ class InstallCommand extends Command
         if ($success) {
             $this->info('Platform ready! You can now login with your username and password at /backend');
         }
+    }
+
+    protected function getOptions()
+    {
+        return [
+            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed']
+        ];
     }
 }
