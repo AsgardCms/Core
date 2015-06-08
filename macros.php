@@ -13,8 +13,10 @@
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
  */
-Form::macro('i18nInput', function ($name, $title, $errors, $lang, $object = null) {
-    $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+Form::macro('i18nInput', function ($name, $title, $errors, $lang, $object = null, array $options = []) {
+    $options = array_merge(['class' => "form-control", 'placeholder' => $title], $options);
+
+    $string  = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
     $string .= Form::label("{$lang}[{$name}]", $title);
 
     if (is_object($object)) {
@@ -23,8 +25,7 @@ Form::macro('i18nInput', function ($name, $title, $errors, $lang, $object = null
         $currentData = '';
     }
 
-    $string .= Form::text("{$lang}[{$name}]", Input::old("{$lang}[{$name}]", $currentData),
-        ['class' => "form-control", 'placeholder' => $title]);
+    $string .= Form::text("{$lang}[{$name}]", Input::old("{$lang}[{$name}]", $currentData), $options);
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
@@ -39,8 +40,10 @@ Form::macro('i18nInput', function ($name, $title, $errors, $lang, $object = null
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
  */
-Form::macro('i18nTextarea', function ($name, $title, $errors, $lang, $object = null) {
-    $string = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
+Form::macro('i18nTextarea', function ($name, $title, $errors, $lang, $object = null, array $options = []) {
+    $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
+
+    $string  = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
     $string .= Form::label("{$lang}[{$name}]", $title);
 
     if (is_object($object)) {
@@ -49,8 +52,7 @@ Form::macro('i18nTextarea', function ($name, $title, $errors, $lang, $object = n
         $currentData = '';
     }
 
-    $oldInput = Input::old("{$lang}.{$name}", $currentData);
-    $string .= "<textarea class='ckeditor' name='{$lang}[$name]' rows='10' cols='80'>{$oldInput}</textarea>";
+    $string .= Form::text("{$lang}[$name]", Input::old("{$lang}[{$name}]", $currentData), $options);
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
@@ -99,8 +101,10 @@ Form::macro('i18nCheckbox', function($name, $title, $errors, $lang, $object = nu
  * @param object $errors The laravel errors object
  * @param null|object $object The entity of the field
  */
-Form::macro('normalInput', function ($name, $title, $errors, $object = null) {
-    $string = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+Form::macro('normalInput', function ($name, $title, $errors, $object = null, array $options = []) {
+    $options = array_merge(['class' => "form-control", 'placeholder' => $title], $options);
+
+    $string  = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
     $string .= Form::label($name, $title);
 
     if (is_object($object)) {
@@ -109,8 +113,26 @@ Form::macro('normalInput', function ($name, $title, $errors, $object = null) {
         $currentData = '';
     }
 
-    $string .= Form::text($name, Input::old($name, $currentData),
-        ['class' => "form-control", 'placeholder' => $title]);
+    $string .= Form::text($name, Input::old($name, $currentData), $options);
+    $string .= $errors->first($name, '<span class="help-block">:message</span>');
+    $string .= "</div>";
+
+    return $string;
+});
+
+Form::macro('normalTextarea', function ($name, $title, $errors, $object = null, array $options = []) {
+    $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
+
+    $string  = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
+    $string .= Form::label($name, $title);
+
+    if (is_object($object)) {
+        $currentData = $object->{$name} ?: '';
+    } else {
+        $currentData = '';
+    }
+
+    $string .= Form::textarea($name, Input::old($name, $currentData), $options);
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
 
