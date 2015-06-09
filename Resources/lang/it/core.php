@@ -14,7 +14,8 @@ return [
         'english' => 'Inglese',
         'french' => 'Francese',
         'dutch' =>  'Olandese',
-        'italian' => 'Italiano'
+        'italian' => 'Italiano',
+        'greek' => 'Ελληνικά',
     ],
     'button' => [
         'cancel' => 'Cancella',
