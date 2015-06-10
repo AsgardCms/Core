@@ -198,7 +198,7 @@ abstract class ProviderInstaller implements SetupScript
     private function askForLastName()
     {
         do {
-            $lastname = $this->command->ask('Enter your last name: ');
+            $lastname = $this->command->ask('Enter your last name');
             if ($lastname == '') {
                 $this->command->error('Last name is required');
             }
@@ -213,7 +213,7 @@ abstract class ProviderInstaller implements SetupScript
     private function askForEmail()
     {
         do {
-            $email = $this->command->ask('Enter your email address: ');
+            $email = $this->command->ask('Enter your email address');
             if ($email == '') {
                 $this->command->error('Email is required');
             }
@@ -244,7 +244,7 @@ abstract class ProviderInstaller implements SetupScript
     private function askForFirstPassword()
     {
         do {
-            $password = $this->command->secret('Enter a password: ');
+            $password = $this->command->secret('Enter a password');
             if ($password == '') {
                 $this->command->error('Password is required');
             }
@@ -259,7 +259,7 @@ abstract class ProviderInstaller implements SetupScript
     private function askForPasswordConfirmation()
     {
         do {
-            $passwordConfirmation = $this->command->secret('Please confirm you password: ');
+            $passwordConfirmation = $this->command->secret('Please confirm you password');
             if ($passwordConfirmation == '') {
                 $this->command->error('Password confirmation is required');
             }

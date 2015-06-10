@@ -61,7 +61,7 @@ class ConfigureDatabase implements SetupScript
      */
     protected function askDatabaseHost()
     {
-        $host = $this->command->ask('Enter your database host: ', 'localhost');
+        $host = $this->command->ask('Enter your database host', 'localhost');
 
         return $host;
     }
@@ -72,7 +72,7 @@ class ConfigureDatabase implements SetupScript
     protected function askDatabaseName()
     {
         do {
-            $name = $this->command->ask('Enter your database name: ');
+            $name = $this->command->ask('Enter your database name');
             if ($name == '') {
                 $this->command->error('Database name is required');
             }
@@ -88,7 +88,7 @@ class ConfigureDatabase implements SetupScript
     protected function askDatabaseUsername()
     {
         do {
-            $user = $this->command->ask('Enter your database username: ', 'root');
+            $user = $this->command->ask('Enter your database username', 'root');
             if ($user == '') {
                 $this->command->error('Database username is required');
             }
@@ -103,7 +103,7 @@ class ConfigureDatabase implements SetupScript
      */
     protected function askDatabasePassword()
     {
-        return $this->command->secret('Enter your database password: ');
+        return $this->command->secret('Enter your database password');
     }
 
     /**
