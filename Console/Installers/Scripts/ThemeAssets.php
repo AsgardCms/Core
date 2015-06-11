@@ -18,6 +18,7 @@ class ThemeAssets implements  SetupScript
 
         if ($command->option('verbose')) {
             $command->call('stylist:publish');
+
             return;
         }
         $command->callSilent('stylist:publish');

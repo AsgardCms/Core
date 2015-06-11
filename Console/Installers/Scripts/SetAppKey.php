@@ -15,6 +15,7 @@ class SetAppKey implements SetupScript
     {
         if ($command->option('verbose')) {
             $command->call('key:generate');
+
             return;
         }
         $command->callSilent('key:generate');

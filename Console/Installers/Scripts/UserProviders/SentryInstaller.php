@@ -35,6 +35,7 @@ class SentryInstaller extends ProviderInstaller implements SetupScript
         if ($this->command->option('verbose')) {
             return $this->command->call('vendor:publish', ['--provider' => 'Cartalyst\Sentry\SentryServiceProvider']);
         }
+
         return $this->command->callSilent('vendor:publish', ['--provider' => 'Cartalyst\Sentry\SentryServiceProvider']);
     }
 

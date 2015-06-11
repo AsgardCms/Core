@@ -37,6 +37,7 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
         if ($this->command->option('verbose')) {
             return $this->command->call('vendor:publish', ['--provider' => 'Cartalyst\Sentinel\Laravel\SentinelServiceProvider']);
         }
+
         return $this->command->callSilent('vendor:publish', ['--provider' => 'Cartalyst\Sentinel\Laravel\SentinelServiceProvider']);
     }
 
