@@ -7,7 +7,7 @@ php:
   - hhvm
 
 env:
-  - LARAVEL_VERSION="5.0.*@dev" TESTBENCH_VERSION="~3.0@dev"
+  - LARAVEL_VERSION="~5.1" TESTBENCH_VERSION="~3.1"
 
 before_script:
   - travis_retry composer install --no-interaction --prefer-source --dev
