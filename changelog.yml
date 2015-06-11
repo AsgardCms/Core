@@ -1,5 +1,9 @@
-"1.0.3":
-    url: https://github.com/AsgardCms/Core/releases/tag/1.0.3
-    changed:
-        - Working around laravel bug of empty database password not being possible
-        - Cleaning up the questions
+url: https://github.com/AsgardCms/Core
+versions:
+    "1.0.4":
+        changed:
+            - New changelog file structure
+    "1.0.3":
+        changed:
+            - Working around laravel bug of empty database password not being possible
+            - Cleaning up the questions
