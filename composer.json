@@ -28,7 +28,7 @@
     "laracasts/presenter": "~0.2",
     "guzzlehttp/guzzle": "~5.0",
     "dimsav/laravel-translatable": "~5.0",
-    "mcamara/laravel-localization": "dev-master",
+    "mcamara/laravel-localization": "~1.0",
     "floatingpoint/stylist": "~0.1",
     "maatwebsite/laravel-sidebar": "~1.0"
   },
