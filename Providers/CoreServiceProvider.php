@@ -206,10 +206,15 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerLanguageNamespace(Module $module)
     {
-        $this->app['translator']->addNamespace(
-            $module->getName(),
-            $module->getPath() . '/Resources/lang'
-        );
+        $moduleName = $module->getName();
+
+        $langPath = base_path("resources/lang/modules/$moduleName");
+
+        if (is_dir($langPath)) {
+            $this->loadTranslationsFrom($langPath, $moduleName);
+        } else {
+            $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
+        }
     }
 
     /**
