@@ -52,7 +52,7 @@ Form::macro('i18nTextarea', function ($name, $title, $errors, $lang, $object = n
         $currentData = '';
     }
 
-    $string .= Form::text("{$lang}[$name]", Input::old("{$lang}[{$name}]", $currentData), $options);
+    $string .= Form::textarea("{$lang}[$name]", Input::old("{$lang}[{$name}]", $currentData), $options);
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
