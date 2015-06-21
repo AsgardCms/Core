@@ -1,5 +1,12 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.0.8":
+        added:
+            - Using new sidebar extender class
+        changed:
+            - Fixing textarea input macro
+        removed:
+            - Old SidebarViewComposer
     "1.0.7":
         added:
             - Adding an <code>id</code> method on the Authentication contract
