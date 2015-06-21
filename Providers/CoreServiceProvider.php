@@ -7,9 +7,11 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
+use Modules\Core\Sidebar\AdminSidebar;
 use Modules\Menu\Entities\Menuitem;
 use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
 use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
@@ -43,13 +45,15 @@ class CoreServiceProvider extends ServiceProvider
         ],
     ];
 
-    public function boot(Dispatcher $dispatcher)
+    public function boot(Dispatcher $dispatcher, SidebarManager $manager)
     {
         $dispatcher->mapUsing(function ($command) {
             $command = str_replace('Commands\\', 'Commands\\Handlers\\', get_class($command));
 
             return trim($command, '\\') . 'Handler@handle';
         });
+
+        $manager->register(AdminSidebar::class);
     }
 
     /**
