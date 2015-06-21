@@ -3,11 +3,13 @@
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Menu;
 use Maatwebsite\Sidebar\Sidebar;
+use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Pingpong\Modules\Contracts\RepositoryInterface;
+use Serializable;
 
-class AdminSidebar implements Sidebar
+class AdminSidebar implements Sidebar, Serializable
 {
-
+    use CacheableTrait;
     /**
      * @var Menu
      */
@@ -22,6 +24,13 @@ class AdminSidebar implements Sidebar
      * @var Container
      */
     protected $container;
+
+    /**
+     * @var array
+     */
+    protected $cacheables = [
+        'menu',
+    ];
 
     /**
      * @param Menu                $menu
