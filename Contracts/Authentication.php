@@ -74,4 +74,10 @@ interface Authentication
      * @return mixed
      */
     public function check();
+
+    /**
+     * Get the ID for the currently authenticated user
+     * @return int
+     */
+    public function id();
 }
