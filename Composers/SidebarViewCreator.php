@@ -1,25 +1,33 @@
 <?php namespace Modules\Core\Composers;
 
-use Maatwebsite\Sidebar\SidebarManager;
+use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
+use Modules\Core\Sidebar\AdminSidebar;
 
 class SidebarViewCreator
 {
     /**
-     * @var SidebarManager
+     * @var AdminSidebar
      */
-    private $manager;
+    protected $sidebar;
 
     /**
-     * @param SidebarManager $manager
+     * @var SidebarRenderer
      */
-    public function __construct(SidebarManager $manager)
+    protected $renderer;
+
+    /**
+     * @param AdminSidebar    $sidebar
+     * @param SidebarRenderer $renderer
+     */
+    public function __construct(AdminSidebar $sidebar, SidebarRenderer $renderer)
     {
-        $this->manager = $manager;
+        $this->sidebar = $sidebar;
+        $this->renderer = $renderer;
     }
 
     public function create($view)
     {
         $view->prefix = config('asgard.core.core.admin-prefix');
-        $view->sidebar = $this->manager->build();
+        $view->sidebar = $this->renderer->render($this->sidebar);
     }
 }
