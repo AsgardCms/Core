@@ -19,6 +19,7 @@ abstract class BaseTestCase extends TestCase
             'Modules\Core\Providers\CoreServiceProvider',
             'Modules\Core\Providers\AssetServiceProvider',
             'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+            'Maatwebsite\Sidebar\SidebarServiceProvider',
         ];
     }
 
