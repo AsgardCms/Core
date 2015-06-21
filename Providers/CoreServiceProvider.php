@@ -50,6 +50,9 @@ class CoreServiceProvider extends ServiceProvider
 
             return trim($command, '\\') . 'Handler@handle';
         });
+        $this->registerMiddleware($this->app['router']);
+        $this->registerModuleResourceNamespaces();
+        $this->setLocalesConfigurations();
     }
 
     /**
@@ -70,11 +73,8 @@ class CoreServiceProvider extends ServiceProvider
         });
 
         //$this->registerMenuRoutes();
-        $this->registerMiddleware($this->app['router']);
         $this->registerCommands();
         $this->registerServices();
-        $this->registerModuleResourceNamespaces();
-        $this->setLocalesConfigurations();
     }
 
     /**
