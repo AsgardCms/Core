@@ -7,7 +7,7 @@ abstract class BasePublicController extends Controller
     /**
      * @var \Modules\Core\Contracts\Authentication
      */
-    private $auth;
+    protected $auth;
 
     public function __construct()
     {
