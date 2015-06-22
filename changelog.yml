@@ -1,6 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
     "1.0.9":
+        changed:
+            - Auth property on the BasePublicController has ben made protected
         removed:
             - BaseSidebarViewComposer was removed
     "1.0.8":
