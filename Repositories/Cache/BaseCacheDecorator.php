@@ -21,6 +21,11 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     protected $locale;
 
+    /**
+     * @var int caching time
+     */
+    protected $cacheTime;
+
     public function __construct()
     {
         $this->cache = app('Illuminate\Cache\Repository');
