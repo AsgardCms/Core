@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.0.11":
+        changed:
+            - Adding missing property on BasePublicController
     "1.0.10":
         changed:
             - Adding a dynamic application version in admin footer
