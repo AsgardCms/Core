@@ -86,7 +86,7 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
      */
     public function getHashedPassword($password)
     {
-        return Hash::make($password);
+        return $password;
     }
 
     /**
