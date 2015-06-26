@@ -10,8 +10,7 @@ class ConfigureUserProvider implements SetupScript
      * @var array
      */
     protected $drivers = [
-        'Sentinel (Paid)',
-        'Sentry (Free)',
+        'Sentinel',
     ];
 
     /**
@@ -36,9 +35,7 @@ class ConfigureUserProvider implements SetupScript
     {
         $command->blockMessage('User Module', 'Starting the User Module setup...', 'comment');
 
-        $driver = $command->choice('Which user driver do you wish to use? Please make sure you installed your preferred driver beforehand.', $this->drivers, 1);
-
-        $this->configure($driver, $command);
+        $this->configure('Sentinel', $command);
     }
 
     /**
