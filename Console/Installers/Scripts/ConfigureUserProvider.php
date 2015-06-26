@@ -56,8 +56,6 @@ class ConfigureUserProvider implements SetupScript
      */
     protected function factory($driver)
     {
-        $driver = strstr($driver, ' ', true);
-
         $class = __NAMESPACE__ . "\\UserProviders\\{$driver}Installer";
 
         return $this->application->make($class);
