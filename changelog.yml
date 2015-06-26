@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.0.12":
+        changed:
+            - Adapting to changed Cartalyst/Sentinel behaviour, do not hash password ourselves
     "1.0.11":
         changed:
             - Adding missing property on BasePublicController
