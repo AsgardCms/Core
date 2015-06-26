@@ -3,6 +3,7 @@ versions:
     "1.0.11":
         changed:
             - Adding missing property on BasePublicController
+            - Removing Sentry as default option
     "1.0.10":
         changed:
             - Adding a dynamic application version in admin footer
