@@ -285,6 +285,10 @@ class CoreServiceProvider extends ServiceProvider
                 $availableLocales = array_merge($availableLocales, [$locale => config("asgard.core.available-locales.$locale")]);
             }
 
+            $laravelDefaultLocale = $this->app->config->get('app.locale');
+            if (!in_array($laravelDefaultLocale, array_keys($availableLocales))) {
+                $this->app->config->set('app.locale', array_keys($availableLocales)[0]);
+            }
             $this->app->config->set('laravellocalization.supportedLocales', $availableLocales);
             $this->app->config->set('translatable.locales', $locales);
         }
