@@ -6,7 +6,6 @@ use Maatwebsite\Sidebar\ShouldCache;
 use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Pingpong\Modules\Contracts\RepositoryInterface;
-use Serializable;
 
 class AdminSidebar implements Sidebar, ShouldCache
 {
