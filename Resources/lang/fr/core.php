@@ -16,6 +16,7 @@ return [
         'update' => 'Mise à jour',
         'delete' => 'Supprimer',
         'reset' => 'Mise à zéro',
+        'update and back' => 'Mise à jour et retour',
     ],
     'breadcrumb' => [
         'home' => 'Accueil',
