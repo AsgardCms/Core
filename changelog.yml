@@ -1,5 +1,10 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.2.0":
+        added:
+            - Adding update and go back translation
+        changed:
+            - Using <code>::class</code> notation in <code>composers.php</code>
     "1.1.0":
         changed:
             - Setting the app.locale setting from first language in settings
