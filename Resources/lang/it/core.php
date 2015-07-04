@@ -23,7 +23,7 @@ return [
         'update' => 'Modifica',
         'delete' => 'Elimina',
         'reset' => 'Reset',
-        'update and back' => 'Modifica and go back',
+        'update and back' => 'Aggiorna e torna indietro',
     ],
     'breadcrumb' => [
         'home' => 'Home',
