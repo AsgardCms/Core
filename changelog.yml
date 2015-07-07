@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.3.0":
+        added:
+            - Customizable AdminLTE skin type, view the <code>config/asgard.core.core.php</code> file
     "1.2.0":
         added:
             - Adding update and go back translation
