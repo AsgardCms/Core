@@ -13,7 +13,9 @@
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
  */
-Form::macro('i18nInput', function ($name, $title, $errors, $lang, $object = null, array $options = []) {
+use Illuminate\Support\ViewErrorBag;
+
+Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => "form-control", 'placeholder' => $title], $options);
 
     $string  = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
@@ -40,7 +42,7 @@ Form::macro('i18nInput', function ($name, $title, $errors, $lang, $object = null
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
  */
-Form::macro('i18nTextarea', function ($name, $title, $errors, $lang, $object = null, array $options = []) {
+Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
 
     $string  = "<div class='form-group " . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
@@ -67,7 +69,7 @@ Form::macro('i18nTextarea', function ($name, $title, $errors, $lang, $object = n
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
  */
-Form::macro('i18nCheckbox', function ($name, $title, $errors, $lang, $object = null) {
+Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang, $object = null) {
     $string = "<div class='checkbox" . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
     $string .= "<label for='{$lang}[{$name}]'>";
     $string .= "<input id='{$lang}[{$name}]' name='{$lang}[{$name}]' type='checkbox' class='flat-blue'";
@@ -100,7 +102,7 @@ Form::macro('i18nCheckbox', function ($name, $title, $errors, $lang, $object = n
  * @param object $errors The laravel errors object
  * @param null|object $object The entity of the field
  */
-Form::macro('normalInput', function ($name, $title, $errors, $object = null, array $options = []) {
+Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => "form-control", 'placeholder' => $title], $options);
 
     $string  = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
@@ -119,7 +121,7 @@ Form::macro('normalInput', function ($name, $title, $errors, $object = null, arr
     return $string;
 });
 
-Form::macro('normalTextarea', function ($name, $title, $errors, $object = null, array $options = []) {
+Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
 
     $string  = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
@@ -145,7 +147,7 @@ Form::macro('normalTextarea', function ($name, $title, $errors, $object = null, 
  * @param object $errors The laravel errors object
  * @param null|object $object The entity of the field
  */
-Form::macro('normalCheckbox', function ($name, $title, $errors, $object = null) {
+Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $object = null) {
     $string = "<div class='checkbox" . ($errors->has($name) ? ' has-error' : '') . "'>";
     $string .= "<input type='hidden' value='0' name='{$name}'/>";
     $string .= "<label for='$name'>";
