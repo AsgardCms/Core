@@ -1,7 +1,6 @@
 <?php namespace Modules\Core\Providers;
 
 use Illuminate\Contracts\Bus\Dispatcher;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
@@ -11,9 +10,6 @@ use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Sidebar\AdminSidebar;
-use Modules\Menu\Entities\Menuitem;
-use Modules\Menu\Repositories\Cache\CacheMenuItemDecorator;
-use Modules\Menu\Repositories\Eloquent\EloquentMenuItemRepository;
 use Pingpong\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
