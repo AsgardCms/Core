@@ -76,7 +76,6 @@ class CoreServiceProvider extends ServiceProvider
             return $app['files']->isFile(base_path('.env')) && $hasTable;
         });
 
-        //$this->registerMenuRoutes();
         $this->registerCommands();
         $this->registerServices();
     }
