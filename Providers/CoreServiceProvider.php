@@ -148,25 +148,6 @@ class CoreServiceProvider extends ServiceProvider
         });
     }
 
-    private function registerMenuRoutes()
-    {
-        $this->app->bind(
-            'Modules\Menu\Repositories\MenuItemRepository',
-            function () {
-                $repository = new EloquentMenuItemRepository(new Menuitem());
-
-                if (! config('app.cache')) {
-                    return $repository;
-                }
-
-                return new CacheMenuItemDecorator($repository);
-            }
-        );
-        $this->app->singleton('Asgard.routes', function (Application $app) {
-            return $app->make('Modules\Menu\Repositories\MenuItemRepository')->getForRoutes();
-        });
-    }
-
     private function registerServices()
     {
         $this->app->bindShared('Modules\Core\Foundation\Theme\ThemeManager', function ($app) {
