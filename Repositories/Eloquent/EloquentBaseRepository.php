@@ -29,7 +29,11 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function find($id)
     {
-        return $this->model->with('translations')->find($id);
+        if (method_exists($this->model, 'translations')) {
+            return $this->model->with('translations')->find($id);
+        }
+
+        return $this->model->find($id);
     }
 
     /**
@@ -37,7 +41,11 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function all()
     {
-        return $this->model->with('translations')->orderBy('created_at', 'DESC')->get();
+        if (method_exists($this->model, 'translations')) {
+            return $this->model->with('translations')->orderBy('created_at', 'DESC')->get();
+        }
+
+        return $this->model->orderBy('created_at', 'DESC')->get();
     }
 
     /**
@@ -91,8 +99,12 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function findBySlug($slug)
     {
-        return $this->model->whereHas('translations', function (Builder $q) use ($slug) {
-            $q->where('slug', "$slug");
-        })->with('translations')->first();
+        if (method_exists($this->model, 'translations')) {
+            return $this->model->whereHas('translations', function (Builder $q) use ($slug) {
+                $q->where('slug', $slug);
+            })->with('translations')->first();
+        }
+
+        return $this->model->where('slug', $slug)->first();
     }
 }
