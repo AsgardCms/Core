@@ -65,7 +65,9 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $frontend = $this->getFrontendRoute();
 
         if ($frontend && file_exists($frontend)) {
-            require $frontend;
+            $router->group(['middleware' => config('asgard.core.core.middleware.frontend', [])], function(Router $router) use ($frontend) {
+                require $frontend;
+            });
         }
     }
 
@@ -77,7 +79,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $backend = $this->getBackendRoute();
 
         if ($backend && file_exists($backend)) {
-            $router->group(['namespace' => 'Admin', 'prefix' => config('asgard.core.core.admin-prefix'), 'middleware' => ['auth.admin', 'permissions']], function (Router $router) use ($backend) {
+            $router->group(['namespace' => 'Admin', 'prefix' => config('asgard.core.core.admin-prefix'), 'middleware' => config('asgard.core.core.middleware.backend', [])], function (Router $router) use ($backend) {
                 require $backend;
             });
         }
@@ -91,7 +93,7 @@ abstract class RoutingServiceProvider extends ServiceProvider
         $api = $this->getApiRoute();
 
         if ($api && file_exists($api)) {
-            $router->group(['namespace' => 'Api', 'prefix' => 'api'], function (Router $router) use ($api) {
+            $router->group(['namespace' => 'Api', 'prefix' => 'api', 'middleware' => config('asgard.core.core.middleware.api', [])], function (Router $router) use ($api) {
                 require $api;
             });
         }
