@@ -10,9 +10,11 @@ env:
   - LARAVEL_VERSION="~5.1" TESTBENCH_VERSION="~3.1"
 
 before_script:
-  - travis_retry composer install --no-interaction --prefer-source --dev
+  - travis_retry composer install --no-interaction --prefer-source
 
 script: phpunit
+
+sudo: false
 
 notifications:
   slack: asgardcms:KxCIbNZLKtq8gqQ18aw7RO23
