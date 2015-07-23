@@ -134,4 +134,23 @@ abstract class BaseCacheDecorator implements BaseRepository
 
         return $this->repository->destroy($model);
     }
+
+
+    /**
+     * Find a resource by an array of attributes
+     * @param  array  $attributes
+     * @return object
+     */
+    public function findByAttributes(array $attributes)
+    {
+        $tagIdentifier = json_encode($attributes);
+
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}", $this->cacheTime,
+                function () use ($attributes) {
+                    return $this->repository->findByAttributes($attributes);
+                }
+            );
+    }
 }

@@ -107,4 +107,24 @@ abstract class EloquentBaseRepository implements BaseRepository
 
         return $this->model->where('slug', $slug)->first();
     }
+
+    /**
+     * Find a resource by an array of attributes
+     * @param  array  $attributes
+     * @return object
+     */
+    public function findByAttributes(array $attributes)
+    {
+        $query = $this->model->query();
+
+        if (method_exists($this->model, 'translations')) {
+            $query = $query->with('translations');
+        }
+
+        foreach ($attributes as $field => $value) {
+            $query = $query->where($field, $value);
+        }
+
+        return $query->get();
+    }
 }
