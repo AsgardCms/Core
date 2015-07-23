@@ -53,4 +53,11 @@ interface BaseRepository
      * @return object
      */
     public function findBySlug($slug);
+
+    /**
+     * Find a resource by an array of attributes
+     * @param  array  $attributes
+     * @return object
+     */
+    public function findByAttributes(array $attributes);
 }
