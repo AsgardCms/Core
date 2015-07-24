@@ -135,7 +135,6 @@ abstract class BaseCacheDecorator implements BaseRepository
         return $this->repository->destroy($model);
     }
 
-
     /**
      * Find a resource by an array of attributes
      * @param  array  $attributes
@@ -150,6 +149,24 @@ abstract class BaseCacheDecorator implements BaseRepository
             ->remember("{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}", $this->cacheTime,
                 function () use ($attributes) {
                     return $this->repository->findByAttributes($attributes);
+                }
+            );
+    }
+
+    /**
+     * Return a collection of elements who's ids match
+     * @param array $ids
+     * @return mixed
+     */
+    public function findByMany(array $ids)
+    {
+        $tagIdentifier = json_encode($ids);
+
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.findByMany.{$tagIdentifier}", $this->cacheTime,
+                function () use ($ids) {
+                    return $this->repository->findByMany($ids);
                 }
             );
     }
