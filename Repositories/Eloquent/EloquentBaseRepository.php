@@ -127,4 +127,20 @@ abstract class EloquentBaseRepository implements BaseRepository
 
         return $query->get();
     }
+
+    /**
+     * Return a collection of elements who's ids match
+     * @param array   $ids
+     * @return mixed
+     */
+    public function findByMany(array $ids)
+    {
+        $query = $this->model->query();
+
+        if (method_exists($this->model, 'translations')) {
+            $query = $query->with('translations');
+        }
+
+        return $query->whereIn("id", $ids)->get();
+    }
 }
