@@ -3,7 +3,7 @@
 if (! function_exists('on_route')) {
     function on_route($route)
     {
-        return Route::current()->getName() == $route;
+        return Route::current() ? Route::current()->getName() == $route : false;
     }
 }
 
