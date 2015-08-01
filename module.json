@@ -4,7 +4,7 @@
     "description": "The core module with all base classes and logic.",
     "keywords": [],
     "require": {},
-    "version": "1.6.0",
+    "version": "1.7.0",
     "active": 1,
     "order": 0,
     "providers": [
