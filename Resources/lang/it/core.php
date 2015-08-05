@@ -16,6 +16,7 @@ return [
         'dutch' =>  'Olandese',
         'italian' => 'Italiano',
         'greek' => 'Ελληνικά',
+        'spanish' => 'Spanish',
     ],
     'button' => [
         'cancel' => 'Cancella',
