@@ -40,7 +40,7 @@ return [
         'available keyboard shortcuts' => 'Available keyboard shortcuts on this page',
         'view website' => 'View Website',
         'complete your profile' => 'Complete your profile',
-        'sign out' => 'Sign out'
+        'sign out' => 'Sign out',
     ],
     'messages' => [
         'resource created' => ':name successfully created.',
