@@ -35,7 +35,10 @@ return [
         'edit resource' => 'Edition de :name',
     ],
     'general' => [
-        'available keyboard shortcuts' => 'Raccourcis clavier disponibles sur cette page'
+        'available keyboard shortcuts' => 'Raccourcis clavier disponibles sur cette page',
+        'view website' => 'Voir le site',
+        'complete your profile' => 'Complétez votre profil',
+        'sign out' => 'Se déconnecter',
     ],
     'messages' => [
         'resource created' => ':name créé.',
