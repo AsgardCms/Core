@@ -16,6 +16,7 @@ return [
         'dutch' =>  'Holandes',
         'italian' => 'Italiano',
         'greek' => 'Griego',
+        'spanish' => 'Español',
     ],
     'button' => [
         'cancel' => 'Cancelar',
@@ -35,7 +36,10 @@ return [
         'edit resource' => 'Editar :name',
     ],
     'general' => [
-        'available keyboard shortcuts' => 'Atajos de teclado disponibles en esta página'
+        'available keyboard shortcuts' => 'Atajos de teclado disponibles en esta página',
+        'view website' => 'Ver sitio',
+        'complete your profile' => 'Complete su perfil',
+        'sign out' => 'Salir'
     ],
     'messages' => [
         'resource created' => ':name creado éxitosamente.',

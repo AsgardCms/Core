@@ -16,6 +16,8 @@ return [
         'dutch' =>  'Dutch',
         'italian' => 'Italian',
         'greek' => 'Ελληνικά',
+        'spanish' => 'Spanish'
+
     ],
     'button' => [
         'cancel' => 'Cancel',
@@ -35,7 +37,10 @@ return [
         'edit resource' => 'Edit :name',
     ],
     'general' => [
-        'available keyboard shortcuts' => 'Available keyboard shortcuts on this page'
+        'available keyboard shortcuts' => 'Available keyboard shortcuts on this page',
+        'view website' => 'View Website',
+        'complete your profile' => 'Complete your profile',
+        'sign out' => 'Sign out'
     ],
     'messages' => [
         'resource created' => ':name successfully created.',
