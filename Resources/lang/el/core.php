@@ -34,7 +34,10 @@ return [
         'edit resource' => 'Επεξεργασία :name',
     ],
     'general' => [
-        'available keyboard shortcuts' => 'Διαθέσιμες συντομεύσεις πληκτρολογίου για αυτή τη σελίδα'
+        'available keyboard shortcuts' => 'Διαθέσιμες συντομεύσεις πληκτρολογίου για αυτή τη σελίδα',
+        'view website' => 'View Website',
+        'complete your profile' => 'Complete your profile',
+        'sign out' => 'Sign out',
     ],
     'messages' => [
         'resource created' => ':name δημιουργήθηκε επιτυχώς.',

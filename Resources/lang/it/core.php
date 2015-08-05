@@ -35,7 +35,10 @@ return [
         'edit resource' => 'Modifica :name',
     ],
     'general' => [
-        'available keyboard shortcuts' => 'Sono disponibili scorciatoie da tastiera in questa pagina'
+        'available keyboard shortcuts' => 'Sono disponibili scorciatoie da tastiera in questa pagina',
+        'view website' => 'View Website',
+        'complete your profile' => 'Complete your profile',
+        'sign out' => 'Sign out',
     ],
     'messages' => [
         'resource created' => ':name creato con successo.',
