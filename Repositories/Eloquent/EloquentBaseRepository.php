@@ -125,7 +125,7 @@ abstract class EloquentBaseRepository implements BaseRepository
             $query = $query->where($field, $value);
         }
 
-        return $query->get();
+        return $query->first();
     }
 
     /**
