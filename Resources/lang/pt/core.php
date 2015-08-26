@@ -3,11 +3,11 @@
 return [
     'modal' => [
         'title' => 'Confirmação',
-        'confirmation-message' => 'Você deseja excluir este registro?',
+        'confirmation-message' => 'Deseja eliminar este registo?',
     ],
     'table' => [
         'created at' => 'Criado em',
-        'actions' => 'Ações',
+        'actions' => 'Acções',
         'thumbnail' => 'Miniatura',
     ],
     'tab' => [
@@ -16,7 +16,7 @@ return [
         'dutch' =>  'Holandês',
         'italian' => 'Italiano',
         'greek' => 'Grego',
-        'spanish' => 'Spanish',
+        'spanish' => 'Espanhol',
     ],
     'button' => [
         'cancel' => 'Cancelar',
@@ -37,9 +37,9 @@ return [
     ],
     'general' => [
         'available keyboard shortcuts' => 'Teclas de atalho disponíveis nesta página',
-        'view website' => 'View Website',
-        'complete your profile' => 'Complete your profile',
-        'sign out' => 'Sign out',
+        'view website' => 'Ver Site',
+        'complete your profile' => 'Complete o seu perfil',
+        'sign out' => 'Sair',
     ],
     'messages' => [
         'resource created' => ':name criado com sucesso.',
@@ -49,7 +49,5 @@ return [
     ],
     'back' => 'Back',
     'back to index' => 'Voltar para :name',
-    'permission denied' => 'Permissão negada. (Permissão requerida: ":permission")',
+    'permission denied' => 'Permissão negada. (Permissão necessária: ":permission")',
 ];
-
-
