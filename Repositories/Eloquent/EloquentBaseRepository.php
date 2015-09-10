@@ -127,4 +127,13 @@ abstract class EloquentBaseRepository implements BaseRepository
 
         return $query->get();
     }
+
+    /**
+     * Clear the cache for this Repositories' Entity
+     * @return bool
+     */
+    public function clearCache()
+    {
+        return true;
+    }
 }

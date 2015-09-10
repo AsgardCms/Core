@@ -60,4 +60,10 @@ interface BaseRepository
      * @return object
      */
     public function findByAttributes(array $attributes);
+
+    /**
+     * Clear the cache for this Repositories' Entity
+     * @return bool
+     */
+    public function clearCache();
 }
