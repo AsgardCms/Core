@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'content' => '内容'
+    'content' => '内容',
 ];
