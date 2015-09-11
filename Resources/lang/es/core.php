@@ -13,7 +13,7 @@ return [
     'tab' => [
         'english' => 'Inglés',
         'french' => 'Frances',
-        'dutch' =>  'Holandes',
+        'dutch' => 'Holandes',
         'italian' => 'Italiano',
         'greek' => 'Griego',
         'spanish' => 'Español',
@@ -39,7 +39,7 @@ return [
         'available keyboard shortcuts' => 'Atajos de teclado disponibles en esta página',
         'view website' => 'Ver sitio',
         'complete your profile' => 'Complete su perfil',
-        'sign out' => 'Salir'
+        'sign out' => 'Salir',
     ],
     'messages' => [
         'resource created' => ':name creado éxitosamente.',
