@@ -5,7 +5,6 @@ use Modules\Core\Console\Installers\SetupScript;
 
 class SetAppKey implements SetupScript
 {
-
     /**
      * Fire the install script
      * @param  Command $command

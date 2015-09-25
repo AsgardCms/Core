@@ -4,7 +4,6 @@ use Illuminate\Console\Command;
 
 interface SetupScript
 {
-
     /**
      * Fire the install script
      * @param  Command $command
