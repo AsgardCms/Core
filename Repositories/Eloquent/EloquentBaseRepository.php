@@ -143,4 +143,13 @@ abstract class EloquentBaseRepository implements BaseRepository
 
         return $query->whereIn("id", $ids)->get();
     }
+
+    /**
+     * Clear the cache for this Repositories' Entity
+     * @return bool
+     */
+    public function clearCache()
+    {
+        return true;
+    }
 }

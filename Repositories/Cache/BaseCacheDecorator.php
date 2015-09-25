@@ -170,4 +170,13 @@ abstract class BaseCacheDecorator implements BaseRepository
                 }
             );
     }
+
+    /**
+     * Clear the cache for this Repositories' Entity
+     * @return bool
+     */
+    public function clearCache()
+    {
+        return $this->cache->tags($this->entityName)->flush();
+    }
 }
