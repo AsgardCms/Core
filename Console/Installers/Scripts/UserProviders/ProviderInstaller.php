@@ -8,7 +8,6 @@ use Modules\Core\Services\Composer;
 
 abstract class ProviderInstaller implements SetupScript
 {
-
     /**
      * @var string
      */

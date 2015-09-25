@@ -5,7 +5,6 @@ use Modules\Core\Console\Installers\SetupScript;
 
 class ModuleAssets implements SetupScript
 {
-
     /**
      * @var array
      */

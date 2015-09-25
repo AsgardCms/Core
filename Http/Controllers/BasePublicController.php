@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Http\Controllers;
-use Illuminate\Support\Facades\App;
+
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\App;
 
 abstract class BasePublicController extends Controller
 {
@@ -17,7 +18,6 @@ abstract class BasePublicController extends Controller
         view()->share('currentUser', $this->auth->check());
     }
 
-
     protected function convertObjToArr($object)
     {
         if (!is_object($object) && !is_array($object)) {
@@ -28,6 +28,7 @@ abstract class BasePublicController extends Controller
 
             $object = get_object_vars($object);
         }
+
         return array_map(array($this, 'convertObjToArr'), $object);
     }
 }
