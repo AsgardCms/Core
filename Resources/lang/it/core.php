@@ -13,7 +13,7 @@ return [
     'tab' => [
         'english' => 'Inglese',
         'french' => 'Francese',
-        'dutch' =>  'Olandese',
+        'dutch' => 'Olandese',
         'italian' => 'Italiano',
         'greek' => 'Ελληνικά',
         'spanish' => 'Spanish',

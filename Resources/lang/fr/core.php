@@ -24,7 +24,7 @@ return [
     'tab' => [
         'english' => 'Anglais',
         'french' => 'Français',
-        'dutch' =>  'Nederlands',
+        'dutch' => 'Nederlands',
         'italian' => 'Italien',
         'greek' => 'Ελληνικά',
         'spanish' => 'Espagnol',
