@@ -67,4 +67,10 @@ interface BaseRepository
      * @return mixed
      */
     public function findByMany(array $ids);
+
+    /**
+     * Clear the cache for this Repositories' Entity
+     * @return bool
+     */
+    public function clearCache();
 }

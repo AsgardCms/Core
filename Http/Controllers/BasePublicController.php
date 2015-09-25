@@ -1,6 +1,7 @@
 <?php namespace Modules\Core\Http\Controllers;
-use Illuminate\Support\Facades\App;
+
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\App;
 
 abstract class BasePublicController extends Controller
 {
@@ -16,5 +17,8 @@ abstract class BasePublicController extends Controller
         $this->auth = app('Modules\Core\Contracts\Authentication');
         view()->share('currentUser', $this->auth->check());
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> AsgardCms/develop
 }

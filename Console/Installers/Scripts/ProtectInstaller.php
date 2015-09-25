@@ -7,7 +7,6 @@ use Modules\Core\Console\Installers\SetupScript;
 
 class ProtectInstaller implements SetupScript
 {
-
     /**
      * @var Filesystem
      */

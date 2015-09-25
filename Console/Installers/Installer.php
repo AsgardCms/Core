@@ -7,7 +7,6 @@ use Modules\Core\Services\Composer;
 
 class Installer
 {
-
     /**
      * @var array
      */

@@ -5,7 +5,6 @@ use Illuminate\Filesystem\Filesystem;
 
 class EnvFileWriter
 {
-
     /**
      * @var Filesystem
      */
