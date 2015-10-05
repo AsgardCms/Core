@@ -29,7 +29,7 @@
     "guzzlehttp/guzzle": "~5.0",
     "dimsav/laravel-translatable": "~5.0",
     "mcamara/laravel-localization": "~1.0",
-    "floatingpoint/stylist": "~0.1",
+    "floatingpoint/stylist": "dev-master",
     "maatwebsite/laravel-sidebar": "~2.0"
   },
   "require-dev": {
@@ -40,6 +40,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/nWidart/modules"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/joshbrw/stylist"
     }
   ],
   "autoload-dev": {
