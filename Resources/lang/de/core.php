@@ -41,7 +41,7 @@ return [
         'available keyboard shortcuts' => 'Auf dieser Seite sind Tastaturkürzel verfügbar',
         'view website' => 'Webseite anschauen',
         'complete your profile' => 'Vervollständigen Sie Ihr Profil',
-        'sign out' => 'Sign out',
+        'sign out' => 'Abmelden',
     ],
     'messages' => [
         'resource created' => ':name erflolgreich erstellt.',
@@ -50,6 +50,6 @@ return [
         'resource deleted' => ':name erflolgreich gelöscht.',
     ],
     'back' => 'Zurück',
-    'back to index' => 'Zurück zu :name index',
-    'permission denied' => 'Zugriff verweigert. (erforderliche Berechtigung: ":permission")',
+    'back to index' => 'Zurück zur Übersicht',
+    'permission denied' => 'Zugriff verweigert. (Erforderliche Berechtigung: ":permission")',
 ];
