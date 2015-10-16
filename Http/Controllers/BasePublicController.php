@@ -17,8 +17,4 @@ abstract class BasePublicController extends Controller
         $this->auth = app('Modules\Core\Contracts\Authentication');
         view()->share('currentUser', $this->auth->check());
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> AsgardCms/develop
 }
