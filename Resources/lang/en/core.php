@@ -17,8 +17,12 @@ return [
         'italian' => 'Italian',
         'greek' => 'Ελληνικά',
         'spanish' => 'Spanish',
+<<<<<<< HEAD
         'chinese (simplified)' => 'Chinese (simplified)',
         'chinese (traditional)' => 'Chinese (traditional)',
+=======
+        'polish' => 'Polish',
+>>>>>>> AsgardCms/develop
     ],
     'button' => [
         'cancel' => 'Cancel',

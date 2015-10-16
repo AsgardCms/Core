@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'site-name' => 'Site-Namen',
-    'site-description' => 'Seitenbeschreibung',
-    'template' => 'Frontend-Template',
+    'site-name' => 'Seiten Name',
+    'site-description' => 'Seiten Beschreibung',
+    'template' => 'Webseiten Vorlage',
     'google-analytics' => 'Google Analytics Code',
-    'locales' => 'Website-Gebietsschemas',
+    'locales' => 'Sprachen',
 ];
