@@ -1,5 +1,11 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.10.0":
+        added:
+            - Added Polish translations
+            - Added Russian translations
+        changed:
+            - Improving german translations
     "1.9.0":
         added:
             - Chinese (simplified) language
