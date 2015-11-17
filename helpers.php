@@ -1,5 +1,7 @@
 <?php
 
+use Pingpong\Modules\Facades\Module;
+
 if (! function_exists('on_route')) {
     function on_route($route)
     {
@@ -17,5 +19,12 @@ if (! function_exists('locale')) {
         app()->setLocale($locale);
 
         return app()->getLocale();
+    }
+}
+
+if (! function_exists('is_module_enabled')) {
+    function is_module_enabled($module)
+    {
+        return array_key_exists($module, Module::enabled());
     }
 }
