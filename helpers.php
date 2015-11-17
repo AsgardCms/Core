@@ -25,6 +25,6 @@ if (! function_exists('locale')) {
 if (! function_exists('is_module_enabled')) {
     function is_module_enabled($module)
     {
-        return array_key_exists($module, Module::enabled());
+        return array_key_exists($module, app('modules')->enabled());
     }
 }
