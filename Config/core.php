@@ -73,6 +73,7 @@ return [
         'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css'],
         'selectize.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.css'],
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
+        'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
         // Javascript
         'jquery.js' => ['theme' => 'vendor/jquery/dist/jquery.min.js'],
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
@@ -115,6 +116,7 @@ return [
            'dataTables.bootstrap.css',
            'AdminLTE.css',
            'AdminLTE.all.skins.css',
+           'animate.css',
            'asgard.css',
        ],
        'js' => [
