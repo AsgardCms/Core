@@ -1,6 +1,6 @@
 # Core Module
 
-[![Latest Version](https://img.shields.io/github/release/asgardcms/core.svg?style=flat-square)](https://github.com/asgardcms/core/releases)
+[![Latest Version](https://img.shields.io/packagist/v/asgardcms/core.svg?style=flat-square)](https://github.com/asgardcms/core/releases)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Quality Score](https://img.shields.io/scrutinizer/g/asgardcms/core.svg?style=flat-square)](https://scrutinizer-ci.com/g/asgardcms/core)
 [![SensioLabs Insight](https://img.shields.io/sensiolabs/i/57e26b38-6275-4608-96e2-44047aaed5c2.svg)](https://insight.sensiolabs.com/projects/57e26b38-6275-4608-96e2-44047aaed5c2)
