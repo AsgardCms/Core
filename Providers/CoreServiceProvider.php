@@ -175,7 +175,7 @@ class CoreServiceProvider extends ServiceProvider
             return;
         }
         $this->app['view']->addNamespace(
-            $module->getName(),
+            $module->getStudlyName(),
             $module->getPath() . '/Resources/views'
         );
     }
@@ -186,7 +186,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerLanguageNamespace(Module $module)
     {
-        $moduleName = $module->getName();
+        $moduleName = $module->getStudlyName();
 
         $langPath = base_path("resources/lang/modules/$moduleName");
 
