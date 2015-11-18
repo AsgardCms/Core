@@ -3,6 +3,7 @@ versions:
     "1.11.2":
         changed:
             - Undoing breaking change for StudlyCase module names
+    "1.11.1":
         changed:
             - Allow modules to be StudlyCase
     "1.11.0":
