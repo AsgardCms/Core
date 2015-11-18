@@ -171,11 +171,11 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerViewNamespace(Module $module)
     {
-        if ($module->getName() == 'user') {
+        if ($module->getStudlyName() == 'user') {
             return;
         }
         $this->app['view']->addNamespace(
-            $module->getName(),
+            $module->getStudlyName(),
             $module->getPath() . '/Resources/views'
         );
     }
@@ -186,7 +186,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerLanguageNamespace(Module $module)
     {
-        $moduleName = $module->getName();
+        $moduleName = $module->getStudlyName();
 
         $langPath = base_path("resources/lang/modules/$moduleName");
 
