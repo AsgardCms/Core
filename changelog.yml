@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.11.1":
+        changed:
+            - Allow modules to be StudlyCase
     "1.11.0":
         added:
             - Adding a view composer to get the currently logged in user
