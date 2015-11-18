@@ -171,7 +171,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerViewNamespace(Module $module)
     {
-        if ($module->getStudlyName() == 'user') {
+        if ($module->getName() == 'user') {
             return;
         }
         $this->app['view']->addNamespace(
