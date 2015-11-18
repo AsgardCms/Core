@@ -1,7 +1,5 @@
 <?php
 
-use Pingpong\Modules\Facades\Module;
-
 if (! function_exists('on_route')) {
     function on_route($route)
     {
