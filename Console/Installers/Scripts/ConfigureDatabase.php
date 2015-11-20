@@ -132,6 +132,10 @@ class ConfigureDatabase implements SetupScript
         $this->config['database.connections.mysql.password'] = $password;
     }
 
+    /**
+     * Is the database connection valid?
+     * @return bool
+     */
     protected function databaseConnectionIsValid()
     {
         try {
