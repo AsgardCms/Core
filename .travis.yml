@@ -18,6 +18,8 @@ sudo: false
 
 notifications:
   slack: asgardcms:KxCIbNZLKtq8gqQ18aw7RO23
+  email:
+    - josh@joshbrown.me
 
 matrix:
   allow_failures:
