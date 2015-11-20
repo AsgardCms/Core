@@ -4,6 +4,7 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Config\Repository as Config;
 use Modules\Core\Console\Installers\SetupScript;
 use Modules\Core\Console\Installers\Writers\EnvFileWriter;
+use PDOException;
 
 class ConfigureDatabase implements SetupScript
 {
@@ -41,15 +42,25 @@ class ConfigureDatabase implements SetupScript
     {
         $this->command = $command;
 
-        $host = $this->askDatabaseHost();
+        $connected = false;
 
-        $name = $this->askDatabaseName();
+        while (! $connected) {
+            $host = $this->askDatabaseHost();
 
-        $user = $this->askDatabaseUsername();
+            $name = $this->askDatabaseName();
 
-        $password = $this->askDatabasePassword();
+            $user = $this->askDatabaseUsername();
 
-        $this->setLaravelConfiguration($name, $user, $password, $host);
+            $password = $this->askDatabasePassword();
+
+            $this->setLaravelConfiguration($name, $user, $password, $host);
+
+            if ($this->databaseConnectionIsValid()) {
+                $connected = true;
+            } else {
+                $command->error("Please ensure your database credentials are valid.");
+            }
+        }
 
         $this->env->write($name, $user, $password, $host);
 
@@ -119,5 +130,16 @@ class ConfigureDatabase implements SetupScript
         $this->config['database.connections.mysql.database'] = $name;
         $this->config['database.connections.mysql.username'] = $user;
         $this->config['database.connections.mysql.password'] = $password;
+    }
+
+    protected function databaseConnectionIsValid()
+    {
+        try {
+            app('db')->reconnect();
+
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }
