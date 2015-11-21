@@ -51,5 +51,3 @@ return [
     'back to index' => 'Voltar para :name',
     'permission denied' => 'Permissão negada. (Permissão requerida: ":permission")',
 ];
-
-
