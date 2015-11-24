@@ -193,13 +193,14 @@ class CoreServiceProvider extends ServiceProvider
         if ($this->hasPublishedTranslations($langPath)) {
             $this->loadTranslationsFrom($langPath, $moduleName);
         }
-        if (array_key_exists('translation', $this->app['modules']->enabled())) {
-            $translationModulePath = $this->app['modules']->find('translation')->getPath() . "/Resources/lang/{$moduleName}";
+        if (array_key_exists('Translation', $this->app['modules']->enabled())) {
+            $translationModulePath = $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$moduleName}";
             if ($this->hasCentralisedTranslations($translationModulePath)) {
                 $this->loadTranslationsFrom($translationModulePath, $moduleName);
             }
+        } else {
+            $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
         }
-        $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
     }
 
     /**
