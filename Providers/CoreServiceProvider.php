@@ -190,11 +190,16 @@ class CoreServiceProvider extends ServiceProvider
 
         $langPath = base_path("resources/lang/modules/$moduleName");
 
-        if (is_dir($langPath)) {
+        if ($this->hasPublishedTranslations($langPath)) {
             $this->loadTranslationsFrom($langPath, $moduleName);
-        } else {
-            $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
         }
+        if (array_key_exists('translation', $this->app['modules']->enabled())) {
+            $translationModulePath = $this->app['modules']->find('translation')->getPath() . "/Resources/lang/{$moduleName}";
+            if ($this->hasCentralisedTranslations($translationModulePath)) {
+                $this->loadTranslationsFrom($translationModulePath, $moduleName);
+            }
+        }
+        $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
     }
 
     /**
@@ -268,5 +273,23 @@ class CoreServiceProvider extends ServiceProvider
             $this->app->config->set('laravellocalization.supportedLocales', $availableLocales);
             $this->app->config->set('translatable.locales', $locales);
         }
+    }
+
+    /**
+     * @param string $path
+     * @return bool
+     */
+    private function hasPublishedTranslations($path)
+    {
+        return is_dir($path);
+    }
+
+    /**
+     * @param string $translationModulePath
+     * @return bool
+     */
+    private function hasCentralisedTranslations($translationModulePath)
+    {
+        return is_dir($translationModulePath);
     }
 }

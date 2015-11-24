@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.12.0":
+        changed:
+            - Added check for correct database configuration on <code>asgard:install</code>
     "1.11.2":
         changed:
             - Undoing breaking change for StudlyCase module names
