@@ -258,7 +258,7 @@ abstract class ProviderInstaller implements SetupScript
     private function askForPasswordConfirmation()
     {
         do {
-            $passwordConfirmation = $this->command->secret('Please confirm you password');
+            $passwordConfirmation = $this->command->secret('Please confirm your password');
             if ($passwordConfirmation == '') {
                 $this->command->error('Password confirmation is required');
             }
