@@ -63,6 +63,26 @@ class PermissionManager
             return false;
         }
 
-        return (bool) $checkedPermission;
+        return (bool)$checkedPermission;
+    }
+
+    /**
+     * Are all of the permissions passed of false value?
+     * @param array $permissions    Permissions array
+     * @return bool
+     */
+    public function permissionsAreAllFalse(array $permissions)
+    {
+        $uniquePermissions = array_unique($permissions);
+
+        if (count($uniquePermissions) > 1) {
+            return false;
+        }
+
+        $uniquePermission = reset($uniquePermissions);
+
+        $cleanedPermission = $this->getState($uniquePermission);
+
+        return $cleanedPermission === false;
     }
 }
