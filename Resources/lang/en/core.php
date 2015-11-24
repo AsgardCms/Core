@@ -18,6 +18,8 @@ return [
         'greek' => 'Ελληνικά',
         'spanish' => 'Spanish',
         'polish' => 'Polish',
+        'portuguese' => 'Portuguese',
+        'arabic' => 'Arabic',
     ],
     'button' => [
         'cancel' => 'Cancel',
