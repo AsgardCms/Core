@@ -17,7 +17,9 @@ return [
         'italian' => 'Italian',
         'greek' => 'Ελληνικά',
         'spanish' => 'Spanish',
-        'polish' => 'Polish',
+        'polish' => 'Polish',        
+        'portuguese' => 'Portuguese',
+        'arabic' => 'Arabic',
     ],
     'button' => [
         'cancel' => 'Cancel',
