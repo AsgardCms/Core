@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.14.0":
+        changed:
+            - Fixing centralised translations and slight refactoring
     "1.13.0":
         changes:
             - Moving the <code>PermissionManager</code> to the User module
