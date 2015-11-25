@@ -193,11 +193,9 @@ class CoreServiceProvider extends ServiceProvider
         if ($this->hasPublishedTranslations($langPath)) {
             $this->loadTranslationsFrom($langPath, $moduleName);
         }
-        if (array_key_exists('Translation', $this->app['modules']->enabled())) {
-            $translationModulePath = $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$moduleName}";
-            if ($this->hasCentralisedTranslations($translationModulePath)) {
-                $this->loadTranslationsFrom($translationModulePath, $moduleName);
-            }
+
+        if ($this->moduleHasCentralisedTranslations($module)) {
+            $this->loadTranslationsFrom($this->getCentralisedTranslationPath($module), $moduleName);
         } else {
             $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
         }
@@ -286,11 +284,27 @@ class CoreServiceProvider extends ServiceProvider
     }
 
     /**
-     * @param string $translationModulePath
+     * Does a Module have it's Translations centralised in the Translation module?
+     * @param Module $module
      * @return bool
      */
-    private function hasCentralisedTranslations($translationModulePath)
+    private function moduleHasCentralisedTranslations(Module $module)
     {
-        return is_dir($translationModulePath);
+        if (! array_has($this->app['modules']->enabled(), 'Translation')) {
+            return false;
+        }
+
+        return is_dir($this->getCentralisedTranslationPath($module));
+    }
+
+    /**
+     * Get the absolute path to the Centralised Translations for a Module (via the Translations module)
+     * @param Module $module
+     * @return string
+     */
+    private function getCentralisedTranslationPath(Module $module)
+    {
+        return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getName()}";
     }
 }
+
