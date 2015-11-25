@@ -7,7 +7,7 @@ use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
 use Pingpong\Modules\Contracts\RepositoryInterface;
 
-abstract class AdminSidebar implements Sidebar, ShouldCache
+class AdminSidebar implements Sidebar, ShouldCache
 {
     use CacheableTrait;
     /**
