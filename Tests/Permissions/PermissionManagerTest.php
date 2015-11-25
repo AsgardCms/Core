@@ -26,7 +26,7 @@ class PermissionManagerTest extends BaseTestCase
             'permission4' => 'false',
         ]);
 
-        $mixedPermissioms = $manager->permissionsAreAllFalse([
+        $mixedPermissions = $manager->permissionsAreAllFalse([
             'permission1' => 'true',
             'permission2' => 'false',
             'permission3' => 'false',
@@ -34,7 +34,7 @@ class PermissionManagerTest extends BaseTestCase
         ]);
 
         $this->assertSame(true, $allFalsePermissions);
-        $this->assertSame(false, $mixedPermissioms);
+        $this->assertSame(false, $mixedPermissions);
     }
 
     /**
