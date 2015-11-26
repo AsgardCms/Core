@@ -158,7 +158,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerModuleResourceNamespaces()
     {
-        foreach ($this->app['modules']->enabled() as $module) {
+        foreach ($this->app['modules']->getOrdered() as $module) {
             $this->registerViewNamespace($module);
             $this->registerLanguageNamespace($module);
             $this->registerConfigNamespace($module);
