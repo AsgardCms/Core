@@ -74,7 +74,6 @@ return [
         'selectize.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.css'],
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
-        'bootstrap-editable.css' => ['module' => 'translation:vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
@@ -99,7 +98,6 @@ return [
         'sisyphus.js' => ['theme' => 'vendor/sisyphus/sisyphus.min.js'],
         'main.js' => ['theme' => 'js/main.js'],
         'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
-        'bootstrap-editable.js' => ['module' => 'translation:vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js'],
     ],
 
    /*
