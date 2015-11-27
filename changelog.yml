@@ -1,5 +1,20 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.16.0":
+        - Extracting a generic delete modal
+    "1.15.0":
+        changed:
+            - Registering of module namespaces (views, config, languages) are now done in correct module order
+            - Updating bower dependencies
+    "1.14.0":
+        changed:
+            - Fixing centralised translations and slight refactoring
+    "1.13.0":
+        changes:
+            - Moving the <code>PermissionManager</code> to the User module
+    "1.12.1":
+        changed:
+            - Fixed getting translations logic from Translation module
     "1.12.0":
         changed:
             - Added check for correct database configuration on <code>asgard:install</code>
