@@ -63,7 +63,7 @@ return [
         'font-awesome.css' => ['theme' => 'vendor/font-awesome/css/font-awesome.min.css'],
         'alertify.core.css' => ['theme' => 'css/vendor/alertify/alertify.core.css'],
         'alertify.default.css' => ['theme' => 'css/vendor/alertify/alertify.default.css'],
-        'dataTables.bootstrap.css' => ['theme' => 'css/vendor/datatables/dataTables.bootstrap.css'],
+        'dataTables.bootstrap.css' => ['theme' => 'vendor/datatables.net-bs/css/dataTables.bootstrap.min.css'],
         'icheck.blue.css' => ['theme' => 'vendor/iCheck/skins/flat/blue.css'],
         'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
         'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
@@ -74,14 +74,14 @@ return [
         'selectize.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.css'],
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
+        'bootstrap-editable.css' => ['module' => 'translation:vendor/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css'],
         // Javascript
-        'jquery.js' => ['theme' => 'vendor/jquery/dist/jquery.min.js'],
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
         'alertify.js' => ['theme' => 'js/vendor/alertify/alertify.js'],
         'icheck.js' => ['theme' => 'vendor/iCheck/icheck.min.js'],
-        'jquery.dataTables.js' => ['theme' => 'js/vendor/datatables/jquery.dataTables.js'],
-        'dataTables.bootstrap.js' => ['theme' => 'js/vendor/datatables/dataTables.bootstrap.js'],
+        'jquery.dataTables.js' => ['theme' => 'vendor/datatables.net/js/jquery.dataTables.min.js'],
+        'dataTables.bootstrap.js' => ['theme' => 'vendor/datatables.net-bs/js/dataTables.bootstrap.min.js'],
         'jquery.slug.js' => ['theme' => 'js/vendor/jquery.slug.js'],
         'app.js' => ['theme' => 'vendor/admin-lte/dist/js/app.js'],
         'keypressAction.js' => ['module' => 'core:js/keypressAction.js'],
@@ -99,6 +99,7 @@ return [
         'sisyphus.js' => ['theme' => 'vendor/sisyphus/sisyphus.min.js'],
         'main.js' => ['theme' => 'js/main.js'],
         'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
+        'bootstrap-editable.js' => ['module' => 'translation:vendor/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js'],
     ],
 
    /*
@@ -120,7 +121,6 @@ return [
            'asgard.css',
        ],
        'js' => [
-           'jquery.js',
            'bootstrap.js',
            'mousetrap.js',
            'alertify.js',
