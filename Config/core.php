@@ -113,6 +113,7 @@ return [
            'alertify.core.css',
            'alertify.default.css',
            'dataTables.bootstrap.css',
+           'icheck.blue.css',
            'AdminLTE.css',
            'AdminLTE.all.skins.css',
            'animate.css',
