@@ -3,6 +3,7 @@ versions:
     "1.15.0":
         changed:
             - Registering of module namespaces (views, config, languages) are now done in correct module order
+            - Updating bower dependencies
     "1.14.0":
         changed:
             - Fixing centralised translations and slight refactoring
