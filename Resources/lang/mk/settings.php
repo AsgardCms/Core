@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'site-name' => 'Site name',
-    'site-description' => 'Site description',
-    'template' => 'Front end template',
-    'google-analytics' => 'Google Analytics Code',
-    'locales' => 'Site locales',
+    'site-name' => 'Име на сајтот',
+    'site-description' => 'Опис на сајтот',
+    'template' => 'Темплејт за предниот дел',
+    'google-analytics' => 'Google Analytics Код',
+    'locales' => 'Локализации на сајтот',
 ];
