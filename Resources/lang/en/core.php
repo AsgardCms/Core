@@ -20,6 +20,7 @@ return [
         'polish' => 'Polish',
         'chinese (simplified)' => 'Chinese (Simplified)',
         'chinese (traditional)' => 'Chinese (Traditional)',
+        'macedonian' => 'Македонски',
     ],
     'button' => [
         'cancel' => 'Cancel',
