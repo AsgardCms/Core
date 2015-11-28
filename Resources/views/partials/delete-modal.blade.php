@@ -11,7 +11,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline btn-flat" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
                 {!! Form::open(['method' => 'delete', 'class' => 'pull-left']) !!}
-                <button type="submit" class="btn btn-outline btn-flat"><i class="glyphicon glyphicon-trash"></i> {{ trans('core::core.button.delete') }}</button>
+                <button type="submit" class="btn btn-outline btn-flat"><i class="fa fa-trash"></i> {{ trans('core::core.button.delete') }}</button>
                 {!! Form::close() !!}
             </div>
         </div>

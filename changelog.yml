@@ -1,7 +1,11 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.16.1":
+        changed:
+            - Adding missing asset path on <code>AssetNotFoundException</code>
     "1.16.0":
-        - Extracting a generic delete modal
+        changed:
+            - Extracting a generic delete modal
     "1.15.0":
         changed:
             - Registering of module namespaces (views, config, languages) are now done in correct module order
