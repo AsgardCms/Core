@@ -18,6 +18,8 @@ return [
         'greek' => 'Ελληνικά',
         'spanish' => 'Spanish',
         'polish' => 'Polish',
+        'chinese (simplified)' => 'Chinese (Simplified)',
+        'chinese (traditional)' => 'Chinese (Traditional)',
     ],
     'button' => [
         'cancel' => 'Cancel',
