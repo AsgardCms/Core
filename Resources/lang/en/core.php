@@ -17,6 +17,8 @@ return [
         'italian' => 'Italian',
         'greek' => 'Ελληνικά',
         'spanish' => 'Spanish',
+        'chinese (simplified)' => 'Chinese (simplified)',
+        'chinese (traditional)' => 'Chinese (traditional)',
         'polish' => 'Polish',
     ],
     'button' => [
