@@ -37,6 +37,9 @@
     "orchestra/testbench": "~3.1",
     "mockery/mockery": "^0.9.4"
   },
+  "suggest": {
+    "asgardcms/notification-module": "Allows notifications to be sent to the user. Optionally real-time notifications."
+  },
   "repositories": [
     {
       "type": "vcs",
