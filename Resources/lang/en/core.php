@@ -20,6 +20,8 @@ return [
         'chinese (simplified)' => 'Chinese (simplified)',
         'chinese (traditional)' => 'Chinese (traditional)',
         'polish' => 'Polish',
+        'chinese (simplified)' => 'Chinese (Simplified)',
+        'chinese (traditional)' => 'Chinese (Traditional)',
     ],
     'button' => [
         'cancel' => 'Cancel',
