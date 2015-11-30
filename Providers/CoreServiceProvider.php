@@ -191,13 +191,13 @@ class CoreServiceProvider extends ServiceProvider
         $langPath = base_path("resources/lang/$moduleName");
         $secondPath = base_path("resources/lang/translation/$moduleName");
 
-        if ($moduleName === 'translation') {
-            return $this->loadTranslationsFrom($langPath . '/translation', $moduleName);
-        }
-        if ($this->hasPublishedTranslations($langPath)) {
+        if ($moduleName !== 'translation' && $this->hasPublishedTranslations($langPath)) {
             return $this->loadTranslationsFrom($langPath, $moduleName);
         }
         if ($this->hasPublishedTranslations($secondPath)) {
+            if ($moduleName === 'translation') {
+                return $this->loadTranslationsFrom($secondPath, $moduleName);
+            }
             return $this->loadTranslationsFrom($secondPath, $moduleName);
         }
         if ($this->moduleHasCentralisedTranslations($module)) {
