@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.18.2":
+        changed:
+            - CoreServiceProvider cleanup
     "1.18.1":
         changed:
             - Running the migrations for the translation module on install
