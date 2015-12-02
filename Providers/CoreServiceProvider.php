@@ -108,39 +108,19 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerCommands()
     {
-        $this->registerInstallCommand();
         $this->registerThemeCommand();
-        $this->registerPublishModuleAssetsCommand();
 
         $this->commands([
-            'command.asgard.install',
+            \Modules\Core\Console\InstallCommand::class,
             'command.asgard.publish.theme',
-            'command.asgard.publish.module.assets',
+            PublishModuleAssetsCommand::class,
         ]);
-    }
-
-    /**
-     * Register the installation command
-     */
-    private function registerInstallCommand()
-    {
-        $this->app->bind(
-            'command.asgard.install',
-            'Modules\Core\Console\InstallCommand'
-        );
     }
 
     private function registerThemeCommand()
     {
         $this->app->bindShared('command.asgard.publish.theme', function ($app) {
             return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify.themes_path')));
-        });
-    }
-
-    private function registerPublishModuleAssetsCommand()
-    {
-        $this->app->bindShared('command.asgard.publish.module.assets', function () {
-            return new PublishModuleAssetsCommand();
         });
     }
 
