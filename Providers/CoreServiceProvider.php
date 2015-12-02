@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
+use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
@@ -108,25 +109,16 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerCommands()
     {
-        $this->registerThemeCommand();
-
         $this->commands([
-            \Modules\Core\Console\InstallCommand::class,
-            'command.asgard.publish.theme',
+            InstallCommand::class,
+            PublishThemeAssetsCommand::class,
             PublishModuleAssetsCommand::class,
         ]);
     }
 
-    private function registerThemeCommand()
-    {
-        $this->app->bindShared('command.asgard.publish.theme', function ($app) {
-            return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify.themes_path')));
-        });
-    }
-
     private function registerServices()
     {
-        $this->app->bindShared('Modules\Core\Foundation\Theme\ThemeManager', function ($app) {
+        $this->app->bindShared(ThemeManager::class, function ($app) {
             $path = $app['config']->get('asgard.core.core.themes_path');
 
             return new ThemeManager($app, $path);
@@ -199,14 +191,9 @@ class CoreServiceProvider extends ServiceProvider
         foreach ($files as $file) {
             $filename = $this->getConfigFilename($file, $package);
 
-            $this->mergeConfigFrom(
-                $file,
-                $filename
-            );
+            $this->mergeConfigFrom($file, $filename);
 
-            $this->publishes([
-                $file => config_path($filename . '.php'),
-            ], 'config');
+            $this->publishes([$file => config_path($filename . '.php'), ], 'config');
         }
     }
 
