@@ -127,6 +127,30 @@ abstract class EloquentBaseRepository implements BaseRepository
 
         return $query->first();
     }
+    
+    /**
+     * Get resources by an array of attributes
+     * @param  array  $attributes
+     * @return objects
+     */
+    public function getByAttributes(array $attributes, $orderBy='', $sort='asc')
+    {
+        $query = $this->model->query();
+
+        if (method_exists($this->model, 'translations')) {
+            $query = $query->with('translations');
+        }
+
+        foreach ($attributes as $field => $value) {
+            $query = $query->where($field, $value);
+        }
+
+        if (!empty($orderBy)) {
+            $query->orderBy($orderBy, $sort);
+        }
+
+        return $query->get();
+    }
 
     /**
      * Return a collection of elements who's ids match
