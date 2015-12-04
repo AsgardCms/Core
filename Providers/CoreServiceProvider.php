@@ -170,11 +170,13 @@ class CoreServiceProvider extends ServiceProvider
             if ($moduleName === 'translation') {
                 return $this->loadTranslationsFrom($secondPath, $moduleName);
             }
+
             return $this->loadTranslationsFrom($secondPath, $moduleName);
         }
         if ($this->moduleHasCentralisedTranslations($module)) {
             return $this->loadTranslationsFrom($this->getCentralisedTranslationPath($module), $moduleName);
         }
+
         return $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
     }
 
@@ -279,4 +281,3 @@ class CoreServiceProvider extends ServiceProvider
         return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getName()}";
     }
 }
-
