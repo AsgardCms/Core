@@ -154,6 +154,26 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
+     * Get resources by an array of attributes
+     * @param array $attributes
+     * @param null|string $orderBy
+     * @param string $sortOrder
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
+    {
+        $tagIdentifier = json_encode($attributes);
+
+        return $this->cache
+            ->tags($this->entityName, 'global')
+            ->remember("{$this->locale}.{$this->entityName}.findByAttributes.{$tagIdentifier}.{$orderBy}.{$sortOrder}", $this->cacheTime,
+                function () use ($attributes, $orderBy, $sortOrder) {
+                    return $this->repository->getByAttributes($attributes, $orderBy, $sortOrder);
+                }
+            );
+    }
+
+    /**
      * Return a collection of elements who's ids match
      * @param array $ids
      * @return mixed
