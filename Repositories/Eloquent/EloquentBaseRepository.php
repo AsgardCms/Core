@@ -107,13 +107,37 @@ abstract class EloquentBaseRepository implements BaseRepository
 
         return $this->model->where('slug', $slug)->first();
     }
-
+    
     /**
      * Find a resource by an array of attributes
      * @param  array  $attributes
      * @return object
      */
     public function findByAttributes(array $attributes)
+    {
+        $query = $this->catchByAttributes($attributes);
+
+        return $query->first();
+    }
+
+    /**
+     * Get resources by an array of attributes
+     * @param  array  $attributes
+     * @return objects
+     */
+    public function getByAttributes(array $attributes, $orderBy = '', $sort = 'asc')
+    {
+        $query = $this->catchByAttributes($attributes, $orderBy, $sort);
+
+        return $query->get();
+    }
+
+    /**
+     * Build Query to catch resources by an array of attributes and params
+     * @param  array  $attributes
+     * @return query object
+     */
+    private function catchByAttributes(array $attributes, $orderBy = '', $sort = 'asc')
     {
         $query = $this->model->query();
 
@@ -125,7 +149,11 @@ abstract class EloquentBaseRepository implements BaseRepository
             $query = $query->where($field, $value);
         }
 
-        return $query->first();
+        if (! empty($orderBy)) {
+            $query->orderBy($orderBy, $sort);
+        }
+
+        return $query;
     }
 
     /**
