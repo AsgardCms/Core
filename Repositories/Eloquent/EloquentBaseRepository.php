@@ -107,7 +107,7 @@ abstract class EloquentBaseRepository implements BaseRepository
 
         return $this->model->where('slug', $slug)->first();
     }
-
+    
     /**
      * Find a resource by an array of attributes
      * @param  array  $attributes
@@ -115,15 +115,7 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function findByAttributes(array $attributes)
     {
-        $query = $this->model->query();
-
-        if (method_exists($this->model, 'translations')) {
-            $query = $query->with('translations');
-        }
-
-        foreach ($attributes as $field => $value) {
-            $query = $query->where($field, $value);
-        }
+        $query = $this->catchByAttributes($attributes);
 
         return $query->first();
     }
@@ -135,6 +127,18 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function getByAttributes(array $attributes, $orderBy = '', $sort = 'asc')
     {
+        $query = $this->catchByAttributes($attributes, $orderBy, $sort);
+
+        return $query->get();
+    }
+
+    /**
+     * Build Query to catch resources by an array of attributes and params
+     * @param  array  $attributes
+     * @return query object
+     */
+    private function catchByAttributes(array $attributes, $orderBy = '', $sort = 'asc')
+    {
         $query = $this->model->query();
 
         if (method_exists($this->model, 'translations')) {
@@ -145,13 +149,13 @@ abstract class EloquentBaseRepository implements BaseRepository
             $query = $query->where($field, $value);
         }
 
-        if (!empty($orderBy)) {
+        if (! empty($orderBy)) {
             $query->orderBy($orderBy, $sort);
         }
 
-        return $query->get();
+        return $query;
     }
-    
+
     /**
      * Return a collection of elements who's ids match
      * @param array $ids
