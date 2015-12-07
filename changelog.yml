@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.20.0":
+        changed:
+            - Removed language files, they are not in the translation module
     "1.19.0":
         added:
             - Adding a <code>getByAttributes</code> method on the base repository
