@@ -3,6 +3,8 @@ versions:
     "1.20.1":
         added:
             - <code>moment.js</code> has been added to the available scripts to include
+        changed:
+            - Typehint the eloquent model
     "1.20.0":
         changed:
             - Removed language files, they are now in the translation module
