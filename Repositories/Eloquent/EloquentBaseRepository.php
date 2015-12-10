@@ -11,7 +11,7 @@ use Modules\Core\Repositories\BaseRepository;
 abstract class EloquentBaseRepository implements BaseRepository
 {
     /**
-     * @var Model An instance of the Eloquent Model
+     * @var \Illuminate\Database\Eloquent\Model An instance of the Eloquent Model
      */
     protected $model;
 
