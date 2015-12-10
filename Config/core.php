@@ -100,6 +100,7 @@ return [
         'main.js' => ['theme' => 'js/main.js'],
         'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
         'pace.js' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.js'],
+        'moment.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/moment.min.js'],
     ],
 
    /*
