@@ -5,6 +5,7 @@ versions:
             - <code>moment.js</code> has been added to the available scripts to include
         changed:
             - Typehint the eloquent model
+            - Set the database default values to the homestead values on install command
     "1.20.0":
         changed:
             - Removed language files, they are now in the translation module
