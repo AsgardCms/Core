@@ -2,7 +2,9 @@
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Foundation\Asset\Manager\AsgardAssetManager;
+use Modules\Core\Foundation\Asset\Manager\AssetManager;
 use Modules\Core\Foundation\Asset\Pipeline\AsgardAssetPipeline;
+use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
 
 class AssetServiceProvider extends ServiceProvider
 {
@@ -20,12 +22,12 @@ class AssetServiceProvider extends ServiceProvider
      */
     private function bindAssetClasses()
     {
-        $this->app->singleton('Modules\Core\Foundation\Asset\Manager\AssetManager', function () {
+        $this->app->singleton(AssetManager::class, function () {
             return new AsgardAssetManager();
         });
 
-        $this->app->singleton('Modules\Core\Foundation\Asset\Pipeline\AssetPipeline', function ($app) {
-            return new AsgardAssetPipeline($app['Modules\Core\Foundation\Asset\Manager\AssetManager']);
+        $this->app->singleton(AssetPipeline::class, function ($app) {
+            return new AsgardAssetPipeline($app[AssetManager::class]);
         });
     }
 }

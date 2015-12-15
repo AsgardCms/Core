@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
+use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
@@ -108,45 +109,16 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function registerCommands()
     {
-        $this->registerInstallCommand();
-        $this->registerThemeCommand();
-        $this->registerPublishModuleAssetsCommand();
-
         $this->commands([
-            'command.asgard.install',
-            'command.asgard.publish.theme',
-            'command.asgard.publish.module.assets',
+            InstallCommand::class,
+            PublishThemeAssetsCommand::class,
+            PublishModuleAssetsCommand::class,
         ]);
-    }
-
-    /**
-     * Register the installation command
-     */
-    private function registerInstallCommand()
-    {
-        $this->app->bind(
-            'command.asgard.install',
-            'Modules\Core\Console\InstallCommand'
-        );
-    }
-
-    private function registerThemeCommand()
-    {
-        $this->app->bindShared('command.asgard.publish.theme', function ($app) {
-            return new PublishThemeAssetsCommand(new ThemeManager($app, $app['config']->get('themify.themes_path')));
-        });
-    }
-
-    private function registerPublishModuleAssetsCommand()
-    {
-        $this->app->bindShared('command.asgard.publish.module.assets', function () {
-            return new PublishModuleAssetsCommand();
-        });
     }
 
     private function registerServices()
     {
-        $this->app->bindShared('Modules\Core\Foundation\Theme\ThemeManager', function ($app) {
+        $this->app->bindShared(ThemeManager::class, function ($app) {
             $path = $app['config']->get('asgard.core.core.themes_path');
 
             return new ThemeManager($app, $path);
@@ -188,17 +160,24 @@ class CoreServiceProvider extends ServiceProvider
     {
         $moduleName = $module->getName();
 
-        $langPath = base_path("resources/lang/modules/$moduleName");
+        $langPath = base_path("resources/lang/$moduleName");
+        $secondPath = base_path("resources/lang/translation/$moduleName");
 
-        if ($this->hasPublishedTranslations($langPath)) {
-            $this->loadTranslationsFrom($langPath, $moduleName);
+        if ($moduleName !== 'translation' && $this->hasPublishedTranslations($langPath)) {
+            return $this->loadTranslationsFrom($langPath, $moduleName);
         }
+        if ($this->hasPublishedTranslations($secondPath)) {
+            if ($moduleName === 'translation') {
+                return $this->loadTranslationsFrom($secondPath, $moduleName);
+            }
 
+            return $this->loadTranslationsFrom($secondPath, $moduleName);
+        }
         if ($this->moduleHasCentralisedTranslations($module)) {
-            $this->loadTranslationsFrom($this->getCentralisedTranslationPath($module), $moduleName);
-        } else {
-            $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
+            return $this->loadTranslationsFrom($this->getCentralisedTranslationPath($module), $moduleName);
         }
+
+        return $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
     }
 
     /**
@@ -214,14 +193,9 @@ class CoreServiceProvider extends ServiceProvider
         foreach ($files as $file) {
             $filename = $this->getConfigFilename($file, $package);
 
-            $this->mergeConfigFrom(
-                $file,
-                $filename
-            );
+            $this->mergeConfigFrom($file, $filename);
 
-            $this->publishes([
-                $file => config_path($filename . '.php'),
-            ], 'config');
+            $this->publishes([$file => config_path($filename . '.php'), ], 'config');
         }
     }
 
@@ -307,4 +281,3 @@ class CoreServiceProvider extends ServiceProvider
         return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getName()}";
     }
 }
-

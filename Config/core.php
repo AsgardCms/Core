@@ -74,6 +74,7 @@ return [
         'selectize.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.css'],
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
+        'pace.css' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
@@ -98,6 +99,8 @@ return [
         'sisyphus.js' => ['theme' => 'vendor/sisyphus/sisyphus.min.js'],
         'main.js' => ['theme' => 'js/main.js'],
         'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
+        'pace.js' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.js'],
+        'moment.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/moment.min.js'],
     ],
 
    /*
@@ -117,6 +120,7 @@ return [
            'AdminLTE.css',
            'AdminLTE.all.skins.css',
            'animate.css',
+           'pace.css',
            'asgard.css',
        ],
        'js' => [
@@ -129,6 +133,7 @@ return [
            'jquery.slug.js',
            'keypressAction.js',
            'app.js',
+           'pace.js',
            'main.js',
            'sisyphus.js',
        ],

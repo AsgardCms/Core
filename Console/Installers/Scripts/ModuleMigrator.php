@@ -14,6 +14,7 @@ class ModuleMigrator implements SetupScript
         'Media',
         'Page',
         'Dashboard',
+        'Translation',
     ];
 
     /**

@@ -11,7 +11,7 @@ use Modules\Core\Repositories\BaseRepository;
 abstract class EloquentBaseRepository implements BaseRepository
 {
     /**
-     * @var Model An instance of the Eloquent Model
+     * @var \Illuminate\Database\Eloquent\Model An instance of the Eloquent Model
      */
     protected $model;
 
@@ -115,6 +115,34 @@ abstract class EloquentBaseRepository implements BaseRepository
      */
     public function findByAttributes(array $attributes)
     {
+        $query = $this->buildQueryByAttributes($attributes);
+
+        return $query->first();
+    }
+
+    /**
+     * Get resources by an array of attributes
+     * @param array $attributes
+     * @param null|string $orderBy
+     * @param string $sortOrder
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
+    {
+        $query = $this->buildQueryByAttributes($attributes, $orderBy, $sortOrder);
+
+        return $query->get();
+    }
+
+    /**
+     * Build Query to catch resources by an array of attributes and params
+     * @param array $attributes
+     * @param null|string $orderBy
+     * @param string $sortOrder
+     * @return \Illuminate\Database\Query\Builder object
+     */
+    private function buildQueryByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
+    {
         $query = $this->model->query();
 
         if (method_exists($this->model, 'translations')) {
@@ -125,7 +153,11 @@ abstract class EloquentBaseRepository implements BaseRepository
             $query = $query->where($field, $value);
         }
 
-        return $query->first();
+        if (null !== $orderBy) {
+            $query->orderBy($orderBy, $sortOrder);
+        }
+
+        return $query;
     }
 
     /**

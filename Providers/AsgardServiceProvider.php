@@ -2,14 +2,20 @@
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
+use Modules\Translation\Providers\TranslationServiceProvider;
+use Pingpong\Modules\Facades\Module;
+use Pingpong\Modules\ModulesServiceProvider;
 
 class AsgardServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->register('Pingpong\Modules\ModulesServiceProvider');
+        if (class_exists(TranslationServiceProvider::class)) {
+            $this->app->register(TranslationServiceProvider::class);
+        }
+        $this->app->register(ModulesServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
-        $loader->alias('Module', 'Pingpong\Modules\Facades\Module');
+        $loader->alias('Module', Module::class);
     }
 }

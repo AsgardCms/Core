@@ -69,6 +69,15 @@ interface BaseRepository
     public function findByMany(array $ids);
 
     /**
+     * Get resources by an array of attributes
+     * @param array $attributes
+     * @param null|string $orderBy
+     * @param string $sortOrder
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc');
+
+    /**
      * Clear the cache for this Repositories' Entity
      * @return bool
      */
