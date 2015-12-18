@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.21.1":
+        changed:
+            - Removing menu module from core modules, and add media to it
     "1.21.0":
         added:
             - <code>moment.js</code> has been added to the available scripts to include
