@@ -11,7 +11,7 @@ return [
         'dashboard',
         'user',
         'workshop',
-        'menu',
         'setting',
+        'media',
     ],
 ];

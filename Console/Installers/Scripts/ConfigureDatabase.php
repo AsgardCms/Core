@@ -83,7 +83,7 @@ class ConfigureDatabase implements SetupScript
     protected function askDatabaseName()
     {
         do {
-            $name = $this->command->ask('Enter your database name');
+            $name = $this->command->ask('Enter your database name', 'homestead');
             if ($name == '') {
                 $this->command->error('Database name is required');
             }
@@ -99,7 +99,7 @@ class ConfigureDatabase implements SetupScript
     protected function askDatabaseUsername()
     {
         do {
-            $user = $this->command->ask('Enter your database username', 'root');
+            $user = $this->command->ask('Enter your database username', 'homestead');
             if ($user == '') {
                 $this->command->error('Database username is required');
             }
@@ -114,7 +114,7 @@ class ConfigureDatabase implements SetupScript
      */
     protected function askDatabasePassword()
     {
-        $databasePassword = $this->command->ask('Enter your database password (leave <none> for no password)', '<none>');
+        $databasePassword = $this->command->ask('Enter your database password (leave <none> for no password)', 'secret');
 
         return ($databasePassword === '<none>') ? '' : $databasePassword;
     }
