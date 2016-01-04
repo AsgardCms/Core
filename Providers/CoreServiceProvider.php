@@ -38,6 +38,7 @@ class CoreServiceProvider extends ServiceProvider
             'auth.admin'            => 'AdminMiddleware',
             'public.checkLocale'    => 'PublicMiddleware',
             'localizationRedirect'  => 'LocalizationMiddleware',
+            'can' => 'Authorization',
         ],
     ];
 
