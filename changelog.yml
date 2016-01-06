@@ -1,10 +1,16 @@
 url: https://github.com/AsgardCms/Core
 versions:
-    "1.20.1":
+    "1.22.0":
+        added:
+            - Adding an <code>Authorization</code> middlware to check permissions via route middleware
+        changed:
+            - Removing menu module from core modules, and add media to it
+    "1.21.0":
         added:
             - <code>moment.js</code> has been added to the available scripts to include
         changed:
             - Typehint the eloquent model
+            - Set the database default values to the homestead values on install command
     "1.20.0":
         changed:
             - Removed language files, they are now in the translation module
