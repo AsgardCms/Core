@@ -54,14 +54,15 @@ class InstallCommand extends Command
         $this->blockMessage('Welcome!', 'Starting the installation process...', 'comment');
 
         $success = $this->installer->stack([
-            'Modules\Core\Console\Installers\Scripts\ProtectInstaller',
-            'Modules\Core\Console\Installers\Scripts\ConfigureDatabase',
-            'Modules\Core\Console\Installers\Scripts\SetAppKey',
-            'Modules\Core\Console\Installers\Scripts\ConfigureUserProvider',
-            'Modules\Core\Console\Installers\Scripts\ModuleMigrator',
-            'Modules\Core\Console\Installers\Scripts\ModuleSeeders',
-            'Modules\Core\Console\Installers\Scripts\ModuleAssets',
-            'Modules\Core\Console\Installers\Scripts\ThemeAssets',
+            \Modules\Core\Console\Installers\Scripts\ProtectInstaller::class,
+            \Modules\Core\Console\Installers\Scripts\ConfigureDatabase::class,
+            \Modules\Core\Console\Installers\Scripts\SetAppKey::class,
+            \Modules\Core\Console\Installers\Scripts\ConfigureUserProvider::class,
+            \Modules\Core\Console\Installers\Scripts\ModuleMigrator::class,
+            \Modules\Core\Console\Installers\Scripts\ModuleSeeders::class,
+            \Modules\Core\Console\Installers\Scripts\ModuleAssets::class,
+            \Modules\Core\Console\Installers\Scripts\ThemeAssets::class,
+            \Modules\Core\Console\Installers\Scripts\UnignoreComposerLock::class,
         ])->install($this);
 
         if ($success) {
