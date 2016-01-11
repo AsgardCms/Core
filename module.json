@@ -9,6 +9,7 @@
     "order": 0,
     "providers": [
         "Modules\\Core\\Providers\\CoreServiceProvider",
+        "Modules\\Core\\Providers\\SidebarServiceProvider",
         "Modules\\Core\\Providers\\AssetServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
