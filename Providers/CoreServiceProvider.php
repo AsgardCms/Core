@@ -5,12 +5,10 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Maatwebsite\Sidebar\SidebarManager;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
-use Modules\Core\Sidebar\AdminSidebar;
 use Pingpong\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
