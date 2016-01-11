@@ -26,8 +26,7 @@ class SidebarServiceProvider extends ServiceProvider
     private function onBackend()
     {
         $url = request()->url();
-        $prefix = substr(strrchr($url, '/'), 1);
-        if ($prefix === config('asgard.core.core.admin-prefix')) {
+        if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
             return true;
         }
         return false;
