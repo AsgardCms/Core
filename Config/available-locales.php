@@ -19,6 +19,7 @@ return [
     'bh' => ['name' => 'Bihari', 'script' => 'Latn', 'native' => 'Bihari'],
     'bi' => ['name' => 'Bislama', 'script' => 'Latn', 'native' => 'Bislama'],
     'nb' => ['name' => 'Norwegian Bokmål', 'script' => 'Latn', 'native' => 'Bokmål'],
+    'no' => ['name' => 'Norwegian', 'script' => 'Latn', 'native' => 'norsk'],
     'bs' => ['name' => 'Bosnian', 'script' => 'Latn', 'native' => 'bosanski'],
     'br' => ['name' => 'Breton', 'script' => 'Latn', 'native' => 'brezhoneg'],
     'ca' => ['name' => 'Catalan', 'script' => 'Latn', 'native' => 'català'],
