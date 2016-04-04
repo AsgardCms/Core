@@ -1,5 +1,8 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "1.23.2":
+        changed:
+            - Added supprt for custom <code>.env</code> files
     "1.23.1":
         changed:
             - Fixed the <code>onBackend</code> method
