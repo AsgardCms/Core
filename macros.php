@@ -245,7 +245,6 @@ Form::macro('normalDropDown', function ($name, $title, ViewErrorBag $errors, arr
 
     $options = array_merge($array_option, $options);
 
-    //$string .= Form::select($nameForm, $choice, $currentData, $options), Input:old($nameForm, $choice, $currentData, $options);
     $string .= Form::select($nameForm, $choice, Input::old($nameForm, $currentData), $options);
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
