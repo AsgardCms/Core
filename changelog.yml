@@ -3,6 +3,8 @@ versions:
     "1.24.0":
         added:
             - Macro select i18 & normal
+        changed:
+            - Add support for camelcase module name in AdminSidebar
     "1.23.2":
         changed:
             - Added supprt for custom <code>.env</code> files
