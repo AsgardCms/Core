@@ -167,11 +167,7 @@ abstract class ProviderInstaller implements SetupScript
             ),
         ];
 
-        $this->application->make('Modules\User\Repositories\UserRepository')->createWithRoles(
-            $info,
-            [1],
-            true
-        );
+        $this->application->make(\Modules\User\Repositories\UserRepository::class)->createWithRolesFromCli($info, [1], true);
 
         $this->command->info('Admin account created!');
     }
