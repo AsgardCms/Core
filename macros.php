@@ -153,7 +153,7 @@ Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $objec
     if (is_object($object)) {
         $currentData = $object->{$name} ?: '';
     } else {
-        $currentData = '';
+        $currentData = null;
     }
 
     $string .= Form::text($name, Input::old($name, $currentData), $options);
@@ -172,7 +172,7 @@ Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $ob
     if (is_object($object)) {
         $currentData = $object->{$name} ?: '';
     } else {
-        $currentData = '';
+        $currentData = null;
     }
 
     $string .= Form::textarea($name, Input::old($name, $currentData), $options);
