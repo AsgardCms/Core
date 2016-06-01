@@ -19,8 +19,8 @@ class AdminBaseController extends Controller
 
     public function __construct()
     {
-        $this->assetManager = app('Modules\Core\Foundation\Asset\Manager\AssetManager');
-        $this->assetPipeline = app('Modules\Core\Foundation\Asset\Pipeline\AssetPipeline');
+        $this->assetManager = app(AssetManager::class);
+        $this->assetPipeline = app(AssetPipeline::class);
 
         $this->addAssets();
         $this->requireDefaultAssets();
