@@ -43,7 +43,6 @@ return [
     'middleware' => [
        'backend' => [
            'auth.admin',
-           'permissions',
        ],
        'frontend' => [
        ],
