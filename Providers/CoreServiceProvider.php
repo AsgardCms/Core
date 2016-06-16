@@ -194,14 +194,11 @@ class CoreServiceProvider extends ServiceProvider
     {
         $files = $this->app['files']->files($module->getPath() . '/Config');
 
-        $package = $module->getName();
+        $moduleName = $module->getName();
 
         foreach ($files as $file) {
-            $filename = $this->getConfigFilename($file, $package);
-
-            $this->mergeConfigFrom($file, $filename);
-
-            $this->publishes([$file => config_path($filename . '.php'), ], 'config');
+            $filename = $this->getConfigFilename($file);
+            $this->publishConfig($moduleName, $filename);
         }
     }
 
@@ -210,13 +207,9 @@ class CoreServiceProvider extends ServiceProvider
      * @param $package
      * @return string
      */
-    private function getConfigFilename($file, $package)
+    private function getConfigFilename($file)
     {
-        $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
-
-        $filename = $this->prefix . '.' . $package . '.' . $name;
-
-        return $filename;
+        return preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
     }
 
     /**
