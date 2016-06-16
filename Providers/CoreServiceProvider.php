@@ -9,10 +9,12 @@ use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
+use Modules\Core\Traits\CanPublishConfiguration;
 use Pingpong\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
 {
+    use CanPublishConfiguration;
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -51,6 +53,11 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerMiddleware($this->app['router']);
         $this->registerModuleResourceNamespaces();
         $this->setLocalesConfigurations();
+
+        $this->publishConfig('core', 'available-locales');
+        $this->publishConfig('core', 'config');
+        $this->publishConfig('core', 'core');
+        $this->publishConfig('core', 'settings');
     }
 
     /**
