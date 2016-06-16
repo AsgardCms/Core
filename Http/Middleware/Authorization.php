@@ -50,7 +50,7 @@ class Authorization
         if ($request->ajax()) {
             return response('Unauthorized.', Response::HTTP_UNAUTHORIZED);
         }
-        if (! $request->user()) {
+        if ($request->user() === null) {
             return redirect()->guest('auth/login');
         }
 
