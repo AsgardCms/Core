@@ -9,6 +9,9 @@ trait CanPublishConfiguration
      */
     public function publishConfig($module, $fileName)
     {
+        if (app()->environment() === 'testing') {
+            return;
+        }
         $this->mergeConfigFrom($this->getModuleConfigFilePath($module, $fileName), "asgard.$module.$fileName");
         $this->publishes([
             $this->getModuleConfigFilePath($module, $fileName) => config_path("asgardcms/$module/$fileName.php"),
