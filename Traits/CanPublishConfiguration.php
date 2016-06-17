@@ -14,7 +14,7 @@ trait CanPublishConfiguration
         }
         $this->mergeConfigFrom($this->getModuleConfigFilePath($module, $fileName), "asgard.$module.$fileName");
         $this->publishes([
-            $this->getModuleConfigFilePath($module, $fileName) => config_path("asgardcms/$module/$fileName.php"),
+            $this->getModuleConfigFilePath($module, $fileName) => config_path("asgard/$module/$fileName.php"),
         ], 'config');
     }
 
