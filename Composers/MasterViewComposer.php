@@ -25,7 +25,5 @@ class MasterViewComposer
     public function compose(View $view)
     {
         $view->with('sitename', $this->setting->get('core::site-name', App::getLocale()));
-        $view->with('cssFiles', $this->assetPipeline->allCss());
-        $view->with('jsFiles', $this->assetPipeline->allJs());
     }
 }
