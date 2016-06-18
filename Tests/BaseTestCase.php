@@ -15,11 +15,12 @@ abstract class BaseTestCase extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            'Pingpong\Modules\ModulesServiceProvider',
-            'Modules\Core\Providers\CoreServiceProvider',
-            'Modules\Core\Providers\AssetServiceProvider',
-            'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-            'Maatwebsite\Sidebar\SidebarServiceProvider',
+            \Pingpong\Modules\ModulesServiceProvider::class,
+            \Modules\Core\Providers\CoreServiceProvider::class,
+            \Modules\Core\Providers\AssetServiceProvider::class,
+            \Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider::class,
+            \Maatwebsite\Sidebar\SidebarServiceProvider::class,
+            \FloatingPoint\Stylist\StylistServiceProvider::class,
         ];
     }
 
