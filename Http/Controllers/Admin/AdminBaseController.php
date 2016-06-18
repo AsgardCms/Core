@@ -4,6 +4,7 @@ use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 use Illuminate\Routing\Controller;
 use Modules\Core\Foundation\Asset\Manager\AssetManager;
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
+use Modules\Core\Foundation\Asset\Types\AssetTypeFactory;
 use Pingpong\Modules\Facades\Module;
 
 class AdminBaseController extends Controller
@@ -16,11 +17,16 @@ class AdminBaseController extends Controller
      * @var AssetPipeline
      */
     protected $assetPipeline;
+    /**
+     * @var AssetTypeFactory
+     */
+    protected $assetFactory;
 
     public function __construct()
     {
         $this->assetManager = app(AssetManager::class);
         $this->assetPipeline = app(AssetPipeline::class);
+        $this->assetFactory = app(AssetTypeFactory::class);
 
         $this->addAssets();
         $this->requireDefaultAssets();
@@ -32,11 +38,8 @@ class AdminBaseController extends Controller
     private function addAssets()
     {
         foreach (config('asgard.core.core.admin-assets') as $assetName => $path) {
-            if (key($path) == 'theme') {
-                $this->assetManager->addAsset($assetName, Theme::url($path['theme']));
-            } else {
-                $this->assetManager->addAsset($assetName, Module::asset($path['module']));
-            }
+            $path = $this->assetFactory->make($path)->url();
+            $this->assetManager->addAsset($assetName, $path);
         }
     }
 
