@@ -44,12 +44,6 @@ class CoreServiceProvider extends ServiceProvider
 
     public function boot(Dispatcher $dispatcher)
     {
-        $dispatcher->mapUsing(function ($command) {
-            $command = str_replace('Commands\\', 'Commands\\Handlers\\', get_class($command));
-
-            return trim($command, '\\') . 'Handler@handle';
-        });
-
         $this->registerMiddleware($this->app['router']);
         $this->registerModuleResourceNamespaces();
         $this->setLocalesConfigurations();
@@ -124,7 +118,7 @@ class CoreServiceProvider extends ServiceProvider
 
     private function registerServices()
     {
-        $this->app->bindShared(ThemeManager::class, function ($app) {
+        $this->app->singleton(ThemeManager::class, function ($app) {
             $path = $app['config']->get('asgard.core.core.themes_path');
 
             return new ThemeManager($app, $path);
