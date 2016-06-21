@@ -61,6 +61,7 @@ class AdminSidebar implements Sidebar, ShouldCache
      */
     public function getMenu()
     {
+        $this->build();
         return $this->menu;
     }
 }
