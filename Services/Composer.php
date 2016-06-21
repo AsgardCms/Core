@@ -2,7 +2,7 @@
 
 use Symfony\Component\Process\Process;
 
-class Composer extends \Illuminate\Foundation\Composer
+class Composer extends \Illuminate\Support\Composer
 {
     protected $outputHandler = null;
     private $output;
