@@ -6,6 +6,7 @@ versions:
             - <code>CanPublishConfiguration</code> helper trait
             - <code>CanRequireAssets</code> helper trait
             - added new <code>auth->user()</code> method to get the current user.
+            - run the user module migrations on installation
         changed:
             - Using new more flexible way of handle permissions via middleware
             - Public configuration files in a subfolder of config/ folder
