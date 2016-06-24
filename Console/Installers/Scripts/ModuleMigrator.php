@@ -9,6 +9,7 @@ class ModuleMigrator implements SetupScript
      * @var array
      */
     protected $modules = [
+        'User',
         'Setting',
         'Menu',
         'Media',
