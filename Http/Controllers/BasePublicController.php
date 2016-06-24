@@ -16,6 +16,6 @@ abstract class BasePublicController extends Controller
     {
         $this->locale = App::getLocale();
         $this->auth = app(Authentication::class);
-        view()->share('currentUser', $this->auth->check());
+        view()->share('currentUser', $this->auth->user());
     }
 }
