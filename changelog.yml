@@ -11,6 +11,7 @@ versions:
             - Public configuration files in a subfolder of config/ folder
             - <code>auth->check</code> now returns a boolean.
             - Don't load the application version on frontend theme (+ performance)
+            - Rename <code>MasterViewComposer</code> to <code>SiteNameViewComposer</code> to match its intent
     "1.24.3":
         changed:
             - Using <code>::class</code> notation in base controllers
