@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\App;
 use Modules\Core\Contracts\Setting;
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
 
-class MasterViewComposer
+class SiteNameViewComposer
 {
     /**
      * @var Setting
