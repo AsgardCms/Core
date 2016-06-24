@@ -3,6 +3,7 @@
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class ApplicationVersionViewComposer
 {
@@ -14,16 +15,33 @@ class ApplicationVersionViewComposer
      * @var Repository
      */
     private $cache;
+    /**
+     * @var Request
+     */
+    private $request;
 
-    public function __construct(Filesystem $filesystem, Repository $cache)
+    public function __construct(Filesystem $filesystem, Repository $cache, Request $request)
     {
         $this->filesystem = $filesystem;
         $this->cache = $cache;
+        $this->request = $request;
     }
 
     public function compose(View $view)
     {
+        if ($this->onBackend() === false) {
+            return;
+        }
         $view->with('version', $this->getAppVersion());
+    }
+
+    private function onBackend()
+    {
+        $url = $this->request->url();
+        if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
+            return true;
+        }
+        return false;
     }
 
     /**
