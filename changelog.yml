@@ -10,6 +10,7 @@ versions:
             - Using new more flexible way of handle permissions via middleware
             - Public configuration files in a subfolder of config/ folder
             - <code>auth->check</code> now returns a boolean.
+            - Don't load the application version on frontend theme (+ performance)
     "1.24.3":
         changed:
             - Using <code>::class</code> notation in base controllers
