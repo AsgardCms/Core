@@ -1,5 +1,13 @@
 url: https://github.com/AsgardCms/Core
 versions:
+    "2.0@unreleased":
+        added:
+            - Laravel 5.2 compatibility
+            - <code>CanPublishConfiguration</code> helper trait
+            - <code>CanRequireAssets</code> helper trait
+        changed:
+            - Using new more flexible way of handle permissions via middleware
+            - Public configuration files in a subfolder of config/ folder
     "1.24.3":
         changed:
             - Using <code>::class</code> notation in base controllers
