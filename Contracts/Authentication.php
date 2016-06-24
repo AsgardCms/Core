@@ -71,9 +71,15 @@ interface Authentication
 
     /**
      * Check if the user is logged in
-     * @return mixed
+     * @return bool
      */
     public function check();
+
+    /**
+     * Get the currently logged in user
+     * @return \Modules\User\Entities\UserInterface
+     */
+    public function user();
 
     /**
      * Get the ID for the currently authenticated user
