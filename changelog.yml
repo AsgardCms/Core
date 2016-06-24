@@ -5,9 +5,11 @@ versions:
             - Laravel 5.2 compatibility
             - <code>CanPublishConfiguration</code> helper trait
             - <code>CanRequireAssets</code> helper trait
+            - added new <code>auth->user()</code> method to get the current user.
         changed:
             - Using new more flexible way of handle permissions via middleware
             - Public configuration files in a subfolder of config/ folder
+            - <code>auth->check</code> now returns a boolean.
     "1.24.3":
         changed:
             - Using <code>::class</code> notation in base controllers
