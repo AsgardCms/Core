@@ -4,6 +4,7 @@ use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
 use Modules\Core\Console\Installers\SetupScript;
+use Modules\Core\Providers\CoreServiceProvider;
 use Modules\Core\Services\Composer;
 
 abstract class ProviderInstaller implements SetupScript
@@ -57,9 +58,9 @@ abstract class ProviderInstaller implements SetupScript
 
         // Publish asgard configs
         if ($this->command->option('verbose')) {
-            $this->command->call('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
+            $this->command->call('vendor:publish', ['--provider' => CoreServiceProvider::class]);
         } else {
-            $this->command->callSilent('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
+            $this->command->callSilent('vendor:publish', ['--provider' => CoreServiceProvider::class]);
         }
 
         if (! $this->checkIsInstalled()) {
