@@ -27,7 +27,7 @@ Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $
         $currentData = '';
     }
 
-    $string .= Form::text("{$lang}[{$name}]", Input::old("{$lang}[{$name}]", $currentData), $options);
+    $string .= Form::text("{$lang}[{$name}]", old("{$lang}[{$name}]", $currentData), $options);
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
@@ -54,7 +54,7 @@ Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang
         $currentData = '';
     }
 
-    $string .= Form::textarea("{$lang}[$name]", Input::old("{$lang}[{$name}]", $currentData), $options);
+    $string .= Form::textarea("{$lang}[$name]", old("{$lang}[{$name}]", $currentData), $options);
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
@@ -80,7 +80,7 @@ Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang
         $currentData = false;
     }
 
-    $oldInput = Input::old("{$lang}.$name", $currentData) ? 'checked' : '';
+    $oldInput = old("{$lang}.$name", $currentData) ? 'checked' : '';
     $string .= "value='1' {$oldInput}>";
     $string .= $title;
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
@@ -125,7 +125,7 @@ Form::macro('i18nSelect', function ($name, $title, ViewErrorBag $errors, $lang, 
 
     $options = array_merge($array_option, $options);
 
-    $string .= Form::select($nameForm, $choice, Input::old($nameForm, $currentData), $options);
+    $string .= Form::select($nameForm, $choice, old($nameForm, $currentData), $options);
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
@@ -156,7 +156,7 @@ Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $objec
         $currentData = null;
     }
 
-    $string .= Form::text($name, Input::old($name, $currentData), $options);
+    $string .= Form::text($name, old($name, $currentData), $options);
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
 
@@ -175,7 +175,7 @@ Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $ob
         $currentData = null;
     }
 
-    $string .= Form::textarea($name, Input::old($name, $currentData), $options);
+    $string .= Form::textarea($name, old($name, $currentData), $options);
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
 
@@ -201,7 +201,7 @@ Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $ob
         $currentData = false;
     }
 
-    $oldInput = Input::old($name, $currentData) ? 'checked' : '';
+    $oldInput = old($name, $currentData) ? 'checked' : '';
     $string .= "value='1' {$oldInput}>";
     $string .= $title;
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
@@ -245,7 +245,7 @@ Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array
 
     $options = array_merge($array_option, $options);
 
-    $string .= Form::select($nameForm, $choice, Input::old($nameForm, $currentData), $options);
+    $string .= Form::select($nameForm, $choice, old($nameForm, $currentData), $options);
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
 
