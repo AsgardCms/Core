@@ -12,7 +12,6 @@
         "Modules\\Core\\Providers\\SidebarServiceProvider",
         "Modules\\Core\\Providers\\AssetServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
-        "Laracasts\\Flash\\FlashServiceProvider",
         "Dimsav\\Translatable\\TranslatableServiceProvider",
         "Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider",
         "FloatingPoint\\Stylist\\StylistServiceProvider",
