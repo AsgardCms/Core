@@ -6,6 +6,11 @@ return [
         'view' => 'text',
         'translatable' => true,
     ],
+    'site-name-mini' => [
+        'description' => 'core::settings.site-name-mini',
+        'view' => 'text',
+        'translatable' => true,
+    ],
     'site-description' => [
         'description' => 'core::settings.site-description',
         'view' => 'textarea',
