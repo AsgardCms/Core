@@ -43,17 +43,31 @@ class AdminSidebar implements Sidebar, ShouldCache
     public function build()
     {
         foreach ($this->modules->enabled() as $module) {
+            $lowercaseModule = strtolower($module->get('name'));
+            if ($this->hasCustomSidebar($lowercaseModule) === true) {
+                $class = config("asgard.{$lowercaseModule}.config.custom-sidebar");
+                $this->addToSidebar($class);
+                continue;
+            }
+
             $name = studly_case($module->get('name'));
             $class = 'Modules\\' . $name . '\\Sidebar\\SidebarExtender';
-
-            if (class_exists($class)) {
-                $extender = $this->container->make($class);
-
-                $this->menu->add(
-                    $extender->extendWith($this->menu)
-                );
-            }
+            $this->addToSidebar($class);
         }
+    }
+
+    /**
+     * Add the given class to the sidebar collection
+     * @param string $class
+     */
+    private function addToSidebar($class)
+    {
+        if (class_exists($class) === false) {
+            return;
+        }
+        $extender = $this->container->make($class);
+
+        $this->menu->add($extender->extendWith($this->menu));
     }
 
     /**
@@ -63,5 +77,17 @@ class AdminSidebar implements Sidebar, ShouldCache
     {
         $this->build();
         return $this->menu;
+    }
+
+    /**
+     * Check if the module has a custom sidebar class configured
+     * @param string $module
+     * @return bool
+     */
+    private function hasCustomSidebar($module)
+    {
+        $config = config("asgard.{$module}.config.custom-sidebar");
+
+        return $config !== null;
     }
 }
