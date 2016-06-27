@@ -9,6 +9,7 @@ versions:
             - run the user module migrations on installation
             - user installer creates a first api token
             - Adding minimised sitename setting viewed via minimised sidebar
+            - Added ability for modules to define a custom sidebar class for every module
         changed:
             - Using new more flexible way of handle permissions via middleware
             - Public configuration files in a subfolder of config/ folder
