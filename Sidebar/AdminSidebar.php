@@ -5,7 +5,7 @@ use Maatwebsite\Sidebar\Menu;
 use Maatwebsite\Sidebar\ShouldCache;
 use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
-use Pingpong\Modules\Contracts\RepositoryInterface;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 
 class AdminSidebar implements Sidebar, ShouldCache
 {

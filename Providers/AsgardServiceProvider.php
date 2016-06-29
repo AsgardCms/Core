@@ -3,8 +3,8 @@
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;
 use Modules\Translation\Providers\TranslationServiceProvider;
-use Pingpong\Modules\Facades\Module;
-use Pingpong\Modules\ModulesServiceProvider;
+use Nwidart\Modules\Facades\Module;
+use Nwidart\Modules\LaravelModulesServiceProvider;
 
 class AsgardServiceProvider extends ServiceProvider
 {
@@ -13,7 +13,7 @@ class AsgardServiceProvider extends ServiceProvider
         if (class_exists(TranslationServiceProvider::class)) {
             $this->app->register(TranslationServiceProvider::class);
         }
-        $this->app->register(ModulesServiceProvider::class);
+        $this->app->register(LaravelModulesServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
         $loader->alias('Module', Module::class);

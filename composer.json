@@ -22,7 +22,7 @@
   "require": {
     "php": ">=5.6",
     "composer/installers": "~1.0",
-    "pingpong/modules": "dev-laravel5.2",
+    "nwidart/laravel-modules": "~0.1",
     "laravelcollective/html": "~5.2",
     "laracasts/presenter": "~0.2",
     "guzzlehttp/guzzle": "~5.0",
@@ -39,12 +39,6 @@
   "suggest": {
     "asgardcms/notification-module": "Allows notifications to be sent to the user. Optionally real-time notifications."
   },
-  "repositories": [
-    {
-      "type": "vcs",
-      "url": "https://github.com/nWidart/modules"
-    }
-  ],
   "autoload-dev": {
     "psr-4": {
       "Modules\\Core\\": ".",

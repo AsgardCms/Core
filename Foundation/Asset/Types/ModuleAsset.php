@@ -1,6 +1,6 @@
 <?php namespace Modules\Core\Foundation\Asset\Types;
 
-use Pingpong\Modules\Facades\Module;
+use Nwidart\Modules\Facades\Module;
 
 class ModuleAsset implements AssetType
 {

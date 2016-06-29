@@ -10,7 +10,7 @@ use Modules\Core\Console\PublishModuleAssetsCommand;
 use Modules\Core\Console\PublishThemeAssetsCommand;
 use Modules\Core\Foundation\Theme\ThemeManager;
 use Modules\Core\Traits\CanPublishConfiguration;
-use Pingpong\Modules\Module;
+use Nwidart\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
 {
