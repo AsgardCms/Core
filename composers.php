@@ -6,5 +6,5 @@ view()->composer('layouts.master', \Modules\Core\Composers\SiteNameViewComposer:
 view()->composer('core::fields.select-theme', \Modules\Core\Composers\ThemeComposer::class);
 view()->composer('core::fields.select-locales', \Modules\Core\Composers\SettingLocalesComposer::class);
 view()->composer('*', \Modules\Core\Composers\LocaleComposer::class);
-view()->composer('layouts.master', \Modules\Core\Composers\CurrentUserViewComposer::class);
+view()->composer('*', \Modules\Core\Composers\CurrentUserViewComposer::class);
 view()->composer('layouts.master', \Modules\Core\Composers\AssetsViewComposer::class);
