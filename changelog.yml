@@ -18,6 +18,7 @@ versions:
             - Rename <code>MasterViewComposer</code> to <code>SiteNameViewComposer</code> to match its intent
         removed:
             - Removing laracasts/flash dependency
+            - Removed depenency of unmaintained pingpong/modules in favor of nwidart/laravel-modules
     "1.24.3":
         changed:
             - Using <code>::class</code> notation in base controllers
