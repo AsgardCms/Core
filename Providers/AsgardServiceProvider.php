@@ -13,6 +13,8 @@ class AsgardServiceProvider extends ServiceProvider
         if (class_exists(TranslationServiceProvider::class)) {
             $this->app->register(TranslationServiceProvider::class);
         }
+        $this->app->register(CoreServiceProvider::class);
+
         $this->app->register(LaravelModulesServiceProvider::class);
 
         $loader = AliasLoader::getInstance();
