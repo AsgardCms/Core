@@ -42,7 +42,7 @@ class CoreServiceProvider extends ServiceProvider
         ],
     ];
 
-    public function boot(Dispatcher $dispatcher)
+    public function boot()
     {
         $this->registerMiddleware($this->app['router']);
         $this->registerModuleResourceNamespaces();
