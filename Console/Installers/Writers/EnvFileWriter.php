@@ -1,6 +1,5 @@
 <?php namespace Modules\Core\Console\Installers\Writers;
 
-use Dotenv;
 use Illuminate\Filesystem\Filesystem;
 
 class EnvFileWriter
@@ -46,8 +45,6 @@ class EnvFileWriter
      */
     public function write($name, $username, $password, $host)
     {
-        Dotenv::makeMutable();
-
         $environmentFile = $this->finder->get($this->template);
 
         $replace = [
@@ -60,7 +57,5 @@ class EnvFileWriter
         $newEnvironmentFile = str_replace($this->search, $replace, $environmentFile);
 
         $this->finder->put($this->file, $newEnvironmentFile);
-
-        Dotenv::makeImmutable();
     }
 }
