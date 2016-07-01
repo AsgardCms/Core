@@ -159,10 +159,6 @@ class CoreServiceProvider extends ServiceProvider
             return $this->loadTranslationsFrom($langPath, $moduleName);
         }
         if ($this->hasPublishedTranslations($secondPath)) {
-            if ($moduleName === 'translation') {
-                return $this->loadTranslationsFrom($secondPath, $moduleName);
-            }
-
             return $this->loadTranslationsFrom($secondPath, $moduleName);
         }
         if ($this->moduleHasCentralisedTranslations($module)) {
