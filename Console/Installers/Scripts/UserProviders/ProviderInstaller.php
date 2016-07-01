@@ -71,6 +71,7 @@ abstract class ProviderInstaller implements SetupScript
         $this->configure();
         $this->migrate();
         $this->seed();
+        $this->migrateUserModule($command);
 
         $this->createFirstUser();
 
@@ -115,6 +116,19 @@ abstract class ProviderInstaller implements SetupScript
      * @return mixed
      */
     abstract public function getHashedPassword($password);
+
+    /**
+     * @param $command
+     * @return mixed
+     */
+    private function migrateUserModule($command)
+    {
+        if ($command->option('verbose')) {
+            return $command->call('module:migrate', ['module' => 'User']);
+        }
+
+        return $command->callSilent('module:migrate', ['module' => 'User']);
+    }
 
     /**
      * @param $search
