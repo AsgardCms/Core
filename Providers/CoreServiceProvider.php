@@ -46,7 +46,6 @@ class CoreServiceProvider extends ServiceProvider
     {
         $this->registerMiddleware($this->app['router']);
         $this->registerModuleResourceNamespaces();
-        $this->setLocalesConfigurations();
 
         $this->publishConfig('core', 'available-locales');
         $this->publishConfig('core', 'config');
@@ -75,6 +74,7 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->registerCommands();
         $this->registerServices();
+        $this->setLocalesConfigurations();
     }
 
     /**
@@ -224,15 +224,15 @@ class CoreServiceProvider extends ServiceProvider
                     return DB::table('setting__settings')->whereName('core::locales')->first();
                 }
             );
-
         if ($localeConfig) {
             $locales = json_decode($localeConfig->plainValue);
             $availableLocales = [];
             foreach ($locales as $locale) {
-                $availableLocales = array_merge($availableLocales, [$locale => config("asgard.core.available-locales.$locale")]);
+                $availableLocales = array_merge($availableLocales, [$locale => config("available-locales.$locale")]);
             }
 
             $laravelDefaultLocale = $this->app->config->get('app.locale');
+
             if (! in_array($laravelDefaultLocale, array_keys($availableLocales))) {
                 $this->app->config->set('app.locale', array_keys($availableLocales)[0]);
             }
