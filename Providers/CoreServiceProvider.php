@@ -60,8 +60,16 @@ class CoreServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('asgard.isInstalled', function () {
-            return true === env('INSTALLED', false);
+        $this->app->singleton('asgard.isInstalled', function ($app) {
+            $envFileLocation = "{$app->environmentPath()}/{$app->environmentFile()}";
+
+            try {
+                $hasTable = Schema::hasTable('setting__settings');
+            } catch (\Exception $e) {
+                $hasTable = false;
+            }
+
+            return $app['files']->isFile($envFileLocation) && $hasTable;
         });
 
         $this->registerCommands();
