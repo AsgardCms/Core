@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Tests\Theme;
+<?php
+
+namespace Modules\Core\Tests\Theme;
 
 use Modules\Core\Foundation\Theme\Theme;
 use Modules\Core\Tests\BaseTestCase;

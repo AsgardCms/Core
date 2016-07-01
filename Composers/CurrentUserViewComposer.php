@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Composers;
+<?php
+
+namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\View\View;
 use Modules\Core\Contracts\Authentication;

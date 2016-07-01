@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Http\Middleware;
+<?php
+
+namespace Modules\Core\Http\Middleware;
 
 use Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter;
 

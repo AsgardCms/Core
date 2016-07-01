@@ -1,9 +1,9 @@
-<?php namespace Modules\Core\Providers;
+<?php
 
-use Illuminate\Contracts\Bus\Dispatcher;
+namespace Modules\Core\Providers;
+
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
 use Modules\Core\Console\PublishModuleAssetsCommand;

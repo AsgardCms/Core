@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Scripts;
+<?php
+
+namespace Modules\Core\Console\Installers\Scripts;
 
 use Exception;
 use Illuminate\Console\Command;

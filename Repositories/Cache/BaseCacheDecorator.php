@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Repositories\Cache;
+<?php
+
+namespace Modules\Core\Repositories\Cache;
 
 use Modules\Core\Repositories\BaseRepository;
 

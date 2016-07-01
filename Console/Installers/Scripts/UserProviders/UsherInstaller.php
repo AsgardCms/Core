@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Scripts\UserProviders;
+<?php
+
+namespace Modules\Core\Console\Installers\Scripts\UserProviders;
 
 use Modules\Core\Console\Installers\SetupScript;
 

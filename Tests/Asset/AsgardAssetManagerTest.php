@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Tests\Asset;
+<?php
+
+namespace Modules\Core\Tests\Asset;
 
 use Modules\Core\Foundation\Asset\Manager\AsgardAssetManager;
 use Modules\Core\Tests\BaseTestCase;

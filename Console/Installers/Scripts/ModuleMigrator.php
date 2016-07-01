@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Scripts;
+<?php
+
+namespace Modules\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\SetupScript;

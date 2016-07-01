@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Providers;
+<?php
+
+namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Foundation\Asset\Manager\AsgardAssetManager;

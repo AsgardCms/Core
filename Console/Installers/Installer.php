@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers;
+<?php
+
+namespace Modules\Core\Console\Installers;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;

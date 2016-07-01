@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Services;
+<?php
+
+namespace Modules\Core\Services;
 
 use Symfony\Component\Process\Process;
 

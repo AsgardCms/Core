@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Tests;
+<?php
+
+namespace Modules\Core\Tests;
 
 use Orchestra\Testbench\TestCase;
 
@@ -40,7 +42,7 @@ abstract class BaseTestCase extends TestCase
     {
         return [
             'Eloquent' => 'Illuminate\Database\Eloquent\Model',
-            'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization'
+            'LaravelLocalization' => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
         ];
     }
 }

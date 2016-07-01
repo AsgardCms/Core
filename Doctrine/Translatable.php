@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Doctrine;
+<?php
+
+namespace Modules\Core\Doctrine;
 
 use Illuminate\Support\Facades\App;
 use Mitch\LaravelDoctrine\EntityManagerFacade;

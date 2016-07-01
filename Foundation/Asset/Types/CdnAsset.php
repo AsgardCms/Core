@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Foundation\Asset\Types;
+<?php
+
+namespace Modules\Core\Foundation\Asset\Types;
 
 class CdnAsset implements AssetType
 {

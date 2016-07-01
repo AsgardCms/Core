@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Foundation\Theme;
+<?php
+
+namespace Modules\Core\Foundation\Theme;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;

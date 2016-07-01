@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Support;
+<?php
+
+namespace Modules\Core\Support;
 
 trait SupportsCacheTags
 {

@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Foundation\Asset\Types;
+<?php
+
+namespace Modules\Core\Foundation\Asset\Types;
 
 use Nwidart\Modules\Facades\Module;
 
@@ -13,7 +15,7 @@ class ModuleAsset implements AssetType
     {
         $this->path = $path;
     }
-    
+
     /**
      * Get the URL
      * @return string

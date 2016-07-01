@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Repositories;
+<?php
+
+namespace Modules\Core\Repositories;
 
 /**
  * Interface CoreRepository

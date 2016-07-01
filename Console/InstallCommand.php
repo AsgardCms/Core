@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console;
+<?php
+
+namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
 use Modules\Core\Console\Installers\Installer;
@@ -74,7 +76,7 @@ class InstallCommand extends Command
     protected function getOptions()
     {
         return [
-            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed']
+            ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed'],
         ];
     }
 }

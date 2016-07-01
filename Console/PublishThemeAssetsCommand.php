@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console;
+<?php
+
+namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -22,7 +24,7 @@ class PublishThemeAssetsCommand extends Command
     protected function getArguments()
     {
         return [
-            ['theme', InputArgument::OPTIONAL, 'Name of the theme you wish to publish']
+            ['theme', InputArgument::OPTIONAL, 'Name of the theme you wish to publish'],
         ];
     }
 }

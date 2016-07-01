@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Traits;
+<?php
+
+namespace Modules\Core\Console\Installers\Traits;
 
 trait BlockMessage
 {

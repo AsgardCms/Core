@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Traits;
+<?php
+
+namespace Modules\Core\Traits;
 
 trait CanPublishConfiguration
 {
@@ -35,6 +37,6 @@ trait CanPublishConfiguration
      */
     private function getModulePath($module)
     {
-        return base_path('Modules'. DIRECTORY_SEPARATOR . ucfirst($module));
+        return base_path('Modules' . DIRECTORY_SEPARATOR . ucfirst($module));
     }
 }

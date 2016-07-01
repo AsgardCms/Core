@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Providers;
+<?php
+
+namespace Modules\Core\Providers;
 
 use Illuminate\Foundation\AliasLoader;
 use Illuminate\Support\ServiceProvider;

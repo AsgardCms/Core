@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Composers;
+<?php
+
+namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
@@ -59,6 +61,7 @@ class AssetsViewComposer
         if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
             return true;
         }
+
         return false;
     }
 }

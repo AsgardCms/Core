@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console;
+<?php
+
+namespace Modules\Core\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;

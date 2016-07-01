@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Repositories\Eloquent;
+<?php
+
+namespace Modules\Core\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Core\Repositories\BaseRepository;

@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Navigation;
+<?php
+
+namespace Modules\Core\Navigation;
 
 use Illuminate\Support\Collection;
 

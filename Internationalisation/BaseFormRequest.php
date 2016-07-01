@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Internationalisation;
+<?php
+
+namespace Modules\Core\Internationalisation;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;

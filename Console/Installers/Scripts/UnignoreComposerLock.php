@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;

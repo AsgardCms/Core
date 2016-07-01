@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Sidebar;
+<?php
+
+namespace Modules\Core\Sidebar;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Menu;
@@ -76,6 +78,7 @@ class AdminSidebar implements Sidebar, ShouldCache
     public function getMenu()
     {
         $this->build();
+
         return $this->menu;
     }
 

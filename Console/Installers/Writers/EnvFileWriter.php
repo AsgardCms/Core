@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Console\Installers\Writers;
+<?php
+
+namespace Modules\Core\Console\Installers\Writers;
 
 use Illuminate\Filesystem\Filesystem;
 

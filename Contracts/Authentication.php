@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Contracts;
+<?php
+
+namespace Modules\Core\Contracts;
 
 interface Authentication
 {

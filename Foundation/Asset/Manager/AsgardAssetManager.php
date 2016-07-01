@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Foundation\Asset\Manager;
+<?php
+
+namespace Modules\Core\Foundation\Asset\Manager;
 
 use Illuminate\Support\Collection;
 use Modules\Core\Foundation\Asset\AssetNotFoundException;

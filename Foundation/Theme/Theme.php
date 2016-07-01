@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Foundation\Theme;
+<?php
+
+namespace Modules\Core\Foundation\Theme;
 
 class Theme
 {

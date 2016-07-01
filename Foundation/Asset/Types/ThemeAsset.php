@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Foundation\Asset\Types;
+<?php
+
+namespace Modules\Core\Foundation\Asset\Types;
 
 use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 

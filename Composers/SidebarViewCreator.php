@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Composers;
+<?php
+
+namespace Modules\Core\Composers;
 
 use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
 use Modules\Core\Sidebar\AdminSidebar;

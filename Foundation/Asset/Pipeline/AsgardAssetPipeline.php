@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Foundation\Asset\Pipeline;
+<?php
+
+namespace Modules\Core\Foundation\Asset\Pipeline;
 
 use Illuminate\Support\Collection;
 use Modules\Core\Foundation\Asset\AssetNotFoundException;

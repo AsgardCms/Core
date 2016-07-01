@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Tests\Asset;
+<?php
+
+namespace Modules\Core\Tests\Asset;
 
 use Modules\Core\Foundation\Asset\Types\AssetType;
 use Modules\Core\Foundation\Asset\Types\AssetTypeFactory;

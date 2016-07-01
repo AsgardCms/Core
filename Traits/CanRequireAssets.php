@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Traits;
+<?php
+
+namespace Modules\Core\Traits;
 
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
 

@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Composers;
+<?php
+
+namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Contracts\Filesystem\Filesystem;
@@ -41,6 +43,7 @@ class ApplicationVersionViewComposer
         if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
             return true;
         }
+
         return false;
     }
 

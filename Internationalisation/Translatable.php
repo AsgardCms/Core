@@ -1,4 +1,6 @@
-<?php namespace Modules\Core\Internationalisation;
+<?php
+
+namespace Modules\Core\Internationalisation;
 
 trait Translatable
 {
