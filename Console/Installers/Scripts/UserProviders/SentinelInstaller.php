@@ -94,7 +94,7 @@ class SentinelInstaller extends ProviderInstaller implements SetupScript
      */
     private function changeDefaultUserProvider($driver)
     {
-        $path = base_path('config/asgard.user.users.php');
+        $path = base_path('config/asgard/user/users.php');
         $config = $this->finder->get($path);
         $config = str_replace('Sentry', $driver, $config);
         $this->finder->put($path, $config);
