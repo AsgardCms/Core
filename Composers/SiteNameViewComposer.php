@@ -4,8 +4,8 @@ namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\App;
-use Modules\Core\Contracts\Setting;
 use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
+use Modules\Setting\Contracts\Setting;
 
 class SiteNameViewComposer
 {
