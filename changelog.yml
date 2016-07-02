@@ -20,6 +20,7 @@ versions:
         removed:
             - Removing laracasts/flash dependency
             - Removed depenency of unmaintained pingpong/modules in favor of nwidart/laravel-modules
+            - <code>Authentication</code> contract has been moved to the User module
     "1.24.3":
         changed:
             - Using <code>::class</code> notation in base controllers

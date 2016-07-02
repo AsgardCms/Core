@@ -4,7 +4,7 @@ namespace Modules\Core\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
-use Modules\Core\Contracts\Authentication;
+use Modules\User\Contracts\Authentication;
 
 abstract class BasePublicController extends Controller
 {

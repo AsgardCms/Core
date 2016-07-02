@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Redirect;
 use Laracasts\Flash\Flash;
-use Modules\Core\Contracts\Authentication;
+use Modules\User\Contracts\Authentication;
 
 class PermissionMiddleware
 {
