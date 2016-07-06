@@ -32,15 +32,15 @@ return [
     */
     'skin' => 'skin-blue',
 
-   /*
-   |--------------------------------------------------------------------------
-   | Custom CKeditor configuration file
-   |--------------------------------------------------------------------------
-   | Define a custom CKeditor configuration file to instead of the one
-   | provided by default. This is useful if you wish to customise
-   | the toolbar and other possible options.
-   */
-   'ckeditor-config-file-path' => '/assets/config_custom.js',
+    /*
+    |--------------------------------------------------------------------------
+    | Custom CKeditor configuration file
+    |--------------------------------------------------------------------------
+    | Define a custom CKeditor configuration file to instead of the one
+    | provided by default. This is useful if you wish to customise
+    | the toolbar and other possible options.
+    */
+    'ckeditor-config-file-path' => '/assets/config_custom.js',
 
     /*
     |--------------------------------------------------------------------------
