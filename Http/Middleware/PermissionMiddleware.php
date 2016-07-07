@@ -4,8 +4,6 @@ namespace Modules\Core\Http\Middleware;
 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
-use Illuminate\Support\Facades\Redirect;
-use Laracasts\Flash\Flash;
 use Modules\User\Contracts\Authentication;
 
 class PermissionMiddleware
@@ -45,9 +43,7 @@ class PermissionMiddleware
         $permission = $this->getPermission($moduleName, $entityName, $actionMethod);
 
         if (!$this->auth->hasAccess($permission)) {
-            Flash::error(trans('core::core.permission denied', ['permission' => $permission]));
-
-            return Redirect::back();
+            return redirect()->back()->withError(trans('core::core.permission denied', ['permission' => $permission]));
         }
 
         return $next($request);

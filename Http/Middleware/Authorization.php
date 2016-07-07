@@ -56,8 +56,7 @@ class Authorization
             return redirect()->guest('auth/login');
         }
 
-        flash()->error(trans('core::core.permission denied', ['permission' => $permission]));
-
-        return redirect()->back();
+        return redirect()->back()
+            ->withError(trans('core::core.permission denied', ['permission' => $permission]));
     }
 }
