@@ -179,6 +179,9 @@ class CoreServiceProvider extends ServiceProvider
         $moduleName = $module->getName();
 
         foreach ($files as $file) {
+            if (str_contains($file, 'permissions')) {
+                continue;
+            }
             $filename = $this->getConfigFilename($file);
             $this->publishConfig($moduleName, $filename);
         }
