@@ -125,7 +125,6 @@ class CoreServiceProvider extends ServiceProvider
         foreach ($this->app['modules']->getOrdered() as $module) {
             $this->registerViewNamespace($module);
             $this->registerLanguageNamespace($module);
-            $this->registerConfigNamespace($module);
         }
     }
 
@@ -166,22 +165,6 @@ class CoreServiceProvider extends ServiceProvider
         }
 
         return $this->loadTranslationsFrom($module->getPath() . '/Resources/lang', $moduleName);
-    }
-
-    /**
-     * Register the config namespace
-     * @param Module $module
-     */
-    private function registerConfigNamespace(Module $module)
-    {
-        $files = $this->app['files']->files($module->getPath() . '/Config');
-
-        $moduleName = $module->getName();
-
-        foreach ($files as $file) {
-            $filename = $this->getConfigFilename($file);
-            $this->publishConfig($moduleName, $filename);
-        }
     }
 
     /**
