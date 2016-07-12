@@ -52,7 +52,7 @@ class AdminSidebar implements Sidebar, ShouldCache
                 continue;
             }
 
-            $name = studly_case($module->get('name'));
+            $name = $module->get('name');
             $class = 'Modules\\' . $name . '\\Sidebar\\SidebarExtender';
             $this->addToSidebar($class);
         }
