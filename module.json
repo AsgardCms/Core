@@ -25,6 +25,7 @@
     "files": [
         "start.php",
         "helpers.php",
-        "macros.php"
+        "macros.php",
+        "collectionMacros.php"
     ]
 }
