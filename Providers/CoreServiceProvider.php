@@ -134,11 +134,11 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerViewNamespace(Module $module)
     {
-        if ($module->getName() == 'user') {
+        if ($module->getLowerName() == 'user') {
             return;
         }
         $this->app['view']->addNamespace(
-            $module->getName(),
+            $module->getLowerName(),
             $module->getPath() . '/Resources/views'
         );
     }
@@ -149,7 +149,7 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function registerLanguageNamespace(Module $module)
     {
-        $moduleName = $module->getName();
+        $moduleName = $module->getLowerName();
 
         $langPath = base_path("resources/lang/$moduleName");
         $secondPath = base_path("resources/lang/translation/$moduleName");
@@ -242,6 +242,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function getCentralisedTranslationPath(Module $module)
     {
-        return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getName()}";
+        return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getLowerName()}";
     }
 }
