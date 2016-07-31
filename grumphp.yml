@@ -7,3 +7,5 @@ parameters:
         config_file: .php_cs
       composer:
         file: ./composer.json
+      jsonlint:
+        ignore_patterns: []
