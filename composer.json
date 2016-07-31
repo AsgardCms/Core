@@ -34,7 +34,9 @@
   "require-dev": {
     "phpunit/phpunit": "~4.0",
     "orchestra/testbench": "~3.2",
-    "mockery/mockery": "^0.9.4"
+    "mockery/mockery": "^0.9.4",
+    "phpro/grumphp": "^0.9.1",
+    "friendsofphp/php-cs-fixer": "^1.11"
   },
   "suggest": {
     "asgardcms/notification-module": "Allows notifications to be sent to the user. Optionally real-time notifications."
