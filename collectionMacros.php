@@ -8,6 +8,7 @@ if (Collection::hasMacro('toAssoc') === false) {
         return $this->reduce(function ($assoc, $keyValuePair) {
             list($key, $value) = $keyValuePair;
             $assoc[$key] = $value;
+
             return $assoc;
         }, new static);
     });
