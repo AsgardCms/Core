@@ -2,6 +2,8 @@
 
 namespace Modules\Core\Repositories\Cache;
 
+use Illuminate\Cache\Repository;
+use Illuminate\Config\Repository as ConfigRepository;
 use Modules\Core\Repositories\BaseRepository;
 
 abstract class BaseCacheDecorator implements BaseRepository
@@ -11,7 +13,7 @@ abstract class BaseCacheDecorator implements BaseRepository
      */
     protected $repository;
     /**
-     * @var \Illuminate\Cache\Repository
+     * @var Repository
      */
     protected $cache;
     /**
@@ -30,8 +32,8 @@ abstract class BaseCacheDecorator implements BaseRepository
 
     public function __construct()
     {
-        $this->cache = app('Illuminate\Cache\Repository');
-        $this->cacheTime = app('Illuminate\Config\Repository')->get('cache.time', 60);
+        $this->cache = app(Repository::class);
+        $this->cacheTime = app(ConfigRepository::class)->get('cache.time', 60);
         $this->locale = app()->getLocale();
     }
 
