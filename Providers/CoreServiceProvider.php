@@ -51,6 +51,8 @@ class CoreServiceProvider extends ServiceProvider
         $this->publishConfig('core', 'config');
         $this->publishConfig('core', 'core');
         $this->publishConfig('core', 'settings');
+
+        $this->bladeDirectives();
     }
 
     /**
@@ -243,5 +245,51 @@ class CoreServiceProvider extends ServiceProvider
     private function getCentralisedTranslationPath(Module $module)
     {
         return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getLowerName()}";
+    }
+
+    /**
+     * List of Custom Blade Directives
+     */
+    public function bladeDirectives()
+    {
+        /**
+         * Set variable.
+         * Usage: @set($variable, value)
+         */
+        Blade::directive('set', function ($expression) {
+            list($variable, $value) = $this->getArguments($expression);
+
+            return "<?php {$variable} = {$value}; ?>";
+        });
+
+        /**
+         * Php explode()
+         * Usage: @explode($delimiter, $string)
+         */
+        Blade::directive('explode', function ($expression) {
+            list($delimiter, $string) = $this->getArguments($expression);
+
+            return "<?php echo explode({$delimiter}, {$string}); ?>";
+        });
+
+        /**
+         * php implode()
+         * Usage: @implode($delimiter, $array)
+         */
+        Blade::directive('implode', function ($expression) {
+            list($delimiter, $array) = $this->getArguments($expression);
+
+            return "<?php echo implode({$delimiter}, {$array}); ?>";
+        });
+    }
+
+    /**
+     * Get argument array from argument string.
+     * @param $argumentString
+     * @return array
+     */
+    private function getArguments($argumentString)
+    {
+        return explode(', ', str_replace(['(', ')'], '', $argumentString));
     }
 }
