@@ -3,6 +3,7 @@
 namespace Modules\Core\Providers;
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
