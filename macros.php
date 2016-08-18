@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\HtmlString;
+use Illuminate\Support\ViewErrorBag;
+
 /*
 |--------------------------------------------------------------------------
 | Translatable fields
@@ -13,8 +16,6 @@
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
  */
-use Illuminate\Support\ViewErrorBag;
-
 Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => "form-control", 'placeholder' => $title], $options);
 
@@ -31,7 +32,7 @@ Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
 
 /**
@@ -58,7 +59,7 @@ Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
 
 /**
@@ -87,7 +88,7 @@ Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang
     $string .= "</label>";
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
 
 /**
@@ -129,7 +130,7 @@ Form::macro('i18nSelect', function ($name, $title, ViewErrorBag $errors, $lang, 
     $string .= $errors->first("{$lang}.{$name}", '<span class="help-block">:message</span>');
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
 
 /*
@@ -160,7 +161,7 @@ Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $objec
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
 
 Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
@@ -179,7 +180,7 @@ Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $ob
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
 
 /**
@@ -208,7 +209,7 @@ Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $ob
     $string .= "</label>";
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
 
 /**
@@ -249,5 +250,5 @@ Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array
     $string .= $errors->first($name, '<span class="help-block">:message</span>');
     $string .= "</div>";
 
-    return $string;
+    return new HtmlString($string);
 });
