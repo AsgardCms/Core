@@ -18,6 +18,7 @@ versions:
             - Don't load the application version on frontend theme (+ performance)
             - Rename <code>MasterViewComposer</code> to <code>SiteNameViewComposer</code> to match its intent
             - Loading the currently logged in user on every view
+            - Form Macros - Use HtmlString to allow users to use normal Blade "echo" braces
         removed:
             - Removing laracasts/flash dependency
             - Removed depenency of unmaintained pingpong/modules in favor of nwidart/laravel-modules
