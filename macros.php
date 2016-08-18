@@ -169,7 +169,7 @@ Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $objec
     return new HtmlString($string);
 });
 
-Form::macro(/**
+/**
  * @param string $name
  * @param string $title
  * @param ViewErrorBag $errors
@@ -177,7 +177,7 @@ Form::macro(/**
  * @param array $options
  * @return HtmlString
  */
-    'normalTextarea', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
+Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
 
     $string  = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
