@@ -15,6 +15,7 @@ use Illuminate\Support\ViewErrorBag;
  * @param object $errors The laravel errors object
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
+ * @return HtmlString
  */
 Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => "form-control", 'placeholder' => $title], $options);
@@ -42,6 +43,7 @@ Form::macro('i18nInput', function ($name, $title, ViewErrorBag $errors, $lang, $
  * @param object $errors The laravel errors object
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
+ * @return HtmlString
  */
 Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang, $object = null, array $options = []) {
     $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
@@ -69,6 +71,7 @@ Form::macro('i18nTextarea', function ($name, $title, ViewErrorBag $errors, $lang
  * @param object $errors The laravel errors object
  * @param string $lang the language of the field
  * @param null|object $object The entity of the field
+ * @return HtmlString
  */
 Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang, $object = null) {
     $string = "<div class='checkbox" . ($errors->has($lang . '.' . $name) ? ' has-error' : '') . "'>";
@@ -99,6 +102,7 @@ Form::macro('i18nCheckbox', function ($name, $title, ViewErrorBag $errors, $lang
  * @param string $lang the language of the field
  * @param array $choice The choice of the select
  * @param null|array $object The entity of the field
+ * @return HtmlString
  */
 Form::macro('i18nSelect', function ($name, $title, ViewErrorBag $errors, $lang, array $choice, $object = null, array $options = []) {
     if (array_key_exists("multiple", $options)) {
@@ -144,6 +148,7 @@ Form::macro('i18nSelect', function ($name, $title, ViewErrorBag $errors, $lang, 
  * @param string $title The field title
  * @param object $errors The laravel errors object
  * @param null|object $object The entity of the field
+ * @return HtmlString
  */
 Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => "form-control", 'placeholder' => $title], $options);
@@ -164,7 +169,15 @@ Form::macro('normalInput', function ($name, $title, ViewErrorBag $errors, $objec
     return new HtmlString($string);
 });
 
-Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
+Form::macro(/**
+ * @param string $name
+ * @param string $title
+ * @param ViewErrorBag $errors
+ * @param null|object $object
+ * @param array $options
+ * @return HtmlString
+ */
+    'normalTextarea', function ($name, $title, ViewErrorBag $errors, $object = null, array $options = []) {
     $options = array_merge(['class' => 'ckeditor', 'rows' => 10, 'cols' => 10], $options);
 
     $string  = "<div class='form-group " . ($errors->has($name) ? ' has-error' : '') . "'>";
@@ -189,6 +202,7 @@ Form::macro('normalTextarea', function ($name, $title, ViewErrorBag $errors, $ob
  * @param string $title The field title
  * @param object $errors The laravel errors object
  * @param null|object $object The entity of the field
+ * @return HtmlString
  */
 Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $object = null) {
     $string = "<div class='checkbox" . ($errors->has($name) ? ' has-error' : '') . "'>";
@@ -219,6 +233,7 @@ Form::macro('normalCheckbox', function ($name, $title, ViewErrorBag $errors, $ob
  * @param object $errors The laravel errors object
  * @param array $choice The choice of the select
  * @param null|array $object The entity of the field
+ * @return HtmlString
  */
 Form::macro('normalSelect', function ($name, $title, ViewErrorBag $errors, array $choice, $object = null, array $options = []) {
     if (array_key_exists("multiple", $options)) {
