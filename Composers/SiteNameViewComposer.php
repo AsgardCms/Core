@@ -4,7 +4,6 @@ namespace Modules\Core\Composers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\App;
-use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
 use Modules\Setting\Contracts\Setting;
 
 class SiteNameViewComposer
@@ -13,15 +12,10 @@ class SiteNameViewComposer
      * @var Setting
      */
     private $setting;
-    /**
-     * @var AssetPipeline
-     */
-    private $assetPipeline;
 
-    public function __construct(Setting $setting, AssetPipeline $assetPipeline)
+    public function __construct(Setting $setting)
     {
         $this->setting = $setting;
-        $this->assetPipeline = $assetPipeline;
     }
 
     public function compose(View $view)
