@@ -40,19 +40,9 @@ class AssetsViewComposer
         if ($this->onBackend() === false) {
             return;
         }
-        $this->requireDefaultAssets();
 
         $view->with('cssFiles', $this->assetPipeline->allCss());
         $view->with('jsFiles', $this->assetPipeline->allJs());
-    }
-
-    /**
-     * Require the default assets from config file on the asset pipeline
-     */
-    private function requireDefaultAssets()
-    {
-        $this->assetPipeline->requireCss(config('asgard.core.core.admin-required-assets.css'));
-        $this->assetPipeline->requireJs(config('asgard.core.core.admin-required-assets.js'));
     }
 
     private function onBackend()
