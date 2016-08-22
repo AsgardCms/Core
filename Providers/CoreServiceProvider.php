@@ -262,26 +262,6 @@ class CoreServiceProvider extends ServiceProvider
 
             return "<?php {$variable} = {$value}; ?>";
         });
-
-        /**
-         * Php explode()
-         * Usage: @explode($delimiter, $string)
-         */
-        Blade::directive('explode', function ($expression) {
-            list($delimiter, $string) = $this->getArguments($expression);
-
-            return "<?php echo explode({$delimiter}, {$string}); ?>";
-        });
-
-        /**
-         * php implode()
-         * Usage: @implode($delimiter, $array)
-         */
-        Blade::directive('implode', function ($expression) {
-            list($delimiter, $array) = $this->getArguments($expression);
-
-            return "<?php echo implode({$delimiter}, {$array}); ?>";
-        });
     }
 
     /**
@@ -291,6 +271,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function getArguments($argumentString)
     {
-        return explode(', ', str_replace(['(', ')'], '', $argumentString));
+        return str_getcsv(mb_substr($argumentString, 1, mb_strlen($argumentString) - 2), ',', "'");
     }
 }
