@@ -16,7 +16,7 @@
   ],
   "support": {
     "email": "support@asgardcms.com",
-    "issues": "https://github.com/AsgardCms/Core/issues",
+    "issues": "https://github.com/AsgardCms/Platform/issues",
     "source": "https://github.com/AsgardCms/Core"
   },
   "require": {
