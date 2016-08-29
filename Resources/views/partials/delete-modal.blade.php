@@ -6,7 +6,13 @@
                 <h4 class="modal-title" id="delete-confirmation-title">{{ trans('core::core.modal.title') }}</h4>
             </div>
             <div class="modal-body">
-                {{ trans('core::core.modal.confirmation-message') }}
+                <div class="default-message">
+                    <?php if (isset($message)): ?>
+                        {!! $message !!}
+                    <?php else: ?>
+                        {{ trans('core::core.modal.confirmation-message') }}
+                    <?php endif; ?>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline btn-flat" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
@@ -25,6 +31,13 @@
             var actionTarget = button.data('action-target');
             var modal = $(this);
             modal.find('form').attr('action', actionTarget);
+
+            if (button.data('message') != '') {
+                modal.find('.modal-body').append(button.data('message'));
+                if (button.data('hide-default-message') === true) {
+                    modal.find('.default-message').hide();
+                }
+            }
         });
     });
 </script>
