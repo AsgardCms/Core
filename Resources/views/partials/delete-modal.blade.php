@@ -13,6 +13,7 @@
                         {{ trans('core::core.modal.confirmation-message') }}
                     <?php endif; ?>
                 </div>
+                <div class="custom-message"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline btn-flat" data-dismiss="modal">{{ trans('core::core.button.cancel') }}</button>
@@ -33,7 +34,7 @@
             modal.find('form').attr('action', actionTarget);
 
             if (button.data('message') != '') {
-                modal.find('.modal-body').append(button.data('message'));
+                modal.find('.custom-message').empty().append(button.data('message'));
                 if (button.data('hide-default-message') === true) {
                     modal.find('.default-message').hide();
                 }
