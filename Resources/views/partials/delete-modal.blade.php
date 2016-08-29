@@ -38,6 +38,10 @@
                     modal.find('.default-message').hide();
                 }
             }
+
+            if (button.data('remove-submit-button') === true) {
+                modal.find('button[type=submit]').remove();
+            }
         });
     });
 </script>
