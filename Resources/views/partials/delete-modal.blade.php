@@ -34,14 +34,17 @@
             modal.find('form').attr('action', actionTarget);
 
             if (button.data('message') != '') {
-                modal.find('.custom-message').empty().append(button.data('message'));
-                if (button.data('hide-default-message') === true) {
-                    modal.find('.default-message').hide();
-                }
+                modal.find('.custom-message').show().empty().append(button.data('message'));
+                modal.find('.default-message').hide();
+            } else {
+                modal.find('.default-message').show();
+                modal.find('.custom-message').hide();
             }
 
             if (button.data('remove-submit-button') === true) {
-                modal.find('button[type=submit]').remove();
+                modal.find('button[type=submit]').hide();
+            } else {
+                modal.find('button[type=submit]').show();
             }
         });
     });
