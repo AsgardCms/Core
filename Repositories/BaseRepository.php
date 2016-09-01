@@ -21,6 +21,13 @@ interface BaseRepository
     public function all();
 
     /**
+     * Paginate the model to $perPage items per page
+     * @param  int $perPage
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function paginate($perPage = 15);
+
+    /**
      * Create a resource
      * @param $data
      * @return mixed

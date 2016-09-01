@@ -67,6 +67,20 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
+     * @return \Illuminate\Pagination\LengthAwarePaginator
+     */
+    public function paginate($perPage = 15)
+    {
+        return $this->cache
+            ->tags([$this->entityName, 'global'])
+            ->remember("{$this->locale}.{$this->entityName}.paginate.{$perPage}", $this->cacheTime,
+                function () use ($perPage) {
+                    return $this->repository->paginate($perPage);
+                }
+            );
+    }
+
+    /**
      * Return all categories in the given language
      *
      * @param  string $lang
