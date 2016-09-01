@@ -3,6 +3,7 @@
 namespace Modules\Core\Providers;
 
 use Illuminate\Routing\Router;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
 use Modules\Core\Console\InstallCommand;
@@ -51,6 +52,8 @@ class CoreServiceProvider extends ServiceProvider
         $this->publishConfig('core', 'config');
         $this->publishConfig('core', 'core');
         $this->publishConfig('core', 'settings');
+
+        $this->bladeDirectives();
     }
 
     /**
@@ -243,5 +246,31 @@ class CoreServiceProvider extends ServiceProvider
     private function getCentralisedTranslationPath(Module $module)
     {
         return $this->app['modules']->find('Translation')->getPath() . "/Resources/lang/{$module->getLowerName()}";
+    }
+
+    /**
+     * List of Custom Blade Directives
+     */
+    public function bladeDirectives()
+    {
+        /**
+         * Set variable.
+         * Usage: @set($variable, value)
+         */
+        Blade::directive('set', function ($expression) {
+            list($variable, $value) = $this->getArguments($expression);
+
+            return "<?php {$variable} = {$value}; ?>";
+        });
+    }
+
+    /**
+     * Get argument array from argument string.
+     * @param $argumentString
+     * @return array
+     */
+    private function getArguments($argumentString)
+    {
+        return str_getcsv(mb_substr($argumentString, 1, mb_strlen($argumentString) - 2), ',', "'");
     }
 }
