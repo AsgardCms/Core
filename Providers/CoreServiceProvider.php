@@ -271,6 +271,6 @@ class CoreServiceProvider extends ServiceProvider
      */
     private function getArguments($argumentString)
     {
-        return str_getcsv(mb_substr($argumentString, 1, mb_strlen($argumentString) - 2), ',', "'");
+        return str_getcsv($argumentString, ',', "'");
     }
 }
