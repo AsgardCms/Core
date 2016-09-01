@@ -60,6 +60,16 @@ return [
        ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Routes
+    |--------------------------------------------------------------------------
+    | You can customise and override the Routes using custom routes.
+    | Both Backend and Frontend routes can be modified. Set 'custom-routes' to
+    | true to enable custom routes.
+    */
+    'custom-routes' => false,
+
    /*
    |--------------------------------------------------------------------------
    | Define which assets will be available through the asset manager
