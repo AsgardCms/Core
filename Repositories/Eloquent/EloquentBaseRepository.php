@@ -2,6 +2,7 @@
 
 namespace Modules\Core\Repositories\Eloquent;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Core\Repositories\BaseRepository;
 
@@ -26,8 +27,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param  int    $id
-     * @return object
+     * @inheritdoc
      */
     public function find($id)
     {
@@ -39,7 +39,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @inheritdoc
      */
     public function all()
     {
@@ -51,7 +51,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @inheritdoc
      */
     public function paginate($perPage = 15)
     {
@@ -63,8 +63,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param  mixed  $data
-     * @return object
+     * @inheritdoc
      */
     public function create($data)
     {
@@ -72,9 +71,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param $model
-     * @param  array  $data
-     * @return object
+     * @inheritdoc
      */
     public function update($model, $data)
     {
@@ -84,8 +81,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * @param  Model $model
-     * @return bool
+     * @inheritdoc
      */
     public function destroy($model)
     {
@@ -93,10 +89,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Return all resources in the given language
-     *
-     * @param  string                                   $lang
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @inheritdoc
      */
     public function allTranslatedIn($lang)
     {
@@ -106,10 +99,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Find a resource by the given slug
-     *
-     * @param  string $slug
-     * @return object
+     * @inheritdoc
      */
     public function findBySlug($slug)
     {
@@ -123,9 +113,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Find a resource by an array of attributes
-     * @param  array  $attributes
-     * @return object
+     * @inheritdoc
      */
     public function findByAttributes(array $attributes)
     {
@@ -135,11 +123,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Get resources by an array of attributes
-     * @param array $attributes
-     * @param null|string $orderBy
-     * @param string $sortOrder
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @inheritdoc
      */
     public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
     {
@@ -150,10 +134,10 @@ abstract class EloquentBaseRepository implements BaseRepository
 
     /**
      * Build Query to catch resources by an array of attributes and params
-     * @param array $attributes
-     * @param null|string $orderBy
-     * @param string $sortOrder
-     * @return \Illuminate\Database\Query\Builder object
+     * @param  array $attributes
+     * @param  null|string $orderBy
+     * @param  string $sortOrder
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     private function buildQueryByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
     {
@@ -175,9 +159,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Return a collection of elements who's ids match
-     * @param array $ids
-     * @return mixed
+     * @inheritdoc
      */
     public function findByMany(array $ids)
     {
@@ -191,8 +173,7 @@ abstract class EloquentBaseRepository implements BaseRepository
     }
 
     /**
-     * Clear the cache for this Repositories' Entity
-     * @return bool
+     * @inheritdoc
      */
     public function clearCache()
     {
