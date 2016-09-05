@@ -33,7 +33,8 @@
             var modal = $(this);
             modal.find('form').attr('action', actionTarget);
 
-            if (button.data('message') != '') {
+            if (button.data('message') === undefined) {
+            } else if (button.data('message') != '') {
                 modal.find('.custom-message').show().empty().append(button.data('message'));
                 modal.find('.default-message').hide();
             } else {
