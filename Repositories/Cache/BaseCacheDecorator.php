@@ -38,8 +38,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * @param  int   $id
-     * @return mixed
+     * @inheritdoc
      */
     public function find($id)
     {
@@ -53,7 +52,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @inheritdoc
      */
     public function all()
     {
@@ -67,7 +66,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * @return \Illuminate\Pagination\LengthAwarePaginator
+     * @inheritdoc
      */
     public function paginate($perPage = 15)
     {
@@ -81,10 +80,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Return all categories in the given language
-     *
-     * @param  string $lang
-     * @return object
+     * @inheritdoc
      */
     public function allTranslatedIn($lang)
     {
@@ -98,9 +94,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Find a resource by the given slug
-     * @param  string $slug
-     * @return object
+     * @inheritdoc
      */
     public function findBySlug($slug)
     {
@@ -114,10 +108,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Create a resource
-     *
-     * @param $data
-     * @return mixed
+     * @inheritdoc
      */
     public function create($data)
     {
@@ -127,11 +118,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Update a resource
-     *
-     * @param        $model
-     * @param  array $data
-     * @return mixed
+     * @inheritdoc
      */
     public function update($model, $data)
     {
@@ -141,10 +128,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Destroy a resource
-     *
-     * @param $model
-     * @return mixed
+     * @inheritdoc
      */
     public function destroy($model)
     {
@@ -154,9 +138,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Find a resource by an array of attributes
-     * @param  array  $attributes
-     * @return object
+     * @inheritdoc
      */
     public function findByAttributes(array $attributes)
     {
@@ -172,11 +154,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Get resources by an array of attributes
-     * @param array $attributes
-     * @param null|string $orderBy
-     * @param string $sortOrder
-     * @return \Illuminate\Database\Eloquent\Collection
+     * @inheritdoc
      */
     public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc')
     {
@@ -192,9 +170,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Return a collection of elements who's ids match
-     * @param array $ids
-     * @return mixed
+     * @inheritdoc
      */
     public function findByMany(array $ids)
     {
@@ -210,8 +186,7 @@ abstract class BaseCacheDecorator implements BaseRepository
     }
 
     /**
-     * Clear the cache for this Repositories' Entity
-     * @return bool
+     * @inheritdoc
      */
     public function clearCache()
     {

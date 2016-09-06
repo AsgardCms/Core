@@ -9,14 +9,14 @@ namespace Modules\Core\Repositories;
 interface BaseRepository
 {
     /**
-     * @param  int    $id
+     * @param  int $id
      * @return $model
      */
     public function find($id);
 
     /**
      * Return a collection of all elements of the resource
-     * @return mixed
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function all();
 
@@ -29,59 +29,59 @@ interface BaseRepository
 
     /**
      * Create a resource
-     * @param $data
-     * @return mixed
+     * @param  $data
+     * @return $model
      */
     public function create($data);
 
     /**
      * Update a resource
-     * @param $model
+     * @param  $model
      * @param  array $data
-     * @return mixed
+     * @return $model
      */
     public function update($model, $data);
 
     /**
      * Destroy a resource
-     * @param $model
-     * @return mixed
+     * @param  $model
+     * @return bool
      */
     public function destroy($model);
 
     /**
      * Return resources translated in the given language
-     * @param $lang
-     * @return object
+     * @param  string $lang
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function allTranslatedIn($lang);
 
     /**
      * Find a resource by the given slug
-     * @param  int    $slug
-     * @return object
+     * @param  string $slug
+     * @return $model
      */
     public function findBySlug($slug);
 
     /**
      * Find a resource by an array of attributes
-     * @param  array  $attributes
-     * @return object
+     * @param  array $attributes
+     * @return $model
      */
     public function findByAttributes(array $attributes);
 
     /**
      * Return a collection of elements who's ids match
-     * @param array $ids
-     * @return mixed
+     * @param  array $ids
+     * @return \Illuminate\Database\Eloquent\Collection
      */
     public function findByMany(array $ids);
 
     /**
      * Get resources by an array of attributes
-     * @param array $attributes
-     * @param null|string $orderBy
-     * @param string $sortOrder
+     * @param  array $attributes
+     * @param  null|string $orderBy
+     * @param  string $sortOrder
      * @return \Illuminate\Database\Eloquent\Collection
      */
     public function getByAttributes(array $attributes, $orderBy = null, $sortOrder = 'asc');
