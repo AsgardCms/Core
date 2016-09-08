@@ -45,6 +45,12 @@ class CoreServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        if ($this->app->config['asgard']['core']['core']['custom-routes']) {
+            $this->app->booted(function () {
+                include __DIR__ . '/../../../app/Http/routes.php';
+            });
+        }
+
         $this->registerMiddleware($this->app['router']);
         $this->registerModuleResourceNamespaces();
 
