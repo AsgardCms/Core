@@ -28,8 +28,8 @@ class SidebarServiceProvider extends ServiceProvider
 
     private function onBackend()
     {
-        $url = $this->request->url();
-        if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
+        $segment = $this->request->segment(1);
+        if (str_contains($segment, config('asgard.core.core.admin-prefix'))) {
             return true;
         }
         return false;
