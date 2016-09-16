@@ -21,17 +21,15 @@ class SidebarServiceProvider extends ServiceProvider
     public function boot(SidebarManager $manager, Request $request)
     {
         $this->request = $request;
-        if ($this->onBackend() === true ) {
+        if ($this->inAdministration() === true ) {
             $manager->register(AdminSidebar::class);
         }
     }
 
-    private function onBackend()
+    private function inAdministration()
     {
-        $url = $this->request->url();
-        if (str_contains($url, config('asgard.core.core.admin-prefix'))) {
-            return true;
-        }
-        return false;
+        $segment = config('laravellocalization.hideDefaultLocaleInURL', false) ? 1 : 2;
+
+        return $this->app['request']->segment($segment) === $this->app['config']->get('asgard.core.core.admin-prefix');
     }
 }
