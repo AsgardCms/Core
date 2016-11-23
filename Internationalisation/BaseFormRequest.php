@@ -56,7 +56,7 @@ abstract class BaseFormRequest extends FormRequest
             foreach ($this->container->call([$this, 'translationRules']) as $attribute => $rule) {
                 $key = $localeKey . '.' . $attribute;
                 $rules[$key] = $rule;
-                $attributes[$key] = trans($translationsAttributesKey . $attribute);
+                $attributes[$key] = trans($translationsAttributesKey . $attribute . '.' . $rule);
             }
 
             foreach ($this->container->call([$this, 'translationMessages']) as $attributeAndRule => $message) {
