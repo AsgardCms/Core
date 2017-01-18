@@ -31,6 +31,17 @@ return [
     | skin-black, skin-purple, skin-red and skin-yellow.
     */
     'skin' => 'skin-blue',
+    
+    /*
+    |--------------------------------------------------------------------------
+    | iCheck skin customization (checkbox and radiobuttons appearance)
+    |--------------------------------------------------------------------------
+    | You can customize the iCheck color scheme and appearance with this setting.
+    | Can check the following options to use on "http://icheck.fronteed.com/"
+    | This setting won't have any effect if you don't include the link to the 
+    | suitable iCheck CSS file on the 'admin-required-assets' array. 
+    */
+    'icheck-skin' => 'flat-blue',
 
     /*
     |--------------------------------------------------------------------------
