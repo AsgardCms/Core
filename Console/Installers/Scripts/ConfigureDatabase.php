@@ -47,12 +47,11 @@ class ConfigureDatabase implements SetupScript
         $connected = false;
 
         while (! $connected) {
+            $type = $this->askDatabaseDriver();
             $host = $this->askDatabaseHost();
-
+            $port = $this->askDatabasePort($type);
             $name = $this->askDatabaseName();
-
             $user = $this->askDatabaseUsername();
-
             $password = $this->askDatabasePassword();
 
             $this->setLaravelConfiguration($name, $user, $password, $host);
@@ -72,11 +71,30 @@ class ConfigureDatabase implements SetupScript
     /**
      * @return string
      */
+    protected function askDatabaseDriver()
+    {
+        $driver = $this->command->ask('Enter your database driver (e.g. mysql, pgsql)', 'mysql');
+        return $driver;
+    }
+
+    
+    /**
+     * @return string
+     */
     protected function askDatabaseHost()
     {
         $host = $this->command->ask('Enter your database host', 'localhost');
 
         return $host;
+    }
+    
+    /**
+     * @return string
+     */
+    protected function askDatabasePort($driver)
+    {
+        $port = $this->command->ask('Enter your database port', $this->config['database.connections.'.$driver.'.port']);
+        return $port;
     }
 
     /**
@@ -126,12 +144,14 @@ class ConfigureDatabase implements SetupScript
      * @param $user
      * @param $password
      */
-    protected function setLaravelConfiguration($name, $user, $password, $host)
+    protected function setLaravelConfiguration($driver, $port, $name, $user, $password, $host)
     {
-        $this->config['database.connections.mysql.host'] = $host;
-        $this->config['database.connections.mysql.database'] = $name;
-        $this->config['database.connections.mysql.username'] = $user;
-        $this->config['database.connections.mysql.password'] = $password;
+        $this->config['database.default'] = $driver;
+        $this->config['database.connections.'.$driver.'.host'] = $host;
+        $this->config['database.connections.'.$driver.'.port'] = $port;
+        $this->config['database.connections.'.$driver.'.database'] = $name;
+        $this->config['database.connections.'.$driver.'.username'] = $user;
+        $this->config['database.connections.'.$driver.'.password'] = $password;
     }
 
     /**
