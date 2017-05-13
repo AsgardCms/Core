@@ -54,7 +54,7 @@ class ConfigureDatabase implements SetupScript
             $user = $this->askDatabaseUsername();
             $password = $this->askDatabasePassword();
 
-            $this->setLaravelConfiguration($driver, $name, $port, $user, $password, $host);
+            $this->setLaravelConfiguration($driver, $host, $port, $name, $user, $password);
 
             if ($this->databaseConnectionIsValid()) {
                 $connected = true;
@@ -140,11 +140,13 @@ class ConfigureDatabase implements SetupScript
     }
 
     /**
+     * @param $driver 
      * @param $name
+     * @param $port
      * @param $user
      * @param $password
      */
-    protected function setLaravelConfiguration($driver, $name, $port, $user, $password, $host)
+    protected function setLaravelConfiguration($driver, $host, $port, $name, $user, $password)
     {
         $this->config['database.default'] = $driver;
         $this->config['database.connections.'.$driver.'.host'] = $host;
