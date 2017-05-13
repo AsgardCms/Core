@@ -140,7 +140,7 @@ class ConfigureDatabase implements SetupScript
     }
 
     /**
-     * @param $driver 
+     * @param $driver
      * @param $name
      * @param $port
      * @param $user
